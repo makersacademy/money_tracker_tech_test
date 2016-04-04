@@ -1,29 +1,15 @@
-# The Bank Tech Test
+# bank-tech-test
 
->When in doubt, go for the simplest solution
+![alt text](https://travis-ci.org/tsetsova/bank-tech-test.svg?branch=master "Travis Badge")
 
-### Requirements
-* Deposits, withdrawal
-* Account statement (date, amount, balance)
-* Statement printing
+## Where I got to
 
-### Acceptance criteria
+* I have two classes - account and statement
+* Done TDD
 
-**Given** a client makes a deposit of 1000 on 10-01-2012  
-**And** a deposit of 2000 on 13-01-2012  
-**And** a withdrawal of 500 on 14-01-2012  
-**When** she prints her bank statement  
-**Then** she would see  
+## I'd like to
 
+* Would like to stub statement in account
 
-```
-date || credit || debit || balance
-14/01/2012 || || 500.00 || 2500.00
-13/01/2012 || 2000.00 || || 3000.00
-10/01/2012 || 1000.00 || || 1000.00
-```
-
-### Additional extensions
-
-* Statement filters (just deposits, withdrawals, date ascending, date descending)
-* Graphical interface
+* Would like formatting of the print statement to work
+>>>>>>> 4d99d17e1b672e89a1cc5e662ce1c254e94bf499
