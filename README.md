@@ -2,6 +2,9 @@
 
 >When in doubt, go for the simplest solution
 
+[![Build Status](https://travis-ci.org/innlouvate/bank_tech_test.svg?branch=master)](https://travis-ci.org/innlouvate/bank_tech_test)
+[![Coverage Status](https://coveralls.io/repos/github/innlouvate/bank_tech_test/badge.svg?branch=master)](https://coveralls.io/github/innlouvate/bank_tech_test?branch=master)
+
 ### Requirements
 * Deposits, withdrawal
 * Account statement (date, amount, balance)
