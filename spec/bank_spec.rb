@@ -28,7 +28,7 @@ describe Bank do
   it 'can default to the current date' do
     Timecop.freeze(Time.local(2012))
     expect(bank.date).to eq '01/01/2012'
-
   end
+
 
 end
