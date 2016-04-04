@@ -1,4 +1,4 @@
-class Interface
+class Printer
 
   def print(account, type = 'all', direction = 'desc')
     output = ["date || credit || debit || balance"]

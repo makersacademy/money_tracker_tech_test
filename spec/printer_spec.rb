@@ -1,7 +1,7 @@
-require './lib/interface'
+require './lib/printer'
 
-describe Interface do
-  subject(:interface) { described_class.new }
+describe Printer do
+  subject(:printer) { described_class.new }
   let(:account) {double(:account) }
 
   describe '#print' do
@@ -14,7 +14,7 @@ describe Interface do
     end
 
     it 'prints the statement in tabular format' do
-    expect(interface.print(account)).to eq (
+    expect(printer.print(account)).to eq (
       "date || credit || debit || balance\n" \
       "13/01/2012 || || 250 || 750\n" \
       "10/01/2012 || 1000 || || 1000" \
@@ -22,21 +22,21 @@ describe Interface do
     end
 
     it 'prints only the deposits' do
-      expect(interface.print(account, 'deposits')).to eq (
+      expect(printer.print(account, 'deposits')).to eq (
         "date || credit || debit || balance\n" \
         "10/01/2012 || 1000 || || 1000" \
         )
     end
 
     it 'prints only the withdrawals' do
-      expect(interface.print(account, 'withdrawals')).to eq (
+      expect(printer.print(account, 'withdrawals')).to eq (
         "date || credit || debit || balance\n" \
         "13/01/2012 || || 250 || 750" \
         )
     end
 
     it 'prints in ascending order' do
-      expect(interface.print(account, 'all', 'asc')).to eq (
+      expect(printer.print(account, 'all', 'asc')).to eq (
         "date || credit || debit || balance\n" \
         "10/01/2012 || 1000 || || 1000\n" \
         "13/01/2012 || || 250 || 750" \
