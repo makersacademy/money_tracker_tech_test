@@ -25,16 +25,13 @@ describe Statement do
 
   describe "calculate_balance" do
     it "adds to the balance for a deposit" do
-      statement.add_transaction(deposit)
-      statement.calculate_balance
+      statement.calculate_balance(deposit)
       expect(statement.balance).to eq(100)
     end
 
     it "subtracts from the balance for a withdrawal" do
-      statement.add_transaction(deposit)
-      statement.add_transaction(withdrawal)
-      statement.calculate_balance
-      expect(statement.balance).to eq(50)
+      statement.calculate_balance(withdrawal)
+      expect(statement.balance).to eq(-50)
     end
   end
 
