@@ -16,4 +16,8 @@ class Bank
     @account_balance = account_balance - withdrawal
     account_statement.push({:date => Time.now.strftime("%m/%d/%Y")}, {:debit => withdrawal}, {:balance => @account_balance})
   end
+
+  def print_statement
+    account_statement
+  end
 end

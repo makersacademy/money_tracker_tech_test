@@ -31,12 +31,20 @@ describe Bank do
       bank.make_withdrawal(35)
       expect(bank.account_balance).to eq(465)
     end
+
+    it 'can be printed' do
+      bank.make_deposit(400)
+      bank.make_deposit(100)
+      bank.make_withdrawal(35)
+      expect(bank.print_statement).to eq [{:date => "04/04/2016"}, {:credit => 400}, {:balance => 400}, {:date => "04/04/2016"}, {:credit => 100}, {:balance => 500}, {:date => "04/04/2016"}, {:debit => 35}, {:balance => 465}]
+    end
   end
 
-  describe 'dates' do
-    it 'accompanies todays date' do
+  describe 'date' do
+    it 'is attached to statement' do
       bank.make_deposit(400)
       expect(bank.account_statement).to include({:date=>"04/04/2016"})
     end
   end
+
 end
