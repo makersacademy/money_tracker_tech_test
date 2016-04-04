@@ -7,7 +7,14 @@ describe Account do
 		expect(account.balance).to eq 0
 	end
 
-	it "changess balance correctly after a deposit is made" do
-		expect(account.deposit(100)).to eq 100
+	it "adds to balance correctly after a deposit is made" do
+		account.deposit(100)
+		expect(account.balance).to eq 100
+	end
+
+	it "deducts from balance correctly after a deposit is made" do
+		account.deposit(100)
+		account.withdraw(20)
+		expect(account.balance).to eq 80
 	end
 end
