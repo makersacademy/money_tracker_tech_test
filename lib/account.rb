@@ -26,7 +26,7 @@ class Account
   end
 
   def statement
-    transaction_log
+    transaction_log.clone.freeze
   end
 
   def print_statement
