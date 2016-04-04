@@ -22,6 +22,7 @@ class Statement
     printout.join("\n")
   end
 
+
   private
 
   def record_transaction(transaction)
@@ -50,7 +51,7 @@ class Statement
   end
 
   def dp2(num)
-    sprintf("%.2f", num)
+    num == 0 ? "" : sprintf("%.2f", num)
   end
 
 end
