@@ -7,19 +7,23 @@ describe Statements do
     expect(statements.collection).to be_empty
   end
 
+  it "returns a no statements message if emtpy" do
+    expect(statements.print).to eq "No statements available"
+  end
+
   it "stores formated balance " do
     statements.create_statement(balance: 100, withdraw: 10)
-    expect(statements.collection.first[:balance]).to eq 100
+    expect(statements.collection.first[:balance]).to eq "100.00"
   end
 
   it "stores formated withdraw " do
     statements.create_statement(balance: 100, withdraw: 0)
-    expect(statements.collection.first[:withdraw]).to eq 0
+    expect(statements.collection.first[:withdraw]).to eq "0.00"
   end
 
   it "stores formated deposit " do
     statements.create_statement(balance: 100, deposit: 10)
-    expect(statements.collection.first[:deposit]).to eq 10
+    expect(statements.collection.first[:deposit]).to eq "10.00"
   end
 
   it "calls a date format " do

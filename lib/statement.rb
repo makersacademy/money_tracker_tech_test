@@ -7,14 +7,14 @@ class Statements
   end
 
   def create_statement(balance:, deposit: nil, withdraw: nil)
-    params = binding.local_variables
-    @statement = params.map { |p| [p, eval(p.to_s)] }.to_h
-    statement.store(:time, date_format)
+    @statement = {}
+    @statement = binding.local_variables.map { |p| [p, currency_format(eval(p.to_s))]}.to_h
+    @statement.store(:time, date_format)
     @collection << statement
   end
 
   def print
-    lineWidth = 40
+    return "No statements available" if @collection.count == 0 
     puts "date || credit || debit || balance"
     @collection.each do |statement|
       puts "#{statement[:time]} || #{statement[:deposit]} || #{statement[:withdraw]} || #{statement[:balance]} "
@@ -22,7 +22,7 @@ class Statements
   end
 
   private
-
+  
   def currency_format(amount)
     return "" if amount == nil
     '%.2f' % amount

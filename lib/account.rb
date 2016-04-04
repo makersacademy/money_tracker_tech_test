@@ -6,7 +6,7 @@ class Account
 
   def initialize(statements: Statements)
     @balance = 0
-    @statements = statements.new
+    @statements = Statements.new
   end
 
   def deposit(amount)
@@ -22,5 +22,9 @@ class Account
 
   def print_statements
     @statements.print
+  end
+
+  def statement
+    @statements.statement
   end
 end

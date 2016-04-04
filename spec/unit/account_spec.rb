@@ -27,5 +27,6 @@ describe Account do
     it "doesn't deduct more than available in the balance" do
       expect{account.withdraw(110)}.to raise_error "You can only withdraw #{account.balance}."
     end
+
   end
 end
