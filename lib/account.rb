@@ -7,20 +7,24 @@ class Account
 
   attr_reader :balance, :deposits, :withdrawals
 
-  def initialize(statement_klass = Statement)
+  def initialize(statement_klass = Statement, deposit_klass = Deposit, withdrawal_klass = Withdrawal)
     @statement = statement_klass.new
-    @balance = 0
-    # @deposits = []
-    # @withdrawals = []
+    @deposit = deposit_klass
+    @withdrawal = withdrawal_klass
+    # @balance = 0
   end
 
   def deposit(amount, date)
-    deposit = Deposit.new(amount, date)
+    deposit = @deposit.new(amount, date)
     @statement.add_transaction(deposit)
   end
-  #
-  # def withdrawal(amount, date)
-  #   withdrawal = Withdrawal.new(amount, date)
-  #   # @statement.add_withdrawal(withdrawal)
-  # end
+
+  def withdrawal(amount, date)
+    withdrawal = @withdrawal.new(amount, date)
+    @statement.add_transaction(withdrawal)
+  end
+
+  def test
+    @statement.calculate_balance
+  end
 end

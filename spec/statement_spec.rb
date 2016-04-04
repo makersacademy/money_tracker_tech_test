@@ -8,6 +8,11 @@ describe Statement do
     it "has an empty log array" do
       expect(statement.log.empty?).to eq true
     end
+
+    it 'has a balance of zero' do
+      expect(statement.balance).to eq(0)
+    end
+
   end
 
   describe "add_transaction" do
