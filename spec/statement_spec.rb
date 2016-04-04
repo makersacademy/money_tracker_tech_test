@@ -19,12 +19,6 @@ let(:date) { Time.new(2012, 01, 10) }
     it "adds a new transaction to the list" do
       expect{ statement.new_transaction(50, 0, date, 50) }.to change{ statement.history.length }.by(1)
     end
-
-    xit "calls for a new transaction to be created" do
-      expect(transaction_klass).to receive(:new).with(date, 50, 0, 50)
-      statement.new_transaction(50, 0, date, 50)
-    end
-
   end
 
   describe "#print" do
