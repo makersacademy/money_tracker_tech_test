@@ -16,7 +16,8 @@ attr_accessor :balance, :history
     this_action.make
   end
 
-  def compile_statement(statement=Statement)
+  def compile_statement(order, statement=Statement)
+    history.reverse! if order == :descending 
     statement.new(history).full_print_statement
   end
 

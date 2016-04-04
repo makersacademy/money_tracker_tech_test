@@ -104,7 +104,7 @@ describe 'bank features' do
       Timecop.freeze(Time.local(2012, 01, 14, 13, 05))
       client.withdraw(500)
       client.show_statement
-      expect{client.show_statement}.to output.to_stdout
+      expect{client.show_statement(:descending)}.to output( "date      credit              debit        balance\n2012-01-101000.00                          1000.00\n2012-01-132000.00                          3000.00\n2012-01-14                   500.00        2500.00\n").to_stdout
     end
 
   end

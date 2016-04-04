@@ -77,7 +77,7 @@ describe Client do
 
     it 'retrieves the account history' do
       expect(dummy_account).to receive(:compile_statement)
-      client.show_statement
+      client.show_statement(:descending)
     end
   end
 end

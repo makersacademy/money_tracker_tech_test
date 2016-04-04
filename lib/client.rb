@@ -14,8 +14,8 @@ class Client
     process_transaction(amount, :debit)
   end
 
-  def show_statement
-    puts(account.compile_statement)
+  def show_statement(order=:descending)
+    puts(account.compile_statement(order))
   end
 
 private

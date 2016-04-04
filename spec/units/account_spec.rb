@@ -60,12 +60,12 @@ describe Account do
 
     it 'instantiates a new statement class with the account history' do
       expect(dummy_statement_klass).to receive(:new).with(account.history)
-      account.compile_statement(dummy_statement_klass)
+      account.compile_statement(:descending, dummy_statement_klass)
     end
 
     it 'calls full print statement on an instance of new statement' do
       expect(dummy_statement).to receive(:full_print_statement)
-      account.compile_statement(dummy_statement_klass)
+      account.compile_statement(:ascending, dummy_statement_klass)
     end
   end
 end
