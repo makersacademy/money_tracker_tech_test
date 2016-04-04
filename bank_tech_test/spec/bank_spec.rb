@@ -23,4 +23,13 @@ describe Bank do
       expect(bank.account_balance).to eq(100)
     end
   end
+
+  describe 'account balance' do
+    it 'can be viewed' do
+      bank.make_deposit(400)
+      bank.make_deposit(100)
+      bank.make_withdrawal(35)
+      expect(bank.account_balance).to eq(465)
+    end
+  end
 end
