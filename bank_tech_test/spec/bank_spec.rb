@@ -8,11 +8,11 @@ describe Bank do
       expect(bank.account_balance).to eq 0
     end
   end
-  
+
   describe 'deposit' do
     it 'can be made' do
-      bank.make_deposit('100')
-      expect(bank.account_balance).to eq ('100')
+      bank.make_deposit(100)
+      expect(bank.account_balance).to eq (100)
     end
   end
 end

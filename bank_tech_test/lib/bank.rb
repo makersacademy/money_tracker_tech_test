@@ -6,7 +6,7 @@ class Bank
     @account_balance = 0
   end
 
-  def deposit(deposit)
-    account_balance += deposit = @account_balance
+  def make_deposit(deposit)
+    @account_balance = account_balance + deposit 
   end
 end
