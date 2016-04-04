@@ -8,11 +8,11 @@ class Account
 
   def deposit(amount, date)
     @balance += amount
-    @transactions.push ({amount: amount, date: date})
+    @transactions.push ({amount: amount, date: date, balance: balance})
   end
 
   def withdrawal(amount, date)
     @balance -= amount
-    @transactions.push ({amount: -amount, date: date})
+    @transactions.push ({amount: -amount, date: date, balance: balance})
   end
 end

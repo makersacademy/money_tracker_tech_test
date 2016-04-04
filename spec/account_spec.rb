@@ -2,6 +2,7 @@ require './lib/account'
 
 describe Account do
   subject(:account) { described_class.new }
+  let(:amount) {1000}
 
   describe '#initialize and #balance' do
     it 'initialize with 0 balance and no transactions' do
@@ -12,30 +13,27 @@ describe Account do
 
   describe '#deposit' do
     it 'can make a deposit' do
-      amount = 1000
       expect{account.deposit(amount, '10-01-2012')}
         .to change{account.balance}.by amount
     end
 
     it 'makes a record of the deposit transaction' do
-      account.deposit(1000, '10-01-2012')
-      expect(account.transactions).to include ({amount:1000, date:'10-01-2012'})
+      account.deposit(amount, '10-01-2012')
+      expect(account.transactions).to include \
+        ({amount:amount, date:'10-01-2012', balance: amount})
     end
   end
 
   describe '#withdrawal' do
-    before do
-      account.deposit(3000, '10-01-2012')
-    end
-
     it 'can make a withdrawal' do
-      expect{account.withdrawal(500, '13-01-2012')}
-        .to change{account.balance}.by -500
+      expect{account.withdrawal(amount, '13-01-2012')}
+        .to change{account.balance}.by -amount
     end
 
     it 'makes a record of the withdrawal transaction' do
-      account.withdrawal(500, '13-01-2012')
-      expect(account.transactions).to include ({amount:-500, date:'13-01-2012'})
+      account.withdrawal(amount, '13-01-2012')
+      expect(account.transactions).to include \
+        ({amount:-amount, date:'13-01-2012', balance: -amount})
     end
   end
 end
