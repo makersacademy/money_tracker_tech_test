@@ -41,9 +41,7 @@ subject(:account) {described_class.new}
     it "displays the previous transactions" do
       account.deposit(50, Time.new(2012, 01, 10))
       account.withdraw(10, Time.new(2012, 01, 14))
-      expect(account.print_statement).to eq "date || credit || debit || balance
-      14/01/2012 || || 10.00 || 40.00
-      10/01/2012 || || 50.00 || 50.00"
+      expect(account.print_statement).to eq "date || credit || debit || balance\n14/01/2012 || 0.00 || 10.00 || 40.00\n10/01/2012 || 50.00 || 0.00 || 50.00"
     end
   end
 

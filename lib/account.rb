@@ -27,14 +27,14 @@ class Account
   end
 
   def print_statement
-    printout = "date || credit || debit || balance\n"
-    
-
-    sum = @balance
-    @transactions.reverse.each do |t|
-      printout << "#{date_formatted(t.date)} || #{t.credit} || #{t.debit} || #{sum - t.credit + t.debit}\n"
+    printout = ["date || credit || debit || balance"]
+    sum = 0
+    list = @transactions
+    list.each do |t|
+      sum = sum + t.credit - t.debit
+      printout.insert(1, "#{date_formatted(t.date)} || #{sprintf("%.2f", t.credit)} || #{sprintf("%.2f",t.debit)} || #{sprintf("%.2f", sum)}" )
     end
-    printout
+    printout.join("\n")
   end
 
   def add_to_print(list, sum)
