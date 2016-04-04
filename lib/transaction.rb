@@ -13,7 +13,11 @@ class Transaction
   private
 
   def calculate_balance(start_balance, amount)
-    start_balance += amount
+    deposit? ? start_balance += amount : start_balance -= amount
+  end
+
+  def deposit?
+    @type == 'deposit'
   end
 
 

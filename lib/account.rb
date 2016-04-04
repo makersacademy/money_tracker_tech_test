@@ -16,4 +16,11 @@ class Account
     @statement.push(transaction)
   end
 
+  def withdraw(amount, date)
+    transaction = @transaction.new(amount, 'withdrawl', date, @balance)
+    p transaction
+    @balance = transaction.end_balance
+    @statement.push(transaction)
+  end
+
 end

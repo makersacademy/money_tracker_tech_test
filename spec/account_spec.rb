@@ -31,5 +31,17 @@ describe Account do
 
   end
 
+  describe 'withdraw' do
+
+    before :each do
+      allow(transaction).to receive(:end_balance).and_return(-500)
+    end
+
+    it 'decrements the balance by the amount passed in' do
+      expect {account.withdraw(500, '14-01-2012')}.to change {account.balance}.by -500
+    end
+
+  end
+
 
 end
