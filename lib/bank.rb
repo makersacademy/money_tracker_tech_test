@@ -18,12 +18,16 @@ class Bank
 
   def withdraw(amount)
     @balance -= amount
-    @statement.input(@date, amount, @balance)
+    @statement.input(@date, -amount, @balance)
     @balance
   end
 
   def set_date(chosen_date)
     @date = chosen_date
+  end
+
+  def request_statement
+    puts @statement.print_out
   end
 
 end

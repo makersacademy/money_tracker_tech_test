@@ -17,12 +17,20 @@ class Statement
     @dates.sort!.reverse!
     @dates.each do |date|
       if @information[date][:amount] > 0
-        output = output + date + " || " + sprintf("%.2f", @information[date][:amount]) + " || || " + sprintf("%.2f", @information[date][:balance]) +" \n"
+        output = output + generate_credit_line(date)
       else
-        output = output + date + " || || " + sprintf("%.2f", -@information[date][:amount]) + " || " + sprintf("%.2f", @information[date][:balance]) +" \n"
+        output = output + generate_debit_line(date)
       end
     end
     output
+  end
+
+  def generate_credit_line(date)
+    date + " || " + sprintf("%.2f", @information[date][:amount]) + " || || " + sprintf("%.2f", @information[date][:balance]) +" \n"
+  end
+
+  def generate_debit_line(date)
+    date + " || || " + sprintf("%.2f", -@information[date][:amount]) + " || " + sprintf("%.2f", @information[date][:balance]) +" \n"
   end
 
 end
