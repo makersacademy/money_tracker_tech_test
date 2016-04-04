@@ -10,6 +10,10 @@ describe Account do
       expect(account.balance).to eq 0
     end
 
+    it 'initializes with an empty statement' do
+      expect(account.statement).to be_empty
+    end
+
   end
 
   describe '#deposit' do
