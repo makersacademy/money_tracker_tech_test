@@ -31,6 +31,16 @@ class Account
   end
 
   def print_statement
-    @account_statement.dup
+    puts "type || date || debit || balance\n"
+
+    account_statement.each do | e |
+      e.each_with_index do | value, index |
+        if index == (e.length) -1
+          puts value[1].to_s
+        else
+          print value[1].to_s + " || "
+        end
+      end
+    end
   end
 end

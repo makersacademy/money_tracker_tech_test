@@ -30,7 +30,7 @@ describe Account do
   describe '#print_statement' do
     it 'prints the statement' do
       account.account_statement = dummy_statement
-      expect(account.print_statement).to eq(dummy_statement)
+      expect(account.print_statement).to include(dummy_statement)
     end
   end
 end
