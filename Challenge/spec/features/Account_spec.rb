@@ -1,3 +1,0 @@
-describe Account do
-
-end
