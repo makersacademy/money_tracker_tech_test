@@ -20,7 +20,7 @@ class Bank
 
   def withdraw(amount, date)
     new_balance = @balance -= amount
-    @statement.debits << [date, amount, new_balance]
+    statement.debits << [date, amount, new_balance]
   end
 
   def print_statement

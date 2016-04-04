@@ -11,5 +11,4 @@ describe Printer do
     .to output("date || credit || debit || balance\n10-01-2012 || 1000 || || 1000\n11-01-2012 || || 400 || 600\n").to_stdout
   end
 
-
 end

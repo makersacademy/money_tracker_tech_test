@@ -35,7 +35,6 @@ describe Bank do
 
   end
 
-
   describe "#withdraw" do
 
     before do
