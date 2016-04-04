@@ -21,6 +21,7 @@ class Statements
     end
   end
 
+
   private
   
   def currency_format(amount)
