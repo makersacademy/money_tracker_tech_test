@@ -6,6 +6,8 @@ describe Account do
 
   let(:transaction_klass) {double :transaction_klass}
   let(:transaction) {double :transaction}
+  let(:transaction_one) {double :transaction_one}
+  let(:transaction_two) {double :transaction_two}
 
   before do
     allow(transaction_klass).to receive(:new).and_return(transaction)
