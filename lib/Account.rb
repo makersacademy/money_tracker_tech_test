@@ -42,7 +42,7 @@ class Account
 			statement << "\n" + transaction[:date] + " ||"
 			transaction[:credit].nil? ? statement << " ||" : statement << " #{sprintf('%.2f',transaction[:credit])}" 
 			transaction[:debit].nil? ? statement << " ||" : statement << " #{sprintf('%.2f',transaction[:debit])}" 
-			statement << " ||" + " #{transaction[:balance]}"
+			statement << " ||" + " #{sprintf('%.2f',transaction[:balance])}"
 		end
 		puts statement
 	end

@@ -74,7 +74,7 @@ describe Account do
 		it 'should print out transactions in human-readable form' do
 
 			expect(STDOUT).to receive(:puts).with(statement)
-			puts account.print_statement
+			account.print_statement
 		end
 
 	end
