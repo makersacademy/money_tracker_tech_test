@@ -1,13 +1,14 @@
 require_relative 'deposit'
 require_relative 'withdrawal'
+require_relative 'history'
 
 class Account
 
-  def initialize(deposit_klass: Deposit, withdrawal_klass: Withdrawal)
+  def initialize(deposit_klass: Deposit, withdrawal_klass: Withdrawal, history: History.new)
     @deposit_klass = deposit_klass
     @withdrawal_klass = withdrawal_klass
     @balance = 0.00
-    @history = []
+    @history = history
   end
 
   def show_balance
@@ -15,20 +16,17 @@ class Account
   end
 
   def show_statement
-    statement = @history.map do |item|
-      "#{item[:date]} || #{item[:deposit]} || #{item[:withdrawal]} || #{item[:balance]}"
-    end
-    statement.unshift("Date || Credit || Debit || Balance")
+    @history.standard_statement
   end
 
   def make_deposit(amount)
     deposit_balance(amount)
-    @history << @deposit_klass.new(show_balance, amount).details
+    @history.receive_entry(@deposit_klass.new(show_balance, amount).details)
   end
 
   def make_withdrawal(amount)
     withdraw_balance(amount)
-    @history << @withdrawal_klass.new(show_balance, amount).details
+    @history.receive_entry(@withdrawal_klass.new(show_balance, amount).details)
   end
 
 

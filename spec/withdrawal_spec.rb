@@ -2,6 +2,7 @@ require "./lib/withdrawal.rb"
 
 describe Withdrawal do
   subject(:withdrawal) {described_class.new("-5.00", 5.00)}
+
   let(:todays_date_klass) {double(:todays_date_klass)}
   let(:todays_date) {double(:todays_date)}
 
@@ -17,7 +18,7 @@ describe Withdrawal do
     describe "#details" do
 
       it "returns a hash with the relevant values to each key" do
-        expect(withdrawal.details).to eq {deposit:'', withdrawal:"5.00", date:"4/4/2016", balance:"-5.00"}
+        expect(withdrawal.details).to eq({deposit:'', withdrawal:'5.00', date:'4/4/2016', balance:'-5.00'})
       end
 
     end
