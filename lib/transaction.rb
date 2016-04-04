@@ -17,7 +17,7 @@ class Transaction
   end
 
   def deposit?
-    @type == 'deposit'
+    @type == :deposit
   end
 
 

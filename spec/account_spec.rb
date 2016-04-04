@@ -2,7 +2,10 @@
 
 describe Account do
 
-  let(:transaction){ double(:transaction, end_balance: 1000, amount: 1000, date: '10/01/2012', type: 'deposit')}
+  let(:transaction){ double(:transaction, end_balance: 1000, amount: 1000, date: '10/01/2012', type: :deposit)}
+
+  let(:printer) { double(:statement_printer, print_statement: "date || credit || debit || balance\n10/01/2012 || 1000.00 || || 1000.00\n" )}
+
   let(:transaction_klass) {double(:transaction_klass, new: transaction)}
   let(:account){ described_class.new(transaction_klass) }
 
@@ -45,15 +48,9 @@ describe Account do
 
   describe '#print_statement' do
 
-    it 'prints out the statement history' do
+    it 'returns the whole string to be printed' do
       account.deposit(1000, '10/01/2012')
       expect{account.print_statement}.to output("date || credit || debit || balance\n10/01/2012 || 1000.00 || || 1000.00\n").to_stdout
-    end
-
-    it 'prints out a history of only deposits if called with "deposits"' do
-      account.deposit(1000, '10/01/2012')
-      account.withdraw(500, '11/01/2012')
-      expect{account.print_statement("deposits")}.to output("date || credit || debit || balance\n10/01/2012 || 1000.00 || || 1000.00\n").to_stdout
     end
 
   end

@@ -1,7 +1,7 @@
 describe StatementPrinter do
 
-  let(:transaction){ double(:transaction, end_balance: 1000, amount: 500, date: '10/01/2012', type: "deposit")}
-  let(:transaction_two) { double(:transaction, end_balance: 750, amount: 250, date: '11/01/2012', type: "withdrawl")}
+  let(:transaction){ double(:transaction, end_balance: 1000, amount: 500, date: '10/01/2012', type: :deposit)}
+  let(:transaction_two) { double(:transaction, end_balance: 750, amount: 250, date: '11/01/2012', type: :withdrawl)}
   let(:statement_printer) {described_class.new([transaction, transaction_two])}
 
   context 'on initialization' do

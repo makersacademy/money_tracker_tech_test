@@ -1,7 +1,7 @@
 describe Transaction do
 
-  let(:transaction_deposit){described_class.new({amount: 1000, type: 'deposit', date: '10-01-2012', start_balance: 0})}
-  let(:transaction_withdrawl){described_class.new({amount: 500, type: 'withdrawl', date: '14-01-2012', start_balance: 1000})}
+  let(:transaction_deposit){described_class.new({amount: 1000, type: :deposit, date: '10-01-2012', start_balance: 0})}
+  let(:transaction_withdrawl){described_class.new({amount: 500, type: :withdrawl, date: '14-01-2012', start_balance: 1000})}
 
   context 'on initialization' do
 
@@ -21,7 +21,7 @@ describe Transaction do
     context 'a deposit' do
 
       it 'is initialized with a type deposit' do
-        expect(transaction_deposit.type).to eq 'deposit'
+        expect(transaction_deposit.type).to eq :deposit
       end
 
       it 'has an end balance which is the starting balance plus the amount' do
@@ -33,7 +33,7 @@ describe Transaction do
     context 'a withdrawl' do
 
       it 'is initialized with a type' do
-        expect(transaction_withdrawl.type).to eq 'withdrawl'
+        expect(transaction_withdrawl.type).to eq :withdrawl
       end
 
       it 'has an end balance which is the starting balance minus the amount' do
