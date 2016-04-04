@@ -17,9 +17,25 @@ describe Account do
         .to change{account.balance}.by amount
     end
 
-    it 'makes a record of the transaction' do
+    it 'makes a record of the deposit transaction' do
       account.deposit(1000, '10-01-2012')
       expect(account.transactions).to include [1000, '10-01-2012']
+    end
+  end
+
+  describe '#withdrawal' do
+    before do
+      account.deposit(3000, '10-01-2012')
+    end
+
+    it 'can make a withdrawal' do
+      expect{account.withdrawal(500, '13-01-2012')}
+        .to change{account.balance}.by -500
+    end
+
+    it 'makes a record of the withdrawal transaction' do
+      account.withdrawal(500, '13-01-2012')
+      expect(account.transactions).to include [500, '13-01-2012']
     end
   end
 end
