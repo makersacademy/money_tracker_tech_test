@@ -20,4 +20,12 @@ class Account
   def print_statement
     account_statement
   end
+
+  def show_only_deposits
+    @account_statement.map{|x| x[:credit]}.compact
+  end
+
+  def show_only_withdrawals
+    @account_statement.map{|x| x[:debit]}.compact
+  end
 end

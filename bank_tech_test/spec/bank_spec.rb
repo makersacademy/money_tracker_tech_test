@@ -36,14 +36,23 @@ describe Account do
       account.make_deposit(400)
       account.make_deposit(100)
       account.make_withdrawal(35)
-      expect(account.print_statement).to eq [{:date => "04/04/2016"}, {:credit => 400}, {:balance => 400}, {:date => "04/04/2016"}, {:credit => 100}, {:balance => 500}, {:date => "04/04/2016"}, {:debit => 35}, {:balance => 465}]
+      expect(account.print_statement).to eq [{:date=>"04/04/2016", :credit=>400, :balance=>400}, {:date=>"04/04/2016", :credit=>100, :balance=>500}, {:date=>"04/04/2016", :debit=>35, :balance=>465}]
     end
   end
 
   describe 'date' do
     it 'is attached to statement' do
       account.make_deposit(400)
-      expect(account.account_statement).to include({:date=>"04/04/2016"})
+      expect(account.account_statement).to eq [{:date=>"04/04/2016", :credit=>400, :balance=>400}]
+    end
+  end
+
+  describe 'filter' do
+    it 'can show only deposits' do
+      account.make_deposit(400)
+      account.make_deposit(100)
+      account.make_withdrawal(35)
+      expect(account.show_only_deposits).to include(400, 100)
     end
   end
 end
