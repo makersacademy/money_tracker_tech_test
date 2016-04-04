@@ -7,4 +7,8 @@ class Withdrawn
 	# def transactions
 	# 	transactions.dup
 	# end
+
+	def store(amount)
+		@transactions << amount
+	end
 end
