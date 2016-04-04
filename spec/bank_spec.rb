@@ -3,6 +3,8 @@ require 'bank'
 describe Bank do
 
   subject(:bank) {described_class.new}
+  let(:statement) {double :statement}
+  let(:printer) {double :printer}
 
   it 'has an initial balance of zero' do
     expect(bank.balance).to eq Bank::BALANCE
@@ -33,6 +35,7 @@ describe Bank do
 
   end
 
+
   describe "#withdraw" do
 
     before do
@@ -51,6 +54,19 @@ describe Bank do
 
     it 'adds the transaction date and amount to the statement debits' do
       expect(bank.statement.debits).to eq({"14-01-2012" => 500})
+    end
+
+  end
+
+  describe "#print" do
+
+    before do
+      bank.deposit(1000, '10-01-2012')
+      bank.withdraw(500, '14-01-2012')
+    end
+
+    it 'prints the statement when requested' do
+      expect{bank.print_statement}.to output("10-01-2012: 1000\n14-01-2012: 500\n").to_stdout
     end
 
   end

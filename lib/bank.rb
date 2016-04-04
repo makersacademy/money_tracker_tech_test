@@ -1,4 +1,5 @@
 require_relative 'statement'
+require_relative 'printer'
 
 class Bank
 
@@ -6,9 +7,10 @@ class Bank
 
   BALANCE = 0
 
-  def initialize(balance=BALANCE, statement = Statement.new)
+  def initialize(balance=BALANCE, statement = Statement.new, printer = Printer.new)
     @balance = balance
     @statement = statement
+    @printer = printer
   end
 
   def deposit(amount, date)
@@ -21,5 +23,8 @@ class Bank
     @statement.debits[date] = amount
   end
 
+  def print_statement
+    @printer.print_records(@statement)
+  end
 
 end

@@ -7,7 +7,7 @@ describe Printer do
                                       :debits => {"11-01-2012": 400} }
 
   it 'prints the statement credits and debits' do
-    expect{printer.print_statement(statement)}
+    expect{printer.print_records(statement)}
     .to output("10-01-2012: 1000\n11-01-2012: 400\n").to_stdout
   end
 
