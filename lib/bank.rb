@@ -11,13 +11,15 @@ class Bank
   end
 
   def deposit(amount)
-    @statement.input(@date, amount)
     @balance += amount
+    @statement.input(@date, amount, @balance)
+    @balance
   end
 
   def withdraw(amount)
-    @statement.input(@date, amount)
     @balance -= amount
+    @statement.input(@date, amount, @balance)
+    @balance
   end
 
   def set_date(chosen_date)
