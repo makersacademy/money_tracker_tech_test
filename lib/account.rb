@@ -1,8 +1,11 @@
-require 'date'
+require_relative 'deposit'
+require_relative 'withdrawal'
 
 class Account
 
-  def initialize
+  def initialize(deposit_klass: Deposit, withdrawal_klass: Withdrawal)
+    @deposit_klass = deposit_klass
+    @withdrawal_klass = withdrawal_klass
     @balance = 0.00
     @history = []
   end
@@ -19,37 +22,24 @@ class Account
   end
 
   def make_deposit(amount)
-    deposit(amount)
-    @history << {deposit: sprintf( "%0.02f", amount), withdrawal: '', date: todays_date, balance: show_balance}
+    deposit_balance(amount)
+    @history << @deposit_klass.new(show_balance, amount).details
   end
 
   def make_withdrawal(amount)
-    withdraw(amount)
-    @history << {deposit: '', withdrawal: sprintf( "%0.02f", amount), date: todays_date, balance: show_balance}
-  end
-
-  def todays_date
-    get_date
-    format_date
+    withdraw_balance(amount)
+    @history << @withdrawal_klass.new(show_balance, amount).details
   end
 
 
   private
 
-    def deposit(amount)
+    def deposit_balance(amount)
       @balance += amount
     end
 
-    def withdraw(amount)
+    def withdraw_balance(amount)
       @balance -= amount
-    end
-
-    def format_date
-      "#{@date.day}/#{@date.month}/#{@date.year}"
-    end
-
-    def get_date
-      @date = Date.today
     end
 
 end

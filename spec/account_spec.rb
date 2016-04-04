@@ -2,9 +2,16 @@ require "./lib/account.rb"
 
 describe Account do
   subject(:account) {described_class.new}
+  let(:deposit_klass) {double(:deposit_klass)}
+  let(:deposit) {double(:deposit)}
+  let(:withdrawal_klass) {double(:withdrawal_klass)}
+  let(:withdrawal) {double(:withdrawal)}
 
   before do
-    allow(account).to receive(:todays_date).and_return("4/4/2016")
+    allow(deposit_klass).to receive(:new).and_return(deposit)
+    allow(deposit).to receive(:details).and_return({deposit: "5.00", withdrawal: '', date: "4/4/2016", balance: "5.00"})
+    allow(withdrawal_klass).to receive(:new).and_return(withdrawal)
+    allow(withdrawal).to receive(:details).and_return({deposit: '', withdrawal: "5.00", date: "4/4/2016", balance: "-5.00"})
   end
 
   describe "#initialize" do
@@ -24,13 +31,6 @@ describe Account do
         expect(account.show_balance).to eq "5.00"
       end
 
-      # it "saves the date a deposit is made to the history array" do
-      #   account.make_deposit(5.0)
-      #   expect(account.show_statement).to eq [{amount: 5.0, date: "4/4/2016"}]
-      # end
-
-    end
-
   end
 
   context "making a withdrawal from the account" do
@@ -41,11 +41,6 @@ describe Account do
         account.make_withdrawal(5.00)
         expect(account.show_balance).to eq "-5.00"
       end
-
-      # it "saves the date a withdrawal is made to the history array" do
-      #   account.make_withdrawal(-5.0)
-      #   expect(account.show_statement).to eq [{amount: -5.0, date: "4/4/2016"}]
-      # end
 
     end
 
@@ -76,6 +71,6 @@ describe Account do
   end
 
 
-
+end
 
 end
