@@ -7,7 +7,7 @@ describe Account do
     end
 
     it 'can accept deposits that increase the #balance' do
-      subject.deposit(1000)
+      subject.deposit('10/01/2012', 1000)
       expect(subject.balance).to eq(1000)
     end
 end
