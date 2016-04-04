@@ -1,3 +1,30 @@
+A simple command line program to fulfill the requirements for the below Tech Test for a Bank.
+
+My approach:
+
+  Object Orientated.
+  Highly encapsulated given the importance that bank accounts should not be easily accessible.
+  Modular and following the open/closed principal.
+  Simple and fulfilling just the requirements outlined below. YAGNI (You Ain't Gonna Need It).
+
+Test Driven:
+
+  Feature tests written first, with unit tests written until feature test passes.
+
+SOLID and Sandi Metz Principals:
+
+  No classes over 100 lines.
+  No methods over 5 lines.
+  Only instantiate one object in the controller or User Interface class (here named 'Client').
+  No more than 4 parameters passed into a method.
+
+Readability:
+
+  Willing to violate Hound line-length rules to ensure that methods have descriptive names - if need be.
+  Aims for anybody to be able to read and contribute to the code without any need for explanation.
+
+# The Challenge:
+
 # The Bank Tech Test
 
 >When in doubt, go for the simplest solution
