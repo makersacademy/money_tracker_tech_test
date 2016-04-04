@@ -1,3 +1,6 @@
+
+# Approach
+
 # The Bank Tech Test
 
 >When in doubt, go for the simplest solution
