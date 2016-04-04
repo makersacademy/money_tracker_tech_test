@@ -24,14 +24,6 @@ class Account
     end
   end
 
-  def calculate_statement(amount, type)
-    statement = {}
-    statement[:type] = type
-    statement[:date] = time
-    statement[:transaction] = amount
-    statement[:balance] = @balance
-    account_statement.push(statement)
-  end
 
   private
 
@@ -41,6 +33,15 @@ class Account
   def initialize
     @balance = 0
     @account_statement = []
+  end
+
+  def calculate_statement(amount, type)
+    statement = {}
+    statement[:type] = type
+    statement[:date] = time
+    statement[:transaction] = amount
+    statement[:balance] = @balance
+    account_statement.push(statement)
   end
 
   def time

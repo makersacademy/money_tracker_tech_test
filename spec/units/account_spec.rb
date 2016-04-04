@@ -23,7 +23,7 @@ describe Account do
 
   describe '#calculate_statement' do
     it 'returns the correct account statement' do
-      expect(account.calculate_statement(20, :deposit)).to include(dummy_statement)
+      expect(account.instance_eval{calculate_statement(20, :deposit)}).to include(dummy_statement)
     end
   end
 
