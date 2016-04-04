@@ -1,5 +1,6 @@
 class Account
-  attr_reader :balance, :account_statement
+  attr_reader :balance
+  attr_accessor :account_statement
 
   def initialize
     @balance = 0
@@ -26,5 +27,9 @@ class Account
 
   def time
     Time.now.strftime("%m/%d/%Y")
+  end
+
+  def print_statement
+    @account_statement
   end
 end

@@ -2,6 +2,11 @@ require 'spec_helper'
 
 describe Account do
   subject(:account) {described_class.new}
+  dummy_statement = {
+    :date => "04/04/2016",
+    :transaction => 20,
+    :balance => 0,
+  }
 
   describe '#withdraw' do
     it 'allows user to withdraw funds' do
@@ -17,12 +22,14 @@ describe Account do
 
   describe '#calculate_statement' do
     it 'returns the correct account statement' do
-      dummy_statement = {
-      :date => "04/04/2016",
-      :transaction => 20,
-      :balance => 0,
-    }
       expect(account.calculate_statement(20)).to include(dummy_statement)
+    end
+  end
+
+  describe '#print_statement' do
+    it 'prints the statement' do
+      account.account_statement = dummy_statement
+      expect(account.print_statement).to eq(dummy_statement)
     end
   end
 end
