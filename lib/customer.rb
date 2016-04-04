@@ -8,11 +8,11 @@ class Customer
     @balance = 0
   end
 
-  def credit_account(amount)
+  def credit_account(amount, date)
     @balance += amount
   end
 
-  def debit_account(amount)
+  def debit_account(amount, date)
     @balance -= amount
   end
 
