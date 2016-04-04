@@ -10,21 +10,24 @@ class Account
     @transaction_klass = transaction_klass
   end
 
-  def deposit(amount: amount, date: date)
+  def credit(amount: amt, date: dt)
     @balance += amount
-    transaction = @transaction_klass.new(date: date, deposit: amount, balance: @balance)
+    transaction = @transaction_klass.new(date: date, credit: amount, balance: @balance)
     @statement << transaction
   end
 
-  def withdraw(amount: amount, date: date)
+  def debit(amount: amt, date: dt)
     @balance -= amount
-    transaction = @transaction_klass.new(date: date, withdrawal: amount, balance: @balance)
+    transaction = @transaction_klass.new(date: date, debit: amount, balance: @balance)
     @statement << transaction
   end
 
   def print
+    p "date || credit || debit || balance"
     @statement.map do |transaction|
-      p "#{transaction.date} || #{transaction.deposit} || #{transaction.withdrawal} || #{transaction.balance}"
+      transaction.credit == nil ? credit = '' : credit = transaction.credit
+      transaction.debit == nil ? debit = '' : debit = transaction.debit
+      p "#{transaction.date} || #{transaction.credit} || #{transaction.debit} || #{transaction.balance}"
     end
   end
 

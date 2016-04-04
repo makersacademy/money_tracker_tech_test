@@ -22,55 +22,55 @@ describe Account do
 
   end
 
-  describe '#deposit' do
+  describe '#credit' do
 
-    it 'allows a user to add a deposit' do
-      account.deposit(amount: 500, date: '3/4/16')
+    it 'allows a user to add a credit' do
+      account.credit(amount: 500, date: '3/4/16')
       expect(account.balance).to eq 500
     end
 
     it 'adds a transaction to the statement with the correct date' do
       allow(transaction_klass).to receive(:date).and_return('3/4/16')
-      account.deposit(amount: 500, date: '3/4/16')
+      account.credit(amount: 500, date: '3/4/16')
       expect(account.statement[0].date).to eq "3/4/16"
     end
 
-    it 'adds a transaction to the statement with the correct deposit ammount' do
-      allow(transaction_klass).to receive(:deposit).and_return(500)
-      account.deposit(amount: 500, date: '3/4/16')
-      expect(account.statement[0].deposit).to eq 500
+    it 'adds a transaction to the statement with the correct credit ammount' do
+      allow(transaction_klass).to receive(:credit).and_return(500)
+      account.credit(amount: 500, date: '3/4/16')
+      expect(account.statement[0].credit).to eq 500
     end
 
     it 'adds a transaction to the statement with the correct current balance' do
       allow(transaction_klass).to receive(:balance).and_return(500)
-      account.deposit(amount: 500, date: '3/4/16')
+      account.credit(amount: 500, date: '3/4/16')
       expect(account.statement[0].balance).to eq account.balance
     end
 
   end
 
-  describe '#withdraw' do
+  describe '#debit' do
 
-    it 'allows a user to make a withdrawal' do
-      account.withdraw(amount: 300, date: '4/4/16')
+    it 'allows a user to make a debit' do
+      account.debit(amount: 300, date: '4/4/16')
       expect(account.balance).to eq -300
     end
 
     it 'adds a transaction to the statement with the correct date' do
       allow(transaction_klass).to receive(:date).and_return('3/4/16')
-      account.withdraw(amount: 500, date: '3/4/16')
+      account.debit(amount: 500, date: '3/4/16')
       expect(account.statement[0].date).to eq "3/4/16"
     end
 
-    it 'adds a transaction to the statement with the correct withdrawal ammount' do
-      allow(transaction_klass).to receive(:withdrawal).and_return(500)
-      account.withdraw(amount: 500, date: '3/4/16')
-      expect(account.statement[0].withdrawal).to eq 500
+    it 'adds a transaction to the statement with the correct debit ammount' do
+      allow(transaction_klass).to receive(:debit).and_return(500)
+      account.debit(amount: 500, date: '3/4/16')
+      expect(account.statement[0].debit).to eq 500
     end
 
     it 'adds a transaction to the statement with the correct current balance' do
       allow(transaction_klass).to receive(:balance).and_return(-500)
-      account.withdraw(amount: 500, date: '3/4/16')
+      account.debit(amount: 500, date: '3/4/16')
       expect(account.statement[0].balance).to eq account.balance
     end
 

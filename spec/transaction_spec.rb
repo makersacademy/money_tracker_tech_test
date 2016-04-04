@@ -11,15 +11,15 @@ describe Transaction do
     end
 
     it 'initializes with an empty deposit' do
-      expect(transaction.deposit).to eq nil
+      expect(transaction.credit).to eq nil
     end
 
     it 'initializes with an empty withdrawal' do
-      expect(transaction.withdrawal).to eq nil
+      expect(transaction.debit).to eq nil
     end
 
     it 'initializes with an empty balance' do
-      expect(transaction.withdrawal).to eq nil
+      expect(transaction.balance).to eq nil
     end
 
   end
