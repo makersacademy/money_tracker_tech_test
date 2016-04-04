@@ -14,13 +14,13 @@ class Bank
   end
 
   def deposit(amount, date)
-    @balance += amount
-    @statement.credits[date] = amount
+    new_balance = @balance += amount
+    statement.credits << [date, amount, new_balance]
   end
 
   def withdraw(amount, date)
-    @balance -= amount
-    @statement.debits[date] = amount
+    new_balance = @balance -= amount
+    @statement.debits << [date, amount, new_balance]
   end
 
   def print_statement

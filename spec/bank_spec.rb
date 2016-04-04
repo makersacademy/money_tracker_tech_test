@@ -29,8 +29,8 @@ describe Bank do
       expect(bank.balance).to eq(3000)
     end
 
-    it 'adds the transaction date and amount to the statement credits' do
-      expect(bank.statement.credits).to eq({"10-01-2012" => 1000})
+    it 'adds the transaction date, amount and balance to the statement credits' do
+      expect(bank.statement.credits).to eq([["10-01-2012", 1000, 1000]])
     end
 
   end
@@ -52,8 +52,8 @@ describe Bank do
       expect(bank.balance).to eq(300)
     end
 
-    it 'adds the transaction date and amount to the statement debits' do
-      expect(bank.statement.debits).to eq({"14-01-2012" => 500})
+    it 'adds the transaction date, amount and balance to the statement debits' do
+      expect(bank.statement.debits).to eq([["14-01-2012", 500, 500]])
     end
 
   end
@@ -66,7 +66,7 @@ describe Bank do
     end
 
     it 'prints the statement when requested' do
-      expect{bank.print_statement}.to output("date || credit || debit || balance\n10-01-2012 || 1000 || ||\n14-01-2012 || || 500 ||\n").to_stdout
+      expect{bank.print_statement}.to output("date || credit || debit || balance\n10-01-2012 || 1000 || || 1000\n14-01-2012 || || 500 || 500\n").to_stdout
     end
 
   end

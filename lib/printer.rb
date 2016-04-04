@@ -4,8 +4,8 @@ class Printer
 
   def print_records(statement)
     puts "date || credit || debit || balance"
-    statement.credits.each {| date, amount | puts "#{date} || #{amount} || ||"}
-    statement.debits.each {| date, amount | puts "#{date} || || #{amount} ||" }
+    statement.credits.each {|date, amount, balance| puts "#{date} || #{amount} || || #{balance}"}
+    statement.debits.each {|date, amount, balance| puts "#{date} || || #{amount} || #{balance}"}
   end
 
 end
