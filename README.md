@@ -1,9 +1,9 @@
 A simple command line program to fulfill the requirements for the below Tech Test for a Bank.
 
-My approach:
+My Aims:
 
   Object Orientated.
-  Highly encapsulated given the importance that bank accounts should not be easily accessible.
+  Encapsulation - given the accessibility of accounts
   Modular and following the open/closed principal.
   Simple and fulfilling just the requirements outlined below. YAGNI (You Ain't Gonna Need It).
 

@@ -15,6 +15,8 @@ attr_accessor :balance
     action.make
   end
 
-
+  def compile_statement(statement=Statement)
+    statement.new(history).print_format
+  end
 
 end

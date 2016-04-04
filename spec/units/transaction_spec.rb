@@ -2,9 +2,10 @@ require 'transaction'
 
 describe Transaction do
   let(:dummy_amount) {1000}
-  subject(:deposit_transaction) {described_class.new(dummy_amount, :deposit, dummy_client_account)}
-  subject(:withdrawal_transaction) {described_class.new(dummy_amount, :withdrawal, dummy_client_account)}
+  let(:dummy_balance) {100}
   let(:dummy_client_account) {double :dummy_client_account}
+  subject(:deposit_transaction) {described_class.new(dummy_amount, :credit, dummy_client_account)}
+  subject(:withdrawal_transaction) {described_class.new(dummy_amount, :debit, dummy_client_account)}
 
   describe '#initialize' do
 
@@ -25,8 +26,8 @@ describe Transaction do
     end
 
     it 'is initialized with the type of deposit_transaction it is' do
-      expect(deposit_transaction.type).to eq(:deposit)
-      expect(withdrawal_transaction.type).to eq(:withdrawal)
+      expect(deposit_transaction.type).to eq(:credit)
+      expect(withdrawal_transaction.type).to eq(:debit)
 
     end
 
@@ -34,11 +35,13 @@ describe Transaction do
 
   describe '#make' do
     before do
-      allow(dummy_client_account).to receive(:balance)
+      allow(dummy_client_account).to receive(:balance).and_return(dummy_balance)
+      allow(dummy_balance).to receive(:balance).with(dummy_amount)
     end
 
-    xit 'changes the clients account balance' do
-      expect{deposit_transaction.make}.to change(dummy_client_account, :balance).by(dummy_amount)
+    xit 'changes the clients account balance, adding when deposit transaction' do
+      deposit_transaction.make
+      expect(dummy_client_account.balance).to eq(dummy_balance + dummy_amount)
     end
 
   end
@@ -46,6 +49,7 @@ describe Transaction do
   describe '#record' do
 
   before do
+    allow(dummy_client_account).to receive(:balance).and_return(dummy_balance)
     allow(dummy_client_account).to receive(:history).and_return(Array.new)
   end
 

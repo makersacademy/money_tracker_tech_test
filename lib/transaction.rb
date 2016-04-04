@@ -12,13 +12,19 @@ attr_reader :date, :client_account, :type, :amount
   end
 
   def make
-    type == :deposit ? add : subtract
+    credit? ? add : subtract
     record
   end
 
   def record
     client_account.history << self
   end
+
+  def credit?
+    type == :credit
+  end
+
+  private
 
   def add
     client_account.balance += amount
