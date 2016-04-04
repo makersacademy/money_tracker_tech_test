@@ -21,10 +21,11 @@ class Statement
   end
 
   def print_statement
-    puts "date || credit || debit || balance"
+    output = "date || credit || debit || balance\n"
     @log.each do |transaction|
-      puts "#{transaction.date} || #{deposit_or_withdrawal?(transaction)} || #{calculate_balance(transaction)}"
+      output += "#{transaction.date} || #{deposit_or_withdrawal?(transaction)} || #{calculate_balance(transaction)}\n"
     end
+    output
   end
 
   private
