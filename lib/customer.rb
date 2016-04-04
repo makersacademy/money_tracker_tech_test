@@ -9,6 +9,7 @@ class Customer
   end
 
   def credit_account(amount)
+    @balance =+ amount
   end
 
 end

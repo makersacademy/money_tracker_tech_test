@@ -13,9 +13,9 @@ describe Customer do
     describe '#credit_account' do
       it {is_expected.to respond_to(:credit_account).with(1).argument }
 
-      xit 'will credit balance with amount added' do
+      it 'will credit balance with amount added' do
         customer.credit_account(10)
-        expect(balance).to eq(10)
+        expect(customer.balance).to eq(10)
       end
     end
 
