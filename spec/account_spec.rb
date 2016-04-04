@@ -35,7 +35,7 @@ describe Account do
 
     it 'makes a record of the withdrawal transaction' do
       account.withdrawal(500, '13-01-2012')
-      expect(account.transactions).to include [500, '13-01-2012']
+      expect(account.transactions).to include [-500, '13-01-2012']
     end
   end
 end

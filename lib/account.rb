@@ -13,6 +13,6 @@ class Account
 
   def withdrawal(amount, date)
     @balance -= amount
-    @transactions.push([amount, date])
+    @transactions.push([-amount, date])
   end
 end
