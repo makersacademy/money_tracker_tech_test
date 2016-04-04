@@ -6,13 +6,18 @@ class Client
     @account = account.new
   end
 
-  def deposit(amount, transaction=Transaction)
-    transaction.new(amount, self, :deposit)
+  def deposit(amount)
+    process_transaction(amount, :deposit)
   end
 
-  def withdraw(amount, transaction=Transaction)
-    #YAGNI - might need to check if their is enough balance
-    transaction.new(amount, self, :withdrawal)
+  def withdraw(amount)
+    process_transaction(amount, :withdrawal)
+  end
+
+private
+
+  def process_transaction(amount, type)
+    account.new_action(amount, type, self)
   end
 
 end
