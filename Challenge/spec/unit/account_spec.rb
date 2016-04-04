@@ -10,6 +10,4 @@ describe Account do
       subject.deposit(1000)
       expect(subject.balance).to eq(1000)
     end
-
-
 end
