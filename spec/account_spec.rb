@@ -3,6 +3,7 @@ require "./lib/account.rb"
 describe Account do
 subject(:account) {described_class.new(statement)}
 let(:statement) { double :statement }
+let(:date) { Time.new(2012, 01, 10) }
 
   before do
     allow(statement).to receive(:new_transaction)
@@ -20,8 +21,8 @@ let(:statement) { double :statement }
     end
 
     it "calls for a new transaction to be added to the statement" do
-      expect(statement).to receive(:new_transaction).with(50, 0, Time.new(2012, 01, 10))
-      account.deposit(50, Time.new(2012, 01, 10))
+      expect(statement).to receive(:new_transaction).with(50, 0, date)
+      account.deposit(50, date)
     end
 
   end
@@ -34,8 +35,8 @@ let(:statement) { double :statement }
 
 
     it "calls for a new transaction to be added to the statement" do
-      expect(statement).to receive(:new_transaction).with(0, 10, Time.new(2012, 01, 10))
-      account.withdraw(10, Time.new(2012, 01, 10))
+      expect(statement).to receive(:new_transaction).with(0, 10, date)
+      account.withdraw(10, date)
     end
   end
 

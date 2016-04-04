@@ -12,7 +12,7 @@ class Account
   end
 
   def print_statement
-    @statement.print
+    @statement.print(@balance)
   end
 
   def deposit(amount, date = Time.now)

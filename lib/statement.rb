@@ -14,12 +14,12 @@ class Statement
     record_transaction(@transaction_klass.new(date, deposit, withdrawal))
   end
 
-  def print
+  def print(balance)
     printout = ["date || credit || debit || balance"]
-    sum = 0
-    @transactions.each do |t|
-      sum = sum + t.credit - t.debit
-      printout.insert(1, "#{date_formatted(t.date)} || #{dp2(t.credit)} || #{dp2(t.debit)} || #{dp2(sum)}" )
+    # need more reliable method for getting to/from current balance?
+    history.reverse.each do |t|
+      printout << "#{date_formatted(t.date)} || #{dp2(t.credit)} || #{dp2(t.debit)} || #{dp2(balance)}"
+      balance = balance - t.credit + t.debit
     end
     printout.join("\n")
   end
