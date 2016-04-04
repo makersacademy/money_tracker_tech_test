@@ -1,4 +1,4 @@
-require 'bank'
+# require 'bank.rb'
 
 class Customer
 
@@ -9,7 +9,11 @@ class Customer
   end
 
   def credit_account(amount)
-    @balance =+ amount
+    @balance += amount
+  end
+
+  def debit_account(amount)
+    @balance -= amount
   end
 
 end
