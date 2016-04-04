@@ -9,7 +9,12 @@ class Bank
   end
 
   def deposit(amount, date)
-    @balance = amount
+    @balance += amount
   end
+
+  def withdraw(amount, date)
+    @balance -= amount
+  end
+
 
 end
