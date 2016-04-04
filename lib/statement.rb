@@ -18,6 +18,8 @@ class Statement
     output = iterate_dates(output)
   end
 
+  private
+
   def order_dates_array
     @dates.sort!.reverse!
   end

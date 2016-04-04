@@ -5,7 +5,7 @@ describe "Feature" do
 
   let(:bank) {Bank.new}
 
-  it 'should be able to do the acceptance criteria' do
+  it 'should be able to pass the acceptance criteria' do
     bank.set_date('10/01/2012')
     bank.deposit(1000)
     bank.set_date('13/01/2012')
