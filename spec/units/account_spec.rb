@@ -1,7 +1,8 @@
 require 'account'
 
 describe Account do
-  subject(:account)       { described_class.new }
+  subject(:account)       { described_class.new(statement_printer) }
+  let(:statement_printer) { double 'statement_printer' }
   let(:deposit_amount)    { 1000 }
   let(:withdrawal_amount) { 700 }
 
@@ -73,6 +74,15 @@ describe Account do
 
     it "returns a list of the user's transactions" do
       expect(account.statement.count).to eq 2
+    end
+  end
+
+  describe '#print_statement' do
+    before { allow(statement_printer).to receive(:print_out) }
+
+    it 'passes a print message to the account statement' do
+      account.print_statement
+      expect(statement_printer).to have_received(:print_out)
     end
   end
 end

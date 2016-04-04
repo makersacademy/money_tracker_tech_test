@@ -1,11 +1,15 @@
+require "pry"
+
 require 'date'
+require './lib/statement_printer'
 
 class Account
   attr_reader :balance
 
-  def initialize
+  def initialize(printer = StatementPrinter.new)
     @balance = 0
     @transaction_log = []
+    @statement_printer = printer
   end
 
   def deposit(amount)
@@ -25,10 +29,14 @@ class Account
     transaction_log
   end
 
+  def print_statement
+    statement_printer.print_out(transaction_log)
+  end
+
   private
 
   attr_writer :balance
-  attr_reader :transaction_log
+  attr_reader :transaction_log, :statement_printer
 
   def log_transaction(type, amount, balance, date = Date.today)
     transaction = {

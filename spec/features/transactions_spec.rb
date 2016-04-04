@@ -1,7 +1,7 @@
 require 'account'
 
-describe 'User can view a statement of their transactions' do
-  it 'displays a log transactions, dates and account balance' do
+describe 'User can print their account statement' do
+  it 'displays transaction type, date and balance for recent transactions' do
     account = Account.new
     account.deposit(1000)
     account.deposit(2000)
@@ -9,9 +9,11 @@ describe 'User can view a statement of their transactions' do
     expect(account.balance).to eq 2500
     expect(account.statement.count).to eq 3
 
-    latest_transaction = account.statement.last
-    expect(latest_transaction[:type]).to eq :debit
-    # expect(latest_transaction[:date]).to eq Date.new(2012,1,14)
-    expect(latest_transaction[:amount]).to eq 500
+    expect { account.print_statement }
+      .to output(%q(      date ||     credit ||      debit ||    balance
+04/04/2016 ||    1000.00 ||            ||    1000.00
+04/04/2016 ||    2000.00 ||            ||    3000.00
+04/04/2016 ||            ||     500.00 ||    2500.00
+)).to_stdout
   end
 end
