@@ -7,6 +7,10 @@ class Bank
   end
 
   def make_deposit(deposit)
-    @account_balance = account_balance + deposit 
+    @account_balance = account_balance + deposit
+  end
+
+  def make_withdrawal(withdrawal)
+
   end
 end
