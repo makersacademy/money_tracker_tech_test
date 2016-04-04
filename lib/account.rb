@@ -1,3 +1,5 @@
+require 'date'
+
 class Account
   attr_reader :balance
 
@@ -7,16 +9,16 @@ class Account
   end
 
   def deposit(amount)
-    raise 'Invalid amount' if amount < 0 || !amount.is_a?(Numeric)
+    raise 'Invalid amount' if !amount.is_a?(Numeric) || amount < 0
     self.balance += amount
-    log_transaction(:deposit, amount, self.balance)
+    log_transaction(:credit, amount, self.balance)
   end
 
   def withdraw(amount)
-    raise 'Invalid amount' if amount < 0 || !amount.is_a?(Numeric)
+    raise 'Invalid amount' if !amount.is_a?(Numeric) || amount < 0
     raise 'Insufficient funds' if amount > self.balance
     self.balance -= amount
-    log_transaction(:withdrawal, amount, self.balance)
+    log_transaction(:debit, amount, self.balance)
   end
 
   def statement
@@ -28,7 +30,7 @@ class Account
   attr_writer :balance
   attr_reader :transaction_log
 
-  def log_transaction(type, amount, balance, date = Date.new)
+  def log_transaction(type, amount, balance, date = Date.today)
     transaction = {
       type: type,
       amount: amount,

@@ -10,8 +10,7 @@ describe 'User can view a statement of their transactions' do
     expect(account.statement.count).to eq 3
 
     latest_transaction = account.statement.last
-    puts latest_transaction
-    expect(latest_transaction[:type]).to eq :withdrawal
+    expect(latest_transaction[:type]).to eq :debit
     # expect(latest_transaction[:date]).to eq Date.new(2012,1,14)
     expect(latest_transaction[:amount]).to eq 500
   end
