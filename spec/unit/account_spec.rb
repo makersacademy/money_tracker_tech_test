@@ -1,7 +1,7 @@
 require 'account.rb'
 
 describe Account do
-  let(:statements) {double:statements, create_statement: nil, print: nil}
+  let(:statements) {double:statements, add_transaction: nil, print: nil}
   let(:statements_class) {double(:statements, new: statements)}
   subject(:account) {described_class.new(statements: statements_class)}
 
@@ -11,7 +11,7 @@ describe Account do
   end
 
   describe "balance > 0" do
-    before(:each) do 
+    before(:each) do
       account.deposit(100)
     end
 

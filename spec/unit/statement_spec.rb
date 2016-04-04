@@ -12,22 +12,7 @@ describe Statements do
   end
 
   it "stores formated balance " do
-    statements.create_statement(balance: 100, withdraw: 10)
-    expect(statements.collection.first[:balance]).to eq "100.00"
-  end
-
-  it "stores formated withdraw " do
-    statements.create_statement(balance: 100, withdraw: 0)
-    expect(statements.collection.first[:withdraw]).to eq "0.00"
-  end
-
-  it "stores formated deposit " do
-    statements.create_statement(balance: 100, deposit: 10)
-    expect(statements.collection.first[:deposit]).to eq "10.00"
-  end
-
-  it "calls a date format " do
-    statements.create_statement(balance: 100, withdraw: 10)
-    expect(statements.collection.first[:time]).to eq (Time.now.strftime('%D'))
+    statements.add_transaction(balance: 100, withdraw: 10)
+    expect(statements.collection.first).to eq({:balance=>"100.00", :deposit=>"", :withdraw=>"10.00", :time=>Time.now.strftime('%D')})
   end
 end

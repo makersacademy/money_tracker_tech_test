@@ -1,6 +1,6 @@
 require_relative 'statement.rb'
 
-class Account 
+class Account
 
   attr_reader :balance
 
@@ -10,12 +10,12 @@ class Account
   end
 
   def deposit(amount)
-    @statements.create_statement(balance: @balance, deposit: amount)
+    @statements.add_transaction(balance: @balance, deposit: amount)
     @balance += amount
   end
 
   def withdraw(amount)
-    @statements.create_statement(balance: @balance, withdraw: amount)
+    @statements.add_transaction(balance: @balance, withdraw: amount)
     raise "You can only withdraw #{@balance}." if amount > @balance
     @balance -= amount
   end
