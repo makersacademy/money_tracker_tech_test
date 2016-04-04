@@ -20,7 +20,7 @@ class Statement
     list = @transactions
     list.each do |t|
       sum = sum + t.credit - t.debit
-      printout.insert(1, "#{date_formatted(t.date)} || #{sprintf("%.2f", t.credit)} || #{sprintf("%.2f",t.debit)} || #{sprintf("%.2f", sum)}" )
+      printout.insert(1, "#{date_formatted(t.date)} || #{dp2(t.credit)} || #{dp2(t.debit)} || #{dp2(sum)}" )
     end
     printout.join("\n")
   end
@@ -36,6 +36,10 @@ class Statement
     month = date.month > 9 ? "#{date.month}" : "0#{date.month}"
     day = date.day > 9 ? "#{date.day}" : "0#{date.day}"
     "#{day}/#{month}/#{year}"
+  end
+
+  def dp2(num)
+    sprintf("%.2f", num)
   end
 
 end
