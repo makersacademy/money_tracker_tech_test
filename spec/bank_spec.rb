@@ -3,7 +3,6 @@ require 'bank'
 describe 'Bank' do
   subject(:bank) { Bank.new("Sarah") }
 
-
   describe 'initialisation' do
     it 'should have a name' do
       expect(bank.name).to eq("Sarah")
@@ -13,6 +12,23 @@ describe 'Bank' do
       expect(bank.transactions).to eq([{:date=>"Beginning Balance", :amount=>0}])
     end
   end
+
+  describe 'bad data' do
+    it 'raises an error if credit transaction is not a number' do
+      expect { bank.credit("12032015", "lala").to raise_error "must only credit numbers"}
+    end
+
+    it "raises an error if date not correctly entered" do
+      expect {bank.debit("1212", 100).to raise_error "date not valid"}
+    end
+    #
+    # it "if date good, does not raise an error" do
+    # end
+    #
+    # it "rejects words" do
+    # end
+    #
+    end
 
   describe 'debit an account ' do
       it { is_expected.to respond_to(:debit).with(2).arguments }
@@ -44,6 +60,13 @@ describe 'Bank' do
       bank.debit("06022016", 100)
       expect(bank.balance).to eq(400)
     end
+  end
+
+  xdescribe 'print the statement' do
+    it should 'print the date, credits and balance' do
+      bank.credit("12032015", 200)
+      bank.credit("01022016", 100)
+
   end
 
 end

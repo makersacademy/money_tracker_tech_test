@@ -28,4 +28,17 @@ class Bank
   return balance
   end
 
+  def print_balance
+    puts "-" * 40
+
+    puts "Date".ljust(20) + "Amount".center(20)
+    @transactions.each do |transaction|
+      puts transaction[:date].ljust(20) + sprintf("%0.2f", transaction[:amount]).center(20)
+    end
+    #
+    puts "-" * 40
+    puts "Balance:".ljust(30) + sprintf("%0.2f", balance).rjust(10)
+    puts "-" * 40
+  end
+
 end
