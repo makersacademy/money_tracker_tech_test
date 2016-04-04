@@ -12,5 +12,4 @@ describe Statement do
     expect(statement.debits).to eq({})
   end
 
-
 end
