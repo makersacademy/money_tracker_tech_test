@@ -1,9 +1,10 @@
 class Statement
 
-  attr_reader :transactions
+  attr_reader :credits, :debits
 
   def initialize
-    @transactions = []
+    @credits = {}
+    @debits = {}
   end
 
 end

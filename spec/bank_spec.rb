@@ -8,6 +8,10 @@ describe Bank do
     expect(bank.balance).to eq Bank::BALANCE
   end
 
+  it 'has a new statement' do
+    expect(bank).to respond_to(:statement)
+  end
+
   describe "#deposit" do
 
     before do
@@ -23,9 +27,13 @@ describe Bank do
       expect(bank.balance).to eq(3000)
     end
 
+    it 'adds the transaction date and amount to the statement credits' do
+      expect(bank.statement.credits).to eq({"10-01-2012" => 1000})
+    end
+
   end
 
-  describe "withdraw" do
+  describe "#withdraw" do
 
     before do
       bank.deposit(1000, '10-01-2012')
@@ -39,6 +47,10 @@ describe Bank do
     it 'accepts more than one deposit and correctly updates the balance' do
       bank.withdraw(200, '14-01-2012')
       expect(bank.balance).to eq(300)
+    end
+
+    it 'adds the transaction date and amount to the statement debits' do
+      expect(bank.statement.debits).to eq({"14-01-2012" => 500})
     end
 
   end
