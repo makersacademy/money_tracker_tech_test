@@ -9,16 +9,21 @@ describe Account do
     it 'initializes with a balance of 0' do
       expect(account.balance).to eq 0
     end
+
+    it 'initializes with an empty transaction log' do
+      expect(account.statement.count).to eq 0
+    end
   end
 
   describe '#deposit' do
+    before(:example) { account.deposit(deposit_amount) }
+
     it 'adds the deposit amount to the account balance' do
-      account.deposit(deposit_amount)
       expect(account.balance).to eq deposit_amount
     end
 
     it 'logs the transaction' do
-
+      expect(account.statement.count).to eq 1
     end
 
     context 'if the amount to be deposited is not valid' do
@@ -31,11 +36,17 @@ describe Account do
 
   describe '#withdraw' do
     context 'if the user has sufficient balance' do
-      before(:example) { account.deposit(deposit_amount) }
+      before(:example) do
+        account.deposit(deposit_amount)
+        account.withdraw(withdrawal_amount)
+      end
 
       it 'subtracts the amount from the account balance' do
-        account.withdraw(withdrawal_amount)
         expect(account.balance).to eq(deposit_amount - withdrawal_amount)
+      end
+
+      it 'logs the transaction' do
+        expect(account.statement.count).to eq 2
       end
     end
 
