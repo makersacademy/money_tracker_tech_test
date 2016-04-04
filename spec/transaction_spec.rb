@@ -6,8 +6,20 @@ describe Transaction do
 
   describe '#initialize' do
 
-    it 'initializes with an empty transaction' do
-      expect(transaction.details).to eq date: nil, deposit: 0, withdrawal: 0, balance: 0
+    it 'initializes with an empty date' do
+      expect(transaction.date).to eq nil
+    end
+
+    it 'initializes with an empty deposit' do
+      expect(transaction.deposit).to eq nil
+    end
+
+    it 'initializes with an empty withdrawal' do
+      expect(transaction.withdrawal).to eq nil
+    end
+
+    it 'initializes with an empty balance' do
+      expect(transaction.withdrawal).to eq nil
     end
 
   end

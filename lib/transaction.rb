@@ -1,14 +1,13 @@
 
 class Transaction
 
-  attr_reader :details
+  attr_reader :date, :deposit, :withdrawal, :balance
 
-  def initialize
-    @details = {}
-    @details[:date]=nil
-    @details[:deposit]=0
-    @details[:withdrawal]=0
-    @details[:balance]=0
+  def initialize(date: nil, deposit: nil, withdrawal: nil, balance: nil)
+    @date = date
+    @deposit = deposit
+    @withdrawal = withdrawal
+    @balance = balance
   end
 
 end
