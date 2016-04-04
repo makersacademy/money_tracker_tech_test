@@ -1,7 +1,10 @@
 require 'account.rb'
 
 describe Account do
-  subject(:account) {described_class.new}
+  let(:statements) {double:statements, create_statement: nil, print: nil}
+  let(:statements_class) {double(:statements, new: statements)}
+  subject(:account) {described_class.new(statements: statements_class)}
+
 
   it "starts with a balance of 0" do
     expect(account.balance).to eq 0

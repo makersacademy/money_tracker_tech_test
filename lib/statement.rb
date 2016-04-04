@@ -1,6 +1,6 @@
 class Statements
 
-  attr_reader :collection
+  attr_reader :collection, :statement
 
   def initialize
     @collection = [];
@@ -8,7 +8,7 @@ class Statements
 
   def create_statement(balance:, deposit: nil, withdraw: nil)
     params = binding.local_variables
-    statement = params.map { |p| [p, eval(p.to_s)] }.to_h
+    @statement = params.map { |p| [p, eval(p.to_s)] }.to_h
     statement.store(:time, date_format)
     @collection << statement
   end
@@ -17,9 +17,9 @@ class Statements
     lineWidth = 40
     puts "date || credit || debit || balance"
     @collection.each do |statement|
-      puts "statement[:time] || statement[:deposit] || statement[:withdraw] || statement[:balance] "
+      puts "#{statement[:time]} || #{statement[:deposit]} || #{statement[:withdraw]} || #{statement[:balance]} "
     end
- end
+  end
 
   private
 
