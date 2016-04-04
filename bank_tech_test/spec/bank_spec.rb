@@ -32,4 +32,11 @@ describe Bank do
       expect(bank.account_balance).to eq(465)
     end
   end
+
+  describe 'dates' do
+    it 'accompanies todays date' do
+      bank.make_deposit(400)
+      expect(bank.account_statement).to include({:date=>"04/04/2016"})
+    end
+  end
 end
