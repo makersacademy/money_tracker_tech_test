@@ -1,4 +1,5 @@
 class Statement
+  NO_TRANSACTION = 0
 
   attr_reader :collection
 
@@ -6,7 +7,7 @@ class Statement
     @collection = [];
   end
 
-  def add_transaction(balance:, deposit: nil, withdraw: nil)
+  def add_transaction(balance:, deposit: NO_TRANSACTION, withdraw: NO_TRANSACTION)
     @collection << { balance:  currency_format(balance),
                      deposit:  currency_format(deposit),
                      withdraw: currency_format(withdraw),
@@ -26,7 +27,7 @@ class Statement
   private
 
   def currency_format(amount)
-    return "" if amount == nil
+    return "" if amount == NO_TRANSACTION
     '%.2f' % amount
   end
 
@@ -34,4 +35,3 @@ class Statement
     Time.now.strftime('%D')
   end
 end
-
