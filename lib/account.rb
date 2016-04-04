@@ -15,8 +15,8 @@ class Account
   end
 
   def withdraw(amount)
-    @statement.add_transaction(balance: @balance, withdraw: amount)
     raise "You can only withdraw #{@balance}." if amount > @balance
+    @statement.add_transaction(balance: @balance, withdraw: amount)
     @balance -= amount
   end
 

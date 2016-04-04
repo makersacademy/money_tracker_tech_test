@@ -11,26 +11,32 @@
 ## To use in irb
 
 * require_relative 'lib/account.rb'
- => true 
+ => true
 * account = Account.new
- => #<Account:0x007f9cbb9f4a70 @balance=0, @statements=#<Statements:0x007f9cbb9f4a20 @collection=[]>> 
+ => #<Account:0x007f9cbb9f4a70 @balance=0, @statements=#<Statements:0x007f9cbb9f4a20 @collection=[]>>
 
 * account.balance
- => 0 
+ => 0
+
+* account.print_statements
+ => "No statements available"
+
 * account.deposit(100)
- => 100 
+ => 100
+
 * account.withdraw(140)
 RuntimeError: You can only withdraw 100.
 
 * account.withdraw(90)
- => 10 
+ => 10
+
 * account.balance
- => 10 
+ => 10
+
 * account.print_statements
 date || credit || debit || balance
-04/04/16 || 100 ||  || 0 
-04/04/16 ||  || 140 || 100 
-04/04/16 ||  || 90 || 100 
+04/04/16 || 100.00 ||  || 0.00
+04/04/16 ||  || 90.00 || 100.00
 
 
 
