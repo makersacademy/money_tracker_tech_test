@@ -9,6 +9,10 @@ class Withdrawn
 	# end
 
 	def store(amount)
-		@transactions << amount
+		@transactions << {amount => get_date}
+	end
+
+	def get_date
+		Time.now.to_s.split(' ')[0].split('-').reverse.join('/')
 	end
 end

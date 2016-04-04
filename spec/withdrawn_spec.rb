@@ -10,4 +10,9 @@ describe Withdrawn do
 		withdrawn.store(10)
 		expect(withdrawn.transactions.length).to be > 0
 	end
+
+	it 'marks each stored transaction with the date' do
+		withdrawn.store(10)
+		expect(withdrawn.transactions).to include '04/04/2016'
+	end
 end
