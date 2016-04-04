@@ -23,14 +23,17 @@ describe History do
 
 
   context "formatting statements" do
+
     describe "#standard_statement" do
 
       it "returns the statement with full details with one depoist" do
         item = {deposit: '5.00', withdrawal: '', date: '4/4/2016', balance: '5.00'}
         history.receive_entry(item)
-        expect(history.standard_statement).to eq("Date || Credit || Debit || Balance", "4/4/2016 || 5.00 ||  || 5.00")
+        expect(history.standard_statement).to eq ["Date || Credit || Debit || Balance", "4/4/2016 || 5.00 ||  || 5.00"]
       end
+
     end
+
   end
 
 end

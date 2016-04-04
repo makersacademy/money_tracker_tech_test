@@ -11,6 +11,9 @@ class TodaysDate
     @date
   end
 
+#could use Time.now.strftime(%d%m%Y) to format
+
+
   def get_date
     @date = Date.today
   end
