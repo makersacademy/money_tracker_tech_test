@@ -7,9 +7,9 @@ describe Statements do
     expect(statements.print).to be_empty
   end
 
-  xit "creates a statement " do
+  it "creates a statement " do
     statements.create_statement(balance: 100, withdraw: 10)
-    expect(statements.print.first).to eq 100
+    expect(statements.print.first[:balance]).to eq "100.00"
   end
 
   it "calls a date format " do

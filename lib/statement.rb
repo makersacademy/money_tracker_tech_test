@@ -7,7 +7,7 @@ class Statements
   def create_statement(balance: balance, deposit: 0, withdraw: 0)
     statement = {}
     statement.store(:time, date_format)
-    statement.store(:balance, balance)
+    statement.store(:balance, currency_format(balance))
     @collection << statement
   end
 
