@@ -46,31 +46,6 @@ describe Account do
 
   end
 
-  context "display statement history" do
-
-    describe "#show_statement" do
-
-      it "properly displays the history after a deposit of 5.00 is made" do
-        account.make_deposit(5.00)
-        expect(account.show_statement).to eq ["Date || Credit || Debit || Balance", "4/4/2016 || 5.00 ||  || 5.00"]
-      end
-
-      it "properly displays the history after a withdrawal of 5.00 is made" do
-        account.make_withdrawal(5.00)
-        expect(account.show_statement).to eq ["Date || Credit || Debit || Balance", "4/4/2016 ||  || 5.00 || -5.00"]
-      end
-
-      it "records and properly displays the history of multiple transactions" do
-        account.make_deposit(5.00)
-        account.make_withdrawal(5.00)
-        expect(account.show_statement).to eq ["Date || Credit || Debit || Balance", "4/4/2016 || 5.00 ||  || 5.00", "4/4/2016 ||  || 5.00 || 0.00"]
-      end
-
-    end
-
-  end
-
-
 end
 
 end

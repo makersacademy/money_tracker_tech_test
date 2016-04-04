@@ -29,7 +29,6 @@ class Account
     @history.receive_entry(@withdrawal_klass.new(show_balance, amount).details)
   end
 
-
   private
 
     def deposit_balance(amount)
