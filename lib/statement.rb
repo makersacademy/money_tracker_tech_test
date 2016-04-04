@@ -21,11 +21,12 @@ class Statement
   end
 
   def print_statement
-    output = "date || credit || debit || balance\n"
+    puts "date || credit || debit || balance\n"
+    output = []
     @log.each do |transaction|
-      output += "#{transaction.date} || #{deposit_or_withdrawal?(transaction)} || #{calculate_balance(transaction)}\n"
+      output << "#{transaction.date} || #{deposit_or_withdrawal?(transaction)} || #{calculate_balance(transaction)}"
     end
-    output
+    output.reverse.each { |line| puts line}
   end
 
   private
