@@ -54,5 +54,12 @@ describe Account do
       account.make_withdrawal(35)
       expect(account.show_only_deposits).to include(400, 100)
     end
+
+    it 'can show only withdrawals' do
+      account.make_withdrawal(400)
+      account.make_deposit(100)
+      account.make_withdrawal(35)
+      expect(account.show_only_withdrawals).to include(400, 35)
+    end
   end
 end
