@@ -20,8 +20,7 @@ attr_accessor :balance, :history
   end
 
   def compile_statement(statement=Statement)
-    to_print = statement.new(history)
-    to_print.full_print_statement
+    statement.new(history).full_print_statement
   end
 
 end

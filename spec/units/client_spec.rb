@@ -72,13 +72,11 @@ describe Client do
     before do
       allow(dummy_account_klass).to receive(:new).and_return(dummy_account)
       allow(dummy_account).to receive(:new_action)
-      allow(dummy_account).to receive(:history).and_return([dummy_transaction])
-      allow(dummy_transaction).to receive(:date)
-      allow(dummy_transaction).to receive(:amount)
+      allow(dummy_account).to receive(:compile_statement)
     end
 
     it 'retrieves the account history' do
-      expect(dummy_account).to receive(:history)
+      expect(dummy_account).to receive(:compile_statement)
       client.show_statement
     end
   end

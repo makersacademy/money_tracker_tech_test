@@ -2,15 +2,13 @@ class Statement
 
   SCREEN_WIDTH = 5
 
-  attr_reader :latest_history
+  attr_reader :latest_history, :headers
 
   def initialize(latest_history)
     @latest_history = latest_history
+    @headers = ["date", "credit", "debit", "balance"]
   end
 
-  def headers
-    ["date", "credit", "debit", "balance"]
-  end
 
   def full_print_statement
     puts(formatter(headers) + "/n" + extract_info.join("/n"))
