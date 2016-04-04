@@ -8,16 +8,16 @@ class Bank
     add_transaction("Beginning Balance", 0)
   end
 
-  def credit(date, amount)
-    add_transaction(date, amount)
+  def credit(amount)
+    add_transaction(Time.now, amount)
   end
 
-  def debit(date, amount)
-    add_transaction(date, -amount)
+  def debit(amount)
+    add_transaction(Time.now, -amount)
   end
 
-  def add_transaction(date, amount)
-    @transactions.push(date: date, amount: amount)
+  def add_transaction(amount)
+    @transactions.push(date: Time.now, amount: amount)
   end
 
   def balance
@@ -35,10 +35,6 @@ class Bank
     @transactions.each do |transaction|
       puts transaction[:date].ljust(20) + sprintf("%0.2f", transaction[:amount]).center(20)
     end
-    #
-    puts "-" * 40
-    puts "Balance:".ljust(30) + sprintf("%0.2f", balance).rjust(10)
-    puts "-" * 40
   end
 
 end

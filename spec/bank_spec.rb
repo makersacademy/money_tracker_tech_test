@@ -3,6 +3,10 @@ require 'bank'
 describe 'Bank' do
   subject(:bank) { Bank.new("Sarah") }
 
+  before do
+    Timecop.freeze(Time.local(2012, 1, 14, 0, 0))
+  end
+
   describe 'initialisation' do
     it 'should have a name' do
       expect(bank.name).to eq("Sarah")
@@ -28,15 +32,15 @@ describe 'Bank' do
     # it "rejects words" do
     # end
     #
-    end
+  end
 
   describe 'debit an account ' do
-      it { is_expected.to respond_to(:debit).with(2).arguments }
+    it { is_expected.to respond_to(:debit).with(1).argument }
 
-      it 'should debit the account' do
-        bank.debit("12012015", 100)
-        expect(bank.transactions).to eq([{:date=>"Beginning Balance", :amount=>0},{date: "12012015", amount: -100}])
-      end
+    it 'should debit the account' do
+      bank.debit(100)
+      expect(bank.transactions).to eq([{date: Time.now, amount: -100}])
+    end
   end
 
   describe 'credit an account' do
@@ -44,7 +48,7 @@ describe 'Bank' do
 
     it 'should credit the account' do
       bank.credit("1203014", 200)
-      expect(bank.transactions).to eq([{:date=>"Beginning Balance", :amount=>0},{date: "1203014", amount: 200}])
+      expect(bank.transactions).to eq([{date: Time.now, amount: 200}])
     end
   end
 
@@ -62,11 +66,11 @@ describe 'Bank' do
     end
   end
 
-  xdescribe 'print the statement' do
-    it should 'print the date, credits and balance' do
-      bank.credit("12032015", 200)
-      bank.credit("01022016", 100)
-
-  end
+  # xdescribe 'print the statement' do
+  #   it should 'print the date, credits and balance' do
+  #     bank.credit("12032015", 200)
+  #     bank.credit("01022016", 100)
+  #   end
+  # end
 
 end
