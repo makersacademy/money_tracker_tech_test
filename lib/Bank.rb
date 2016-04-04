@@ -1,6 +1,6 @@
 class Bank
 
-  attr_reader :name
+  attr_reader :name, :transactions
 
   def initialize(name)
     @name = name
@@ -18,6 +18,14 @@ class Bank
 
   def add_transaction(date, amount)
     @transactions.push(date: date, amount: amount)
+  end
+
+  def balance
+    balance = 0.0
+    @transactions.each do |transaction|
+      balance += transaction [:amount]
+    end
+  return balance
   end
 
 end
