@@ -11,7 +11,6 @@ class Account
     @statement = statement_klass.new
     @deposit = deposit_klass
     @withdrawal = withdrawal_klass
-    # @balance = 0
   end
 
   def deposit(amount, date)
@@ -24,7 +23,7 @@ class Account
     @statement.add_transaction(withdrawal)
   end
 
-  def test
-    @statement.calculate_balance
+  def display_statement
+    @statement.print_statement
   end
 end
