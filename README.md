@@ -1,6 +1,6 @@
 # bank-tech-test
 
-![alt text](https://travis-ci.org/tsetsova/bank-tech-test.svg?branch=master "Travis Badge")
+![alt text](https://travis-ci.org/tsetsova/bank_tech_test.svg?branch=master "Travis Badge")
 
 ## Where I got to
 
