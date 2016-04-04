@@ -86,7 +86,7 @@ describe Account do
       allow(transaction).to receive_messages(date: '1/1/16', credit: 500, debit: nil, balance: 500)
       account.credit(amount: 500, date: '1/1/16')
       expect { account.print_statement }
-        .to output("\"date || credit || debit || balance\"\n\"#{transaction.date} || #{transaction.credit} || #{transaction.debit} || #{transaction.balance}\"\n").to_stdout
+        .to output("\"date || credit || debit || balance\"\n\"1/1/16 || 500.00 ||  || 500.00\"\n").to_stdout
     end
 
   end

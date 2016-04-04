@@ -35,9 +35,9 @@ class Account
 
   def create_statement
     sort_transactions(@statement).map do |transaction|
-      transaction.credit == nil ? credit = '' : credit = transaction.credit
-      transaction.debit == nil ? debit = '' : debit = transaction.debit
-      p "#{transaction.date} || #{credit} || #{debit} || #{transaction.balance}"
+      transaction.credit == nil ? credit = '' : credit = ('%.2f' % transaction.credit)
+      transaction.debit == nil ? debit = '' : debit = ('%.2f' % transaction.debit)
+      p "#{transaction.date} || #{credit} || #{debit} || #{'%.2f' % transaction.balance}"
     end
   end
 
