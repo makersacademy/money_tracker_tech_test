@@ -1,16 +1,16 @@
 require "./lib/account.rb"
 
 describe Account do
-subject(:account) {described_class.new}
+subject(:account) {described_class.new(statement)}
+let(:statement) { double :statement }
 
+  before do
+    allow(statement).to receive(:new_transaction)
+  end
 
   describe "#initialize" do
     it "customer has a balance of £0" do
       expect(account.balance).to eq 0
-    end
-
-    it "creates a new transaction list which is blank on initialization" do
-      expect(account.history).to eq []
     end
   end
 
@@ -19,8 +19,9 @@ subject(:account) {described_class.new}
       expect{ account.deposit(50) }.to change{ account.balance }.by(50)
     end
 
-    it "adds a new transaction to the list" do
-      expect{ account.deposit(50) }.to change{ account.history.length }.by(1)
+    it "calls for a new transaction to be added to the statement" do
+      expect(statement).to receive(:new_transaction).with(50, 0, Time.new(2012, 01, 10))
+      account.deposit(50, Time.new(2012, 01, 10))
     end
 
   end
@@ -31,17 +32,17 @@ subject(:account) {described_class.new}
       expect{ account.withdraw(10) }.to change{ account.balance }.by(-10)
     end
 
-    it "adds a new transaction to the list" do
-      account.deposit(50)
-      expect{ account.withdraw(10) }.to change{ account.history.length }.by(1)
+
+    it "calls for a new transaction to be added to the statement" do
+      expect(statement).to receive(:new_transaction).with(0, 10, Time.new(2012, 01, 10))
+      account.withdraw(10, Time.new(2012, 01, 10))
     end
   end
 
   describe "#print_statement" do
-    it "displays the previous transactions" do
-      account.deposit(50, Time.new(2012, 01, 10))
-      account.withdraw(10, Time.new(2012, 01, 14))
-      expect(account.print_statement).to eq "date || credit || debit || balance\n14/01/2012 || 0.00 || 10.00 || 40.00\n10/01/2012 || 50.00 || 0.00 || 50.00"
+    it "calls for the statement to be printed" do
+      expect(statement).to receive(:print)
+      account.print_statement
     end
   end
 

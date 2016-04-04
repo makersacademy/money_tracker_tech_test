@@ -6,55 +6,26 @@ class Account
 
   attr_reader :balance
 
-  def initialize(transaction_klass = Transaction)
+  def initialize(statement = Statement.new)
     @balance = 0
-    @transactions = []
-    @transaction_klass = Transaction
+    @statement = statement
   end
 
-  def history
-    @transactions.dup
+  def print_statement
+    @statement.print
   end
 
   def deposit(amount, date = Time.now)
     add(amount)
-    record_transaction(@transaction_klass.new(date, amount, 0))
+    @statement.new_transaction(amount, 0, date)
   end
 
   def withdraw(amount, date = Time.now)
     subtract(amount)
-    record_transaction(@transaction_klass.new(date, 0, amount))
-  end
-
-  def print_statement
-    printout = ["date || credit || debit || balance"]
-    sum = 0
-    list = @transactions
-    list.each do |t|
-      sum = sum + t.credit - t.debit
-      printout.insert(1, "#{date_formatted(t.date)} || #{sprintf("%.2f", t.credit)} || #{sprintf("%.2f",t.debit)} || #{sprintf("%.2f", sum)}" )
-    end
-    printout.join("\n")
-  end
-
-  def add_to_print(list, sum)
-    t = list.pop
-    printout << "#{date_formatted(t.date)} || #{t.credit} || #{t.debit} || #{sum - t.credit + t.debit}\n"
+    @statement.new_transaction(0, amount, date)
   end
 
   private
-
-  def date_formatted(date)
-    year = date.year > 9 ? "#{date.year}" : "0#{date.year}"
-    month = date.month > 9 ? "#{date.month}" : "0#{date.month}"
-    day = date.day > 9 ? "#{date.day}" : "0#{date.day}"
-    "#{day}/#{month}/#{year}"
-  end
-
-
-  def record_transaction(transaction)
-    @transactions << transaction
-  end
 
   def add(amount)
     @balance += amount
