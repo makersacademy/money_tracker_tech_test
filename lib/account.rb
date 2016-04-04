@@ -21,9 +21,9 @@ class Account
     complete_transaction(transaction)
   end
 
-  def print_statement
+  def print_statement(format=nil)
     printer = @printer.new(@statement)
-    printer.print_statement
+    format ? printer.print_statement(format) : printer.print_statement
   end
 
   private

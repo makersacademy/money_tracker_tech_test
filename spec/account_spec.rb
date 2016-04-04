@@ -50,6 +50,12 @@ describe Account do
       expect{account.print_statement}.to output("date || credit || debit || balance\n10/01/2012 || 1000.00 || || 1000.00\n").to_stdout
     end
 
+    it 'prints out a history of only deposits if called with "deposits"' do
+      account.deposit(1000, '10/01/2012')
+      account.withdraw(500, '11/01/2012')
+      expect{account.print_statement("deposits")}.to output("date || credit || debit || balance\n10/01/2012 || 1000.00 || || 1000.00\n").to_stdout
+    end
+
   end
 
 
