@@ -8,8 +8,12 @@ class Account
     @statement = {};
   end
 
-  def deposit(amount)
+  def deposit(amount, date)
     @balance += amount
+  end
+
+  def withdraw(amount, date)
+    @balance -= amount
   end
 
 end

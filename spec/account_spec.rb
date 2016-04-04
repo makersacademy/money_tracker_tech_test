@@ -19,8 +19,17 @@ describe Account do
   describe '#deposit' do
 
     it 'allows a user to add a deposit' do
-      account.deposit(500)
+      account.deposit(500, '3/4/16')
       expect(account.balance).to eq 500
+    end
+
+  end
+
+  describe '#withdraw' do
+
+    it 'allows a user to make a withdrawal' do
+      account.withdraw(300, '4/4/16')
+      expect(account.balance).to eq -300
     end
 
   end
