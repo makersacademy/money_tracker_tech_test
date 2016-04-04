@@ -32,11 +32,18 @@ describe 'Bank' do
     end
   end
 
-  # xdescribe 'add_transaction' do
-  #   it 'should start with a balance of 0' do
-  #   expect(bank.add_transaction).to eq(0)
-  # end
+  describe 'calculating the balance' do
+    it 'should work out the balance based on 2 credit transactions' do
+      bank.credit("23032015", 500)
+      bank.credit("06022016", 100)
+      expect(bank.balance).to eq(600)
+    end
 
-
+    it 'should work out the balance based on debit and credit transactions' do
+      bank.credit("23032015", 500)
+      bank.debit("06022016", 100)
+      expect(bank.balance).to eq(400)
+    end
+  end
 
 end
