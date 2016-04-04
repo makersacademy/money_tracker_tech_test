@@ -1,5 +1,4 @@
 require 'bank'
-require 'Timecop'
 
 describe Bank do
   let(:statement) {double(:statement)}
@@ -10,17 +9,17 @@ describe Bank do
   end
 
   it 'initially has a balance of zero' do
-    expect(bank.balance).to eq 0
+    expect(bank.instance_variable_get(:@balance)).to eq 0
   end
 
   it 'can deposit money into the account' do
     bank.deposit(100)
-    expect(bank.balance).to eq 100
+    expect(bank.instance_variable_get(:@balance)).to eq 100
   end
 
   it 'can withdraw moeny from the account' do
     bank.withdraw(100)
-    expect(bank.balance).to eq -100
+    expect(bank.instance_variable_get(:@balance)).to eq -100
   end
 
 end

@@ -1,7 +1,5 @@
 class Statement
 
-  attr_reader :information
-
   def initialize
     @information = {}
     @dates = []

@@ -1,4 +1,5 @@
 require 'statement'
+require 'Timecop'
 
 describe Statement do
 
@@ -10,12 +11,12 @@ describe Statement do
 
   it 'can store a deposit' do
     statement.input(Time.now, 100, 100)
-    expect(statement.information).to eq({Time.now => {amount: 100, balance: 100}})
+    expect(statement.instance_variable_get(:@information)).to eq({Time.now => {amount: 100, balance: 100}})
   end
 
   it 'can store a withdrawl' do
     statement.input(Time.now, -100, -100)
-    expect(statement.information).to eq({Time.now => {amount: -100, balance: -100}})
+    expect(statement.instance_variable_get(:@information)).to eq({Time.now => {amount: -100, balance: -100}})
   end
 
   it 'can print out a one line deposit statement' do

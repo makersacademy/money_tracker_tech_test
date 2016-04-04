@@ -2,8 +2,6 @@ require './lib/statement.rb'
 
 class Bank
 
-  attr_reader :balance, :date
-
   def initialize(statement = Statement.new)
     @balance = 0
     @statement = statement
