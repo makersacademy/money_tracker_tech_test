@@ -1,6 +1,6 @@
 require 'client'
 require 'transaction'
-# require 'account'
+require 'account'
 # require 'statement'
 
 # **Given** a client makes a deposit of 1000 on 10-01-2012
@@ -10,12 +10,13 @@ require 'transaction'
 # **Then** she would see
 
 describe 'bank features' do
-  let(:client) {Client.new(0)}
+  let(:client) {Client.new}
 
   context 'making a deposit' do
 
     it 'allows the client to make a deposit into their bank account' do
-      expect{client.deposit(1000)}.to change{client.balance}.from(0).to(1000)
+      client.deposit(1000)
+      expect(client.account.balance).to eq(1000)
     end
 
     # it 'records the date of the deposit' do

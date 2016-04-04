@@ -20,8 +20,6 @@ attr_reader :date, :client_account, :type, :amount
     client_account.history << self
   end
 
-private
-
   def add
     client_account.balance += amount
   end

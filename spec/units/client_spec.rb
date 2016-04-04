@@ -40,7 +40,7 @@ describe Client do
 
     it 'instantiates a new transaction for the client on their account' do
       expect(dummy_account).to receive(:new_action)
-                           .with(large_transaction, :deposit, client)
+                           .with(large_transaction, :deposit)
 
     end
 
@@ -60,7 +60,7 @@ describe Client do
 
     it 'instantiates a new transaction associated with the client\'s account' do
       expect(dummy_account).to receive(:new_action)
-                           .with(large_transaction, :withdrawal, client)
+                           .with(large_transaction, :withdrawal)
     end
 
   end

@@ -34,11 +34,11 @@ describe Transaction do
 
   describe '#make' do
     before do
-      allow(dummy_client_account).to receive(:balance).and_return(0)
+      allow(dummy_client_account).to receive(:balance)
     end
 
-    it 'changes the clients account balance' do
-      expect{deposit_transaction.make}.to change(dummy_client_account.balance)
+    xit 'changes the clients account balance' do
+      expect{deposit_transaction.make}.to change(dummy_client_account, :balance).by(dummy_amount)
     end
 
   end

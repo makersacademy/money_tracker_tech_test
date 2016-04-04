@@ -1,6 +1,6 @@
 class Client
 
-  attr_reader :account
+  attr_accessor :account
 
   def initialize(account=Account)
     @account = account.new
@@ -14,10 +14,8 @@ class Client
     process_transaction(amount, :withdrawal)
   end
 
-private
-
   def process_transaction(amount, type)
-    account.new_action(amount, type, self)
+    account.new_action(amount, type)
   end
 
 end
