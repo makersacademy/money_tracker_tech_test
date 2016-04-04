@@ -1,8 +1,8 @@
 require 'account'
 require 'printer'
 
-describe Account do
-  subject(:account){ described_class.new(Printer.new)}
+describe 'Extended feature tests' do
+  subject(:account){ Account.new(Printer.new)}
 
   before do
     account.deposit(1000, '10-01-2012')

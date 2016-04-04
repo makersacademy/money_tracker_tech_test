@@ -3,32 +3,29 @@ class Printer
   HEADER = "date || credit || debit || balance\n"
 
   def print_statement(statements, filter_type)
-    to_print = HEADER
-    filter_order(statements, filter_type).each do |statement|
-      next if ((filter_type == :credit || filter_type == :debit) && !(statement[filter_type]))
-      to_print += "#{format_date(statement[:date])} ||" +
-                  # "#{filter_transaction_type(statement, filter_type)}" +
-                  "#{convert_value(statement[:credit])} ||" +
-                  "#{convert_value(statement[:debit])} ||" +
-                  "#{convert_value(statement[:balance])}\n"
+    output = HEADER
+    put_in_order(statements, filter_type).each do |statement|
+      next if (is_credit_debit_filter(filter_type) && !(statement[filter_type]))
+      output += make_output(statement)
     end
-    to_print
+    output
   end
 
   private
 
-  def filter_transaction_type(statement, type)
-    if(type = :credit)
-      "#{convert_value(statement[:credit])} || ||"
-    elsif(type = :debit)
-      " ||#{convert_value(statement[:debit])} ||"
-    else
-      "#{convert_value(statement[:credit])} ||" +
-      "#{convert_value(statement[:debit])} ||"
-    end
+  def make_output(statement)
+    "#{format_date(statement[:date])} ||" +
+    "#{convert_value(statement[:credit])} ||" +
+    "#{convert_value(statement[:debit])} ||" +
+    "#{convert_value(statement[:balance])}\n"
   end
 
-  def filter_order(statements, order)
+  def is_credit_debit_filter(filter_type)
+    filter_type == :credit || filter_type == :debit
+  end
+
+
+  def put_in_order(statements, order)
     order == :ascending ? statements : statements.reverse
   end
 
