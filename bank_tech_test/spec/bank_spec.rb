@@ -1,4 +1,5 @@
 require 'account'
+require 'helper_spec'
 
 describe Account do
   subject(:account) {described_class.new}
@@ -26,16 +27,12 @@ describe Account do
 
   describe 'account balance' do
     it 'can be viewed' do
-      account.make_deposit(400)
-      account.make_deposit(100)
-      account.make_withdrawal(35)
+      make_deposits_and_withdrawals
       expect(account.account_balance).to eq(465)
     end
 
     it 'can be printed' do
-      account.make_deposit(400)
-      account.make_deposit(100)
-      account.make_withdrawal(35)
+      make_deposits_and_withdrawals
       expect(account.print_statement).to eq [{:date=>"04/04/2016", :credit=>400, :balance=>400}, {:date=>"04/04/2016", :credit=>100, :balance=>500}, {:date=>"04/04/2016", :debit=>35, :balance=>465}]
     end
   end
@@ -49,17 +46,13 @@ describe Account do
 
   describe 'filter' do
     it 'can show only deposits' do
-      account.make_deposit(400)
-      account.make_deposit(100)
-      account.make_withdrawal(35)
+      make_deposits_and_withdrawals
       expect(account.show_only_deposits).to include(400, 100)
     end
 
     it 'can show only withdrawals' do
-      account.make_withdrawal(400)
-      account.make_deposit(100)
-      account.make_withdrawal(35)
-      expect(account.show_only_withdrawals).to include(400, 35)
+      make_deposits_and_withdrawals
+      expect(account.show_only_withdrawals).to include(35)
     end
   end
 end
