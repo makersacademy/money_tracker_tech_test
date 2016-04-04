@@ -2,12 +2,14 @@ require 'account'
 
 describe Account do
 
-    it 'responds to #deposit accepting one argument' do
-      expect(subject).to respond_to(:deposit).with(1).argument
+    it 'can return the funds currently in the account' do
+      expect(subject.balance).to eq(0)
     end
 
-    it 'responds to #balance' do
-      expect(subject).to respond_to(:balance)
+    it 'can accept deposits that increase the #balance' do
+      subject.deposit(1000)
+      expect(subject.balance).to eq(1000)
     end
+
 
 end
