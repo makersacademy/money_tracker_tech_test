@@ -1,6 +1,6 @@
 ###User Story One
 
-| Nouns     | Verbs        |
-|:----------|-------------:|
-|Client     |add funds     |
-|Account    |make deposits |
+| Nouns (Objects) | Verbs (Methods) |
+|:----------------|----------------:|
+|Client           |add funds        |
+|Account          |make deposits    |
