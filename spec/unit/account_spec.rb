@@ -1,9 +1,9 @@
 require 'account.rb'
 
 describe Account do
-  let(:statements) {double:statements, add_transaction: nil, print: nil}
-  let(:statements_class) {double(:statements, new: statements)}
-  subject(:account) {described_class.new(statements: statements_class)}
+  let(:statement) {double:statement, add_transaction: nil, print: nil}
+  let(:statement_class) {double(:statement, new: statement)}
+  subject(:account) {described_class.new(statement: statement_class)}
 
 
   it "starts with a balance of 0" do

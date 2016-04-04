@@ -1,4 +1,4 @@
-class Statements
+class Statement
 
   attr_reader :collection
 
