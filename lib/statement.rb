@@ -17,8 +17,8 @@ class Statements
     lineWidth = 40
     puts "date || credit || debit || balance"
     @collection.each do |statement|
-      puts "statement[:time] || statement[:deposit] || statement[:withdraw] || statement[:balance] "
-    end
+      puts "#{statement[:time]} || #{statement[:deposit]} || #{statement[:withdraw]} || #{statement[:balance]} "
+  end
  end
 
   private
