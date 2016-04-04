@@ -12,13 +12,13 @@ class Account
   end
 
   def deposit(amount, date)
-    transaction = @transaction.new(amount, 'deposit', date, @balance)
+    transaction = @transaction.new({amount: amount, type: 'deposit', date: date, start_balance: @balance})
     @balance = transaction.end_balance
     @statement.push(transaction)
   end
 
   def withdraw(amount, date)
-    transaction = @transaction.new(amount, 'withdrawl', date, @balance)
+    transaction = @transaction.new({amount: amount, type: 'withdrawl', date: date, start_balance: @balance})
     @balance = transaction.end_balance
     @statement.push(transaction)
   end

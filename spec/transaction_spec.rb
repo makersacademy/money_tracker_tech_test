@@ -1,7 +1,7 @@
 describe Transaction do
 
-  let(:transaction_deposit){described_class.new(1000, 'deposit', '10-01-2012', 0)}
-  let(:transaction_withdrawl){described_class.new(500, 'withdrawl', '14-01-2012', 1000)}
+  let(:transaction_deposit){described_class.new({amount: 1000, type: 'deposit', date: '10-01-2012', start_balance: 0})}
+  let(:transaction_withdrawl){described_class.new({amount: 500, type: 'withdrawl', date: '14-01-2012', start_balance: 1000})}
 
   context 'on initialization' do
 

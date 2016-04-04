@@ -2,11 +2,11 @@ class Transaction
 
   attr_reader :amount, :type, :date, :start_balance, :end_balance
 
-  def initialize(amount, type, date, start_balance)
-    @amount = amount
-    @type = type
-    @date = date
-    @start_balance = start_balance
+  def initialize(args)
+    @amount = args.fetch(:amount)
+    @type = args.fetch(:type)
+    @date = args.fetch(:date)
+    @start_balance = args.fetch(:start_balance)
     @end_balance = calculate_balance(start_balance, amount)
   end
 
