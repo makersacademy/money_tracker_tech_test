@@ -1,11 +1,13 @@
 describe 'Banking feature test' do
 
-  dummy_statement = {:date => "04/04/2016",
-                     :transaction => 20,
-                     :balance => -20},
-                    {:date => "04/04/2016",
-                     :transaction => 50,
-                     :balance => 30}
+  dummy_statement = {:type=>:withdraw,
+                     :date=>"04/04/2016",
+                     :transaction=>20,
+                     :balance=>-20},
+                    {:type=>:deposit,
+                     :date=>"04/04/2016",
+                     :transaction=>50,
+                     :balance=>30}
 
   it 'returns correct statement' do
     account = Account.new
@@ -17,4 +19,5 @@ describe 'Banking feature test' do
 
     expect(account.print_statement).to eq (dummy_statement)
   end
+
 end

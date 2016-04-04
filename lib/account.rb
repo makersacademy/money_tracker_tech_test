@@ -9,16 +9,17 @@ class Account
 
   def withdraw_funds(amount)
     @balance -= amount
-    calculate_statement(amount)
+    calculate_statement(amount, :withdraw)
   end
 
   def deposit_funds(amount)
     @balance += amount
-    calculate_statement(amount)
+    calculate_statement(amount, :deposit)
   end
 
-  def calculate_statement(amount)
+  def calculate_statement(amount, type)
     statement = {}
+    statement[:type] = type
     statement[:date] = time
     statement[:transaction] = amount
     statement[:balance] = @balance
@@ -30,6 +31,6 @@ class Account
   end
 
   def print_statement
-    @account_statement
+    @account_statement.dup
   end
 end

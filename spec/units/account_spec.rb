@@ -3,9 +3,10 @@ require 'spec_helper'
 describe Account do
   subject(:account) {described_class.new}
   dummy_statement = {
-    :date => "04/04/2016",
-    :transaction => 20,
-    :balance => 0,
+    :type=>:deposit,
+    :date=>"04/04/2016",
+    :transaction=>20,
+    :balance=>0,
   }
 
   describe '#withdraw' do
@@ -22,7 +23,7 @@ describe Account do
 
   describe '#calculate_statement' do
     it 'returns the correct account statement' do
-      expect(account.calculate_statement(20)).to include(dummy_statement)
+      expect(account.calculate_statement(20, :deposit)).to include(dummy_statement)
     end
   end
 
