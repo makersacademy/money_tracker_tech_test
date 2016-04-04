@@ -13,7 +13,7 @@ class Statement
   end
 
   def print_out
-    output = "date || credit || debit || balance \n"
+    output = "date || credit || debit || balance\n"
     order_dates_array
     output = iterate_dates(output)
   end
@@ -31,11 +31,11 @@ class Statement
   end
 
   def generate_credit_line(date)
-    date + " || " + sprintf("%.2f", @information[date][:amount]) + " || || " + sprintf("%.2f", @information[date][:balance]) +" \n"
+    date + " || " + sprintf("%.2f", @information[date][:amount]) + " || || " + sprintf("%.2f", @information[date][:balance]) +"\n"
   end
 
   def generate_debit_line(date)
-    date + " || || " + sprintf("%.2f", -@information[date][:amount]) + " || " + sprintf("%.2f", @information[date][:balance]) +" \n"
+    date + " || || " + sprintf("%.2f", -@information[date][:amount]) + " || " + sprintf("%.2f", @information[date][:balance]) +"\n"
   end
 
 end

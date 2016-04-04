@@ -27,7 +27,7 @@ class Bank
   end
 
   def request_statement
-    puts @statement.print_out
+    @statement.print_out
   end
 
 end
