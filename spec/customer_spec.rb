@@ -8,6 +8,10 @@ describe Customer do
       it 'intializes with a balance of 0' do
         expect(customer.balance).to eq 0
       end
+
+      it 'intializes with an empty transaction_history' do
+        expect(customer.transaction_history).to eq ({})
+      end
     end
 
     describe '#credit_account' do
@@ -29,5 +33,8 @@ describe Customer do
       end
     end
 
+    describe '#transaction_history' do
+
+    end
 
 end
