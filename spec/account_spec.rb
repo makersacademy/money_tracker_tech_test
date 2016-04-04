@@ -21,7 +21,7 @@ let(:date) { Time.new(2012, 01, 10) }
     end
 
     it "calls for a new transaction to be added to the statement" do
-      expect(statement).to receive(:new_transaction).with(50, 0, date)
+      expect(statement).to receive(:new_transaction)
       account.deposit(50, date)
     end
 
@@ -35,7 +35,7 @@ let(:date) { Time.new(2012, 01, 10) }
 
 
     it "calls for a new transaction to be added to the statement" do
-      expect(statement).to receive(:new_transaction).with(0, 10, date)
+      expect(statement).to receive(:new_transaction)
       account.withdraw(10, date)
     end
   end

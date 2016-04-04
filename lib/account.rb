@@ -12,17 +12,17 @@ class Account
   end
 
   def print_statement
-    @statement.print(@balance)
+    @statement.print(filter = 'none')
   end
 
   def deposit(amount, date = Time.now)
     add(amount)
-    @statement.new_transaction(amount, 0, date)
+    @statement.new_transaction(amount, 0, date, @balance) #better method for passing balance?
   end
 
   def withdraw(amount, date = Time.now)
     subtract(amount)
-    @statement.new_transaction(0, amount, date)
+    @statement.new_transaction(0, amount, date, @balance)
   end
 
   private

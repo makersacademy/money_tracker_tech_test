@@ -17,21 +17,33 @@ let(:date) { Time.new(2012, 01, 10) }
 
   describe "#new_transaction" do
     it "adds a new transaction to the list" do
-      expect{ statement.new_transaction(0,5,date) }.to change{ statement.history.length }.by(1)
+      expect{ statement.new_transaction(50, 0, date, 50) }.to change{ statement.history.length }.by(1)
     end
 
-    it "calls for a new transaction to be created" do
+    xit "calls for a new transaction to be created" do
       expect(transaction_klass).to receive(:new)
-      statement.new_transaction(10, 0, date)
+      statement.new_transaction(50, 0, date, 50)
     end
 
   end
 
-  describe "#print_statement" do
-    it "displays the previous transactions" do
-      statement.new_transaction(50, 0, Time.new(2012, 01, 10))
-      statement.new_transaction(0, 10, Time.new(2012, 01, 14))
-      expect(statement.print(40)).to eq "date || credit || debit || balance\n14/01/2012 || 0.00 || 10.00 || 40.00\n10/01/2012 || 50.00 || 0.00 || 50.00"
+  describe "#print" do
+    it "displays the previous transactions with no filter" do
+      statement.new_transaction(50, 0, Time.new(2012, 01, 10), 50)
+      statement.new_transaction(0, 10, Time.new(2012, 01, 14), 40)
+      expect(statement.print).to eq "date || credit || debit || balance\n14/01/2012 || 0.00 || 10.00 || 40.00\n10/01/2012 || 50.00 || 0.00 || 50.00"
+    end
+
+    it "displays only deposit transactions with deposit filter" do
+      statement.new_transaction(50, 0, Time.new(2012, 01, 10), 50)
+      statement.new_transaction(0, 10, Time.new(2012, 01, 14), 40)
+      expect(statement.print('deposit')).to eq "date || credit || debit || balance\n10/01/2012 || 50.00 || 0.00 || 50.00"
+    end
+
+    it "displays only withdrawal transactions with withdrawal filter" do
+      statement.new_transaction(50, 0, Time.new(2012, 01, 10), 50)
+      statement.new_transaction(0, 10, Time.new(2012, 01, 14), 40)
+      expect(statement.print('withdrawal')).to eq "date || credit || debit || balance\n14/01/2012 || 0.00 || 10.00 || 40.00"
     end
   end
 

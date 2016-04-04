@@ -10,16 +10,14 @@ class Statement
     @transactions.dup
   end
 
-  def new_transaction(deposit, withdrawal, date)
-    record_transaction(@transaction_klass.new(date, deposit, withdrawal))
+  def new_transaction(deposit, withdrawal, date, balance)
+    record_transaction(@transaction_klass.new(date, deposit, withdrawal, balance))
   end
 
-  def print(balance)
+  def print(filter = 'none')
     printout = ["date || credit || debit || balance"]
-    # need more reliable method for getting to/from current balance?
-    history.reverse.each do |t|
-      printout << "#{date_formatted(t.date)} || #{dp2(t.credit)} || #{dp2(t.debit)} || #{dp2(balance)}"
-      balance = balance - t.credit + t.debit
+    filtered_transactions(filter).reverse.each do |t|
+      printout << "#{date_formatted(t.date)} || #{dp2(t.credit)} || #{dp2(t.debit)} || #{dp2(t.balance)}"
     end
     printout.join("\n")
   end
@@ -28,6 +26,16 @@ class Statement
 
   def record_transaction(transaction)
     @transactions << transaction
+  end
+
+  def filtered_transactions(filter)
+    if filter == 'deposit'
+      history.select{|t| t.credit > 0}
+    elsif filter == 'withdrawal'
+      history.select{|t| t.debit > 0}
+    else
+      history
+    end
   end
 
   def date_formatted(date)
