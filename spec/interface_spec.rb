@@ -34,5 +34,13 @@ describe Interface do
         "13/01/2012 || || 250 || 750"\
         )
     end
+
+    it 'prints in ascending order' do
+      expect(interface.print(account, 'all', 'asc')).to eq (
+        "date || credit || debit || balance\n"\
+        "10/01/2012 || 1000 || || 1000\n"\
+        "13/01/2012 || || 250 || 750"\
+        )
+    end
   end
 end
