@@ -17,15 +17,16 @@ class Account
     account_statement.push({:date => Time.now.strftime("%m/%d/%Y"), :debit => withdrawal, :balance => @account_balance})
   end
 
-  def print_statement
-    account_statement
-  end
-
   def show_only_deposits
     @account_statement.map{|x| x[:credit]}.compact
   end
 
   def show_only_withdrawals
     @account_statement.map{|x| x[:debit]}.compact
+  end
+
+  def print_statement
+    puts 'date || credit || debit || balance'
+    @account_statement
   end
 end
