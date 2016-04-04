@@ -29,9 +29,10 @@ describe Statement do
   end
 
   it 'can print out a two line statement' do
-    statement.input(Time.now, -500, 1500)
     Timecop.freeze(Time.local(2012, 1, 13, 0, 0))
     statement.input(Time.now, 2000, 2000)
+    Timecop.freeze(Time.local(2012, 1, 14, 0, 0))
+    statement.input(Time.now, -500, 1500)
     expect(statement.print_out).to eq "date || credit || debit || balance\n14/01/2012 || || 500.00 || 1500.00\n13/01/2012 || 2000.00 || || 2000.00\n"
   end
 end
