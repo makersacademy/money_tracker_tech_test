@@ -36,6 +36,7 @@ You can then execute the following commands:
 ## Future improvements
 * Sort print statement in reverse chronological order
 * Extract transaction class
+* Extract transaction log class
 * Test dates using Timecop
 * Modularize formatting algorithm
 * Implement statement filters
