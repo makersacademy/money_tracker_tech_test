@@ -22,4 +22,17 @@ subject(:transaction) {described_class.new('14/01/2012', 50, 0, 50)}
     end
   end
 
+  describe "#deposit?" do
+    it "is true when deposit > 0" do
+      expect(transaction.deposit?).to be true
+    end
+  end
+
+  describe "#withdrawal?" do
+    it "is true when withdrawal > 0" do
+      transaction2 = Transaction.new('14/01/2012', 0, 50, 50)
+      expect(transaction2.withdrawal?).to be true
+    end
+  end
+
 end

@@ -30,9 +30,13 @@ class Statement
 
   def filtered_transactions(filter)
     if filter == 'deposit'
-      history.select{|t| t.credit > 0}
+      history.select{|t| t.deposit?}
     elsif filter == 'withdrawal'
-      history.select{|t| t.debit > 0}
+      history.select{|t| t.withdrawal?}
+    elsif filter == 'ascending'
+      history.sort { |x,y| y.date <=> x.date }
+    elsif filter == 'descending'
+      history.sort { |x,y| x.date <=> y.date }
     else
       history
     end

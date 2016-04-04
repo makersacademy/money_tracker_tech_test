@@ -28,7 +28,7 @@ let(:date) { Time.new(2012, 01, 10) }
   end
 
   describe "#print" do
-    it "displays the previous transactions with no filter" do
+    it "displays the previous transactions with no filter - last on top" do
       statement.new_transaction(50, 0, Time.new(2012, 01, 10), 50)
       statement.new_transaction(0, 10, Time.new(2012, 01, 14), 40)
       expect(statement.print).to eq "date || credit || debit || balance\n14/01/2012 || 0.00 || 10.00 || 40.00\n10/01/2012 || 50.00 || 0.00 || 50.00"
@@ -44,6 +44,18 @@ let(:date) { Time.new(2012, 01, 10) }
       statement.new_transaction(50, 0, Time.new(2012, 01, 10), 50)
       statement.new_transaction(0, 10, Time.new(2012, 01, 14), 40)
       expect(statement.print('withdrawal')).to eq "date || credit || debit || balance\n14/01/2012 || 0.00 || 10.00 || 40.00"
+    end
+
+    it "displays transactions sorted date ascending" do
+      statement.new_transaction(50, 0, Time.new(2012, 01, 10), 50)
+      statement.new_transaction(0, 10, Time.new(2012, 01, 14), 40)
+      expect(statement.print('ascending')).to eq "date || credit || debit || balance\n10/01/2012 || 50.00 || 0.00 || 50.00\n14/01/2012 || 0.00 || 10.00 || 40.00"
+    end
+
+    it "displays transactions sorted date descending" do
+      statement.new_transaction(0, 10, Time.new(2012, 01, 14), 40)
+      statement.new_transaction(50, 0, Time.new(2012, 01, 10), 50)
+      expect(statement.print('descending')).to eq "date || credit || debit || balance\n14/01/2012 || 0.00 || 10.00 || 40.00\n10/01/2012 || 50.00 || 0.00 || 50.00"
     end
   end
 
