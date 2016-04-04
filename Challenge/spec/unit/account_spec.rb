@@ -2,6 +2,12 @@ require 'account'
 
 describe Account do
 
-    it { is_expected.to respond_to :deposit }
+    it 'responds to #deposit accepting one argument' do
+      expect(subject).to respond_to(:deposit).with(1).argument
+    end
+
+    it 'responds to #balance' do
+      expect(subject).to respond_to(:balance)
+    end
 
 end

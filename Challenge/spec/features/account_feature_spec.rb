@@ -9,6 +9,7 @@ describe 'An Account' do
     end
 
     it 'can be altered with deposits' do
+      account = Account.new
       account.deposit(1000)
       expect(account.balance).to eq(1000)
     end

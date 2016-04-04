@@ -1,6 +1,6 @@
 class Account
 
-  def deposit
+  def deposit(ammount)
   end
-  
+
 end
