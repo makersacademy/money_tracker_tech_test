@@ -9,18 +9,21 @@ class Account
   end
 
   def accept_deposit(amount)
-    @balance += amount
-    time_to_save = Time.now.strftime("%d/%m/%Y")
-    transaction = {time_to_save => amount}
+    update_balance(amount)
+    transaction = {Time.now.strftime("%d/%m/%Y") => amount}
     @previous_transactions << transaction
   end
 
   def accept_withdrawal(amount)
-    @balance -= amount
-    time_to_save = Time.now.strftime("%d/%m/%Y")
-    transaction = {time_to_save => -amount}
+    update_balance(-amount)
+    transaction = {Time.now.strftime("%d/%m/%Y") => -amount}
     @previous_transactions << transaction
   end
 
+  private
+
+  def update_balance(amount)
+    @balance += amount
+  end
 
 end
