@@ -6,7 +6,7 @@ describe Bank do
 
   describe '#initialize' do
     it 'intializes with a balance' do
-      expect(bank.balance).to eq 0 
+      expect(bank.balance).to eq 0
     end
   end
 end
