@@ -1,29 +1,45 @@
 # The Bank Tech Test
 
->When in doubt, go for the simplest solution
+A simple CLI program emulating a current account.
 
-### Requirements
-* Deposits, withdrawal
-* Account statement (date, amount, balance)
-* Statement printing
+## Usage
 
-### Acceptance criteria
+Run the program from the root project directory by running it in pry or irb:
+```sh
+# pry
 
-**Given** a client makes a deposit of 1000 on 10-01-2012  
-**And** a deposit of 2000 on 13-01-2012  
-**And** a withdrawal of 500 on 14-01-2012  
-**When** she prints her bank statement  
-**Then** she would see  
+$ pry
+> require "./lib/account.rb"
 
+# irb
 
-```
-date || credit || debit || balance
-14/01/2012 || || 500.00 || 2500.00
-13/01/2012 || 2000.00 || || 3000.00
-10/01/2012 || 1000.00 || || 1000.00
+$ irb
+> require "./lib/account.rb"
 ```
 
-### Additional extensions
+You can then execute the following commands:
+* Create a new account object
+```sh
+> account = Account.new
+```
+* Deposit and withdraw money
+```sh
+> account.deposit(1000)
+> account.withdraw(700)
+```
+* Print account statement
+```sh
+> account.print_statement
 
-* Statement filters (just deposits, withdrawals, date ascending, date descending)
-* Graphical interface
+#       date ||     credit ||      debit ||    balance
+# 04/04/2016 ||    1000.00 ||            ||    1000.00
+# 04/04/2016 ||            ||     700.00 ||     300.00
+```
+
+## Future improvements
+* Sort print statement in reverse chronological order
+* Extract transaction class and/or transaction log class
+* Test dates using Timecop
+* Modularize formatting algorithm
+* Implement statement filters
+* Implement a CLI or web GUI
