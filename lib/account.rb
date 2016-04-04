@@ -18,8 +18,8 @@ class Account
     add_to_statement({date: date, balance: @balance, debit: value})
   end
 
-  def print_statement
-    @printer.print_statement(statement)
+  def print_statement(filter_type)
+    @printer.print_statement(statement, filter_type)
   end
 
   def show_statement

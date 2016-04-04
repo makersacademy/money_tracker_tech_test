@@ -49,7 +49,7 @@ describe Account do
       account.deposit(500, '10-01-2012')
       allow(printer).to receive(:print_statement)
       expect(printer).to receive(:print_statement)
-      account.print_statement
+      account.print_statement(:ascending)
     end
   end
 end
