@@ -1,5 +1,7 @@
 class Account
 
+  # Purpose: To handle deposits, withdrawals and a statement.
+
   attr_reader :balance, :print_statement
 
   def initialize
