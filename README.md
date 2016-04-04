@@ -1,7 +1,50 @@
 
-# Approach
-
 # The Bank Tech Test
+
+[![Build Status](https://travis-ci.org/seanhawkridge/bank_tech_test.svg?branch=master)](https://travis-ci.org/seanhawkridge/bank_tech_test)
+
+# My Approach
+
+I started by doing some simple domain modeling to sketch out the objects and messages I thought the domain would use in its simplest form. I then TDD'd the project, starting with an account class to handle credits, debits and the balance. I then refactored out a transaction class to handle each transaction. All of the transactions are stored in an array in the Account class.
+
+# Usage
+
+In IRB/PRY:
+
+````
+[1] pry(main)> require './lib/account.rb'
+=> true
+[2] pry(main)> a = Account.new
+=> #<Account:0x007fe03c4eaad8 @balance=0, @statement=[], @transaction_klass=Transaction>
+[3] pry(main)> a.credit(date: "1/2/12", amount:30)
+=> [#<Transaction:0x007fe03c473910 @balance=30, @credit=30, @date="1/2/12", @debit=nil>]
+[4] pry(main)> a.debit(date: "4/3/12", amount: 120)
+=> [#<Transaction:0x007fe03c473910 @balance=30, @credit=30, @date="1/2/12", @debit=nil>,
+ #<Transaction:0x007fe03c3f10a0 @balance=-90, @credit=nil, @date="4/3/12", @debit=120>]
+[5] pry(main)> a.credit(date: "6/3/12", amount:250)
+=> [#<Transaction:0x007fe03c473910 @balance=30, @credit=30, @date="1/2/12", @debit=nil>,
+ #<Transaction:0x007fe03c3f10a0 @balance=-90, @credit=nil, @date="4/3/12", @debit=120>,
+ #<Transaction:0x007fe03c311568 @balance=160, @credit=250, @date="6/3/12", @debit=nil>]
+[6] pry(main)> a.debit(date: "7/3/12", amount: 160)
+=> [#<Transaction:0x007fe03c473910 @balance=30, @credit=30, @date="1/2/12", @debit=nil>,
+ #<Transaction:0x007fe03c3f10a0 @balance=-90, @credit=nil, @date="4/3/12", @debit=120>,
+ #<Transaction:0x007fe03c311568 @balance=160, @credit=250, @date="6/3/12", @debit=nil>,
+ #<Transaction:0x007fe03c1d38b8 @balance=0, @credit=nil, @date="7/3/12", @debit=160>]
+[7] pry(main)> a.balance
+=> 0
+[8] pry(main)> a.print_statement
+"date || credit || debit || balance"
+"7/3/12 ||  || 160.00 || 0.00"
+"6/3/12 || 250.00 ||  || 160.00"
+"4/3/12 ||  || 120.00 || -90.00"
+"1/2/12 || 30.00 ||  || 30.00"
+=> ["7/3/12 ||  || 160.00 || 0.00",
+ "6/3/12 || 250.00 ||  || 160.00",
+ "4/3/12 ||  || 120.00 || -90.00",
+ "1/2/12 || 30.00 ||  || 30.00"]
+[9] pry(main)>
+
+````
 
 >When in doubt, go for the simplest solution
 
