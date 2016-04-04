@@ -22,12 +22,12 @@ class Account
     @statement << transaction
   end
 
-  def print
+  def print_statement
     p "date || credit || debit || balance"
     @statement.map do |transaction|
       transaction.credit == nil ? credit = '' : credit = transaction.credit
       transaction.debit == nil ? debit = '' : debit = transaction.debit
-      p "#{transaction.date} || #{transaction.credit} || #{transaction.debit} || #{transaction.balance}"
+      p "#{transaction.date} || #{credit} || #{debit} || #{transaction.balance}"
     end
   end
 
