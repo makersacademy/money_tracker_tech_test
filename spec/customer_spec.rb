@@ -47,10 +47,20 @@ describe Customer do
         expect(customer.statement).to eq [ {date: '10-01-12', credit: 10, balance: 10},
           {date: '14-02-12', debit: 3, balance: 7} ]
       end
+
     end
 
-    # describe '#transaction_history' do
-    #
-    # end
+    describe '#print_statement' do
+      it 'prints statement to the console' do
+        customer.credit_account(1000, '10-01-2012')
+        customer.credit_account(2000, '13-01-2012')
+        customer.debit_account(500, '14-01-2012')
+        expect(customer.print_statement).to eq(
+        "date || credit || debit || balance
+        14/01/2012 || || 500 || 2500
+        13/01/2012 || 2000 || || 3000
+        10/01/2012 || 1000 || || 1000")
+      end
+    end
 
 end
