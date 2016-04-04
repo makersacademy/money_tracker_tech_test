@@ -1,8 +1,7 @@
 
 class Account
 
-attr_reader :history
-attr_accessor :balance
+attr_accessor :balance, :history
 
   def initialize(balance=0)
     @balance = balance
@@ -11,12 +10,18 @@ attr_accessor :balance
 
 
   def new_action(amount, type, action=Transaction)
-    action = action.new(amount, type, self)
-    action.make
+    this_action = action.new(amount, type, balance)
+    record(this_action)
+    this_action.make
+  end
+
+  def record(action)
+    history << action
   end
 
   def compile_statement(statement=Statement)
-    statement.new(history).print_format
+    to_print = statement.new(history)
+    to_print.full_print_statement
   end
 
 end

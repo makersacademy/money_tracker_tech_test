@@ -32,6 +32,7 @@ describe Client do
     before do
       allow(dummy_account_klass).to receive(:new).and_return(dummy_account)
       allow(dummy_account).to receive(:new_action)
+      allow(dummy_account).to receive(:balance=)
     end
 
     after do
@@ -52,6 +53,7 @@ describe Client do
     before do
       allow(dummy_account_klass).to receive(:new).and_return(dummy_account)
       allow(dummy_account).to receive(:new_action)
+      allow(dummy_account).to receive(:balance=)
     end
 
     after do
@@ -65,20 +67,19 @@ describe Client do
 
   end
 
-  describe '#show_statement' do
-
-    before do
-      allow(dummy_account_klass).to receive(:new).and_return(dummy_account)
-      allow(dummy_account).to receive(:new_action)
-      allow(dummy_account).to receive(:history).and_return([dummy_transaction])
-      allow(dummy_transaction).to receive(:date)
-      allow(dummy_transaction).to receive(:amount)
-
-    end
-
-    it 'retrieves the account history' do
-      expect(dummy_account).to receive(:history)
-      client.show_statement
-    end
-  end
+  # describe '#show_statement' do
+  #
+  #   before do
+  #     allow(dummy_account_klass).to receive(:new).and_return(dummy_account)
+  #     allow(dummy_account).to receive(:new_action)
+  #     allow(dummy_account).to receive(:history).and_return([dummy_transaction])
+  #     allow(dummy_transaction).to receive(:date)
+  #     allow(dummy_transaction).to receive(:amount)
+  #   end
+  #
+  #   it 'retrieves the account history' do
+  #     expect(dummy_account).to receive(:history)
+  #     client.show_statement
+  #   end
+  # end
 end

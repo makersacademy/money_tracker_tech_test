@@ -1,34 +1,53 @@
 class Statement
 
-  SCREEN_WIDTH = 40
+  SCREEN_WIDTH = 5
 
-  attr_reader :history
+  attr_reader :latest_history
 
-  def initialize(history)
-    @history = history
+  def initialize(latest_history)
+    @latest_history = latest_history
+  end
+
+  def headers
+    ["date", "credit", "debit", "balance"]
+  end
+
+  def full_print_statement
+    puts(formatter(headers) + "/n" + extract_info.join("/n"))
+  end
+
+  def extract_info
+    info_array = []
+    latest_history.each do |transaction|
+      info_array << [transaction.date.strftime("%F"),
+                       transaction_type_sorter(transaction),
+                       monetize(transaction.client_balance)]
+    end
+    info_array.map! {|transaction_data| formatter(transaction_data.flatten!)}
+  end
+
+  def formatter(array)
+    formatted_string = ''
+    array.each_with_index do |element, index|
+      if index <= 1
+        formatted_string << element.ljust(SCREEN_WIDTH * (index + 1 * 2))
+      else
+        formatted_string << element.rjust(SCREEN_WIDTH * (index + 1 / 2))
+      end
+    end
+    formatted_string
+  end
+
+  def transaction_type_sorter(transaction)
+    credit?(transaction.type) ? [monetize(transaction.amount), ' '] : [' ', monetize(transaction.amount)]
+  end
+
+  def credit?(transaction_type)
+    transaction_type == :credit
   end
 
   def monetize(amount)
-    amount.to_f.round
+    sprintf('%.2f', amount)
   end
-
-  def print_format
-    history.each do |transaction|
-      require 'pry'; binding.pry
-      "#{transaction.date}".ljust(SCREEN_WIDTH) +
-      "#{transaction.credit? ? monetize(transaction.amount) : ' '}".ljust(SCREEN_WIDTH/2) +
-      "#{transaction.credit? ? ' ' : transaction.amount }".rjust(SCREEN_WIDTH/2) +
-      "#{transaction.credit? ? ' ' : transaction.amount }".rjust(SCREEN_WIDTH/2)
-    end
-  end
-
-  def print_header
-    "date ||".ljust(SCREEN_WIDTH) +
-    "credit ||".ljust(SCREEN_WIDTH/2) +
-    "debit ||".rjust(SCREEN_WIDTH/2) +
-    "balance ||".rjust(SCREEN_WIDTH)
-  end
-
-
 
 end

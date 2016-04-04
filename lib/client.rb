@@ -18,13 +18,8 @@ class Client
     account.compile_statement
   end
 
-private
-
   def process_transaction(amount, type)
-    account.new_action(amount, type)
+    account.balance = account.new_action(amount, type)
   end
-
-
-
 
 end

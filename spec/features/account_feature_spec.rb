@@ -1,6 +1,6 @@
 require 'client'
-require 'transaction'
 require 'account'
+require 'transaction'
 require 'statement'
 
 # **Given** a client makes a deposit of 1000 on 10-01-2012
@@ -95,7 +95,7 @@ describe 'bank features' do
       Timecop.return
     end
 
-    it 'allows the client to make a withdrawal from their bank account' do
+    it 'allows the client view their bank statement' do
       client.deposit(1000)
       Timecop.return
       Timecop.freeze(Time.local(2012, 01, 13, 13, 05))
@@ -103,8 +103,7 @@ describe 'bank features' do
       Timecop.return
       Timecop.freeze(Time.local(2012, 01, 14, 13, 05))
       client.withdraw(500)
-      require 'pry'; binding.pry
-      expect(client.show_statement).to eq(2500)
+      expect(client.show_statement).to output("")
     end
 
   end

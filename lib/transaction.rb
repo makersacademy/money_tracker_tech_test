@@ -1,37 +1,30 @@
-private
 
 class Transaction
 
-attr_reader :date, :client_account, :type, :amount
+attr_reader :date, :type, :amount
+attr_accessor :client_balance
 
-  def initialize(amount, type, account)
+  def initialize(amount, type, client_balance)
     @amount = amount
     @type = type
-    @client_account = account
+    @client_balance = client_balance
     @date = Time.now
   end
 
   def make
     credit? ? add : subtract
-    record
-  end
-
-  def record
-    client_account.history << self
   end
 
   def credit?
     type == :credit
   end
 
-  private
-
   def add
-    client_account.balance += amount
+    @client_balance += amount
   end
 
   def subtract
-    client_account.balance -= amount
+    @client_balance -= amount
   end
 
 end

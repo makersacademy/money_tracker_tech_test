@@ -5,7 +5,6 @@ describe Account do
   let(:dummy_transaction_klass) {double :dummy_transaction_klass}
   let(:dummy_transaction) {double :dummy_transaction}
   let(:dummy_amount) {double :dummy_amount}
-
   subject(:account) {described_class.new}
 
   describe '#initialize' do
@@ -24,7 +23,7 @@ describe Account do
 
     before do
       allow(dummy_transaction_klass).to receive(:new)
-                                    .with(dummy_amount, :deposit, account)
+                                    .with(dummy_amount, :deposit, account.balance)
                                     .and_return(dummy_transaction)
       allow(dummy_transaction).to receive(:make)
     end
@@ -32,6 +31,21 @@ describe Account do
     it 'calls make on a new instance of action, defaulting to Transaction' do
       expect(dummy_transaction).to receive(:make)
       account.new_action(dummy_amount, :deposit, dummy_transaction_klass)
+    end
+
+    it 'calls record to store the recent action to the account history' do
+      expect(account).to receive(:record).with(dummy_transaction)
+      account.new_action(dummy_amount, :deposit, dummy_transaction_klass)
+    end
+
+
+  end
+
+  describe '#record' do
+
+    it 'appends itself to the client account\'s history' do
+      account.record(dummy_transaction)
+      expect(account.history).to eq([dummy_transaction])
     end
   end
 end

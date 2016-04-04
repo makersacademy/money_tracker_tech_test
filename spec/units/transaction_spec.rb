@@ -22,7 +22,7 @@ describe Transaction do
     end
 
     it 'is initialized with the client\'s account' do
-      expect(deposit_transaction.client_account).to eq(dummy_client_account)
+      expect(deposit_transaction.client_balance).to eq(dummy_client_account)
     end
 
     it 'is initialized with the type of deposit_transaction it is' do
@@ -46,16 +46,5 @@ describe Transaction do
 
   end
 
-  describe '#record' do
 
-  before do
-    allow(dummy_client_account).to receive(:balance).and_return(dummy_balance)
-    allow(dummy_client_account).to receive(:history).and_return(Array.new)
-  end
-
-    it 'appends itself to the client account\'s history' do
-      expect(dummy_client_account).to receive(:history)
-      deposit_transaction.record
-    end
-  end
 end
