@@ -8,4 +8,10 @@ describe Account do
       expect{account.withdraw_funds(20)}.to change{account.balance}.by(-20)
     end
   end
+
+  describe '#deposit' do
+    it 'allows a user to deposit funds' do
+      expect{account.deposit_funds(20)}.to change{account.balance}.by(20)
+    end
+  end
 end
