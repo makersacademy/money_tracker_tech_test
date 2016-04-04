@@ -18,6 +18,8 @@ class Client
     puts(account.compile_statement)
   end
 
+private
+
   def process_transaction(amount, type)
     account.balance = account.new_action(amount, type)
   end

@@ -32,7 +32,6 @@ describe Statement do
   describe '#transaction_type_sorter' do
 
     before do
-
       allow(dummy_transaction).to receive(:amount).and_return(dummy_amount)
     end
 
