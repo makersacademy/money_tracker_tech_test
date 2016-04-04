@@ -1,16 +1,15 @@
 class Statements
 
-  attr_reader :collection, :statement
+  attr_reader :collection
 
   def initialize
     @collection = [];
   end
 
   def create_statement(balance:, deposit: nil, withdraw: nil)
-    @statement = {}
     @statement = binding.local_variables.map { |p| [p, currency_format(eval(p.to_s))]}.to_h
     @statement.store(:time, date_format)
-    @collection << statement
+    @collection << @statement
   end
 
   def print

@@ -23,8 +23,4 @@ class Account
   def print_statements
     @statements.print
   end
-
-  def statement
-    @statements.statement
-  end
 end
