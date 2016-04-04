@@ -1,29 +1,42 @@
-# The Bank Tech Test
+# bank-tech-test
 
->When in doubt, go for the simplest solution
+![alt text](https://travis-ci.org/tsetsova/bank_tech_test.svg?branch=master "Travis Badge")
 
-### Requirements
-* Deposits, withdrawal
-* Account statement (date, amount, balance)
-* Statement printing
+## Where I got to
 
-### Acceptance criteria
+* I have two classes - account and statement
+* Formatting works correctly
+* Done TDD, dependency has been mocked
 
-**Given** a client makes a deposit of 1000 on 10-01-2012  
-**And** a deposit of 2000 on 13-01-2012  
-**And** a withdrawal of 500 on 14-01-2012  
-**When** she prints her bank statement  
-**Then** she would see  
+## To use in irb
 
+* require_relative 'lib/account.rb'
+ => true
+* account = Account.new
+ => #<Account:0x007f9cbb9f4a70 @balance=0, @statements=#<Statements:0x007f9cbb9f4a20 @collection=[]>>
 
-```
+* account.balance
+ => 0
+
+* account.print_statements
+ => "No statements available"
+
+* account.deposit(100)
+ => 100
+
+* account.withdraw(140)
+RuntimeError: You can only withdraw 100.
+
+* account.withdraw(90)
+ => 10
+
+* account.balance
+ => 10
+
+* account.print_statements
 date || credit || debit || balance
-14/01/2012 || || 500.00 || 2500.00
-13/01/2012 || 2000.00 || || 3000.00
-10/01/2012 || 1000.00 || || 1000.00
-```
+04/04/16 || 100.00 ||  || 0.00
+04/04/16 ||  || 90.00 || 100.00
 
-### Additional extensions
 
-* Statement filters (just deposits, withdrawals, date ascending, date descending)
-* Graphical interface
+
