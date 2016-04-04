@@ -13,27 +13,27 @@ describe Account do
 
   describe '#deposit' do
     it 'can make a deposit' do
-      expect{account.deposit(amount, '10-01-2012')}
+      expect{account.deposit(amount, '10/01/2012')}
         .to change{account.balance}.by amount
     end
 
     it 'makes a record of the deposit transaction' do
-      account.deposit(amount, '10-01-2012')
+      account.deposit(amount, '10/01/2012')
       expect(account.transactions).to include \
-        ({amount:amount, date:'10-01-2012', balance: amount})
+        ({amount:amount, date:'10/01/2012', balance: amount})
     end
   end
 
   describe '#withdrawal' do
     it 'can make a withdrawal' do
-      expect{account.withdrawal(amount, '13-01-2012')}
+      expect{account.withdrawal(amount, '13/01/2012')}
         .to change{account.balance}.by -amount
     end
 
     it 'makes a record of the withdrawal transaction' do
-      account.withdrawal(amount, '13-01-2012')
+      account.withdrawal(amount, '13/01/2012')
       expect(account.transactions).to include \
-        ({amount:-amount, date:'13-01-2012', balance: -amount})
+        ({amount:-amount, date:'13/01/2012', balance: -amount})
     end
   end
 end
