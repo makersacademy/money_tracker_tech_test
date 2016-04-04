@@ -6,7 +6,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/innlouvate/bank_tech_test/badge.svg?branch=master)](https://coveralls.io/github/innlouvate/bank_tech_test?branch=master)
 
 ### To generate the statement in the requirements below, clone this repo and run the following commands in irb;
-'''
+```
 require './lib/account.rb'
 account = Account.new
 account.deposit(1000, Time.new(2012, 01, 10))
@@ -14,7 +14,7 @@ account.deposit(2000, Time.new(2012, 01, 13))
 account.withdraw(500, Time.new(2012, 01, 14))
 account.print_statement
 account.print_statement('deposit')
-'''
+```
 
 
 ### Requirements
