@@ -6,6 +6,7 @@ describe Bank do
 
   before(:example) do
     allow(statement).to receive(:input)
+    allow(statement).to receive(:print_out)
   end
 
   it 'initially has a balance of zero' do
@@ -20,6 +21,11 @@ describe Bank do
   it 'can withdraw moeny from the account' do
     bank.withdraw(100)
     expect(bank.instance_variable_get(:@balance)).to eq -100
+  end
+
+  it 'can deliver a statement' do
+    bank.request_statement
+    expect(statement.print_out)
   end
 
 end
