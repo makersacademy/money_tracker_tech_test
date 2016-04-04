@@ -7,7 +7,7 @@ describe Account do
     it 'initialises with a balance of zero' do
       expect(subject.balance).to eq 0
     end
-    
+
   end
 
   context 'updating the balance' do
@@ -24,7 +24,7 @@ describe Account do
     end
   end
 
-  context 'when recording entries' do
+  context 'recording entries' do
 
     it 'records the balance as an account entry' do
       subject.deposit(10)
@@ -45,7 +45,7 @@ describe Account do
 
   end
 
-  context 'when printing the statement' do
+  context 'printing the statement' do
 
     it 'prints a statement' do
       subject.deposit(30)
