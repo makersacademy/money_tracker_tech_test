@@ -66,7 +66,7 @@ describe Bank do
     end
 
     it 'prints the statement when requested' do
-      expect{bank.print_statement}.to output("10-01-2012: 1000\n14-01-2012: 500\n").to_stdout
+      expect{bank.print_statement}.to output("date || credit || debit || balance\n10-01-2012 || 1000 || ||\n14-01-2012 || || 500 ||\n").to_stdout
     end
 
   end

@@ -8,7 +8,7 @@ describe Printer do
 
   it 'prints the statement credits and debits' do
     expect{printer.print_records(statement)}
-    .to output("10-01-2012: 1000\n11-01-2012: 400\n").to_stdout
+    .to output("date || credit || debit || balance\n10-01-2012 || 1000 || ||\n11-01-2012 || || 400 ||\n").to_stdout
   end
 
 end
