@@ -10,7 +10,11 @@ describe Customer do
       end
 
       it 'intializes with an empty transaction_history' do
-        expect(customer.transaction_history).to eq ({})
+        expect(customer.statement).to eq ([])
+      end
+
+      it 'intializes with an empty current_transaction state' do
+        expect(customer.current_transaction).to eq ({})
       end
     end
 
@@ -20,6 +24,11 @@ describe Customer do
       it 'will credit balance with amount added' do
         customer.credit_account(10, '10-01-12')
         expect(customer.balance).to eq(10)
+      end
+
+      it 'updates statement' do
+        customer.credit_account(10, '10-01-12')
+        expect(customer.statement).to eq [{date: '10-01-12', credit: 10, balance: 10}]
       end
     end
 
@@ -31,10 +40,17 @@ describe Customer do
         customer.debit_account(3, '14-02-12')
         expect(customer.balance).to eq(7)
       end
+
+      it 'updates statement' do
+        customer.credit_account(10, '10-01-12')
+        customer.debit_account(3, '14-02-12')
+        expect(customer.statement).to eq [ {date: '10-01-12', credit: 10, balance: 10},
+          {date: '14-02-12', debit: 3, balance: 7} ]
+      end
     end
 
-    describe '#transaction_history' do
-
-    end
+    # describe '#transaction_history' do
+    #
+    # end
 
 end
