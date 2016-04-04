@@ -3,9 +3,9 @@ require 'transaction'
 describe Transaction do
   let(:dummy_amount) {1000}
   let(:dummy_balance) {100}
-  let(:dummy_client_account) {double :dummy_client_account}
-  subject(:deposit_transaction) {described_class.new(dummy_amount, :credit, dummy_client_account)}
-  subject(:withdrawal_transaction) {described_class.new(dummy_amount, :debit, dummy_client_account)}
+  let(:dummy_client_balance) {double :dummy_client_balance}
+  subject(:deposit_transaction) {described_class.new(dummy_amount, :credit, dummy_client_balance)}
+  subject(:withdrawal_transaction) {described_class.new(dummy_amount, :debit, dummy_client_balance)}
 
   describe '#initialize' do
 
@@ -22,7 +22,7 @@ describe Transaction do
     end
 
     it 'is initialized with the client\'s account' do
-      expect(deposit_transaction.client_balance).to eq(dummy_client_account)
+      expect(deposit_transaction.client_balance).to eq(dummy_client_balance)
     end
 
     it 'is initialized with the type of deposit_transaction it is' do
@@ -34,14 +34,25 @@ describe Transaction do
   end
 
   describe '#make' do
+
     before do
-      allow(dummy_client_account).to receive(:balance).and_return(dummy_balance)
-      allow(dummy_balance).to receive(:balance).with(dummy_amount)
+      allow(deposit_transaction.client_balance).to receive(:+)
+      allow(withdrawal_transaction.client_balance).to receive(:-)
+
     end
 
-    xit 'changes the clients account balance, adding when deposit transaction' do
+    it 'checks if the transaction is a credit (or debit)' do
+      expect(deposit_transaction).to receive(:credit?).and_return(true)
       deposit_transaction.make
-      expect(dummy_client_account.balance).to eq(dummy_balance + dummy_amount)
+    end
+
+    it 'checks if the transaction is a debit (or credit)' do
+      expect(withdrawal_transaction).to receive(:credit?).and_return(false)
+      withdrawal_transaction.make
+    end
+
+    it 'changes the clients account balance, adding when deposit transaction' do
+      expect(deposit_transaction.make).to eq(dummy_client_balance + dummy_amount)
     end
 
   end

@@ -11,7 +11,7 @@ class Statement
 
 
   def full_print_statement
-    puts(formatter(headers) + "/n" + extract_info.join("/n"))
+    formatter(headers) + "\n" + extract_info.join("\n")
   end
 
   def extract_info

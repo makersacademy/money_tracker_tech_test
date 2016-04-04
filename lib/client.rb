@@ -15,7 +15,7 @@ class Client
   end
 
   def show_statement
-    account.compile_statement
+    puts(account.compile_statement)
   end
 
   def process_transaction(amount, type)

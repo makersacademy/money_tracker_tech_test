@@ -1,3 +1,4 @@
+private
 
 class Account
 
@@ -15,12 +16,13 @@ attr_accessor :balance, :history
     this_action.make
   end
 
-  def record(action)
-    history << action
-  end
-
   def compile_statement(statement=Statement)
     statement.new(history).full_print_statement
+  end
+
+
+  def record(action)
+    history << action
   end
 
 end

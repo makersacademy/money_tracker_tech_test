@@ -103,7 +103,8 @@ describe 'bank features' do
       Timecop.return
       Timecop.freeze(Time.local(2012, 01, 14, 13, 05))
       client.withdraw(500)
-      expect(client.show_statement).to output("date")
+      client.show_statement
+      expect{client.show_statement}.to output.to_stdout
     end
 
   end

@@ -1,8 +1,8 @@
+private
 
 class Transaction
 
-attr_reader :date, :type, :amount
-attr_accessor :client_balance
+attr_reader :date, :type, :amount, :client_balance
 
   def initialize(amount, type, client_balance)
     @amount = amount
