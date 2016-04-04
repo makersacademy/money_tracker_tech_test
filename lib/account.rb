@@ -10,17 +10,17 @@ class Account
   end
 
   def deposit(amount)
-    @statements.create_statement
+    @statements.create_statement(balance: @balance, deposit: amount)
     @balance += amount
   end
 
   def withdraw(amount)
-    @statements.create_statement(withdraw: amount)
+    @statements.create_statement(balance: @balance, withdraw: amount)
     raise "You can only withdraw #{@balance}." if amount > @balance
     @balance -= amount
   end
 
   def print_statements
-    # grabs formatted statements
+    @statements.print
   end
 end

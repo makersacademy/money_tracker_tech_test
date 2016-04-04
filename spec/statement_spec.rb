@@ -7,13 +7,13 @@ describe Statements do
     expect(statements.print).to be_empty
   end
 
-  it "formats money correctly" do
-    expect(statements.format(20)).to eq "20.00"
+  xit "creates a statement " do
+    statements.create_statement(balance: 100, withdraw: 10)
+    expect(statements.print.first).to eq 100
   end
 
-  xit "adds formatted information to the collection" do
-    statements.create(balance: 100, credit: 10)
-    expect(statements.print.first[:balance]).to eq "100.00"
+  it "calls a date format " do
+    statements.create_statement(balance: 100, withdraw: 10)
+    expect(statements.print.first[:time]).to eq (Time.now.strftime('%D'))
   end
-
 end
