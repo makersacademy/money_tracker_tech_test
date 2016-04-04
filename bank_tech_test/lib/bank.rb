@@ -11,6 +11,6 @@ class Bank
   end
 
   def make_withdrawal(withdrawal)
-
+    @account_balance = account_balance - withdrawal
   end
 end
