@@ -6,11 +6,11 @@ describe "Feature" do
   let(:bank) {Bank.new}
 
   it 'should be able to pass the acceptance criteria' do
-    bank.set_date('10/01/2012')
+    Timecop.freeze(Time.local(2012, 1, 10, 0, 0))
     bank.deposit(1000)
-    bank.set_date('13/01/2012')
+    Timecop.freeze(Time.local(2012, 1, 13, 0, 0))
     bank.deposit(2000)
-    bank.set_date('14/01/2012')
+    Timecop.freeze(Time.local(2012, 1, 14, 0, 0))
     bank.withdraw(500)
     expect(bank.request_statement).to eq "date || credit || debit || balance
 14/01/2012 || || 500.00 || 2500.00

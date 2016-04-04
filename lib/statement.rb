@@ -33,11 +33,11 @@ class Statement
   end
 
   def generate_credit_line(date)
-    date + " || " + sprintf("%.2f", @information[date][:amount]) + " || || " + sprintf("%.2f", @information[date][:balance]) +"\n"
+    date.strftime("%d/%m/%Y") + " || " + sprintf("%.2f", @information[date][:amount]) + " || || " + sprintf("%.2f", @information[date][:balance]) +"\n"
   end
 
   def generate_debit_line(date)
-    date + " || || " + sprintf("%.2f", -@information[date][:amount]) + " || " + sprintf("%.2f", @information[date][:balance]) +"\n"
+    date.strftime("%d/%m/%Y") + " || || " + sprintf("%.2f", -@information[date][:amount]) + " || " + sprintf("%.2f", @information[date][:balance]) +"\n"
   end
 
 end
