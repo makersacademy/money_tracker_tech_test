@@ -13,13 +13,13 @@ describe 'An Account' do
     xit 'can be altered with withdrawals' do
 
     end
-
-    describe 'has a statement feature that' do
-
-      it 'prints out a table' do
-        expect(account.print_statement).to eq('date || credit || debit || balance')
-      end
-    end
   end
 
+  describe 'has a statement feature that' do
+
+    it 'prints out a table' do
+      account = Account.new
+      expect(account.print_statement).to eq('date || credit || debit || balance')
+    end
+  end
 end
