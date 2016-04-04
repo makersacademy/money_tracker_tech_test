@@ -17,8 +17,7 @@ class Statement
   def print
     printout = ["date || credit || debit || balance"]
     sum = 0
-    list = @transactions
-    list.each do |t|
+    @transactions.each do |t|
       sum = sum + t.credit - t.debit
       printout.insert(1, "#{date_formatted(t.date)} || #{dp2(t.credit)} || #{dp2(t.debit)} || #{dp2(sum)}" )
     end
