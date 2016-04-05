@@ -17,4 +17,8 @@ class Account
     @transaction << [debit_date, debit_amount, new_balance]
   end
 
+  def print_statement
+    # to be written
+  end
+
 end

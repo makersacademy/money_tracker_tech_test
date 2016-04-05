@@ -23,4 +23,11 @@ describe Account do
     expect(subject.transaction).to include(["13/03/16", 300, 200])
   end
 
+  it "displays the most recent transactions" do
+    subject.credit(500, "12/03/16")
+    subject.debit(300, "13/03/16")
+    subject.credit(100, "12/04/16")
+    expect(subject.print_statement).to eq("'12/03/16' || 500 || 500", "'13/03/16' || 300 || 200", "'12/04/16' || 100 || 300")
+  end
+
 end
