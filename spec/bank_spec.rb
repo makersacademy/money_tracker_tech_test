@@ -54,4 +54,14 @@ describe Bank do
       end
     end  
   end
+
+  describe ".print_statement" do
+    it "prints a log of account activity" do
+      subject.deposit(100, "04/01/2016")
+      subject.withdraw(50, "04/02/2016")
+      subject.deposit(1000, "04/03/2016")
+      subject.withdraw(500, "04/04/2016")
+      expect(subject.print_statement).to include(/04\/01\/2016/, /04\/02\/2016/, /04\/03\/2016/, /04\/04\/2016/)
+    end
+  end
 end

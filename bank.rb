@@ -16,4 +16,8 @@ class Bank
     @balance -= amount
     @statement.push("Withdrawal:#{amount}, Balance:#{@balance}, Date:#{date}")
   end
+
+  def print_statement
+    @statement.each { |transaction| puts transaction}
+  end
 end
