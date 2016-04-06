@@ -2,7 +2,7 @@ require 'bank_account'
 
 describe BankAccount do
 
-  subject(:account) { described_class.new }
+  subject(:account) { described_class.new("Tester Testerson") }
 
   it 'should have a balance attribute' do
     expect(account).to respond_to(:balance)
