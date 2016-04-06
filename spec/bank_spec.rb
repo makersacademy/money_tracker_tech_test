@@ -4,6 +4,7 @@ describe Bank do
   it {is_expected.to respond_to(:balance)}
   it {is_expected.to respond_to(:deposit).with(1).argument}
   it {is_expected.to respond_to(:withdraw).with(1).argument}
+  it {is_expected.to respond_to(:statement)}
 
   describe ".balance" do
     my_account = Bank.new
@@ -24,5 +25,15 @@ describe Bank do
       my_account = Bank.new
       expect{my_account.withdraw(100)}.to change {my_account.balance}.by(-100)
     end
+  end
+
+  describe ".statement" do
+    context "after a deposit" do
+      it "shows the deposit amount" do
+        my_account = Bank.new
+        my_account.deposit(100)
+        expect(my_account.statement).to include(100)
+      end
+    end  
   end
 end
