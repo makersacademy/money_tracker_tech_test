@@ -13,6 +13,8 @@ The requirements for this tech test can be found [here](README_original.md) and 
 
 * Seeing as the requirements specify that completing the challenge is not mandatory, however implementing Travis CI *is*, I opted to next begin work on implementing Travis CI with my repository. There was a good chance that implementing Travis CI could introduce some unforeseen complications, so I opted not to leave it until any later in the challenge.
 
+* My next step was to submit a pull request to the Makers Academy repo, so that I could solicit feedback from Hound CI as early as possible.
+
 ###Completed User Stories
 
 ```
