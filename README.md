@@ -19,6 +19,8 @@ The requirements for this tech test can be found [here](README_original.md) and 
 
 * I next implemented the ability to create a deposit and have it update the bank account balance accordingly.
 
+* I next implemented the ability to create a withdrawal and have it update the bank account balance accordingly.
+
 ###Completed User Stories
 
 ```
@@ -31,4 +33,10 @@ I would like a bank account.
 As a user,
 So that I can add funds to my bank account,
 I would like to be able to make a deposit.
+```
+
+```
+As a user,
+So that I can remove funds from my bank account,
+I would like to be able to make a withdrawal.
 ```

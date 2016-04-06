@@ -1,4 +1,4 @@
-require 'bank_account'
+require 'spec_helper'
 
 describe BankAccount do
 
