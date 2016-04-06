@@ -9,14 +9,32 @@ class BankAccount
   end
 
   def show_statement
-    puts "date || credit || debit || balance"
-    @transactions.each do |transaction|
-      if transaction.is_a?(Deposit)
-        puts "#{transaction.date} || #{transaction.amount} || ||"
+    show_headers
+    @transactions.each do |trans|
+      if deposit(trans)
+        show_deposit(trans)
       else
-        puts "#{transaction.date} || || #{transaction.amount} ||"
+        show_withdrawal(trans)
       end
     end
+  end
+
+  private
+
+  def show_headers
+    puts "date || credit || debit || balance"
+  end
+
+  def deposit(trans)
+    trans.is_a?(Deposit)
+  end
+
+  def show_deposit(trans)
+    puts "#{trans.date} || #{trans.amount} || || #{trans.balance}"
+  end
+
+  def show_withdrawal(trans)
+    puts "#{trans.date} || || #{trans.amount} || #{trans.balance}"
   end
 
 end

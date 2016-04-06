@@ -23,6 +23,8 @@ The requirements for this tech test can be found [here](README_original.md) and 
 
 * I next added the ability to show a statement via the account's #show_statement method, which initially outputs the string "balance", along with the actual account balance to stdout.
 
+* I next implemented the displaying of deposit and withdrawal information when showing a statement. I originally wrote these as two separate user stories, but it transpired that they were very similar, and so were easily implemented together without complication.
+
 ###Completed User Stories
 
 ```
@@ -47,4 +49,16 @@ I would like to be able to make a withdrawal.
 As a user,
 So that I can view my current bank account balance,
 I would like to be able to view a statement which includes the current balance.
+```
+
+```
+As a user,
+So that I can view my deposit history,
+I would like for the statement to include all deposits which I have made.
+```
+
+```
+As a user,
+So that I can view my withdrawal history,
+I would like for the statement to include all withdrawals which I have made.
 ```

@@ -69,7 +69,8 @@ describe "features" do
     account = BankAccount.new("Tester Testerson")
     deposit = Deposit.new(account, 20, "01/01/2016")
     deposit.finalize
-    expect{ account.show_statement }.to output("balance\n20\n").to_stdout
+    output = "date || credit || debit || balance\n01/01/2016 || 20 || || 20\n"
+    expect{ account.show_statement }.to output(output).to_stdout
   end
 
   it 'should correctly update the balance of a finalized deposit' do

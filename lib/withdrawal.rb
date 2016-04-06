@@ -12,11 +12,29 @@ class Withdrawal
 
   def finalize
     if !@finalized
-      @bank_account.balance -= @amount
-      @bank_account.transactions << self
-      @balance = @bank_account.balance
-      @finalized = true
+      update_balance
+      add_self_to_transactions
+      set_balance
+      set_finalized
     end
   end
 
+  private
+
+  def update_balance
+    @bank_account.balance -= @amount
+  end
+
+  def add_self_to_transactions
+    @bank_account.transactions << self
+  end
+
+  def set_balance
+    @balance = @bank_account.balance
+  end
+
+  def set_finalized
+    @finalized = true
+  end
+  
 end
