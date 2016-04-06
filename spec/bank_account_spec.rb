@@ -12,4 +12,8 @@ describe BankAccount do
     expect(account.balance).to eq(0)
   end
 
+  it 'should respond to the #show_statement method' do
+    expect(account).to respond_to(:show_statement)
+  end
+
 end

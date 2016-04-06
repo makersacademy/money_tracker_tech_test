@@ -36,4 +36,26 @@ describe "features" do
     expect(account.balance).to eq 0
   end
 
+  it 'should only be able to finalize each withdrawal once' do
+    account = BankAccount.new("Tester Testerson")
+    deposit = Deposit.new(account, 20, "01/01/2016")
+    deposit.finalize
+    expect(account.balance).to eq 20
+    withdrawal = Withdrawal.new(account, 10, "01/01/2016")
+    expect(account.balance).to eq 20
+    withdrawal.finalize
+    expect(account.balance).to eq 10
+    withdrawal.finalize
+    expect(account.balance).to eq 10
+  end
+
+  it 'should be able to show a statement which includes the balance' do
+    account = BankAccount.new("Tester Testerson")
+    deposit = Deposit.new(account, 20, "01/01/2016")
+    deposit.finalize
+    # expect(account.show_statement).to include("balance")
+    # expect(account.show_statement).to include("20")
+    expect{ account.show_statement }.to output("balance\n20\n").to_stdout
+  end
+
 end

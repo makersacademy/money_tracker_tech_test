@@ -21,6 +21,8 @@ The requirements for this tech test can be found [here](README_original.md) and 
 
 * I next implemented the ability to create a withdrawal and have it update the bank account balance accordingly.
 
+* I next added the ability to show a statement via the account's #show_statement method, which initially outputs the string "balance", along with the actual account balance to stdout.
+
 ###Completed User Stories
 
 ```
@@ -39,4 +41,10 @@ I would like to be able to make a deposit.
 As a user,
 So that I can remove funds from my bank account,
 I would like to be able to make a withdrawal.
+```
+
+```
+As a user,
+So that I can view my current bank account balance,
+I would like to be able to view a statement which includes the current balance.
 ```

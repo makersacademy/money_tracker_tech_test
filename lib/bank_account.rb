@@ -7,4 +7,9 @@ class BankAccount
     @balance = 0
   end
 
+  def show_statement
+    puts "balance"
+    puts @balance
+  end
+
 end
