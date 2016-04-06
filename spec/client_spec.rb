@@ -17,7 +17,6 @@ describe Client do
   it 'prints their bank statement' do
     subject.make_deposit(5000)
     subject.print_statement
-    expect(subject.statement).to eq 'date || credit || debit || balance
-                                    04/04/2016 || 5000 || || 5000'
+    expect(subject.print_statement).to eq "Date | credit | debit | balance\n06/04/2016 | 5000 |      | 5000 "
   end
 end

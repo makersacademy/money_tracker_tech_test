@@ -16,7 +16,9 @@ class Client
   end
 
   def print_statement
-    @statement = @account_klass.previous_transactions
+    @statement = @account_klass.print_statement
+    puts @statement
+    @statement
   end
 
 end
