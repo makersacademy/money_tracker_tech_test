@@ -25,6 +25,58 @@ The requirements for this tech test can be found [here](README_original.md) and 
 
 * I next implemented the displaying of deposit and withdrawal information when showing a statement. I originally wrote these as two separate user stories, but it transpired that they were very similar, and so were easily implemented together without complication.
 
+###Instructions
+
+* First clone the repo locally using `git clone https://github.com/barrygrubb/bank_tech_test.git`.
+
+* `cd` in to the project directory.
+
+* Run `bundle` in order to install an required dependencies.
+
+* Run `irb` to open the interactive Ruby environment.
+
+* Require all necessary Ruby files using the following:
+```
+require './lib/bank_account'
+require './lib/deposit'
+require './lib/withdrawal'
+```
+
+* Create a bank account and pass it a name as a string, as follows:
+```
+account = BankAccount.new("Account Name")
+```
+
+* Create a new deposit and pass it the bank, the amount to deposit and the date as a string, as follows:
+```
+deposit_1 = Deposit.new(account, 100, "01/01/2016")
+```
+
+* Finalize the deposit, as follows:
+```
+deposit_1.finalize
+```
+
+* Check the current bank account statement using the following:
+```
+account.show_statement
+```
+
+* Create a new withdrawal and pass it the bank, the amount to withdraw and the date as a string, as follows:
+```
+withdrawal_1 = Withdrawal.new(account, 50, "02/02/2016")
+```
+
+* Finalize the withdrawal, as follows:
+```
+withdrawal_1.finalize
+```
+
+* Check the current bank account statement using the following:
+```
+account.show_statement
+```
+
 ###Completed User Stories
 
 ```
@@ -62,3 +114,7 @@ As a user,
 So that I can view my withdrawal history,
 I would like for the statement to include all withdrawals which I have made.
 ```
+
+###Where I Would Progress From here
+
+For my interpretation of the requirement: "* Statement printing" I intended to implement a #print_statement method on the BankAccount class, which would function similarly to the #show_statement method, but would output to a file rather than stdout. However I ran out of time to do so during the tech test, and more research is required for me to be able to write an effective test for the ability for a method to write to a file.
