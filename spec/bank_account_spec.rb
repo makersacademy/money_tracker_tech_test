@@ -16,4 +16,8 @@ describe BankAccount do
     expect(account).to respond_to(:show_statement)
   end
 
+  it 'should initialize with an empty array of transactions' do
+    expect(account.transactions).to eq []
+  end
+
 end

@@ -10,6 +10,7 @@ class Withdrawal
   def finalize
     if !@finalized
       @bank_account.balance -= @amount
+      @bank_account.transactions << self
       @finalized = true
     end
   end

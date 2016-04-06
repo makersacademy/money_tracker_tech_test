@@ -49,12 +49,26 @@ describe "features" do
     expect(account.balance).to eq 10
   end
 
+  it 'should add finalized deposits to the transactions array' do
+    account = BankAccount.new("Tester Testerson")
+    deposit = Deposit.new(account, 20, "01/01/2016")
+    deposit.finalize
+    expect(account.transactions).to include(deposit)
+  end
+
+  it 'should add finalized withdrawals to the transactions array' do
+    account = BankAccount.new("Tester Testerson")
+    deposit = Deposit.new(account, 20, "01/01/2016")
+    deposit.finalize
+    withdrawal = Withdrawal.new(account, 10, "01/01/2016")
+    withdrawal.finalize
+    expect(account.transactions).to include(withdrawal)
+  end
+
   it 'should be able to show a statement which includes the balance' do
     account = BankAccount.new("Tester Testerson")
     deposit = Deposit.new(account, 20, "01/01/2016")
     deposit.finalize
-    # expect(account.show_statement).to include("balance")
-    # expect(account.show_statement).to include("20")
     expect{ account.show_statement }.to output("balance\n20\n").to_stdout
   end
 
