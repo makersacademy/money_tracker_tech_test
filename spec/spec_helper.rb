@@ -96,4 +96,5 @@ RSpec.configure do |config|
 require 'bank_account'
 require 'deposit'
 require 'withdrawal'
+require 'helpers'
 end
