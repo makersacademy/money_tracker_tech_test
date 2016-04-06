@@ -1,29 +1,18 @@
 # The Bank Tech Test
 
->When in doubt, go for the simplest solution
-
 ### Requirements
-* Deposits, withdrawal
-* Account statement (date, amount, balance)
-* Statement printing
+The requirements for this tech test can be found [here](README_original.md) and [here](CONTRIBUTING.md).
 
-### Acceptance criteria
+### Solving the challenge
 
-**Given** a client makes a deposit of 1000 on 10-01-2012  
-**And** a deposit of 2000 on 13-01-2012  
-**And** a withdrawal of 500 on 14-01-2012  
-**When** she prints her bank statement  
-**Then** she would see  
+Following Agile Methodologies I began by writing user stories for each of the project's basic requirements. The list of user stories can be found [here](user_stories.md). As I complete each user story I will list it under the section entitled "Completed User Stories".
 
+Based upon the given instruction: "When in doubt, go for the simplest solution", I opted to begin by building my solution as a command line program in Ruby. The program will be developed test-first, and the tests will be written using Rspec.
+
+###Completed User Stories
 
 ```
-date || credit || debit || balance
-14/01/2012 || || 500.00 || 2500.00
-13/01/2012 || 2000.00 || || 3000.00
-10/01/2012 || 1000.00 || || 1000.00
+As a user,
+So that I can store my funds,
+I would like a bank account.
 ```
-
-### Additional extensions
-
-* Statement filters (just deposits, withdrawals, date ascending, date descending)
-* Graphical interface
