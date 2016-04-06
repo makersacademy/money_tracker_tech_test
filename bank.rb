@@ -9,15 +9,18 @@ class Bank
 
   def deposit(amount, date=Time.now)
     @balance += amount
-    @statement.push("Deposit:#{amount}, Balance:#{@balance}, Date:#{date}")
+    @statement.push({date:date, credit:amount, balance:balance})
   end
   
   def withdraw(amount, date=Time.now)
     @balance -= amount
-    @statement.push("Withdrawal:#{amount}, Balance:#{@balance}, Date:#{date}")
+    @statement.push({date:date, debit:amount, balance:balance})
   end
 
   def print_statement
-    @statement.each { |transaction| puts transaction}
+    puts "date || credit || debit || balance"
+    @statement.each do |transaction|
+      transaction.each { |key,value| puts "#{transaction[:date]} || #{transaction[:credit]} || #{transaction[:debit]} || #{transaction[:balance]}"}
+    end
   end
 end
