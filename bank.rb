@@ -7,13 +7,13 @@ class Bank
     @statement = []
   end
 
-  def deposit(amount)
+  def deposit(amount, date=Time.now)
     @balance += amount
-    @statement.push("Deposit:#{amount}, Balance:#{@balance}")
+    @statement.push("Deposit:#{amount}, Balance:#{@balance}, Date:#{date}")
   end
   
-  def withdraw(amount)
+  def withdraw(amount, date=Time.now)
     @balance -= amount
-    @statement.push("Withdrawal:#{amount}, Balance:#{@balance}")
+    @statement.push("Withdrawal:#{amount}, Balance:#{@balance}, Date:#{date}")
   end
 end

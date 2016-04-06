@@ -3,8 +3,8 @@ describe Bank do
 
   it {is_expected.to be}
   it {is_expected.to respond_to(:balance)}
-  it {is_expected.to respond_to(:deposit).with(1).argument}
-  it {is_expected.to respond_to(:withdraw).with(1).argument}
+  it {is_expected.to respond_to(:deposit).with(2).arguments}
+  it {is_expected.to respond_to(:withdraw).with(2).arguments}
   it {is_expected.to respond_to(:statement)}
 
   describe ".balance" do
@@ -33,6 +33,13 @@ describe Bank do
       expect(subject.statement.last).to match(/Balance:0/)
     end
 
+    it "displays the date of each transaction" do
+      subject.deposit(100, "04/01/2016")
+      subject.withdraw(100,"04/02/2016")
+      expect(subject.statement.first).to match(/Date:04\/01\/2016/)
+      expect(subject.statement.last).to match(/Date:04\/02\/2016/)
+    end
+
     context "after a deposit" do
       it "shows the deposit amount" do
         subject.deposit(100)
@@ -47,6 +54,4 @@ describe Bank do
       end
     end  
   end
-
-
 end
