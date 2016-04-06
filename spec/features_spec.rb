@@ -72,4 +72,20 @@ describe "features" do
     expect{ account.show_statement }.to output("balance\n20\n").to_stdout
   end
 
+  it 'should correctly update the balance of a finalized deposit' do
+    account = BankAccount.new("Tester Testerson")
+    deposit = Deposit.new(account, 20, "01/01/2016")
+    deposit.finalize
+    expect(deposit.balance).to eq 20
+  end
+
+  it 'should correctly update the balance of a finalized withdrawal' do
+    account = BankAccount.new("Tester Testerson")
+    deposit = Deposit.new(account, 20, "01/01/2016")
+    deposit.finalize
+    withdrawal = Withdrawal.new(account, 5, "01/01/2016")
+    withdrawal.finalize
+    expect(withdrawal.balance).to eq 15
+  end
+
 end

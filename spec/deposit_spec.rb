@@ -7,4 +7,9 @@ describe Deposit do
   it 'responds to the #finalize method' do
     expect(deposit).to respond_to(:finalize)
   end
+
+  it 'responds to the #balance method' do
+    expect(deposit).to respond_to(:balance)
+  end
+
 end
