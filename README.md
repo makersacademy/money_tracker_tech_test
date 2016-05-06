@@ -27,3 +27,10 @@ date || credit || debit || balance
 
 * Statement filters (just deposits, withdrawals, date ascending, date descending)
 * Graphical interface
+
+Ideas:
+
+1. Deposit money
+2. Withdraw money
+3. Account statement, Date + amount + deposits/ withdrawals
+4. Print statement? Print the account statement? 
