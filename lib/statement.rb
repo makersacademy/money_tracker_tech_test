@@ -19,18 +19,22 @@ class Statement
 
   def calculate_statement(amount, type, balance)
     statement = {}
+
     statement[:type] = type
     statement[:date] = time
     statement[:transaction] = amount
     statement[:balance] = balance
+
     account_statement.push(statement)
   end
+
+
+  private
+
+  attr_accessor :account_statement
 
   def time
     Time.now.strftime("%m/%d/%Y")
   end
 
-  private
-
-  attr_accessor :account_statement
 end
