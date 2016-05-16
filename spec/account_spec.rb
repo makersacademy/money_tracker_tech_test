@@ -19,6 +19,11 @@ describe Account do
   end
 
   describe "#credit" do
+    before(:each) do
+      allow(transaction).to receive(:amount)
+      allow(transaction).to receive(:update_transaction_balance)
+    end
+
     it "should instantiate a new Transaction object" do
       expect(transaction_class).to receive(:new)
       account.credit(AMOUNT, DATE)
@@ -37,6 +42,10 @@ describe Account do
   end
 
   describe "#debit" do
+    before(:each) do
+      allow(transaction).to receive(:amount)
+    end
+
     it "should instantiate a new Transaction object" do
       expect(transaction_class).to receive(:new)
       account.debit(10, "16/05/16")
@@ -52,5 +61,9 @@ describe Account do
       account.debit(AMOUNT, DATE)
     end
   end
+
+  # describe "#print_statement" do
+  #   it "should print with date, amount and balance"
+  # end
 
 end
