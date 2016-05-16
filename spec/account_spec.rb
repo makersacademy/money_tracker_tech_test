@@ -1,24 +1,20 @@
 require 'account'
 
 describe Account do
-  let(:account) { described_class.new }
+  FAKE_BALANCE = rand(1000)
+  let(:transaction_log) { double(:transaction_log, calculate_balance: FAKE_BALANCE) }
+  let(:account) { described_class.new transaction_log}
 
   describe '#initialize' do
-    it 'has a balance of 0' do
-      expect(account.balance).to eq(0)
+    it 'has a transaction log' do
+      expect(account.transaction_log).to eq(transaction_log)
     end
   end
 
-  describe '#deposit' do
-    it 'adds amount to balance' do
-      RANDOM_AMOUNT = rand(10)
-      expect{account.deposit(RANDOM_AMOUNT)}.to change{account.balance}.by(RANDOM_AMOUNT)
+  describe '#calculate_balance' do
+    it 'totals up the transactions' do
+      expect(account.calculate_balance).to eq(FAKE_BALANCE)
     end
   end
 
-  describe '#withdraw' do
-    it 'deducts amount from balance' do
-      expect{account.withdraw(RANDOM_AMOUNT)}.to change{account.balance}.by(-RANDOM_AMOUNT)
-    end
-  end
 end

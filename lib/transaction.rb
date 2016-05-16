@@ -8,4 +8,8 @@ class Transaction
     @debit = debit
   end
 
+  def calculate_change
+    return @credit - @debit
+  end
+
 end

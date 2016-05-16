@@ -19,4 +19,10 @@ describe Transaction do
       expect(transaction.debit).to eq(DEBIT)
     end
   end
+
+  describe '#calculate_change' do
+    it 'calculates the change' do
+      expect(transaction.calculate_change).to eq(CREDIT-DEBIT)
+    end
+  end
 end
