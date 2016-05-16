@@ -5,7 +5,7 @@ class TransactionHistory
 
   attr_reader :all_transactions
 
-  def add_transaction(date, amount, balance)
-    @all_transactions << { date: date, amount: amount, balance: balance }
+  def add_transaction(transaction)
+    @all_transactions << transaction
   end
 end

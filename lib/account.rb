@@ -1,33 +1,46 @@
 class Account
   STARTING_BALANCE = 100
 
-  def initialize(log: TransactionHistory.new, balance: STARTING_BALANCE, pin:1234)
+  def initialize(log: TransactionHistory.new, transaction: Transaction,
+                 balance: STARTING_BALANCE, pin:1234)
     @balance = balance
     @pin = pin
     @log = log
+    @transaction = transaction
   end
 
   attr_reader :balance
 
   def make_deposit(amount)
-    @balance += amount if valid_deposit(amount)
+    @balance += amount if @transaction.can_deposit(amount)
+    handle_transaction(amount)
   end
 
   def withdraw(amount, pin)
-    @balance -= amount if valid_withdraw(amount) && valid_pin(pin)
+    @balance -= amount if can_withdraw(amount) && valid_pin(pin)
+    handle_transaction(-amount)
   end
 
   private
 
-  def valid_deposit(amount)
-    (amount.is_a? Numeric) && amount > 0
+  def can_withdraw(amount)
+    @transaction.can_withdraw(amount) && amount <= @balance
   end
 
-  def valid_withdraw(amount)
-    (amount.is_a? Numeric) && amount > 0 && amount <= @balance
+  def handle_transaction(amount)
+    transaction = create_transaction(amount)
+    log_transaction(transaction)
   end
 
   def valid_pin(pin)
     @pin == pin
+  end
+
+  def create_transaction(amount)
+    @transaction.new(Date.new, amount, @balance)
+  end
+
+  def log_transaction(transaction)
+    @log.add_transaction(transaction)
   end
 end
