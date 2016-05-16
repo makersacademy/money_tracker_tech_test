@@ -1,10 +1,11 @@
-require_relative '../lib/account'
+require './lib/account'
 
 describe Account do
 
+  subject(:account) { described_class.new(transaction_class: transaction_class) }
+
   let(:transaction_class) { double(:transaction_class, new: transaction) }
   let(:transaction) { double(:transaction) }
-  subject(:account) { described_class.new(transaction_class: transaction_class) }
 
   describe '#initialize' do
     it 'initializes with a balance of zero' do
