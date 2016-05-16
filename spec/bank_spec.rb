@@ -1,10 +1,10 @@
 require 'bank_account'
 
 HEADERS = 'date || credit || debit || balance'
-DEPOSIT_STRING = '01/01/1970 || 100 ||  || 100'
 
 describe BankAccount do
-  let(:test_account) { described_class.new }
+  let(:dummy_transaction_log_class) { double :TransactionLog, new: nil}
+  subject(:test_account) { described_class.new dummy_transaction_log_class}
 
   describe '#print_statement' do
 
@@ -16,16 +16,20 @@ describe BankAccount do
 
   describe '#deposit' do
 
-    it 'adds a deposit transaction' do
+    it 'creates a new deposit transaction' do
       test_account.deposit Date.new(1970,1,1), 100
-      expect(test_account.print_statement).to include DEPOSIT_STRING
+      expect(dummy_transaction_log_class).to have_received(:new).with Date.new(1970,1,1), 100, 100
+    end
+
+  end
+
+  describe '#withdraw' do
+
+    it 'creates a new withdraw transaction' do
+      test_account.withdraw Date.new(1970,1,1), 100
+      expect(dummy_transaction_log_class).to have_received(:new).with Date.new(1970,1,1), -100, -100
     end
 
   end
 
 end
-
-
-#statement
-#deposit
-#withdraw
