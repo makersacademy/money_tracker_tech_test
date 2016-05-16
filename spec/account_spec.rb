@@ -18,7 +18,7 @@ describe Account do
     expect(account.transaction_class).to eq transaction_class
   end
 
-  describe "#credit" do
+  describe "#deposit" do
     before(:each) do
       allow(transaction).to receive(:amount)
       allow(transaction).to receive(:update_transaction_balance)
@@ -26,39 +26,50 @@ describe Account do
 
     it "should instantiate a new Transaction object" do
       expect(transaction_class).to receive(:new)
-      account.credit(AMOUNT, DATE)
+      account.deposit(AMOUNT, DATE)
     end
 
     it "should push the transaction object into the transactions array" do
-      account.credit(AMOUNT, DATE)
+      account.deposit(AMOUNT, DATE)
       expect(account.transactions).to include(transaction)
     end
 
     it "should call calculate_balance method" do
       expect(account).to receive(:calculate_balance)
-      account.credit(AMOUNT, DATE)
+      account.deposit(AMOUNT, DATE)
+    end
+
+    it "should call the update_transaction_balance on transaction" do
+      expect(transaction).to receive(:update_transaction_balance)
+      account.deposit(AMOUNT, DATE)
     end
 
   end
 
-  describe "#debit" do
+  describe "#withdraw" do
     before(:each) do
       allow(transaction).to receive(:amount)
+      allow(transaction).to receive(:update_transaction_balance)
     end
 
     it "should instantiate a new Transaction object" do
       expect(transaction_class).to receive(:new)
-      account.debit(10, "16/05/16")
+      account.withdraw(10, "16/05/16")
     end
 
     it "should push the transaction object into the transactions array" do
-      account.debit(AMOUNT, DATE)
+      account.withdraw(AMOUNT, DATE)
       expect(account.transactions).to include(transaction)
     end
 
     it "should call calculate_balance method" do
       expect(account).to receive(:calculate_balance)
-      account.debit(AMOUNT, DATE)
+      account.withdraw(AMOUNT, DATE)
+    end
+
+    it "should call the update_transaction_balance on transaction" do
+      expect(transaction).to receive(:update_transaction_balance)
+      account.withdraw(AMOUNT, DATE)
     end
   end
 
