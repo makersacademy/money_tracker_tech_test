@@ -1,7 +1,7 @@
 require 'transaction_log'
 
-DEPOSIT_LOG = '01/01/1970 || 100 ||  || 1100'
-WITHDRAW_LOG = '01/01/1970 ||  || 100 || 900'
+DEPOSIT_LOG = '01/01/1970 || 100.00 ||  || 1100.00'
+WITHDRAW_LOG = '01/01/1970 ||  || 100.00 || 900.00'
 
 describe TransactionLog do
   subject(:test_deposit_log) { described_class.new Date.new(1970,1,1), 100, 1100 }

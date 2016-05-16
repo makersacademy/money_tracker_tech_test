@@ -20,10 +20,14 @@ class TransactionLog
   def data_array
     [
       format_date(@date),
-      @amount.positive? ? @amount.to_s : '',
-      @amount.negative? ? @amount.abs.to_s : '',
-      @balance.to_s
+      @amount.positive? ? format_value(@amount) : '',
+      @amount.negative? ? format_value(@amount) : '',
+      format_value(@balance)
     ]
+  end
+
+  def format_value amount
+    '%.2f' % amount.abs
   end
 
   def format_date date
