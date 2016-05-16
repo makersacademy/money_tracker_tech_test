@@ -46,13 +46,13 @@ class Account
     end
   end
 
-  def create_row transaction
-    calculate_balance transaction
-    
-    "#{transaction[:date].strftime('%d/%m/%Y')} |" +
-    "| #{transaction[:credit]} |" +
-    "| #{transaction[:debit]} |" +
-    "| #{@balance}"
+  def create_row this_transaction
+    calculate_balance this_transaction
+
+    "#{this_transaction[:date].strftime('%d/%m/%Y')} " +
+    "|| #{'%.2f' % this_transaction[:credit] if this_transaction[:credit]} " +
+    "|| #{'%.2f' % this_transaction[:debit] if this_transaction[:debit]} " +
+    "|| #{'%.2f' % @balance}"
   end
 
   def calculate_balance transaction

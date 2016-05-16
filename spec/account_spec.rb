@@ -52,9 +52,9 @@ describe Account do
       account.withdraw 1
 
       statement = "date || credit || debit || balance" +
-                  "\n#{formatted_date} ||  || 1 || 1" +
-                  "\n#{formatted_date} || 1 ||  || 2" +
-                  "\n#{formatted_date} || 1 ||  || 1"
+                  "\n#{formatted_date} ||  || 1.00 || 1.00" +
+                  "\n#{formatted_date} || 1.00 ||  || 2.00" +
+                  "\n#{formatted_date} || 1.00 ||  || 1.00"
 
       expect(account.statement).to eq statement
     end
