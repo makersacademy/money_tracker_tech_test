@@ -16,23 +16,26 @@ describe Statement do
   end
 
   describe '#view_statement' do
-    it 'prints formatted statement from latest transaction to most recent' do
-      STATEMENT = "date || credit || debit || balance\n#{DATE.strftime("%Y/%m/%d")} || #{RANDOM_AMOUNT_2} || || 1100.00\n#{DATE.strftime("%Y/%m/%d")} || || #{RANDOM_AMOUNT} || #{RANDOM_AMOUNT}"
-      expect(statement.view_statement).to eq(STATEMENT)
+    context 'viewing it normally' do
+      it 'prints formatted statement from latest transaction to most recent' do
+        STATEMENT = "date || credit || debit || balance\n#{DATE.strftime("%Y/%m/%d")} || #{RANDOM_AMOUNT_2} || || 1100.00\n#{DATE.strftime("%Y/%m/%d")} || || #{RANDOM_AMOUNT} || #{RANDOM_AMOUNT}"
+        expect(statement.view_statement).to eq(STATEMENT)
+      end
     end
-  end
 
-  describe '#view_deposits' do
-    it 'filters through just the deposits' do
-      STATEMENT_DEPOSITS = "date || credit || debit || balance\n#{DATE.strftime("%Y/%m/%d")} || #{RANDOM_AMOUNT_2} || || 1100.00"
-      expect(statement.view_deposits).to eq(STATEMENT_DEPOSITS)
+    context 'only viewing deposits' do
+      it 'filters through just the deposits' do
+        STATEMENT_DEPOSITS = "date || credit || debit || balance\n#{DATE.strftime("%Y/%m/%d")} || #{RANDOM_AMOUNT_2} || || 1100.00"
+        expect(statement.view_statement(withdrawals:false, deposits:true)).to eq(STATEMENT_DEPOSITS)
+      end
     end
-  end
 
-  describe '#view_withdrawals' do
-    it 'filters through just the withdrawals' do
-      STATEMENT_DEPOSITS = "date || credit || debit || balance\n#{DATE.strftime("%Y/%m/%d")} || || #{RANDOM_AMOUNT} || #{RANDOM_AMOUNT}"
-      expect(statement.view_withdrawals).to eq(STATEMENT_DEPOSITS)
+    context 'only viewing withdrawals' do
+      it 'filters through just the withdrawals' do
+        STATEMENT_DEPOSITS = "date || credit || debit || balance\n#{DATE.strftime("%Y/%m/%d")} || || #{RANDOM_AMOUNT} || #{RANDOM_AMOUNT}"
+        expect(statement.view_statement(withdrawals:true, deposits:false)).to eq(STATEMENT_DEPOSITS)
+      end
     end
+
   end
 end

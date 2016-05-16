@@ -7,29 +7,11 @@ class Statement
     @transaction_log = transaction_log
   end
 
-  def view_statement(balance=0)
+  def view_statement(start_balance:balance=0, withdrawals:withdrawals=true, deposits:deposits=true)
     statement = ""
     transaction_log.transactions.each do |transaction|
       balance = update_balance(balance, transaction)
-      statement = update_statement(statement, transaction, balance)
-    end
-    fix_look(statement)
-  end
-
-  def view_deposits(balance=0)
-    statement = ""
-    transaction_log.transactions.each do |transaction|
-      balance = update_balance(balance, transaction)
-      statement = update_statement(statement, transaction, balance) if transaction.is_deposit?
-    end
-    fix_look(statement)
-  end
-
-  def view_withdrawals(balance=0)
-    statement = ""
-    transaction_log.transactions.each do |transaction|
-      balance = update_balance(balance, transaction)
-      statement = update_statement(statement, transaction, balance) if transaction.is_withdrawal?
+      statement = update_statement(statement, transaction, balance) if (transaction.is_deposit? == deposits || transaction.is_withdrawal? == withdrawals)
     end
     fix_look(statement)
   end

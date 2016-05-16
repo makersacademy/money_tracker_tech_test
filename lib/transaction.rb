@@ -13,11 +13,11 @@ class Transaction
   end
 
   def is_deposit?
-    !(credit = "0.00")
+    !(credit == "0.00")
   end
 
   def is_withdrawal?
-    !(debit = "0.00")
+    !(debit == "0.00")
   end
 
 end
