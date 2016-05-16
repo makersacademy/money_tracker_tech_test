@@ -24,7 +24,6 @@ class Account
   def balance
     arr = []
     transactions.map{ |t| arr << t.amount }
-    p "REDUCE #{arr.reduce(:+)}"
     return 0 if arr.reduce(:+) == nil
     arr.reduce(:+)
   end
@@ -37,7 +36,9 @@ private
 
   def transaction_list
     list = ""
-    @transactions.each { |t| list << "#{t.balance_at_transaction}\n" }
+    transactions.each { |t|
+      list << "#{t.date} || #{t.amount} || #{balance}\n"
+    }
     list
   end
 

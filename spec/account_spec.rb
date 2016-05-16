@@ -1,7 +1,7 @@
 describe Account do
 
   let(:transaction_class){ double :transaction_class, new: transaction }
-  let(:transaction){ double(:transaction, amount: 1000) }
+  let(:transaction){ double(:transaction, date: "16/05/2016", amount: 1000) }
   let(:transaction2){ double :transaction, amount: -500 }
   subject(:account){ described_class.new(transaction_class) }
 
@@ -51,8 +51,13 @@ describe Account do
 
   context 'printing statements' do
 
-    it 'prints a statement' do
-      expect(account).to respond_to :print_statement
+    it 'prints column headers of a statement' do
+      expect(account.print_statement).to include("date || credit || debit || balance")
+    end
+
+    it 'prints a row of a statement' do
+      allow(account).to receive(:transactions){ [transaction] }
+      expect(account.print_statement).to include("16/05/2016 || 1000 || 1000")
     end
 
   end
