@@ -6,14 +6,14 @@ class TransactionLog
     @balance = balance
   end
 
-  def print separator = ' || '
+  def to_s separator = ' || '
     data_array.join separator
   end
 
   private
 
   def data_array
-    [ 
+    [
       format_date(@date),
       @amount.positive? ? @amount.to_s : '',
       @amount.negative? ? @amount.abs.to_s : '',

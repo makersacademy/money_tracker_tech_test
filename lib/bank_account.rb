@@ -1,14 +1,15 @@
 class BankAccount
 
   def initialize transaction_klass
-    @balance = 0
+    @current_balance = 0
     @transaction_headers = 'date || credit || debit || balance'
     @transactions = []
     @transaction_klass = transaction_klass
   end
 
   def print_statement
-    ([@transaction_headers] + @transactions).join("\n")
+    @transaction_headers + '\n' +
+      @transactions.reverse.join('\n')
   end
 
   def deposit date, amount
@@ -24,11 +25,11 @@ class BankAccount
   private
 
   def update_balance amount
-    @balance += amount
+    @current_balance += amount
   end
 
   def log_transaction date, amount
-    @transactions.push @transaction_klass.new date, amount, @balance
+    @transactions.push @transaction_klass.new date, amount, @current_balance
   end
 
 
