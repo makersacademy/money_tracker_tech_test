@@ -45,11 +45,11 @@ describe Account do
     end
 
     it 'creates a statement in reverse cronological order' do
+      allow(date).to receive(:strftime).and_return(formatted_date)
+
       account.deposit 1
       account.deposit 1
       account.withdraw 1
-
-      allow(date).to receive(:strftime).and_return(formatted_date)
 
       statement = "date || credit || debit || balance" +
                   "\n#{formatted_date} ||  || 1 || 1" +
