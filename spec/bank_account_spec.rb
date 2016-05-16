@@ -14,4 +14,21 @@ describe BankAccount do
     end
   end
 
+  describe '#deposit' do
+    it 'increases the balance' do
+      expect{ bank_account.deposit(10) }.to change{ bank_account.balance }.by 10
+    end
+  end
+
+  describe '#withdraw' do
+    it 'decreases the balance' do
+      bank_account.deposit(20)
+      expect{ bank_account.withdraw(10) }.to change{ bank_account.balance }.by -10
+    end
+    it 'throws error if there is not enough available balance to withdraw' do
+      message = BankAccount::AVAILABLE_BALANCE_ERROR
+      expect{ bank_account.withdraw(10) }.to raise_error message
+    end
+  end
+
 end
