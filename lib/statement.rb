@@ -1,14 +1,14 @@
 class Statement
-  attr_reader :transaction_log
+  attr_reader :account
   STATEMENT_HEADER = "date || credit || debit || balance"
 
-  def initialize(transaction_log)
-    @transaction_log = transaction_log
+  def initialize(account)
+    @account = account
   end
 
   def view_statement(start_balance:balance=0, withdrawals:withdrawals=true, deposits:deposits=true, ascending: ascending=false)
     statement = ""
-    transaction_log.transactions.each do |transaction|
+    account.transactions.each do |transaction|
       balance = update_balance(balance, transaction)
       statement = update_statement(statement, transaction, balance, ascending) if chosen?(transaction, withdrawals, deposits)
     end

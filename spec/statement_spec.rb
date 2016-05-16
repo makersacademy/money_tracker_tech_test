@@ -6,12 +6,12 @@ describe Statement do
   DATE = Date.new(2016,5,16)
   let(:transaction) { double(:transaction, calculate_change: RANDOM_AMOUNT, credit: "0.00", debit: RANDOM_AMOUNT, date: DATE, is_deposit?: false, is_withdrawal?: true) }
   let(:transaction_2) { double(:transaction, calculate_change: RANDOM_AMOUNT_2, credit: RANDOM_AMOUNT_2, debit: "0.00", date: DATE, is_deposit?: true, is_withdrawal?: false) }
-  let(:transaction_log) { double(:transaction_log, transactions: [transaction, transaction_2])}
-  let(:statement) { described_class.new transaction_log }
+  let(:account) { double(:account, transactions: [transaction, transaction_2])}
+  let(:statement) { described_class.new account }
 
   describe '#initialize' do
     it 'has a transaction log' do
-      expect(statement.transaction_log).to eq(transaction_log)
+      expect(statement.account).to eq(account)
     end
   end
 
