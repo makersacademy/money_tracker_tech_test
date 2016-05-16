@@ -4,22 +4,17 @@ describe('Transaction', function () {
   var transaction;
 
   beforeEach(function () {
-    transaction = new Transaction(1000, 'deposit', 1000, '14-01-2012');
+    transaction = new Transaction(1000, 'deposit', 1000, '10-01-2012');
   });
 
-  it('has an amount', function () {
-    expect(transaction.amount).toEqual(1000);
-  });
+  describe('format for statement', function () {
+    it('formats a deposit', function () {
+      expect(transaction.formatForStatement()).toEqual('10/01/2012 || 1000.00 || || 1000.00');
+    });
 
-  it('has a date', function () {
-    expect(transaction.date).toEqual('14-01-2012');
-  });
-
-  it('has a type', function () {
-    expect(transaction.type).toEqual('deposit');
-  });
-
-  it('has a balance', function () {
-    expect(transaction.balance).toEqual(1000);
+    it('formats a withdrawal', function () {
+      var withdrawal = new Transaction(500, 'withdrawal', 2500, '14-01-2012');
+      expect(withdrawal.formatForStatement()).toEqual('14/01/2012 || || 500.00 || 2500.00');
+    });
   });
 });

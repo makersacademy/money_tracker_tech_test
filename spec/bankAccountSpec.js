@@ -14,7 +14,7 @@ describe('BankAccount', function () {
   });
 
   it('starts with an empty transaction record', function () {
-    expect(bankAccount.getTransactions()).toEqual([]);
+    expect(bankAccount.getTransactionHistory()).toEqual([]);
   });
 
   describe('deposit', function () {
@@ -27,7 +27,7 @@ describe('BankAccount', function () {
     });
 
     it('records the deposit transaction', function () {
-      expect(bankAccount.getTransactions().length).toEqual(1);
+      expect(bankAccount.getTransactionHistory().length).toEqual(1);
     });
   });
 
@@ -42,14 +42,23 @@ describe('BankAccount', function () {
     });
 
     it('records the withdrawal transaction', function () {
-      expect(bankAccount.getTransactions().length).toEqual(2);
+      expect(bankAccount.getTransactionHistory().length).toEqual(2);
     });
   });
 
-  describe('printStatement', function () {
+  describe('print statement', function () {
+    beforeEach(function () {
+      var deposit = jasmine.createSpyObj('deposit', ['formatForStatement']);
+      var withdrawal = jasmine.createSpyObj('withdrawal', ['formatForStatement']);
+      deposit.formatForStatement.and.returnValue('deposit');
+      withdrawal.formatForStatement.and.returnValue('withdrawal');
+      spyOn(bankAccount, 'getTransactionHistory').and.returnValue([deposit, withdrawal]);
+    });
+
     it('displays a transaction history', function () {
-      bankAccount.deposit(1000, '14-01-2012');
-      expect(bankAccount.printStatement()).toEqual('14/01/2012 || 1000.00 || || 1000.00')
+      var header = 'date || credit || debit || balance';
+      var body = 'deposit\nwithdrawal\n';
+      expect(bankAccount.printStatement()).toEqual(header + '\n' + body);
     });
   });
 });
