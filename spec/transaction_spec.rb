@@ -35,4 +35,12 @@ describe Transaction do
     end
   end
 
+  describe '#calculate_total' do
+    it 'calculates difference between credit_total and debit_total' do
+      subject.credit 100
+      subject.debit 200
+      subject.calculate_total
+      expect(subject.total).to eq -100
+    end
+  end
 end

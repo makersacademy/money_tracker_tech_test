@@ -9,4 +9,5 @@ class TransactionLog
   def add_new(transaction)
     @transactions << transaction
   end
+  
 end

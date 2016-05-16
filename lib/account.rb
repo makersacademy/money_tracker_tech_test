@@ -1,16 +1,10 @@
 class Account
 
-  attr_reader :balance, :transactions
+  attr_reader :balance, :transaction_log
 
-  def initialize
+  def initialize(transaction_log)
     @balance = 0
+    @transaction_log = transaction_log
   end
 
-  def deposit(amount)
-    @balance += amount
-  end
-
-  def withdraw(amount)
-    @balance -= amount
-  end
 end

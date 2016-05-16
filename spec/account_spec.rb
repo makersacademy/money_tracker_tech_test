@@ -1,6 +1,9 @@
 require 'account'
 
 describe Account do
+  let(:transaction_log) { double(:transaction_log) }
+
+  subject { described_class.new(transaction_log) }
 
   describe 'balance' do
     it 'initializes at 0' do
@@ -8,19 +11,9 @@ describe Account do
     end
   end
 
-  describe '#deposit' do
-    it { is_expected.to respond_to(:deposit).with(1).argument }
-
-    it 'can increase the balance' do
-      expect{ subject.deposit 100 }.to change{ subject.balance }.by 100
-    end
-  end
-
-  describe '#withdraw' do
-    it { is_expected.to respond_to(:withdraw).with(1).argument }
-
-    it 'can decrease the balance' do
-      expect{ subject.withdraw 100 }.to change{ subject.balance }.by -100
+  describe 'transaction_log' do
+    it 'has a history of account transactions' do
+      expect(subject.transaction_log).to eq transaction_log
     end
   end
 end
