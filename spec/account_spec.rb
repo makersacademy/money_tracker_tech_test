@@ -18,9 +18,13 @@ describe Account do
   end
 
   context 'deposits' do
-    it 'adds a transaction when depositing' do
+    it 'creates a transaction when depositing' do
       expect(account.transaction_class).to receive(:new)
       account.deposit(1000)
+    end
+
+    it 'adds a transaction to list of transactions' do
+      expect{ account.deposit(1000) }.to change{ account.transactions.length }.by 1
     end
   end
 
