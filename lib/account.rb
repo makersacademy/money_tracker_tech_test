@@ -2,6 +2,7 @@ class Account
   require 'date'
 
   STATEMENT_HEADER = 'date || credit || debit || balance'
+  DEFAULT_BALANCE = 0
 
   def initialize
     @transactions = []
@@ -34,15 +35,27 @@ class Account
   end
 
   def create_statement
-    [STATEMENT_HEADER] + transaction_rows.reverse
+    [STATEMENT_HEADER] + statement_entries.reverse
   end
 
-  def transaction_rows
-    @balance = 0
+  def statement_entries
+    @balance = DEFAULT_BALANCE
 
-    @transactions.map do |t|
-      @balance += t[:credit] || -(t[:debit])
-      "#{t[:date].strftime('%d/%m/%Y')} || #{t[:credit]} || #{t[:debit]} || #{@balance}"
+    @transactions.map do | transaction |
+      create_row transaction
     end
+  end
+
+  def create_row transaction
+    calculate_balance transaction
+    
+    "#{transaction[:date].strftime('%d/%m/%Y')} |" +
+    "| #{transaction[:credit]} |" +
+    "| #{transaction[:debit]} |" +
+    "| #{@balance}"
+  end
+
+  def calculate_balance transaction
+    @balance += transaction[:credit] || -(transaction[:debit])
   end
 end
