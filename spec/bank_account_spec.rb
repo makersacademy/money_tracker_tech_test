@@ -2,15 +2,12 @@ require 'bank_account'
 
 describe BankAccount do
 
-  subject(:bank_account) { described_class.new }
+  let(:transaction_history){ double :transaction_history, deposit: nil, withdraw: nil, print_statement: nil }
+  subject(:bank_account) { described_class.new(transaction_history) }
 
   describe '#initialize' do
     it 'starts with a balance of 0' do
       expect(bank_account.balance).to be_zero
-    end
-
-    it 'starts with an empty transaction history' do
-      expect(bank_account.transactions).to be_empty
     end
   end
 
@@ -20,14 +17,11 @@ describe BankAccount do
       amount = 1000
       expect{ bank_account.deposit(date, amount) }.to change{ bank_account.balance }.by amount
     end
-    it 'deposit is added to transactions array' do
+    it 'transaction_history deposit method is called' do
       date = "10/01/2012"
       amount = 1000
       bank_account.deposit(date, amount)
-      expect(bank_account.transactions).to eq [{ date:    date,
-                                                 credit:  amount,
-                                                 debit:   0,
-                                                 balance: amount }]
+      expect(bank_account.transaction_history).to have_received(:deposit)
     end
   end
 
@@ -40,25 +34,19 @@ describe BankAccount do
       message = BankAccount::AVAILABLE_BALANCE_ERROR
       expect{ bank_account.withdraw("14/01/2012", 10) }.to raise_error message
     end
-    it 'withdrawal is added to transactions array' do
+    it 'transaction_history withdraw method is called' do
       date = "14/01/2012"
       amount = 500.00
       bank_account.deposit("10/01/2012", 3000)
       bank_account.withdraw(date, amount)
-      expect(bank_account.transactions).to include({ date:    date,
-                                                     credit:  0,
-                                                     debit:   amount,
-                                                     balance: 2500 })
+      expect(bank_account.transaction_history).to have_received(:withdraw)
     end
   end
 
   describe '#print_statement' do
-    it 'prints statement in expected format' do
-      bank_account.deposit("10/01/2012", 1000)
-      bank_account.deposit("13/01/2012", 2000)
-      bank_account.withdraw("13/01/2012", 2000)
-      statement = "\"date || credit || debit || balance\"\n\"13/01/2012 ||  || 2000 || 1000\"\n\"13/01/2012 || 2000 ||  || 3000\"\n\"10/01/2012 || 1000 ||  || 1000\"\n"
-      expect{ bank_account.print_statement }.to output(statement).to_stdout
+    it 'calls transaction_history print_statement method' do
+      bank_account.print_statement
+      expect(bank_account.transaction_history).to have_received(:print_statement)
     end
   end
 

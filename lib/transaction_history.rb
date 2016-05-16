@@ -27,7 +27,7 @@ class TransactionHistory
   private
 
   def print_transaction(transaction)
-    p transaction.values.map {|x| x.to_i.zero? ? "" : x }.join(" || ")
+    p "#{transaction.date} || #{transaction.credit} || #{transaction.debit} || #{transaction.balance}"
   end
 
 end
