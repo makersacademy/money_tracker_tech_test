@@ -1,10 +1,19 @@
 require 'account'
 describe Account do
+  let(:deposit) {double(:deposit, amount:nil, name:nil, date:nil)}
+  let(:deposit_klass) {double(:deposit_class, new: deposit) } 
+  let(:args) {{deposit_class:deposit_klass}}
   let(:start_balance) {Account::STARTBALANCE}
-  let(:account) {described_class.new}
-  
-  it 'should initialize with the STARTBALANCE' do
-    expect(account.check_balance).to eq(start_balance)
+  let(:account) {described_class.new(args)}
+
+  before :each do
+
+  end
+
+  describe '#initialize' do  
+    it 'should initialize with the STARTBALANCE' do
+      expect(account.check_balance).to eq(start_balance)
+    end
   end
 
   describe '#check_balance' do
@@ -14,10 +23,14 @@ describe Account do
   end
   
   describe '#statement' do
-    it {is_expected.to respond_to(:statement)}
 
     it 'should be an array' do
       expect(account.statement).to be_a(Array)
+    end
+
+    it 'it should include a deposit object' do
+      account.deposit(100)
+      expect(account.statement.first).to include(deposit)
     end
   end
 
