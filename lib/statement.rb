@@ -17,7 +17,7 @@ class Statement
   end
 
   def latest_balance
-    raise "No transaction yet" if log.empty?
+    raise "No transaction yet" if log.count == 1 
     log.last[1]
   end
 

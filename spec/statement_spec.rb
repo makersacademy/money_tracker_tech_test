@@ -43,7 +43,7 @@ describe Statement do
 
   describe '#complete_log' do
     it 'should return a matrix with all relevant infos'  do
-      expect(statement.complete_log).to be_a(Matrix)
+      expect(statement.complete_log).to be_a(Array)
     end
   end
 end

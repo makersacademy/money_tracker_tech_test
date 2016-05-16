@@ -13,7 +13,7 @@ I want to be able to withdraw money.
 
 As a User,
 So that I can track my account,
-I want to pringt a bank statement.
+I want to print a bank statement.
 
 
 date || credit || debit || balance
