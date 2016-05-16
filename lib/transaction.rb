@@ -1,8 +1,8 @@
 class Transaction
   attr_reader :date, :total_credit, :total_debit, :total
 
-  def initialize
-    @date = DateTime.now
+  def initialize(date = DateTime.now)
+    @date = date
     @total_credit = 0
     @total_debit = 0
   end
