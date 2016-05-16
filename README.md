@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/eripheebs/bank_tech_test.svg?branch=master)](https://travis-ci.org/eripheebs/bank_tech_test)
+[![Coverage Status](https://coveralls.io/repos/github/eripheebs/bank_tech_test/badge.svg?branch=master)](https://coveralls.io/github/eripheebs/bank_tech_test?branch=master)
+
 
 # The Bank Tech Test
 

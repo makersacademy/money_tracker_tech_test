@@ -1,11 +1,10 @@
 class Transaction
-
   attr_reader :date, :credit, :debit
 
   def initialize(date, credit=0, debit=0)
     @date = date
-    @credit = '%.2f' % credit
-    @debit = '%.2f' % debit
+    @credit = two_sf(credit)
+    @debit = two_sf(debit)
   end
 
   def calculate_change
@@ -20,4 +19,9 @@ class Transaction
     !(debit == "0.00")
   end
 
+  private
+
+  def two_sf(amount)
+    '%.2f' % amount
+  end
 end

@@ -1,5 +1,4 @@
 class TransactionLog
-
   attr_reader :transactions
 
   def initialize
@@ -14,7 +13,12 @@ class TransactionLog
     @transactions.each do |transaction|
       balance += transaction.calculate_change.to_i
     end
-    '%.2f' % balance
+    two_sf(balance)
   end
 
+  private
+
+  def two_sf(balance)
+    '%.2f' % balance
+  end
 end
