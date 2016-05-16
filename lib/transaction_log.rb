@@ -16,12 +16,11 @@ class TransactionLog
     @transactions.each do |transaction|
       balance += transaction.calculate_change.to_i
     end
-    return '%.2f' % balance
+    '%.2f' % balance
   end
 
-  def print_statement(starting_balance=0)
+  def print_statement(balance=0)
     statement = ""
-    balance = starting_balance
     @transactions.each do |transaction|
       balance = '%.2f' % (balance.to_i + transaction.calculate_change.to_i)
       statement = "\n#{transaction.date.strftime("%Y/%m/%d")} || #{transaction.credit} || #{transaction.debit} || #{balance}" + statement
@@ -34,7 +33,7 @@ class TransactionLog
   def fix_look(statement)
     statement = STATEMENT_HEADER + statement
     statement.gsub!(" 0.00 ", " ")
-    p statement
+    statement
   end
 
 end

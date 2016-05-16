@@ -8,7 +8,7 @@ class Account
   end
 
   def calculate_balance
-    return transaction_log.calculate_balance(STARTING_BALANCE)
+    transaction_log.calculate_balance(STARTING_BALANCE)
   end
 
 end

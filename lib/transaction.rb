@@ -9,7 +9,7 @@ class Transaction
   end
 
   def calculate_change
-    return '%.2f' % (@credit.to_i - @debit.to_i)
+    '%.2f' % (@credit.to_i - @debit.to_i)
   end
 
 end

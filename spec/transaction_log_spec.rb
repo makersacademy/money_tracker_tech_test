@@ -35,10 +35,10 @@ describe TransactionLog do
     end
 
     it 'prints statement from latest transaction to most recent' do
-      STATEMENT = "date || credit || debit || balance\n#{DATE.strftime("%Y/%m/%d")} || 500.00 || || 1100.00\n#{DATE.strftime("%Y/%m/%d")} || || #{RANDOM_AMOUNT} || #{RANDOM_AMOUNT}"
+      STATEMENT_2 = "date || credit || debit || balance\n#{DATE.strftime("%Y/%m/%d")} || 500.00 || || 1100.00\n#{DATE.strftime("%Y/%m/%d")} || || #{RANDOM_AMOUNT} || #{RANDOM_AMOUNT}"
       transaction_log.log(transaction)
       transaction_log.log(transaction_2)
-      expect(transaction_log.print_statement).to eq(STATEMENT)
+      expect(transaction_log.print_statement).to eq(STATEMENT_2)
     end
   end
 
