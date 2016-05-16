@@ -1,17 +1,17 @@
 require 'transaction'
 
 describe Transaction do
-  let(:amount) { double :amount }
+  let(:credit) { double :credit }
+  let(:debit) { double :debit }
   let(:date) { double :date }
-  subject(:transaction) { described_class.new(amount, date) }
+  subject(:transaction) { described_class.new(credit: credit, debit: debit, date: date) }
 
-  it { is_expected.to respond_to(:amount) }
+  it 'initialises with a debited amount' do
+    expect(transaction.debit).to eq(debit)
+  end
 
-  it { is_expected.to respond_to(:date) }
-
-
-  it 'initialises with an amount' do
-    expect(transaction.amount).to eq(amount)
+  it 'initialises with a credited amount' do
+    expect(transaction.credit).to eq(credit)
   end
 
   it 'initialises with a date' do

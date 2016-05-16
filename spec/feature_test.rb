@@ -1,5 +1,6 @@
 require_relative '../lib/account'
 require_relative '../lib/transaction'
+require_relative '../lib/statement'
 
 acct = BankAccount.new
 
@@ -22,3 +23,5 @@ third_trans = Transaction.new(500, Date.new(14/01/2012))
 acct.withdraw(third_trans)
 p "Deposit into account: #{third_trans.amount}"
 p "Current balance: #{acct.current_balance}"
+
+statement = Statement.new(acct)
