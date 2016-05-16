@@ -14,9 +14,4 @@ describe TransactionHistory do
     expect(log.history).to eq []
   end
 
-  xit 'calls value on transaction object' do
-    log.add(date, amount)
-    expect(transaction).to have_received(:value).with(date, amount)
-  end
-
 end

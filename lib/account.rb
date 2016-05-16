@@ -5,22 +5,25 @@ class Account
   attr_reader :balance, :transaction
 
   def initialize(transaction: TransactionHistory.new, statement: Statement.new)
-    @balance = [0]
     @transaction = transaction
     @statement = statement
   end
 
   def deposit(date, amount)
     @transaction.add(date, amount)
+    balance
   end
 
   def withdraw(date, amount)
     @transaction.add(date, -amount)
+    balance
   end
 
   def balance
-    @transaction.history.each { |detail| @balance << detail[:amount] }
-    @balance.reduce(:+)
+    balance = [0]
+    @transaction.history.each { |detail| balance << detail[:amount] }
+    @transaction.history.last[:balance] += balance.reduce(:+)
+    return balance.reduce(:+)
   end
 
   def statement
