@@ -1,3 +1,5 @@
+require_relative 'transaction'
+
 class Account
 
   attr_reader :balance, :transactions, :transaction_class, :credit_transaction
@@ -9,12 +11,18 @@ class Account
   end
 
   def credit(amount, date)
-    @credit_transaction = @transaction_class.new(amount, date)
-    transactions.push(credit_transaction)
+    transactions.push(@transaction_class.new(amount, date))
+    calculate_balance
   end
 
   def debit(amount, date)
-    @credit_transaction = @transaction_class.new(-amount, date)
+    transactions.push(@transaction_class.new(-amount, date))
+    calculate_balance
+  end
+
+  private
+
+  def calculate_balance
   end
 
 end

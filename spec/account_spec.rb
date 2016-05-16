@@ -28,12 +28,28 @@ describe Account do
       account.credit(AMOUNT, DATE)
       expect(account.transactions).to include(transaction)
     end
+
+    it "should call calculate_balance method" do
+      expect(account).to receive(:calculate_balance)
+      account.credit(AMOUNT, DATE)
+    end
+
   end
 
   describe "#debit" do
     it "should instantiate a new Transaction object" do
       expect(transaction_class).to receive(:new)
       account.debit(10, "16/05/16")
+    end
+
+    it "should push the transaction object into the transactions array" do
+      account.debit(AMOUNT, DATE)
+      expect(account.transactions).to include(transaction)
+    end
+
+    it "should call calculate_balance method" do
+      expect(account).to receive(:calculate_balance)
+      account.debit(AMOUNT, DATE)
     end
   end
 
