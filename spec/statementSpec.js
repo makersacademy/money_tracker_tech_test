@@ -12,6 +12,8 @@ describe('statement', function () {
   });
 
   describe('print', function () {
+    var header, depositRow, withdrawalRow;
+
     beforeEach(function () {
       deposit.getDate.and.returnValue(new Date('May 15 2016'));
       deposit.isDeposit.and.returnValue(true);
@@ -22,13 +24,26 @@ describe('statement', function () {
       withdrawal.isDeposit.and.returnValue(false);
       withdrawal.getAmount.and.returnValue(500);
       withdrawal.getBalance.and.returnValue(500);
+
+      header = 'date || credit || debit || balance';
+      depositRow = '15/05/2016 || 1000.00 || || 1000.00';
+      withdrawalRow = '16/05/2016 || || 500.00 || 500.00';
     });
 
-    it('prints a statement', function () {
-      var header = 'date || credit || debit || balance';
-      var depositRow = '15/05/2016 || 1000.00 || || 1000.00';
-      var withdrawalRow = '16/05/2016 || || 500.00 || 500.00';
-      expect(statement.print()).toEqual(header + '\n' + withdrawalRow + '\n' + depositRow);
+    it('prints a statement with descending dates', function () {
+      expect(statement.print('descending')).toEqual(header + '\n' + withdrawalRow + '\n' + depositRow);
+    });
+
+    it('prints a statement with ascending dates', function () {
+      expect(statement.print('ascending')).toEqual(header + '\n' + depositRow + '\n' + withdrawalRow);
+    });
+
+    it('prints out deposits only', function () {
+      expect(statement.print('deposits')).toEqual(header + '\n' + depositRow);
+    });
+
+    it('prints out withdrawal only', function () {
+      expect(statement.print('withdrawals')).toEqual(header + '\n' + withdrawalRow);
     });
   });
 });

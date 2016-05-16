@@ -5,8 +5,23 @@ function Statement(account) {
   this._header = 'date || credit || debit || balance';
 };
 
-Statement.prototype.print = function () {
-  var history = this._transactionHistory.reverse();
+Statement.prototype.print = function (filter) {
+  if (filter === 'descending') {
+    var history = this._transactionHistory.reverse();
+  }
+  if (filter === 'ascending') {
+    var history = this._transactionHistory;
+  }
+  if (filter === 'deposits') {
+    var history = this._transactionHistory.filter(function (transaction) {
+      return transaction.isDeposit();
+    });
+  }
+  if (filter === 'withdrawals') {
+    var history = this._transactionHistory.filter(function (transaction) {
+      return !transaction.isDeposit();
+    });
+  }
   var list = this._formatList(history);
   return this._header + '\n' + list;
 };
