@@ -19,5 +19,4 @@ describe Transaction do
       expect(transaction.debit).to eq(DEBIT)
     end
   end
-
 end
