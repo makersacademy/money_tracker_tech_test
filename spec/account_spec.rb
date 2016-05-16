@@ -1,16 +1,14 @@
 require 'account'
 
 describe Account do
-  let(:statement) {double(:statement)}
-  let(:statement_klass) {double(:statement_class, new: statement) } 
-  let(:args) {{statement_class:statement_klass}}
-  let(:start_balance) {Balance::STARTBALANCE}
+  let(:statement) {double(:statement) } 
+  let(:args) {{statement:statement}}
   let(:account) {described_class.new(args)}
 
 
   describe '#check_balance' do
     it 'should return the balance' do
-      expect(statement).to receive(:last_balance)
+      expect(statement).to receive(:latest_balance)
       account.check_balance
     end
   end
@@ -23,16 +21,23 @@ describe Account do
   end
 
   describe '#desposit' do
-    it 'should initiate a new transaction' do
+    it 'should initiate a new transaction with positve number' do
       expect(statement).to receive(:new_transaction).with(100)
       account.deposit(100)
     end
   end
 
   describe '#withdraw' do
-    it 'should initiate a new transaction' do
-      expect(statement).to receive(:new_transaction).with(100)
-      account.deposit(100)
+    it 'should initiate a new transaction with negative number' do
+      expect(statement).to receive(:new_transaction).with(-100)
+      account.withdraw(100)
+    end
+  end
+
+  describe '#statement' do
+    it 'should get the statement' do
+      expect(statement).to receive(:complete_log)
+      account.print_statement
     end
   end
 end

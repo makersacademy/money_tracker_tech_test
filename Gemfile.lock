@@ -15,6 +15,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
+    table_print (1.5.6)
     timecop (0.8.0)
 
 PLATFORMS
@@ -22,6 +23,7 @@ PLATFORMS
 
 DEPENDENCIES
   rspec
+  table_print
   timecop
 
 BUNDLED WITH

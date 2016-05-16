@@ -3,12 +3,11 @@ class Account
 attr_reader :statement
 
   def initialize(args)
-    @statement ||= args[:statement_class].new
-    @deposit_class = args[:deposit_class]
+    @statement ||= args[:statement]
   end
 
   def check_balance
-    statement.last_balance
+    statement.latest_balance
   end
   
   def deposit(amount)
@@ -16,7 +15,10 @@ attr_reader :statement
   end
 
   def withdraw(amount)
-    subtract_from_balance(amount)
+    statement.new_transaction(amount*-1)
   end 
 
+  def print_statement
+    statement.complete_log
+  end
 end
