@@ -2,7 +2,7 @@ class Account
 
   attr_reader :balance, :history
 
-  def initialize(transaction_class = Transaction)
+  def initialize(transaction_class: Transaction)
     @transaction_class = transaction_class
     @balance = 0
     @history = []
@@ -27,6 +27,6 @@ class Account
   end
 
   def store_transaction_history
-    @history << [@transaction, @balance]
+    @history << {transaction: @transaction, balance: @balance}
   end
 end

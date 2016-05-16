@@ -4,7 +4,7 @@ describe Account do
 
   let(:transaction_class) { double(:transaction_class, new: transaction) }
   let(:transaction) { double(:transaction) }
-  subject(:account) { described_class.new(transaction_class) }
+  subject(:account) { described_class.new(transaction_class: transaction_class) }
 
   describe '#initialize' do
     it 'initializes with a balance of zero' do
@@ -31,7 +31,7 @@ describe Account do
     end
 
     it 'stores a transaction in the history' do
-      last_transaction = account.history.last.first
+      last_transaction = account.history.last[:transaction]
       expect(last_transaction).to eq transaction
     end
   end
@@ -51,7 +51,7 @@ describe Account do
     end
 
     it 'stores a transaction in the history' do
-      last_transaction = account.history.last.first
+      last_transaction = account.history.last[:transaction]
       expect(last_transaction).to eq transaction
     end
   end
