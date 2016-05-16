@@ -1,6 +1,6 @@
-# The Bank Tech Test
+[![Build Status](https://travis-ci.org/eripheebs/bank_tech_test.svg?branch=master)](https://travis-ci.org/eripheebs/bank_tech_test)
 
->When in doubt, go for the simplest solution
+# The Bank Tech Test
 
 ### Requirements
 * Deposits, withdrawal
