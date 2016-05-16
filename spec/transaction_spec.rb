@@ -2,8 +2,8 @@ require 'transaction'
 
 describe Transaction do
   DATE = Date.new(2016,5,16)
-  CREDIT = rand(1000)
-  DEBIT = rand(1000)
+  CREDIT = '%.2f' % rand(1000)
+  DEBIT = '%.2f' % rand(1000)
   let(:transaction) { described_class.new DATE, CREDIT, DEBIT}
 
   describe '#initialize' do
@@ -22,7 +22,7 @@ describe Transaction do
 
   describe '#calculate_change' do
     it 'calculates the change' do
-      expect(transaction.calculate_change).to eq(CREDIT-DEBIT)
+      expect(transaction.calculate_change).to eq('%.2f' % (CREDIT.to_i - DEBIT.to_i))
     end
   end
 end

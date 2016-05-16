@@ -21,3 +21,7 @@ transaction_log.log(transaction_2)
 transaction_log.log(transaction_3)
 
 p account.calculate_balance
+
+
+'date || credit || debit || balance
+14/01/2012 || || 500.00 || 2500.00'
