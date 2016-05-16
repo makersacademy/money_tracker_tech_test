@@ -9,13 +9,15 @@ class BankAccount
     @transactions = []
   end
 
-  def deposit amount
+  def deposit date, amount
     @balance += amount
+    @transactions << {date: date, credit: amount, debit: 0, balance: @balance }
   end
 
-  def withdraw amount
+  def withdraw date, amount
     raise AVAILABLE_BALANCE_ERROR if @balance - amount <= 0
     @balance -= amount
+    @transactions << {date: date, credit: 0, debit: amount, balance: @balance }
   end
 
 end
