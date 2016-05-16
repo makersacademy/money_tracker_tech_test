@@ -1,11 +1,13 @@
 require_relative 'transaction_history'
+require_relative 'statement'
 
 class Account
   attr_reader :balance, :transaction
 
-  def initialize(transaction: TransactionHistory.new)
+  def initialize(transaction: TransactionHistory.new, statement: Statement.new)
     @balance = [0]
     @transaction = transaction
+    @statement = statement
   end
 
   def deposit(date, amount)
@@ -21,8 +23,7 @@ class Account
     @balance.reduce(:+)
   end
 
-  # def statement
-  #   "date || credit || debit || balance\n
-  #   #{transaction.date} || #{transaction.credit} || #{transaction.debit} || #{transaction.credit}"
-  # end
+  def statement
+    @statement.show(@transaction.history)
+  end
 end

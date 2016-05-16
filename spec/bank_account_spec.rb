@@ -11,8 +11,6 @@ describe Account do
   let(:date) { '14/01/2012' }
   let(:deposit_amount) { 1000.00 }
   let(:withdrawal_amount) { 500.00 }
-  # let(:statement) { "date || credit || debit || balance\n14/01/2012 || || 500.00 || 2500.00\n13/01/2012 || 2000.00 || || 3000.00\n
-  # 10/01/2012 || 1000.00 || || 1000.00 " }
 
   it 'has a balance of 0' do
     expect(account.balance).to eq 0

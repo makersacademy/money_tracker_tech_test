@@ -10,8 +10,15 @@ class TransactionHistory
   end
 
   def add(date, amount)
-    transaction = @transaction.new
-    transaction.value(date, amount)
-    @history << transaction.details
+    @current_transaction = @transaction.new
+    @current_transaction.value(date, amount)
+    @history << @current_transaction.details
+    balance
+  end
+
+  def balance
+    @history[-1][:balance] + amount
+    @history.each { |detail| balance << detail[:amount] }
+    @current_transaction.details[:balance] = balance.reduce(:+)
   end
 end
