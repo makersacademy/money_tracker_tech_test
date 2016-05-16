@@ -21,7 +21,7 @@ describe Transaction do
   end
 
   describe '#calculate_change' do
-    it 'calculates the change' do
+    it 'calculates the difference between credit and debit' do
       expect(transaction.calculate_change).to eq('%.2f' % (CREDIT.to_i - DEBIT.to_i))
     end
   end

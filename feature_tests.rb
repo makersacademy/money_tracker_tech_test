@@ -2,7 +2,7 @@ require 'date'
 require './lib/transaction.rb'
 require './lib/transaction_log.rb'
 require './lib/account.rb'
-
+require './lib/statement.rb'
 
 date_1 = Date.new(2012,1,10)
 date_2 = Date.new(2012,1,13)
@@ -22,7 +22,9 @@ transaction_log.log(transaction_3)
 
 p account.calculate_balance
 
-transaction_log.print_statement
+statement = Statement.new(transaction_log)
+
+puts statement.view_statement
 
 "date || credit || debit || balance
 2012/01/13 || 0.00 || 500.00 || 2500.00

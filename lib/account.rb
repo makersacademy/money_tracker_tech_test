@@ -1,6 +1,6 @@
 class Account
 
-  attr_reader :balance, :transaction_log
+  attr_reader :transaction_log
   STARTING_BALANCE = 0
 
   def initialize(transaction_log)
