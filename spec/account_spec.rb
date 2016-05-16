@@ -5,6 +5,7 @@ describe Account do
   let(:transaction) { double :transaction }
   AMOUNT = 10
   DATE = "16/05/16"
+  STATEMENT = "date || credit || debit || balance\n16/05/16 || 30 ||  || 30\n"
 
   it "should initialize with a balance of 0" do
     expect(account.balance).to eq 0
@@ -18,12 +19,12 @@ describe Account do
     expect(account.transaction_class).to eq transaction_class
   end
 
-  describe "#deposit" do
-    before(:each) do
-      allow(transaction).to receive(:amount)
-      allow(transaction).to receive(:update_transaction_balance)
-    end
+  before(:each) do
+    allow(transaction).to receive(:amount)
+    allow(transaction).to receive(:update_transaction_balance)
+  end
 
+  describe "#deposit" do
     it "should instantiate a new Transaction object" do
       expect(transaction_class).to receive(:new)
       account.deposit(AMOUNT, DATE)
@@ -47,11 +48,6 @@ describe Account do
   end
 
   describe "#withdraw" do
-    before(:each) do
-      allow(transaction).to receive(:amount)
-      allow(transaction).to receive(:update_transaction_balance)
-    end
-
     it "should instantiate a new Transaction object" do
       expect(transaction_class).to receive(:new)
       account.withdraw(10, "16/05/16")
@@ -73,8 +69,17 @@ describe Account do
     end
   end
 
-  # describe "#print_statement" do
-  #   it "should print with date, amount and balance"
-  # end
+  describe "#check_statement" do
+    before(:each) do
+      allow(transaction).to receive(:amount).and_return(30)
+      allow(transaction).to receive(:date).and_return("16/05/16")
+      allow(transaction).to receive(:balance_after_transaction).and_return(30)
+    end
+
+    it "should print with date, amount and balance" do
+      account.deposit(30, "16/05/16")
+      expect(account.check_statement).to eq STATEMENT
+    end
+  end
 
 end
