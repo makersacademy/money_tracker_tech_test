@@ -20,19 +20,21 @@ class TransactionLog
   end
 
   def print_statement(starting_balance=0)
-    statement = STATEMENT_HEADER
+    statement = ""
     balance = starting_balance
     @transactions.each do |transaction|
       balance = '%.2f' % (balance.to_i + transaction.calculate_change.to_i)
-      statement += "\n#{transaction.date.strftime("%Y/%m/%d/")} || #{transaction.credit} || #{transaction.debit} || #{balance}"
+      statement = "\n#{transaction.date.strftime("%Y/%m/%d")} || #{transaction.credit} || #{transaction.debit} || #{balance}" + statement
     end
-    return fix_spacing(statement)
+    fix_look(statement)
   end
 
   private
 
-  def fix_spacing(statement)
+  def fix_look(statement)
+    statement = STATEMENT_HEADER + statement
     statement.gsub!("  ", " ")
+    p statement
   end
 
 end
