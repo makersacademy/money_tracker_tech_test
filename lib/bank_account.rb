@@ -8,10 +8,7 @@ class BankAccount
   end
 
   def print_statement
-    @transaction_headers +
-      @transactions.inject('') do |acc, transaction|
-        acc + "\n" + transaction
-      end
+    ([@transaction_headers] + @transactions).join("\n")
   end
 
   def deposit date, amount
@@ -33,5 +30,6 @@ class BankAccount
   def log_transaction date, amount
     @transactions.push @transaction_klass.new date, amount, @balance
   end
+
 
 end
