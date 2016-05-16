@@ -52,7 +52,7 @@ describe BankAccount do
     end
 
     it 'returns the transactions in the right order' do
-      expect(test_account.print_statement).to include WITHDRAW_STRING + '\n' + DEPOSIT_STRING
+      expect(test_account.print_statement).to include WITHDRAW_STRING + "\n" + DEPOSIT_STRING
     end
 
   end

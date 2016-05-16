@@ -8,8 +8,8 @@ class BankAccount
   end
 
   def print_statement
-    @transaction_headers + '\n' +
-      @transactions.reverse.join('\n')
+    @transaction_headers + "\n" +
+      @transactions.reverse.join("\n")
   end
 
   def deposit date, amount
