@@ -1,19 +1,28 @@
 require 'account'
 
 describe Account do
-  FAKE_BALANCE = rand(1000)
-  let(:transaction_log) { double(:transaction_log, calculate_balance: FAKE_BALANCE) }
-  let(:account) { described_class.new transaction_log}
+  FAKE_AMOUNT = '%.2f' % rand(1000)
+  DATE = Date.new(2016,5,16)
+  let(:transaction_log) { described_class.new }
+  let(:transaction) { double(:transaction, calculate_change: FAKE_AMOUNT) }
 
   describe '#initialize' do
-    it 'has a transaction log' do
-      expect(account.transaction_log).to eq(transaction_log)
+    it 'has an empty array' do
+      expect(transaction_log.transactions).to eq([])
+    end
+  end
+
+  describe '#log' do
+    it 'logs transaction' do
+      transaction_log.log(transaction)
+      expect(transaction_log.transactions).to include(transaction)
     end
   end
 
   describe '#calculate_balance' do
-    it 'totals up the transactions' do
-      expect(account.calculate_balance).to eq(FAKE_BALANCE)
+    it 'calculates the balance' do
+      transaction_log.log(transaction)
+      expect(transaction_log.calculate_balance).to eq(FAKE_AMOUNT)
     end
   end
 

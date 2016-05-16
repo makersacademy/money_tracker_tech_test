@@ -1,6 +1,5 @@
 require 'date'
 require './lib/transaction.rb'
-require './lib/transaction_log.rb'
 require './lib/account.rb'
 require './lib/statement.rb'
 
@@ -12,19 +11,19 @@ transaction_1 = Transaction.new(date_1, 1000, 0)
 transaction_2 = Transaction.new(date_2, 2000, 0)
 transaction_3 = Transaction.new(date_2, 0, 500)
 
-transaction_log = TransactionLog.new
+account = Account.new
 
-account = Account.new transaction_log
-
-transaction_log.log(transaction_1)
-transaction_log.log(transaction_2)
-transaction_log.log(transaction_3)
+account.log(transaction_1)
+account.log(transaction_2)
+account.log(transaction_3)
 
 p account.calculate_balance
 
-statement = Statement.new(transaction_log)
+statement = Statement.new(account)
 
 puts statement.view_statement
+puts statement.view_statement(withdrawals:true)
+puts statement.view_statement(ascending:true)
 
 "date || credit || debit || balance
 2012/01/13 || 0.00 || 500.00 || 2500.00
