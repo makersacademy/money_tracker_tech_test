@@ -15,10 +15,4 @@ class Transaction
     return :deposit if !(credit == 0)
     :withdrawal if !(debit == 0)
   end
-
-  private
-
-  def two_sf(amount)
-    '%.2f' % amount
-  end
 end
