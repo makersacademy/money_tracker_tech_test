@@ -2,7 +2,9 @@ require_relative '../lib/account'
 
 describe Account do
 
-  subject(:account) { described_class.new }
+  let(:transaction_class) { double(:transaction_class, new: transaction) }
+  let(:transaction) { double(:transaction) }
+  subject(:account) { described_class.new(transaction_class) }
 
   describe '#initialize' do
     it 'initializes with a balance of zero' do
@@ -14,10 +16,10 @@ describe Account do
     end
   end
 
-  describe '#print_statement' do
-    it 'prints out a statement with date, credit, deposit and balance' do
-      colums = 'date || credit || debit || balance'
-      expect(account.print_statement.include?(colums)).to eq true
+  describe '#withdraw' do
+    it 'creates a transaction with negative integer as amount' do
+      account.withdraw(-500)
+      expect(transaction_class).to have_received(:new)
     end
   end
 end
