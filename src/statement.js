@@ -12,21 +12,19 @@ Statement.prototype.print = function (filter) {
 };
 
 Statement.prototype._filterHistory = function (filter) {
-  if (filter === 'descending') {
-    return this._transactionHistory.reverse();
-  }
-  if (filter === 'ascending') {
-    return this._transactionHistory;
-  }
-  if (filter === 'deposits') {
-    return this._transactionHistory.filter(function (transaction) {
-      return transaction.isDeposit();
-    });
-  }
-  if (filter === 'withdrawals') {
-    return this._transactionHistory.filter(function (transaction) {
-      return !transaction.isDeposit();
-    });
+  switch(filter) {
+    case 'ascending':
+      return this._transactionHistory;
+    case 'deposits':
+      return this._transactionHistory.filter(function (transaction) {
+        return transaction.isDeposit();
+      });
+    case 'withdrawals':
+      return this._transactionHistory.filter(function (transaction) {
+        return !transaction.isDeposit();
+      });
+    default:
+      return this._transactionHistory.reverse();
   }
 };
 
