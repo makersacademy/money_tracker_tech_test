@@ -8,4 +8,8 @@ class Account
   def get_balance
     @balance
   end
+
+  def make_deposit(amount)
+    @balance += amount
+  end
 end
