@@ -2,7 +2,7 @@ require 'transaction'
 
 describe Transaction do 
 
-subject(:transaction) { described_class.new(1000) }
+subject(:transaction) { described_class.new }
 
 	describe '#initialize' do
 
@@ -12,9 +12,31 @@ subject(:transaction) { described_class.new(1000) }
 			expect(transaction.date).to eq('16/05/2016')
 		end
 
-		it 'with an amount' do
-			expect(transaction.amount).to eq 1000
+		it 'has a credit amount' do
+			expect(transaction.credit).to eq 0
 		end
+
+		it 'with a debit amount' do
+			expect(transaction.debit).to eq 0
+		end
+	end
+
+	describe '#type_credit' do
+
+		it 'assigns an amount to credit attribute' do
+			transaction.type_credit(1000)
+			expect(transaction.credit).to eq 1000
+		end
+
+	end
+
+	describe '#type_debit' do
+
+		it 'assigns an amount to debit attribute' do
+			transaction.type_debit(1000)
+			expect(transaction.debit).to eq 1000
+		end
+
 	end
 	
 end

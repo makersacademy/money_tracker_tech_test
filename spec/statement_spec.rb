@@ -3,6 +3,7 @@ require 'statement'
 describe Statement do 
 
 	subject(:statement) { described_class.new }
+	#let(:transaction) { double :transaction }
 
 	describe '#initialize' do
 
@@ -13,6 +14,7 @@ describe Statement do
 		it 'has a transactions array that is empty' do
 			expect(statement.transactions).to be_empty
 		end
+
 	end
 	
 end
