@@ -10,13 +10,23 @@ class Account
 
   def withdraw(amount)
     @transaction = @transaction_class.new(-amount)
-    @balance -= amount
-    @history << [@transaction, @balance]
+    update_balance(-amount)
+    store_transaction_history
   end
 
   def deposit(amount)
     @transaction = @transaction_class.new(amount)
+    update_balance(amount)
+    store_transaction_history
+  end
+
+  private
+
+  def update_balance(amount)
     @balance += amount
+  end
+
+  def store_transaction_history
     @history << [@transaction, @balance]
   end
 end
