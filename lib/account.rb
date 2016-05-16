@@ -10,10 +10,11 @@ class Account
 
   def credit(amount, date)
     @credit_transaction = @transaction_class.new(amount, date)
+    transactions.push(credit_transaction)
   end
 
   def debit(amount, date)
-    @credit_transaction = @transaction_class.new(amount, date)
+    @credit_transaction = @transaction_class.new(-amount, date)
   end
 
 end

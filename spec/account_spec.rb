@@ -3,6 +3,8 @@ describe Account do
   subject(:account) { described_class.new(transaction_class) }
   let(:transaction_class) { double :transaction_class, new: transaction }
   let(:transaction) { double :transaction }
+  AMOUNT = 10
+  DATE = "16/05/16"
 
   it "should initialize with a balance of 0" do
     expect(account.balance).to eq 0
@@ -19,12 +21,13 @@ describe Account do
   describe "#credit" do
     it "should instantiate a new Transaction object" do
       expect(transaction_class).to receive(:new)
-      account.credit(10, "16/05/16")
+      account.credit(AMOUNT, DATE)
     end
 
-    # it "should push the transaction object into the transactions array" do
-    #   account.credit()
-    # end
+    it "should push the transaction object into the transactions array" do
+      account.credit(AMOUNT, DATE)
+      expect(account.transactions).to include(transaction)
+    end
   end
 
   describe "#debit" do
