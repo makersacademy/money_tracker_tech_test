@@ -1,22 +1,19 @@
-require_relative '../lib/bank'
+require './lib/bank'
 
 describe Bank do
 
-  subject(:bank) { described_class.new }
+  subject(:bank) { described_class.new(statement_class: statement_class) }
 
-  let(:transaction1) { double(:transaction, date: '10/01/2012', amount: -1000, balance: -1000) }
-  let(:transaction2) { double(:transaction, date: '15/01/2012', amount: 2500, balance:  1500) }
-  let(:history) { [transaction1, transaction2] }
+  let(:statement_class) { double(:statement_class, new: statement) }
+  let(:statement) { double(:statement, format_transaction: "10/01/2012 -1000 15/01/2012 2500")}
 
-  let(:empty_account) { double(:account, balance: 0, history: []) }
-  let(:used_account) { double(:account, balance: 1500, history: history) }
+  let(:used_account) { double(:account, balance: 1500, history: nil) }
 
   describe '#print_statement' do
-    it 'prints out a statement with date, credit, deposit and balance' do
-      colums = 'date || credit || debit || balance'
-      expect(bank.print_statement(empty_account).include?(colums)).to eq true
+    it 'instantiate a statement object with an account history' do
+      bank.print_statement(used_account)
+      expect(statement_class).to have_received(:new)
     end
-
     it 'prints out a statement with date, credit, deposit and balance' do
       statement = bank.print_statement(used_account)
       expect(statement.include?('10/01/2012' && '-1000' && '15/01/2012' && '2500')).to eq true
