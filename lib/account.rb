@@ -10,6 +10,12 @@ class Account
   end
 
   def make_deposit(amount)
-    @balance += amount
+    @balance += amount if valid_deposit(amount)
+  end
+
+  private
+
+  def valid_deposit(amount)
+    (amount.is_a? Numeric) && amount > 0
   end
 end
