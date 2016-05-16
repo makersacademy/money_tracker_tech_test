@@ -1,6 +1,6 @@
 ![](https://travis-ci.org/olmesm/bank_tech_test.svg?branch=master)
 
-
+[![Coverage Status](https://coveralls.io/repos/github/olmesm/bank_tech_test/badge.svg?branch=master)](https://coveralls.io/github/olmesm/bank_tech_test?branch=master)
 
 # The Bank Tech Test
 
