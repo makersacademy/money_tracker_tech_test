@@ -11,12 +11,6 @@ describe Bank do
   let(:empty_account) { double(:account, balance: 0, history: []) }
   let(:used_account) { double(:account, balance: 1500, history: history) }
 
-  describe '#initialize' do
-    it 'initializes with a template for statement' do
-      expect(bank.statement).to eq "date || credit || debit || balance\n"
-    end
-  end
-
   describe '#print_statement' do
     it 'prints out a statement with date, credit, deposit and balance' do
       colums = 'date || credit || debit || balance'
