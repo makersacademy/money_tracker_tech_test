@@ -1,4 +1,4 @@
-class Deposit
+class Withdraw
 
   attr_reader :amount
 

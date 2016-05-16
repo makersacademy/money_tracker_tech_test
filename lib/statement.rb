@@ -17,15 +17,18 @@ class Statement
 private
 
   def create_deposit(amount)
-    @balance.add(amount) 
     deposit = @deposit_class.new(amount)
-    save_to_statement(deposit)
+    update_balance(deposit)
   end
 
   def create_withdraw(amount)
-    @balance.subtract(amount)
     withdraw = @withdraw_class.new(amount)
-    save_to_statement(withdraw)
+    update_balance(withdraw)
+  end
+
+  def update_balance(transaction_type)
+    @balance.update(transaction_type.amount)
+    add_to_statement(transaction_type)
   end
 
   def save_to_statement(object)
