@@ -1,8 +1,8 @@
-[travis][https://travis-ci.org/olmesm/bank_tech_test.svg?branch=master]
+![](https://travis-ci.org/olmesm/bank_tech_test.svg?branch=master)
 
 # The Bank Tech Test
 
->When in doubt, go for the simplest solution
+> When in doubt, go for the simplest solution
 
 ### Requirements
 * Deposits, withdrawal
