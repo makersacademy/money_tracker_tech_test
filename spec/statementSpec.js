@@ -1,0 +1,34 @@
+'use strict';
+
+describe('statement', function () {
+  var statement, deposit, withdrawal;
+
+  beforeEach(function () {
+    var account = jasmine.createSpyObj('account', ['getTransactionHistory']);
+    deposit = jasmine.createSpyObj('deposit', ['getDate', 'getAmount', 'getBalance', 'isDeposit']);
+    withdrawal = jasmine.createSpyObj('withdrawal', ['getDate', 'getAmount', 'getBalance', 'isDeposit']);
+    account.getTransactionHistory.and.returnValue([deposit, withdrawal]);
+    statement = new Statement(account);
+  });
+
+  describe('print', function () {
+    beforeEach(function () {
+      deposit.getDate.and.returnValue(new Date('May 15 2016'));
+      deposit.isDeposit.and.returnValue(true);
+      deposit.getAmount.and.returnValue(1000);
+      deposit.getBalance.and.returnValue(1000);
+
+      withdrawal.getDate.and.returnValue(new Date('May 16 2016'));
+      withdrawal.isDeposit.and.returnValue(false);
+      withdrawal.getAmount.and.returnValue(500);
+      withdrawal.getBalance.and.returnValue(500);
+    });
+
+    it('prints a statement', function () {
+      var header = 'date || credit || debit || balance';
+      var depositRow = '15/05/2016 || 1000.00 || || 1000.00';
+      var withdrawalRow = '16/05/2016 || || 500.00 || 500.00';
+      expect(statement.print()).toEqual(header + '\n' + withdrawalRow + '\n' + depositRow);
+    });
+  });
+});

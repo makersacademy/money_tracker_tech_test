@@ -1,20 +1,33 @@
 'use strict';
 
 describe('Transaction', function () {
-  var transaction;
+  var deposit, withdrawal, date;
 
   beforeEach(function () {
-    transaction = new Transaction(1000, 'deposit', 1000, '10-01-2012');
+    date = new Date('May 16 2016');
+    deposit = new Transaction(1000, 'deposit', 1000, date);
+    withdrawal = new Transaction(500, 'withdrawal', 2500, date);
   });
 
-  describe('format for statement', function () {
-    it('formats a deposit', function () {
-      expect(transaction.formatForStatement()).toEqual('10/01/2012 || 1000.00 || || 1000.00');
+  it('has a date', function () {
+    expect(deposit.getDate()).toEqual(date);
+  });
+
+  it('has an amount', function () {
+    expect(deposit.getAmount()).toEqual(1000);
+  });
+
+  it('has a balance', function () {
+    expect(deposit.getBalance()).toEqual(1000);
+  });
+
+  describe('is deposit', function () {
+    it('returns true for a deposit', function () {
+      expect(deposit.isDeposit()).toEqual(true);
     });
 
-    it('formats a withdrawal', function () {
-      var withdrawal = new Transaction(500, 'withdrawal', 2500, '14-01-2012');
-      expect(withdrawal.formatForStatement()).toEqual('14/01/2012 || || 500.00 || 2500.00');
+    it('returns false for a withdrawal', function () {
+      expect(withdrawal.isDeposit()).toEqual(false);
     });
   });
 });

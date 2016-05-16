@@ -45,20 +45,4 @@ describe('BankAccount', function () {
       expect(bankAccount.getTransactionHistory().length).toEqual(2);
     });
   });
-
-  describe('print statement', function () {
-    beforeEach(function () {
-      var deposit = jasmine.createSpyObj('deposit', ['formatForStatement']);
-      var withdrawal = jasmine.createSpyObj('withdrawal', ['formatForStatement']);
-      deposit.formatForStatement.and.returnValue('deposit');
-      withdrawal.formatForStatement.and.returnValue('withdrawal');
-      spyOn(bankAccount, 'getTransactionHistory').and.returnValue([deposit, withdrawal]);
-    });
-
-    it('displays a transaction history', function () {
-      var header = 'date || credit || debit || balance';
-      var body = 'deposit\nwithdrawal\n';
-      expect(bankAccount.printStatement()).toEqual(header + '\n' + body);
-    });
-  });
 });
