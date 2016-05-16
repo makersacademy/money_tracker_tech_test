@@ -11,4 +11,9 @@ describe Account do
     account.make_deposit 50
     expect(account.get_balance).to eq Account::STARTING_BALANCE + 50
   end
+
+  it 'Can withdraw' do
+    account.withdraw 40
+    expect(account.get_balance).to eq Account::STARTING_BALANCE - 40
+  end
 end
