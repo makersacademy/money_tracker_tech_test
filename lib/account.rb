@@ -8,7 +8,7 @@ class Account
     @balance = 0
     @transactions = []
     @transaction_class = transaction_class
-    @statement = "date || credit || debit || balance\n"
+    @statement = "date || credit || debit || balance \n "
   end
 
   def deposit(amount, date)
@@ -27,12 +27,13 @@ class Account
 
   def check_statement
     transactions.each { |transaction| print_statement(transaction) }
+    puts @statement
     @statement
   end
 
   def print_statement(transaction)
     transaction.amount < 0 ? debit = transaction.amount : credit = transaction.amount
-    @statement += "#{transaction.date} || #{credit} || #{debit} || #{transaction.balance_after_transaction}\n"
+    @statement += "#{transaction.date} || #{credit} || #{debit} || #{transaction.balance_after_transaction} \n"
   end
 
   private

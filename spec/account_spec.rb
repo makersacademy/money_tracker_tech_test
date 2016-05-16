@@ -5,7 +5,7 @@ describe Account do
   let(:transaction) { double :transaction }
   AMOUNT = 10
   DATE = "16/05/16"
-  STATEMENT = "date || credit || debit || balance\n16/05/16 || 30 ||  || 30\n"
+  STATEMENT = "date || credit || debit || balance \n 16/05/16 || 30 ||  || 30 \n"
 
   it "should initialize with a balance of 0" do
     expect(account.balance).to eq 0
