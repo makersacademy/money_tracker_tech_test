@@ -12,4 +12,12 @@ class Transaction
     '%.2f' % (@credit.to_i - @debit.to_i)
   end
 
+  def is_deposit?
+    !(credit = "0.00")
+  end
+
+  def is_withdrawal?
+    !(debit = "0.00")
+  end
+
 end

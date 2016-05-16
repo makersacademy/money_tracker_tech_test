@@ -16,6 +16,24 @@ class Statement
     fix_look(statement)
   end
 
+  def view_deposits(balance=0)
+    statement = ""
+    transaction_log.transactions.each do |transaction|
+      balance = update_balance(balance, transaction)
+      statement = update_statement(statement, transaction, balance) if transaction.is_deposit?
+    end
+    fix_look(statement)
+  end
+
+  def view_withdrawals(balance=0)
+    statement = ""
+    transaction_log.transactions.each do |transaction|
+      balance = update_balance(balance, transaction)
+      statement = update_statement(statement, transaction, balance) if transaction.is_withdrawal?
+    end
+    fix_look(statement)
+  end
+
   private
 
   def fix_look(statement)
