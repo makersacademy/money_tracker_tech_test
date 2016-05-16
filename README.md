@@ -1,4 +1,4 @@
-[travis]: https://travis-ci.org/olmesm/bank_tech_test.svg?branch=master
+[travis][https://travis-ci.org/olmesm/bank_tech_test.svg?branch=master]
 
 # The Bank Tech Test
 
