@@ -12,13 +12,15 @@ class BankAccount
   end
 
   def deposit(transaction_instance)
+    @balance += transaction_instance.credit
+    transaction_instance.current_balance(balance)
     add_transaction(transaction_instance)
-    @balance += transaction_instance.amount
   end
 
   def withdraw(transaction_instance)
+    @balance -= transaction_instance.debit
+    transaction_instance.current_balance(balance)
     add_transaction(transaction_instance)
-    @balance -= transaction_instance.amount
   end
 
   private
