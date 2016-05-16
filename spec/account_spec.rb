@@ -1,13 +1,13 @@
 require 'account'
 
 describe Account do
-  let(:transaction_log) { double(:transaction_log) }
+  let(:transaction_log) { double(:transaction_log, total: 100) }
 
   subject { described_class.new(transaction_log) }
 
   describe 'balance' do
-    it 'initializes at 0' do
-      expect(subject.balance).to eq 0
+    it 'is equal to the transaction log total' do
+      expect(subject.balance).to eq transaction_log.total
     end
   end
 
@@ -16,4 +16,5 @@ describe Account do
       expect(subject.transaction_log).to eq transaction_log
     end
   end
+
 end
