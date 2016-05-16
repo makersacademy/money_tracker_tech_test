@@ -1,5 +1,4 @@
 class Statement
-
   attr_reader :transaction_log
   STATEMENT_HEADER = "date || credit || debit || balance"
 
@@ -29,7 +28,7 @@ class Statement
   end
 
   def update_balance(balance, transaction)
-    '%.2f' % (balance.to_i + transaction.calculate_change.to_i)
+    two_sf(balance.to_i + transaction.calculate_change.to_i)
   end
 
   def update_statement(statement, transaction, balance, ascending)
@@ -41,4 +40,7 @@ class Statement
     "\n#{transaction.date.strftime("%Y/%m/%d")} || #{transaction.credit} || #{transaction.debit} || #{balance}"
   end
 
+  def two_sf(amount)
+    '%.2f' % amount
+  end
 end

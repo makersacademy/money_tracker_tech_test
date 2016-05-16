@@ -1,5 +1,4 @@
 class Account
-
   attr_reader :transaction_log
   STARTING_BALANCE = 0
 
@@ -10,5 +9,4 @@ class Account
   def calculate_balance
     transaction_log.calculate_balance(STARTING_BALANCE)
   end
-
 end

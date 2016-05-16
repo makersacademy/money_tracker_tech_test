@@ -25,7 +25,6 @@
       ],
       "/Users/erikapheby/Projects/bank_tech_test/lib/account.rb": [
         1,
-        null,
         1,
         1,
         null,
@@ -35,7 +34,6 @@
         null,
         1,
         1,
-        null,
         null,
         null
       ],
@@ -90,7 +88,6 @@
       ],
       "/Users/erikapheby/Projects/bank_tech_test/lib/statement.rb": [
         1,
-        null,
         1,
         1,
         null,
@@ -132,6 +129,9 @@
         6,
         null,
         null,
+        1,
+        8,
+        null,
         null
       ],
       "/Users/erikapheby/Projects/bank_tech_test/spec/transaction_log_spec.rb": [
@@ -167,7 +167,6 @@
       ],
       "/Users/erikapheby/Projects/bank_tech_test/lib/transaction_log.rb": [
         1,
-        null,
         1,
         null,
         1,
@@ -224,7 +223,6 @@
       ],
       "/Users/erikapheby/Projects/bank_tech_test/lib/transaction.rb": [
         1,
-        null,
         1,
         null,
         1,
@@ -244,10 +242,15 @@
         1,
         0,
         null,
+        null,
+        1,
+        null,
+        1,
+        9,
         null,
         null
       ]
     },
-    "timestamp": 1463413515
+    "timestamp": 1463413634
   }
 }

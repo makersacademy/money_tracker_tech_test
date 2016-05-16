@@ -8,7 +8,7 @@ class Transaction
   end
 
   def calculate_change
-    '%.2f' % (@credit.to_i - @debit.to_i)
+    two_sf(@credit.to_i - @debit.to_i)
   end
 
   def is_deposit?
