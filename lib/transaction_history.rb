@@ -1,6 +1,8 @@
+require_relative 'transaction'
+
 class TransactionHistory
 
-  def initialize(transaction_class: )
+  def initialize(transaction_class = Transaction )
     @transaction_class = transaction_class
     @transactions = []
   end
@@ -10,12 +12,12 @@ class TransactionHistory
   end
 
   def deposit(date, amount, balance)
-    transaction = @transaction_class.new(date, amount, balance)
+    transaction = @transaction_class.new(date, amount, 0,  balance)
     @transactions.unshift(transaction)
   end
 
   def withdraw(date, amount, balance)
-    transaction = @transaction_class.new(date, -amount, balance)
+    transaction = @transaction_class.new(date, 0, -amount, balance)
     @transactions.unshift(transaction)
   end
 

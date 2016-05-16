@@ -4,11 +4,11 @@ describe TransactionHistory do
 
   let(:transaction){ double :transaction }
   let(:transaction_class){double :transaction_class, new: transaction}
-  subject(:transaction_history) {described_class.new(transaction_class: transaction_class)}
+  subject(:transaction_history) {described_class.new(transaction_class)}
 
   describe '#deposit' do
     it 'creates a transaction' do
-      expect(transaction_class).to receive(:new).with('10/01/2012', 1000.00, 1000.00)
+      expect(transaction_class).to receive(:new).with('10/01/2012', 1000.00, 0, 1000.00)
       transaction_history.deposit('10/01/2012', 1000.00, 1000.00)
     end
 
@@ -21,7 +21,7 @@ describe TransactionHistory do
 
   describe '#withdraw' do
     it 'creates a transaction' do
-      expect(transaction_class).to receive(:new).with('10/01/2012', -1000.00, 0)
+      expect(transaction_class).to receive(:new).with('10/01/2012', 0, -1000.00, 0)
       transaction_history.withdraw('10/01/2012', 1000.00, 0)
     end
 
