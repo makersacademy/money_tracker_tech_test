@@ -12,13 +12,19 @@ class Account
   attr_reader :balance
 
   def make_deposit(amount)
-    @balance += amount if @transaction.can_deposit(amount)
+    return unless @transaction.can_deposit(amount)
+    @balance += amount
     handle_transaction(amount)
   end
 
   def withdraw(amount, pin)
-    @balance -= amount if can_withdraw(amount) && valid_pin(pin)
+    return unless can_withdraw(amount) && valid_pin(pin)
+    @balance -= amount
     handle_transaction(-amount)
+  end
+
+  def print_statement
+    @log.print_statement
   end
 
   private
@@ -37,7 +43,7 @@ class Account
   end
 
   def create_transaction(amount)
-    @transaction.new(Date.new, amount, @balance)
+    @transaction.new(amount, @balance)
   end
 
   def log_transaction(transaction)
