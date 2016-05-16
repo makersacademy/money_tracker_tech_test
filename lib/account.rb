@@ -1,12 +1,14 @@
-require_relative 'transaction.rb'
+require_relative 'deposit.rb'
+require_relative 'withdrawal.rb'
 
 class Account
 
-  attr_reader :transactions, :transaction_class
+  attr_reader :transactions, :deposit_class, :withdrawal_class
 
-  def initialize(transaction_class = Transaction)
+  def initialize(deposit_class = Deposit, withdrawal_class = Withdrawal)
     @transactions = []
-    @transaction_class = transaction_class
+    @deposit_class = deposit_class
+    @withdrawal_class = withdrawal_class
   end
 
   def print_statement
@@ -14,16 +16,18 @@ class Account
   end
 
   def deposit(amount)
-    @transactions << @transaction_class.new(amount)
+    @transactions << @deposit_class.new(amount)
   end
 
   def withdraw(amount)
-    @transactions << @transaction_class.new(-amount)
+    @transactions << @withdrawal_class.new(amount)
   end
 
   def balance
     arr = []
     transactions.map{ |t| arr << t.amount }
+    p arr
+    p arr.reduce(:+)
     return 0 if arr.reduce(:+) == nil
     arr.reduce(:+)
   end

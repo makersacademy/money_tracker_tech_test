@@ -1,6 +1,6 @@
-class Transaction
+class Deposit
 
-  attr_reader :date, :amount, :balance_at_transaction
+  attr_reader :date, :amount
 
   def initialize(amount, date = Time.new)
     @date = parse_date_only(date)

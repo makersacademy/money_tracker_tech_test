@@ -1,9 +1,10 @@
 describe Account do
 
-  let(:transaction_class){ double :transaction_class, new: transaction }
-  let(:transaction){ double(:transaction, date: "16/05/2016", amount: 1000) }
-  let(:transaction2){ double :transaction, amount: -500 }
-  subject(:account){ described_class.new(transaction_class) }
+  let(:deposit_class){ double :deposit_class, new: deposit }
+  let(:withdrawal_class){ double :withdrawal_class, new: withdrawal }
+  let(:deposit){ double(:deposit, date: "16/05/2016", amount: 1000) }
+  let(:withdrawal){ double :withdrawal, amount: -500 }
+  subject(:account){ described_class.new(deposit_class, withdrawal_class) }
 
 
   context 'initialization' do
@@ -19,7 +20,7 @@ describe Account do
     it 'can keep track of the current balance' do
       account.deposit(1000)
       account.withdraw(500)
-      allow(account).to receive(:transactions){ [transaction, transaction2] }
+      allow(account).to receive(:transactions){ [deposit, withdrawal] }
       expect(account.balance).to eq 500
     end
 
@@ -27,7 +28,7 @@ describe Account do
 
   context 'deposits' do
     it 'creates a transaction when depositing' do
-      expect(account.transaction_class).to receive(:new)
+      expect(account.deposit_class).to receive(:new)
       account.deposit(1000)
     end
 
@@ -40,7 +41,7 @@ describe Account do
 
   context 'withdrawals' do
     it 'creates a transaction when withdrawing' do
-      expect(account.transaction_class).to receive(:new)
+      expect(account.withdrawal_class).to receive(:new)
       account.withdraw(500)
     end
 
@@ -56,7 +57,7 @@ describe Account do
     end
 
     it 'prints a row of a statement' do
-      allow(account).to receive(:transactions){ [transaction] }
+      allow(account).to receive(:transactions){ [deposit] }
       expect(account.print_statement).to include("16/05/2016 || 1000 || 1000")
     end
 

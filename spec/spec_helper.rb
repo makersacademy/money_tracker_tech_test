@@ -1,5 +1,6 @@
 require 'account.rb'
-require 'transaction.rb'
+require 'deposit.rb'
+require 'withdrawal.rb'
 
 
 RSpec.configure do |config|
