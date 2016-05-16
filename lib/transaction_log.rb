@@ -33,7 +33,7 @@ class TransactionLog
 
   def fix_look(statement)
     statement = STATEMENT_HEADER + statement
-    statement.gsub!("  ", " ")
+    statement.gsub!(" 0.00 ", " ")
     p statement
   end
 

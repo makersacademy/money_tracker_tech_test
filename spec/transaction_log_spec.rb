@@ -4,8 +4,8 @@ describe TransactionLog do
   RANDOM_AMOUNT = "600.00"
   DATE = Date.new(2016,5,16)
   let(:transaction_log) { described_class.new }
-  let(:transaction) { double(:transaction, calculate_change: RANDOM_AMOUNT, credit: nil, debit: RANDOM_AMOUNT, date: DATE) }
-  let(:transaction_2) { double(:transaction, calculate_change: "500.00", credit: "500.00", debit: nil, date: DATE) }
+  let(:transaction) { double(:transaction, calculate_change: RANDOM_AMOUNT, credit: "0.00", debit: RANDOM_AMOUNT, date: DATE) }
+  let(:transaction_2) { double(:transaction, calculate_change: "500.00", credit: "500.00", debit: "0.00", date: DATE) }
 
   describe '#initialize' do
     it 'has an empty array' do

@@ -24,5 +24,7 @@ p account.calculate_balance
 
 transaction_log.print_statement
 
-'date || credit || debit || balance
-14/01/2012 || || 500.00 || 2500.00'
+"date || credit || debit || balance
+2012/01/13 || 0.00 || 500.00 || 2500.00
+2012/01/13 || 2000.00 || 0.00 || 3000.00
+2012/01/10 || 1000.00 || 0.00 || 1000.00"
