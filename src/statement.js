@@ -6,24 +6,28 @@ function Statement(account) {
 };
 
 Statement.prototype.print = function (filter) {
+  var history = this._filterHistory(filter);
+  var list = this._formatList(history);
+  return this._header + '\n' + list;
+};
+
+Statement.prototype._filterHistory = function (filter) {
   if (filter === 'descending') {
-    var history = this._transactionHistory.reverse();
+    return this._transactionHistory.reverse();
   }
   if (filter === 'ascending') {
-    var history = this._transactionHistory;
+    return this._transactionHistory;
   }
   if (filter === 'deposits') {
-    var history = this._transactionHistory.filter(function (transaction) {
+    return this._transactionHistory.filter(function (transaction) {
       return transaction.isDeposit();
     });
   }
   if (filter === 'withdrawals') {
-    var history = this._transactionHistory.filter(function (transaction) {
+    return this._transactionHistory.filter(function (transaction) {
       return !transaction.isDeposit();
     });
   }
-  var list = this._formatList(history);
-  return this._header + '\n' + list;
 };
 
 Statement.prototype._formatList = function (history) {
