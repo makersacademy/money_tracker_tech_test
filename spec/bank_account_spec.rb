@@ -45,10 +45,20 @@ describe BankAccount do
       amount = 500.00
       bank_account.deposit("10/01/2012", 3000)
       bank_account.withdraw(date, amount)
-      expect(bank_account.transactions).to include({ date:    date, 
+      expect(bank_account.transactions).to include({ date:    date,
                                                      credit:  0,
                                                      debit:   amount,
                                                      balance: 2500 })
+    end
+  end
+
+  describe '#print_statement' do
+    it 'prints statement in expected format' do
+      bank_account.deposit("10/01/2012", 1000)
+      bank_account.deposit("13/01/2012", 2000)
+      bank_account.withdraw("13/01/2012", 2000)
+      statement = "\"date || credit || debit || balance\"\n\"13/01/2012 ||  || 2000 || 1000\"\n\"13/01/2012 || 2000 ||  || 3000\"\n\"10/01/2012 || 1000 ||  || 1000\"\n"
+      expect{ bank_account.print_statement }.to output(statement).to_stdout
     end
   end
 
