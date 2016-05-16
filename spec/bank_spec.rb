@@ -1,13 +1,13 @@
 require 'bank_account'
 
-HEADERS = 'date || credit || debit || balance'
+HEADERS = 'test headers'
 DEPOSIT_STRING = 'test deposit'
 WITHDRAW_STRING = 'test withdrawal'
 DUMMY_DATE1 = Date.new(1970,1,1)
 DUMMY_DATE2 = Date.new(1970,1,2)
 
 describe BankAccount do
-  let(:dummy_transaction_log_class) { double :TransactionLog }
+  let(:dummy_transaction_log_class) { double :TransactionLog, headers: HEADERS }
   subject(:test_account) { described_class.new dummy_transaction_log_class }
 
   before :each do

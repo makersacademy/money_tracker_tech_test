@@ -2,7 +2,7 @@ class BankAccount
 
   def initialize transaction_klass
     @current_balance = 0
-    @transaction_headers = 'date || credit || debit || balance'
+    @transaction_headers = transaction_klass.headers
     @transactions = []
     @transaction_klass = transaction_klass
   end

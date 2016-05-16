@@ -1,4 +1,9 @@
 class TransactionLog
+  HEADERS = 'date || credit || debit || balance'
+
+  def self.headers
+    HEADERS
+  end
 
   def initialize date, amount, balance
     @date = date
