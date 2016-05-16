@@ -7,16 +7,20 @@ class Statement
     @transaction_log = transaction_log
   end
 
-  def view_statement(start_balance:balance=0, withdrawals:withdrawals=true, deposits:deposits=true)
+  def view_statement(start_balance:balance=0, withdrawals:withdrawals=true, deposits:deposits=true, ascending: ascending=false)
     statement = ""
     transaction_log.transactions.each do |transaction|
       balance = update_balance(balance, transaction)
-      statement = update_statement(statement, transaction, balance) if (transaction.is_deposit? == deposits || transaction.is_withdrawal? == withdrawals)
+      statement = update_statement(statement, transaction, balance, ascending) if chosen?(transaction, withdrawals, deposits)
     end
     fix_look(statement)
   end
 
   private
+
+  def chosen?(transaction, withdrawals, deposits)
+    (transaction.is_deposit? == deposits || transaction.is_withdrawal? == withdrawals)
+  end
 
   def fix_look(statement)
     statement = STATEMENT_HEADER + statement
@@ -28,7 +32,8 @@ class Statement
     '%.2f' % (balance.to_i + transaction.calculate_change.to_i)
   end
 
-  def update_statement(statement, transaction, balance)
+  def update_statement(statement, transaction, balance, ascending)
+    return statement + "\n#{transaction.date.strftime("%Y/%m/%d")} || #{transaction.credit} || #{transaction.debit} || #{balance}" if ascending
     "\n#{transaction.date.strftime("%Y/%m/%d")} || #{transaction.credit} || #{transaction.debit} || #{balance}" + statement
   end
 

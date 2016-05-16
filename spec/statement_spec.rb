@@ -37,5 +37,11 @@ describe Statement do
       end
     end
 
+    context 'viewing ascending order' do
+      it 'gives you the statement in the reverse order' do
+        STATEMENT = "date || credit || debit || balance\n#{DATE.strftime("%Y/%m/%d")} || || #{RANDOM_AMOUNT} || #{RANDOM_AMOUNT}\n#{DATE.strftime("%Y/%m/%d")} || #{RANDOM_AMOUNT_2} || || 1100.00"
+        expect(statement.view_statement(ascending:true)).to eq(STATEMENT)
+      end
+    end
   end
 end
