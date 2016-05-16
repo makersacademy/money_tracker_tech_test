@@ -3,7 +3,7 @@ require 'statement'
 describe Statement do 
 
 	subject(:statement) { described_class.new }
-	#let(:transaction) { double :transaction }
+	let(:transaction) { double :transaction }
 
 	describe '#initialize' do
 
@@ -15,6 +15,13 @@ describe Statement do
 			expect(statement.transactions).to be_empty
 		end
 
+	end
+
+	describe '#store' do
+
+		it 'increases the transactions array by 1' do
+			expect {statement.store(transaction)}.to change{statement.transactions.length}.by 1
+		end
 	end
 	
 end

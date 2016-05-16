@@ -5,6 +5,11 @@ class Statement
 
 	def initialize
 		@balance = 0
-		@transactions = Hash.new
+		@transactions = Array.new
 	end
+
+	def store(transaction)
+		@transactions << transaction
+	end
+
 end

@@ -23,7 +23,14 @@ describe Bank do
 
 		it 'creates an instance of Transaction and calls the type_credit method ' do			
 			allow(Transaction).to receive(:new).and_return(transaction)
-			expect(bank.transaction.new).to receive(:type_credit)
+			expect(transaction).to receive(:type_credit)
+      bank.make_deposit(1000)
+		end
+
+		it 'calls the statement store method ' do	
+			allow(Statement).to receive(:new).and_return(statement)		
+			allow(statement).to receive(:store).and_return(transaction)
+			expect(bank.statement).to receive(:store)
       bank.make_deposit(1000)
 		end
 

@@ -1,3 +1,6 @@
+require_relative 'transaction'
+require_relative 'statement'
+
 class Bank
 
 	attr_reader :statement, :transaction
@@ -8,7 +11,9 @@ class Bank
 	end
 
 	def make_deposit(amount)
-		@transaction.new.type_credit(amount)
+		new_transaction = @transaction.new
+		new_transaction.type_credit(amount)
+		@statement.store(new_transaction)
 	end
 
 end
