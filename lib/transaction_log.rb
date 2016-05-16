@@ -11,7 +11,7 @@ class TransactionLog
     @balance = balance
   end
 
-  def to_s separator = ' || '
+  def to_s separator = '|| '
     data_array.join separator
   end
 
@@ -22,16 +22,16 @@ class TransactionLog
       format_date(@date),
       @amount.positive? ? format_value(@amount) : '',
       @amount.negative? ? format_value(@amount) : '',
-      format_value(@balance)
+      format_value(@balance)[0...-1]
     ]
   end
 
   def format_value amount
-    '%.2f' % amount.abs
+    '%.2f ' % amount.abs
   end
 
   def format_date date
-    date.strftime '%d/%m/%Y'
+    date.strftime '%d/%m/%Y '
   end
 
 end
