@@ -1,3 +1,14 @@
+In order to run the feature test in the command line, make sure you have ruby 2.2.3 installed on your computer. To double check your Ruby version with RVM run:
+
+`rvm list`
+
+If you're running on a different version of Ruby, run
+
+`rvm install ruby 2.2.3`
+
+Then, to see the requirements below fulfilled, run
+`ruby spec/feature_spec.rb`
+
 # The Bank Tech Test
 
 >When in doubt, go for the simplest solution
