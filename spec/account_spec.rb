@@ -23,7 +23,7 @@ describe Account do
     end
 
     it 'creates a transaction with negative integer as amount' do
-      expect(transaction_class).to have_received(:new).with(-500)
+      expect(transaction_class).to have_received(:new).with(-500, -500)
     end
 
     it 'subtract a given amount from the balance' do
@@ -31,7 +31,7 @@ describe Account do
     end
 
     it 'stores a transaction in the history' do
-      last_transaction = account.history.last[:transaction]
+      last_transaction = account.history.last
       expect(last_transaction).to eq transaction
     end
   end
@@ -43,7 +43,7 @@ describe Account do
     end
 
     it 'creates a transaction with negative integer as amount' do
-      expect(transaction_class).to have_received(:new).with(500)
+      expect(transaction_class).to have_received(:new).with(500, 500)
     end
 
     it 'subtract a given amount from the balance' do
@@ -51,7 +51,7 @@ describe Account do
     end
 
     it 'stores a transaction in the history' do
-      last_transaction = account.history.last[:transaction]
+      last_transaction = account.history.last
       expect(last_transaction).to eq transaction
     end
   end

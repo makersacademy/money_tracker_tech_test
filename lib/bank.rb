@@ -1,7 +1,13 @@
 class Bank
 
   def print_statement(account)
-    'date || credit || debit || balance'
+    history = account.history
+    statement = "date || credit || debit || balance\n"
+    # history.each do ||
+
+
+
+
   end
 
 end
