@@ -6,14 +6,14 @@ describe TransactionHistory do
     double(:transaction,
            pretty_date: Time.new.strftime('%d/%m/%y'),
            amount: rand(100..500),
-           balance: rand(-1000..10_000))
+           balance: rand(0..10_000))
   end
 
   let(:withdraw) do
     double(:transaction,
            pretty_date: Time.new.strftime('%d/%m/%y'),
            amount: rand(-500..-100),
-           balance: rand(-1000..10_000))
+           balance: rand(0..10_000))
   end
 
   it 'Can add transaction' do
@@ -25,6 +25,6 @@ describe TransactionHistory do
     history.add_transaction(deposit)
     history.add_transaction(withdraw)
     p history.print_statement
-    expect(history.print_statement).to eq 'dsds'
+    expect(history.print_statement).to
   end
 end

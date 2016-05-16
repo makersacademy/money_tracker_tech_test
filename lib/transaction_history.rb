@@ -18,7 +18,7 @@ class TransactionHistory
 
   def process_transactions
     @all_transactions.each do |transaction|
-      "#{transaction.pretty_date} || #{credit_and_debit(transaction)} ||"\
+      puts "#{transaction.pretty_date} || #{credit_and_debit(transaction)} ||"\
       "#{transaction.balance}"
     end
   end
