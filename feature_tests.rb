@@ -22,7 +22,7 @@ p account.calculate_balance
 statement = Statement.new(account)
 
 puts statement.view_statement
-puts statement.view_statement(withdrawals:true)
+puts statement.view_statement(filter: :withdrawal)
 puts statement.view_statement(ascending:true)
 
 "date || credit || debit || balance

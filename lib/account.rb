@@ -12,14 +12,9 @@ class Account
 
   def calculate_balance(balance=STARTING_BALANCE)
     @transactions.each do |transaction|
-      balance += transaction.calculate_change.to_i
+      balance += transaction.calculate_change
     end
-    two_sf(balance)
+    balance
   end
 
-  private
-
-  def two_sf(balance)
-    '%.2f' % balance
-  end
 end

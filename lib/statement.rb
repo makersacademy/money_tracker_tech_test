@@ -6,19 +6,21 @@ class Statement
     @account = account
   end
 
-  def view_statement(start_balance:balance=0, withdrawals:withdrawals=true, deposits:deposits=true, ascending: ascending=false)
+  def view_statement(start_balance:balance=0, filter:filter=:none, ascending: ascending=false)
     statement = ""
     account.transactions.each do |transaction|
       balance = update_balance(balance, transaction)
-      statement = update_statement(statement, transaction, balance, ascending) if chosen?(transaction, withdrawals, deposits)
+      statement = update_statement(statement, transaction, balance, ascending) if chosen?(transaction, filter)
     end
     fix_look(statement)
   end
 
   private
 
-  def chosen?(transaction, withdrawals, deposits)
-    (transaction.is_deposit? == deposits || transaction.is_withdrawal? == withdrawals)
+  def chosen?(transaction, filter)
+    return true if filter == :none
+    return true if transaction.deposit_or_withdrawal? == filter
+    false
   end
 
   def fix_look(statement)
@@ -28,7 +30,7 @@ class Statement
   end
 
   def update_balance(balance, transaction)
-    two_sf(balance.to_i + transaction.calculate_change.to_i)
+    balance + transaction.calculate_change
   end
 
   def update_statement(statement, transaction, balance, ascending)
@@ -37,7 +39,7 @@ class Statement
   end
 
   def format_information(transaction, balance)
-    "\n#{transaction.date.strftime("%Y/%m/%d")} || #{transaction.credit} || #{transaction.debit} || #{balance}"
+    "\n#{transaction.date.strftime("%Y/%m/%d")} || #{two_sf(transaction.credit)} || #{two_sf(transaction.debit)} || #{two_sf(balance)}"
   end
 
   def two_sf(amount)

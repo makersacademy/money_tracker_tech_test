@@ -3,20 +3,17 @@ class Transaction
 
   def initialize(date, credit=0, debit=0)
     @date = date
-    @credit = two_sf(credit)
-    @debit = two_sf(debit)
+    @credit = credit
+    @debit = debit
   end
 
   def calculate_change
-    two_sf(@credit.to_i - @debit.to_i)
+    @credit - @debit
   end
 
-  def is_deposit?
-    !(credit == "0.00")
-  end
-
-  def is_withdrawal?
-    !(debit == "0.00")
+  def deposit_or_withdrawal?
+    return :deposit if !(credit == 0)
+    :withdrawal if !(debit == 0)
   end
 
   private

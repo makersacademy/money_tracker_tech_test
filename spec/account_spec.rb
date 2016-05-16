@@ -1,7 +1,7 @@
 require 'account'
 
 describe Account do
-  FAKE_AMOUNT = '%.2f' % rand(1000)
+  FAKE_AMOUNT = rand(1000)
   DATE = Date.new(2016,5,16)
   let(:account) { described_class.new }
   let(:transaction) { double(:transaction, calculate_change: FAKE_AMOUNT) }

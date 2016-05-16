@@ -5,7 +5,7 @@
 # The Bank Tech Test
 
 ### Requirements
-* Deposits, withdrawal
+* deposit, withdrawal
 * Account statement (date, amount, balance)
 * Statement printing
 
@@ -27,5 +27,5 @@ date || credit || debit || balance
 
 ### Additional extensions
 
-* Statement filters (just deposits, withdrawals, date ascending, date descending)
+* Statement filters (just deposit, withdrawal, date ascending, date descending)
 * Graphical interface
