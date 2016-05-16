@@ -9,4 +9,11 @@ describe Account do
     end
   end
 
+  describe '#deposit' do
+    it 'adds amount to balance' do
+      RANDOM_AMOUNT = rand(10)
+      account.deposit(RANDOM_AMOUNT)
+      expect(account.balance).to eq(RANDOM_AMOUNT)
+    end
+  end
 end
