@@ -2,27 +2,54 @@
 
 describe('BankAccount', function () {
   var bankAccount;
+  var Transaction;
 
   beforeEach(function () {
-    bankAccount = new BankAccount();
+    Transaction = jasmine.createSpy('Transaction');
+    bankAccount = new BankAccount(Transaction);
   });
 
   it('starts with a balance of 0', function () {
     expect(bankAccount.getBalance()).toEqual(0);
   });
 
+  it('starts with an empty transaction record', function () {
+    expect(bankAccount.getTransactions()).toEqual([]);
+  });
+
   describe('deposit', function () {
-    it('adds money to the balance', function () {
+    beforeEach(function () {
       bankAccount.deposit(1000);
+    });
+
+    it('adds money to the balance', function () {
       expect(bankAccount.getBalance()).toEqual(1000);
+    });
+
+    it('records the deposit transaction', function () {
+      expect(bankAccount.getTransactions().length).toEqual(1);
     });
   });
 
   describe('withdraw', function () {
-    it('deducts money from the balance', function () {
+    beforeEach(function () {
       bankAccount.deposit(1000);
       bankAccount.withdraw(500);
+    });
+
+    it('deducts money from the balance', function () {
       expect(bankAccount.getBalance()).toEqual(500);
+    });
+
+    it('records the withdrawal transaction', function () {
+      expect(bankAccount.getTransactions().length).toEqual(2);
+    });
+  });
+
+  describe('printStatement', function () {
+    it('displays a transaction history', function () {
+      bankAccount.deposit(1000, '14-01-2012');
+      expect(bankAccount.printStatement()).toEqual('14/01/2012 || 1000.00 || || 1000.00')
     });
   });
 });
