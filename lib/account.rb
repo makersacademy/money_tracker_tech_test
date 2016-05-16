@@ -8,4 +8,8 @@ class Account
     @transaction_class = transaction_class
   end
 
+  def credit(amount)
+  end
+
+
 end

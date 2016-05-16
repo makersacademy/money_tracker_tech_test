@@ -17,8 +17,15 @@ describe Account do
     expect(account.transaction_class).to eq transaction
   end
 
+  it "should respond to #credit with one argument" do
+    expect(account).to respond_to(:credit).with(1).argument
+  end
+
   # describe "#credit" do
-  #   it "should "
+  #   it "should instantiate a new Transaction object" do
+  #     account.credit
+  #     expect(account.credit_transaction).to eq transaction
+  #   end
   # end
 
 end
