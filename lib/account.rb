@@ -9,6 +9,14 @@ class Account
   end
 
   def withdraw(amount)
-    @transaction_class.new(amount)
+    @transaction = @transaction_class.new(-amount)
+    @balance -= amount
+    @history << [@transaction, @balance]
+  end
+
+  def deposit(amount)
+    @transaction = @transaction_class.new(amount)
+    @balance += amount
+    @history << [@transaction, @balance]
   end
 end

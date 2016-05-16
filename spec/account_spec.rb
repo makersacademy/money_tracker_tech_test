@@ -17,9 +17,42 @@ describe Account do
   end
 
   describe '#withdraw' do
+
+    before(:each) do
+      account.withdraw(500)
+    end
+
     it 'creates a transaction with negative integer as amount' do
-      account.withdraw(-500)
-      expect(transaction_class).to have_received(:new)
+      expect(transaction_class).to have_received(:new).with(-500)
+    end
+
+    it 'subtract a given amount from the balance' do
+      expect(account.balance).to eq -500
+    end
+
+    it 'stores a transaction in the history' do
+      last_transaction = account.history.last.first
+      expect(last_transaction).to eq transaction
+    end
+  end
+
+  describe '#deposit' do
+
+    before(:each) do
+      account.deposit(500)
+    end
+
+    it 'creates a transaction with negative integer as amount' do
+      expect(transaction_class).to have_received(:new).with(500)
+    end
+
+    it 'subtract a given amount from the balance' do
+      expect(account.balance).to eq +500
+    end
+
+    it 'stores a transaction in the history' do
+      last_transaction = account.history.last.first
+      expect(last_transaction).to eq transaction
     end
   end
 end
