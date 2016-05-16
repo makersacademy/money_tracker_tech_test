@@ -2,11 +2,11 @@ require './lib/transaction'
 
 describe Transaction do
 
-  subject(:transaction) { described_class.new(amount, balance) }
-
   date = Time.now.strftime("%d/%m/%Y")
   amount = 1000
   balance = 500
+
+  subject(:transaction) { described_class.new(amount, balance) }
 
   describe '#initialize' do
     it 'initializes with a date and amout' do
