@@ -13,7 +13,17 @@ $(document).ready(function () {
 
   $('#print-statement').click(function () {
     var statement = new Statement(bankAccount);
-    var output = statement.print();
+    var filter;
+    if ($('#ascending').is(':checked')) {
+      filter = 'ascending';
+    } else if ($('#deposits-only').is(':checked')) {
+      filter = 'deposits';
+    } else if ($('#withdrawals-only').is(':checked')) {
+      filter = 'withdrawals';
+    } else {
+      filter = 'descending';
+    }
+    var output = statement.print(filter);
     $('#statement').text(output);
   });
 });
