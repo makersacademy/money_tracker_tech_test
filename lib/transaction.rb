@@ -4,9 +4,9 @@ class Transaction
 
   def initialize(date, credit, debit, balance)
     @date = date
-    @credit = credit
-    @debit = debit.abs
-    @balance = balance
+    @credit = '%.2f' % credit
+    @debit = '%.2f' % debit.abs
+    @balance = '%.2f' % balance
   end
 
 end
