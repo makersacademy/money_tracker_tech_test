@@ -15,4 +15,7 @@ class Transaction
   def current_balance(new_balance)
     @current_balance = new_balance
   end
+
+  # use inject/reduce to get balance
+  # have balance method
 end

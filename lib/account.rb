@@ -3,7 +3,7 @@ class BankAccount
   attr_reader :balance, :transactions
 
   def initialize
-    @balance = 0
+    @balance = 0 # have a method instead
     @transactions = []
   end
 
