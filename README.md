@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ccfz/bank_tech_test.svg?branch=master)](https://travis-ci.org/ccfz/bank_tech_test)
+
 # The Bank Tech Test
 
 ### Approach
