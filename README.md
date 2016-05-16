@@ -62,7 +62,7 @@ date || credit || debit || balance
 
 ### Example use:
 
-´´´´
+```
 require_relative 'lib/account'
 require_relative 'lib/balance'
 require_relative 'lib/statement'
@@ -85,9 +85,40 @@ puts my_account.check_balance
 puts "3 should how log of transactions"
 my_account.print_statement
 
-´´´´
+```
 
 ### Changes if there had be more time
 
 * Combined deposit and withdraw class into one transaction class
 * have a log consist of the transaction_class object and balance, then depending on the filter create an array with the detailed view
+
+### User stories
+
+```
+As a User,
+To manage my money,
+I want to be able to see my balance.
+```
+```
+As a User,
+So that I can add money to my account,
+I want to be able to deposit my money.
+```
+```
+As a User,
+So that I can pay with cash,
+I want to be able to withdraw money.
+```
+```
+As a User,
+So that I can track my account,
+I want to print a bank statement.
+```
+```
+Final Format:
+date || credit || debit || balance
+14/01/2012 || || 500.00 || 2500.00
+13/01/2012 || 2000.00 || || 3000.00
+10/01/2012 || 1000.00 || || 1000.00
+
+```
