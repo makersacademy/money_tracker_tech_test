@@ -5,9 +5,7 @@ class Account
     @balance = balance
   end
 
-  def get_balance
-    @balance
-  end
+  attr_reader :balance
 
   def make_deposit(amount)
     @balance += amount if valid_deposit(amount)
