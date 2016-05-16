@@ -7,7 +7,7 @@ require 'account'
 
 describe Account do
   subject(:account) { described_class.new }
-  let(:transaction) { Transaction.new }
+  let(:transaction) { TransactionHistory.new }
   let(:date) { '14/01/2012' }
   let(:deposit_amount) { 1000.00 }
   let(:withdrawal_amount) { 500.00 }

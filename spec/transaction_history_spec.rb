@@ -1,10 +1,22 @@
 require 'transaction_history'
 describe TransactionHistory do
-  let(:transaction_class) { double(:transaction_class, new: transaction) }
-  subject(:history) { described_class.new(transaction_class: transaction_class) }
+  let(:transaction) { double(:transaction, new: transaction) }
+  subject(:log) { described_class.new(transaction: transaction) }
+  let(:transaction) { double(:transaction,  value: nil, details: nil) }
+  let(:amount) { 1000.00 }
+  let(:date) { '14/01/2012' }
 
   it 'creates a transaction as an instance variable' do
-    expect(history.transaction_class).to eq transaction
+    expect(log.transaction).to eq transaction
+  end
+
+  it 'has an empty history upon creation' do
+    expect(log.history).to eq []
+  end
+
+  xit 'calls value on transaction object' do
+    log.add(date, amount)
+    expect(transaction).to have_received(:value).with(date, amount)
   end
 
 end

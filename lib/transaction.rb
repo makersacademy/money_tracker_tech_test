@@ -1,13 +1,13 @@
 class Transaction
-  attr_reader :date, :amount, :details
+  attr_reader :details
 
   def initialize
-    @details = { date: date, amount: amount }
+    @details = { date: nil, amount: nil }
   end
 
   def value(date, amount)
-    @details[:amount] = amount
     @details[:date] = date
+    @details[:amount] = amount
   end
 
 end
