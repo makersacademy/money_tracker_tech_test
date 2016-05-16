@@ -33,8 +33,12 @@ class Statement
   end
 
   def update_statement(statement, transaction, balance, ascending)
-    return statement + "\n#{transaction.date.strftime("%Y/%m/%d")} || #{transaction.credit} || #{transaction.debit} || #{balance}" if ascending
-    "\n#{transaction.date.strftime("%Y/%m/%d")} || #{transaction.credit} || #{transaction.debit} || #{balance}" + statement
+    return statement + format_information(transaction, balance) if ascending
+    format_information(transaction, balance) + statement
+  end
+
+  def format_information(transaction, balance)
+    "\n#{transaction.date.strftime("%Y/%m/%d")} || #{transaction.credit} || #{transaction.debit} || #{balance}"
   end
 
 end
