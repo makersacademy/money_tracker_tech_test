@@ -6,11 +6,11 @@ class Statement
     @account = account
   end
 
-  def view_statement(start_balance:balance=0, filter:filter=:none, ascending: ascending=false)
+  def view_statement(start_balance:balance=0, filter:filter=:none, order: order=:desending)
     statement = ""
     account.transactions.each do |transaction|
       balance = update_balance(balance, transaction)
-      statement = update_statement(statement, transaction, balance, ascending) if chosen?(transaction, filter)
+      statement = update_statement(statement, transaction, balance, order) if chosen?(transaction, filter)
     end
     fix_look(statement)
   end
@@ -33,8 +33,8 @@ class Statement
     balance + transaction.calculate_change
   end
 
-  def update_statement(statement, transaction, balance, ascending)
-    return statement + format_information(transaction, balance) if ascending
+  def update_statement(statement, transaction, balance, order)
+    return statement + format_information(transaction, balance) if print_ascending?(order)
     format_information(transaction, balance) + statement
   end
 
@@ -44,5 +44,9 @@ class Statement
 
   def two_sf(amount)
     '%.2f' % amount
+  end
+
+  def print_ascending?(order)
+    true if order == :ascending
   end
 end

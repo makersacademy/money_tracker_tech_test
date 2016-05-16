@@ -153,6 +153,10 @@
         1,
         18,
         null,
+        null,
+        1,
+        6,
+        null,
         null
       ],
       "/Users/erikapheby/Projects/bank_tech_test/spec/transaction_spec.rb": [
@@ -219,6 +223,6 @@
         null
       ]
     },
-    "timestamp": 1463417300
+    "timestamp": 1463417485
   }
 }
