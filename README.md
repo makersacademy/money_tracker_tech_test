@@ -4,7 +4,7 @@
 
 :money_with_wings:
 
-This is my solution to the Bank Tech Test. Requirements listed below.
+This is my solution to the Bank Tech Test (requirements listed below).
 
 It is written in Javascript and test-driven using Jasmine. I have also added a basic interface using jQuery, which can be accessed by typing `open index.html` in your terminal.
 
