@@ -9,6 +9,6 @@ class Transaction
                  date: date)
     @credit = credit
     @debit = debit
-    @date = date || Date.new
+    @date = date
   end
 end

@@ -7,10 +7,6 @@ class BankAccount
     @transactions = []
   end
 
-  def current_balance
-    balance
-  end
-
   def deposit(transaction_instance)
     @balance += transaction_instance.credit
     transaction_instance.current_balance = balance
