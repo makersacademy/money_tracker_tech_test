@@ -1,5 +1,5 @@
 require 'bank_account'
-require 'transaction_log'
+require 'transaction'
 
 EXPECTATION = 'date || credit || debit || balance
 14/01/2012 || || 500.00 || 2500.00
@@ -9,7 +9,7 @@ EXPECTATION = 'date || credit || debit || balance
 describe 'running the acceptance test' do
 
   it 'can complete the test' do
-    my_account = BankAccount.new TransactionLog
+    my_account = BankAccount.new Transaction
     my_account.deposit Date.new(2012,01,10), 1000
     my_account.deposit Date.new(2012,01,13), 2000
     my_account.withdraw Date.new(2012,01,14), 500

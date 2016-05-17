@@ -1,4 +1,4 @@
-class TransactionLog
+class Transaction
   HEADERS = 'date || credit || debit || balance'
 
   def self.headers
