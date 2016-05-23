@@ -6,9 +6,6 @@ As a client
 So that I can later use money I have deposited
 I would like to withdraw a given amount at a certain time in my account
 
-As a client
-So that I can make sense of historic deposits
-I would like the date to be recorded with each deposit I make
 
 As a client
 So that I can keep track of my in and outgoing money

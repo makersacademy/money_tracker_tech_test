@@ -16,6 +16,12 @@ class Account
     @history.withdraw(amount, date)
   end
 
+  def print_statement(output = STDOUT)
+    balance = 0
+    result = "statement"
+    output.puts(result)
+  end
+
 
 
 end

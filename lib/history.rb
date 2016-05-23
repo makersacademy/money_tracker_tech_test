@@ -3,19 +3,19 @@ require './lib/transaction'
 
 class History
 
-  attr_reader :all, :transaction
+  attr_reader :transactions, :transaction
 
   def initialize(transaction = Transaction)
-    @all = []
+    @transactions = []
     @transaction = transaction
   end
 
   def deposit(amount, date)
-    @all << transaction.new(amount, date)
+    @transactions << transaction.new(amount, date)
   end
 
   def withdraw(amount, date)
-    @all << transaction.new(amount - (amount*2), date)
+    @transactions << transaction.new(amount - (amount*2), date)
   end
 
 end
