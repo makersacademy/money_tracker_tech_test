@@ -4,12 +4,12 @@ class Account
 
   attr_reader :history
 
-  def initialize(history = History.new)
+  def initialize(history: History.new)
     @history = history
   end
 
   def deposit(amount, date = Date.today)
-    @history << history.deposit(amount, date)
+    @history.deposit(amount, date)
   end
 
 

@@ -11,7 +11,7 @@ describe History do
     p history.all
 
     expect(history.all.first.amount).to eq(1000)
-    expect(history.all.first.date).to include(today)
+    expect(history.all.first.date).to eq(today)
   end
 
 end
