@@ -7,7 +7,7 @@ class History
 
   def initialize(transaction = Transaction)
     @transactions = []
-    @transaction = transaction
+    @transaction  = transaction
   end
 
   def deposit(amount, date)
@@ -15,7 +15,8 @@ class History
   end
 
   def withdraw(amount, date)
-    @transactions << transaction.new(amount - (amount*2), date)
+    negative_amount = amount - (amount*2)
+    @transactions << transaction.new(negative_amount, date)
   end
 
 end
