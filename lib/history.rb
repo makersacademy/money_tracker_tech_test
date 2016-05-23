@@ -14,9 +14,8 @@ class History
     @all << transaction.new(amount, date)
   end
 
-  # def deposit(transaction)
-  #   @all << transaction
-  # end
-
+  def withdraw(amount, date)
+    @all << transaction.new(amount - (amount*2), date)
+  end
 
 end

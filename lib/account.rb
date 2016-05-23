@@ -12,5 +12,10 @@ class Account
     @history.deposit(amount, date)
   end
 
+  def withdraw(amount, date = Date.today)
+    @history.withdraw(amount, date)
+  end
+
+
 
 end
