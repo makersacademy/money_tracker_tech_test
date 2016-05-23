@@ -13,17 +13,3 @@ I would like the date to be recorded with each deposit I make
 As a client
 So that I can keep track of my in and outgoing money
 I would like to be able to print out a bank statement of my account
-
-
-
-
-Nouns:
-
-Client(User)
-bank account
-transaction
-
-Verbs:
-
-deposit
-withdraw
