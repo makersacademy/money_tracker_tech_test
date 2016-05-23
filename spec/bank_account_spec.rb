@@ -1,4 +1,4 @@
-require 'account'
+require 'bank_account'
 
 describe BankAccount do
   subject(:account) { described_class.new }
