@@ -10,7 +10,7 @@ describe Account do
   context 'initialization' do
 
     it 'initializes with a balance of 0' do
-      expect(account.balance).to eq 0
+      expect(account.balance_at_transaction).to eq 0
     end
 
     it 'has an array of transactions' do
@@ -21,7 +21,7 @@ describe Account do
       account.deposit(1000)
       account.withdraw(500)
       allow(account).to receive(:transactions){ [deposit, withdrawal] }
-      expect(account.balance).to eq 500
+      expect(account.balance_at_transaction(1)).to eq 500
     end
 
   end

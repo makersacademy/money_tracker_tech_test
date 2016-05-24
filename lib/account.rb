@@ -9,6 +9,7 @@ class Account
     @transactions = []
     @deposit_class = deposit_class
     @withdrawal_class = withdrawal_class
+    @current_balance = 0
   end
 
   def print_statement
@@ -23,13 +24,10 @@ class Account
     @transactions << @withdrawal_class.new(amount)
   end
 
-  def balance
-    arr = []
-    transactions.map{ |t| arr << t.amount }
-    p arr
-    p arr.reduce(:+)
+  def balance_at_transaction(index = 0)
+    arr = transactions.map{ |t| t.amount }
     return 0 if arr.reduce(:+) == nil
-    arr.reduce(:+)
+    arr[0..index].reduce(:+)
   end
 
 private
@@ -40,9 +38,9 @@ private
 
   def transaction_list
     list = ""
-    transactions.each { |t|
-      list << "#{t.date} || #{t.amount} || #{balance}\n"
-    }
+    transactions.each_with_index do |t,i|
+      list << "#{t.date} || #{t.amount} || #{balance_at_transaction(i)}\n"
+    end
     list
   end
 
