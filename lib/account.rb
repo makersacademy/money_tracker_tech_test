@@ -39,9 +39,13 @@ private
   def transaction_list
     list = ""
     transactions.each_with_index do |t,i|
-      list << "#{t.date} || #{t.amount} || #{balance_at_transaction(i)}\n"
+      list << "#{t.date} || #{deposit_or_withdrawal(t)} || #{balance_at_transaction(i)}\n"
     end
     list
+  end
+
+  def deposit_or_withdrawal(transaction)
+    "#{transaction.amount if transaction.amount > 0} || #{transaction.amount if transaction.amount < 0}"
   end
 
 end
