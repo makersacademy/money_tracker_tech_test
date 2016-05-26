@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bank Tech Test</title>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="src/bankAccount.js"></script>
+    <script src="src/transaction.js"></script>
+    <script src="src/statement.js"></script>
+    <script src="src/interface.js"></script>
+  </head>
+  <body>
+    <input type="text" id="amount"></input>
+    <button id="deposit">Deposit</button>
+    <button id="withdraw">Withdraw</button>
+    <button id="print-statement">Print Statement</button>
+    <input type="checkbox" id="ascending">Date Ascending</input>
+    <input type="checkbox" id="descending">Date Descending</input>
+    <input type="checkbox" id="deposits-only">Deposits Only</input>
+    <input type="checkbox" id="withdrawals-only">withdrawals Only</input>
+    <pre id="statement"></pre>
+  </body>
+</html>
