@@ -1,6 +1,22 @@
+![](https://travis-ci.org/olmesm/bank_tech_test.svg?branch=master)
+
+[![Coverage Status](https://coveralls.io/repos/github/olmesm/bank_tech_test/badge.svg?branch=master)](https://coveralls.io/github/olmesm/bank_tech_test?branch=master)
+
 # The Bank Tech Test
 
->When in doubt, go for the simplest solution
+This is an example tech test given by Makers Academy during 'Hiring Week'.
+
+## Setup
+
+Clone this repo to your local machine.
+
+```
+#Install gems
+$ bundle
+
+# to run tests
+$ rspec
+```
 
 ### Requirements
 * Deposits, withdrawal
