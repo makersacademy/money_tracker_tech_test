@@ -8,7 +8,7 @@ class Transaction
   end
 
   def calculate_change
-    @credit - @debit
+    credit - debit
   end
 
   def deposit_or_withdrawal?

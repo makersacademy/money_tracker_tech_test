@@ -7,14 +7,13 @@ class Account
   end
 
   def log(transaction)
-    @transactions << transaction
+    transactions << transaction
   end
 
   def calculate_balance(balance=STARTING_BALANCE)
-    @transactions.each do |transaction|
+    transactions.each do |transaction|
       balance += transaction.calculate_change
     end
     balance
   end
-
 end

@@ -6,7 +6,7 @@ class Statement
     @account = account
   end
 
-  def view_statement(start_balance:balance=0, filter:filter=:none, order: order=:desending)
+  def view_statement(start_balance:balance=0, filter:filter=:none, order: order=:descending)
     statement = ""
     account.transactions.each do |transaction|
       balance = update_balance(balance, transaction)

@@ -51,7 +51,6 @@
         null,
         1,
         null,
-        null,
         null
       ],
       "/Users/erikapheby/Projects/bank_tech_test/spec/statement_spec.rb": [
@@ -214,15 +213,9 @@
         1,
         0,
         null,
-        null,
-        1,
-        null,
-        1,
-        0,
-        null,
         null
       ]
     },
-    "timestamp": 1463417485
+    "timestamp": 1465460118
   }
 }
