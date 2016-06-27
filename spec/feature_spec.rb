@@ -8,4 +8,9 @@ describe Account do
     expect(account.get_balance).to eq(1000)
   end
 
+  it "can make a withdrawal" do
+    account.withdraw(1000)
+    expect(account.get_balance).to eq(-1000)
+  end
+
 end

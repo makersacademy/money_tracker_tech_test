@@ -16,4 +16,10 @@ describe Account do
     end
   end
 
+  describe "#withdraw" do
+    it "decreases the account balance" do
+      account.withdraw(1000)
+      expect(account.get_balance).to eq(-1000)
+    end
+  end
 end
