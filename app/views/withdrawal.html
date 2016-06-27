@@ -1,0 +1,9 @@
+<div ng-controller="TransactionController as ctrl">
+  <h2>Withdrawal</h2>
+  <form ng-submit="ctrl.makeWithdrawal(amount)">
+    <label for="input-withdrawal">Withdrawal Amount:
+      <input type="number" id="input-withdrawal" ng-model="amount" min="0" required />
+    </label>
+    <button type="submit" id="btn-withdrawal-submit">Submit Withdrawal</button>
+  </form>
+</div>

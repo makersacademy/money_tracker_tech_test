@@ -1,0 +1,5 @@
+<div ng-controller="HomeController as ctrl">
+  <h2 id="balance">{{ctrl.currentBalance | currency:"£":2 }}</h2>
+  <a id="link-deposit" ui-sref="deposit">Deposit Funds</a>
+  <a id="link-withdrawal" ui-sref="withdrawal">Withdraw Funds</a>
+</div>
