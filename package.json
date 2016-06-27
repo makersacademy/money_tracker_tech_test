@@ -7,7 +7,7 @@
     "start": "cd app && ../node_modules/http-server/bin/http-server",
     "webdriver-manager": "./node_modules/protractor/bin/webdriver-manager",
     "protractor": "./node_modules/protractor/bin/protractor",
-    "test": "./node_modules/.bin/karma start --single-run"
+    "test": "./node_modules/.bin/karma start test/karma.conf.js"
   },
   "repository": {
     "type": "git",
