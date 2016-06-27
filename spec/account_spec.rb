@@ -2,6 +2,8 @@ require 'account'
 
 describe Account do
   subject(:account) { described_class.new }
+  let(:make_deposit) { account.deposit(1000, "17/06/2016") }
+  let(:make_withdrawal) { account.withdraw(1000, "17/06/2016") }
 
   describe "#initialize" do
     it "takes a default value of zero" do
@@ -11,20 +13,20 @@ describe Account do
 
   describe "#deposit" do
     it "increases the account balance" do
-      account.deposit(1000, "17/06/2016")
+      make_deposit
       expect(account.get_balance).to eq(1000)
     end
   end
 
   describe "#withdraw" do
     it "decreases the account balance" do
-      account.withdraw(1000, "17/06/2016")
+      make_withdrawal
       expect(account.get_balance).to eq(-1000)
     end
   end
 
   it "stores transaction history" do
-    account.withdraw(1000, "17/06/2016")
+    make_withdrawal
     expect(account.get_transaction_history.first.date).to eq("17/06/2016")
   end
 
