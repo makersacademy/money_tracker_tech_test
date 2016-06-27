@@ -1,0 +1,23 @@
+{
+  "name": "bank_tech_test",
+  "description": "practice tech test",
+  "main": "index.js",
+  "authors": [
+    "Michael Harrison"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/harrim91/bank_tech_test",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.7"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.5.7"
+  }
+}
