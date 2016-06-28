@@ -15,5 +15,6 @@ class Account
   def withdrawal(amount)
       fail 'You do not have enough funds' if amount > @balance
       @balance -= amount
+      @statement.push({date: Time.now.strftime("%d/%m/%Y"), amount: amount, balance: @balance})
   end
 end
