@@ -1,5 +1,6 @@
 require 'account'
 
+
 describe Account do
   subject(:account) {described_class.new}
 
@@ -21,6 +22,14 @@ describe Account do
     it 'doesnt allow balance to fall below zero' do
       account.deposit(100)
       expect{account.withdrawal(200)}.to raise_error('You do not have enough funds')
+    end
+  end
+
+  describe 'Statement' do
+    it 'stores data for each deposit' do
+      date = Time.now.strftime("%d/%m/%Y")
+      account.deposit(500)
+      expect(account.statement).to eq([{ date: date, amount: 500, balance: 500 }])
     end
   end
 end
