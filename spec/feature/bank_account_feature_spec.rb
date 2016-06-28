@@ -8,5 +8,4 @@ describe 'Bank account features' do
     account.withdraw(500)
     expect(account.balance).to eq 2500
   end
-
 end

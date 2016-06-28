@@ -4,11 +4,18 @@ class Statement
   end
 
   def add_entry(amount, balance)
-    @statement << amount
-    @statement << balance
+    @statement.unshift("#{date} || #{amount} || #{balance}\n")
   end
 
   def print
-    @statement
+    "date || transaction || balance\n"
+    @statement.join("','")
   end
+
+  private
+
+  def date
+    Date.new
+  end
+
 end
