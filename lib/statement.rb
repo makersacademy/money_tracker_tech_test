@@ -15,7 +15,7 @@ class Statement
   private
 
   def date
-    Date.new
+    Time.new.strftime("%d/%m/%Y")
   end
 
 end
