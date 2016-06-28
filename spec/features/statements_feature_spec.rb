@@ -28,6 +28,7 @@ feature 'Statements' do
       deposit_money(3000)
       withdrawal_money(500)
       click_link("Bank Statement")
+      expect(page).to have_content "3000"
       expect(page).to have_content "2500"
       expect(page).to have_content "500"
     end

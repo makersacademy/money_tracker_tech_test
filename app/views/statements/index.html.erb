@@ -1,9 +1,11 @@
 <% if @statements.any? %>
   <% @statements.each do |statement| %>
-    <%= statement.created_at %>
-    <%= statement.deposit %>
-    <%= statement.withdrawal %>
-    <%= statement.balance %>
+    <ul>
+    <li>Created At: <%= statement.created_at %></li>
+    <li>Credit: <%= statement.deposit %></li>
+    <li>Debit: <%= statement.withdrawal %></li>
+    <li>Balance: <%= statement.balance %></li>
+  </ul>
   <% end %>
 <% else %>
   <h1>No Bank Statements yet</h1>

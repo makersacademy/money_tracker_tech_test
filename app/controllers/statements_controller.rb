@@ -16,7 +16,7 @@ class StatementsController < ApplicationController
     if Statement.sum(:balance).nil?
       @statement.balance = statement_params[:deposit]
     else
-      @statement.balance = statement_params[:deposit].to_f + Statement.sum(:deposit) + (-Statement.sum(:withdrawal))
+      calculate_balance(:deposit)
     end
 
     if !statement_params[:deposit].empty?
@@ -35,8 +35,8 @@ class StatementsController < ApplicationController
 
   def withdrawal_create
     @statement = Statement.new(statement_params)
-    @statement.balance = -statement_params[:withdrawal].to_f + Statement.sum(:deposit) + (-Statement.sum(:withdrawal))
-    if !statement_params[:withdrawal].empty?
+    calculate_balance(:withdrawal)
+    if !statement_params[:withdrawal].empty? 
       @statement.save
       flash[:notice] = "You have withdrawal money"
       redirect_to root_path
@@ -47,6 +47,10 @@ class StatementsController < ApplicationController
   end
 
   private
+
+  def calculate_balance(money_exchange)
+    @statement.balance = -statement_params[money_exchange].to_f + Statement.sum(:deposit) + (-Statement.sum(:withdrawal))
+  end
 
   def statement_params
     params.require(:statement).permit(:deposit, :withdrawal)
