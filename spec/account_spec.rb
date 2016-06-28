@@ -21,6 +21,13 @@ describe Account do
         expect(account.balance).to eq (2500)
       end
     end
+
+    context 'it raises an error if balance will go below 0' do
+      it "gives a message action couldn't be completed if balance would go below 0" do
+        account.deposit(1000)
+        expect{ account.withdraw(1500) }.to raise_error "action couldn't be completed, not enough funds available"
+      end
+    end
   end
 
 end
