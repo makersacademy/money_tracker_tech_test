@@ -7,7 +7,7 @@
     "start": "cd app && ../node_modules/http-server/bin/http-server",
     "webdriver-manager": "./node_modules/protractor/bin/webdriver-manager",
     "protractor": "./node_modules/protractor/bin/protractor",
-    "test": "./node_modules/.bin/karma start test/karma.conf.js"
+    "test": "./node_modules/.bin/karma start test/karma.conf.js --single-run --browsers PhantomJS"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "karma": "^1.1.0",
     "karma-chrome-launcher": "^1.0.1",
     "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.1",
     "karma-spec-reporter": "0.0.26"
   }
 }
