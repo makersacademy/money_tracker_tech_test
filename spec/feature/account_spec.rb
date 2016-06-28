@@ -21,7 +21,6 @@ describe Account do
     it 'doesnt allow balance to fall below zero' do
       account.deposit(100)
       expect{account.withdrawal(200)}.to raise_error('You do not have enough funds')
-
     end
   end
 end
