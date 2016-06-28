@@ -1,0 +1,9 @@
+<div ng-controller="TransactionController as ctrl">
+  <h2>Deposit</h2>
+  <form ng-submit="ctrl.makeDeposit(amount)">
+    <label for="input-deposit">Deposit Amount:
+      <input type="number" id="input-deposit" ng-model="amount" min="0"required/>
+    </label>
+    <button type="submit" id="btn-deposit-submit">Submit Deposit</button>
+  </form>
+</div>

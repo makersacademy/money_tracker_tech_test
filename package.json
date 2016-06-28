@@ -1,0 +1,35 @@
+{
+  "name": "bank_tech_test",
+  "version": "1.0.0",
+  "description": "practice tech test",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd app && ../node_modules/http-server/bin/http-server",
+    "webdriver-manager": "./node_modules/protractor/bin/webdriver-manager",
+    "protractor": "./node_modules/protractor/bin/protractor",
+    "test": "./node_modules/.bin/karma start test/karma.conf.js --single-run --browsers PhantomJS"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harrim91/bank_tech_test.git"
+  },
+  "author": "Michael Harrison",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harrim91/bank_tech_test/issues"
+  },
+  "homepage": "https://github.com/harrim91/bank_tech_test#readme",
+  "dependencies": {
+    "http-server": "^0.9.0",
+    "protractor": "^3.3.0"
+  },
+  "devDependencies": {
+    "jasmine-core": "^2.4.1",
+    "jasmine-spec-reporter": "^2.5.0",
+    "karma": "^1.1.0",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.1",
+    "karma-spec-reporter": "0.0.26"
+  }
+}

@@ -1,0 +1,14 @@
+<table class="transactions" border="1" ng-controller="StatementController as ctrl" ng-init="balance=0">
+  <tr>
+    <th>Date</th>
+    <th>Credit</th>
+    <th>Debit</th>
+    <th>Balance</th>
+  </tr>
+  <tr class="transaction" ng-repeat="transaction in ctrl.statement" ng-init="$parent.balance = $parent.balance + transaction.credit - transaction.debit; balance = $parent.balance">
+    <td>{{ transaction.date | date : 'dd/MM/yy' }}</td>
+    <td>{{ transaction.credit }}</td>
+    <td>{{ transaction.debit }}</td>
+    <td>{{ balance }}</td>
+  </tr>
+</table>
