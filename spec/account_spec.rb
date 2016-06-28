@@ -1,7 +1,10 @@
 require "account"
 
 describe Account do
-  subject(:account) { described_class.new }
+  let(:transaction) { double :transaction, date: "17/06/2016" }
+  let(:transaction_class) { double :transaction_class, new: transaction}
+
+  subject(:account) { described_class.new(transaction_class) }
 
   describe "#initialize" do
     it "takes a default value of zero" do
