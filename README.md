@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/chriscoates/bank_tech_test.svg?branch=master)](https://travis-ci.org/chriscoates/bank_tech_test)
+
+
 # The Bank Tech Test
 
 >When in doubt, go for the simplest solution
