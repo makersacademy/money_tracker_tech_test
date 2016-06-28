@@ -30,4 +30,15 @@ describe Account do
     end
   end
 
+  describe 'account statement' do
+    context 'it stores the account history' do
+      it 'records the account history, date, amount, balance' do
+        action_time = Time.local(2012,1,10)
+        allow(Time).to receive(:now).and_return(action_time)
+        account.deposit(1000)
+        expect(account.statement_history).to eq [{date: Time.now, amount: 1000, balance: 1000}]
+      end
+    end
+  end
+
 end
