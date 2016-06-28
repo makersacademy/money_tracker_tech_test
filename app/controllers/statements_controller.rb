@@ -4,6 +4,7 @@ class StatementsController < ApplicationController
   end
 
   def index
+    @statements = Statement.all
   end
 
   def deposit_new
