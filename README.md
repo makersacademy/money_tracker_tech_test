@@ -2,8 +2,6 @@
 
 [![Build Status](https://travis-ci.org/harrim91/bank_tech_test.svg?branch=master)](https://travis-ci.org/harrim91/bank_tech_test)
 
->When in doubt, go for the simplest solution
-
 ### Requirements
 * Deposits, withdrawal
 * Account statement (date, amount, balance)
@@ -25,7 +23,4 @@ date || credit || debit || balance
 10/01/2012 || 1000.00 || || 1000.00
 ```
 
-### Additional extensions
-
-* Statement filters (just deposits, withdrawals, date ascending, date descending)
-* Graphical interface
+Simple bank app build in AngularJS. Transaction objects have a credit and a debit attribute. When making deposits and withdrawals, one is set to 0, the other to the amount being deposited/withdrawn. The resulting transaction object is stored in an array in the statement controller via a service. This data is shown in the statement view using ng-repeat. The running balance totals are calculated as the data is displayed, and is not stored anywhere.
