@@ -7,16 +7,16 @@ describe Account do
 
   it "can make a deposit" do
     make_deposit
-    expect(account.get_balance).to eq(1000)
+    expect(account.balance).to eq(1000)
   end
 
   it "can make a withdrawal" do
     make_withdrawal
-    expect(account.get_balance).to eq(-1000)
+    expect(account.balance).to eq(-1000)
   end
 
   it "stores transaction date" do
     make_deposit
-    expect(account.get_transaction_history[0].date).to eq("17/06/2016")
+    expect(account.transaction_history[0].date).to eq("17/06/2016")
   end
 end

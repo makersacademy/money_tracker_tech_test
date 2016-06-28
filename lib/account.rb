@@ -6,24 +6,24 @@ class Account
   def initialize(transaction_class = Transaction)
     @balance = DEFAULT_BALANCE
     @transaction_history = []
-    @transaction_factory = transaction_class
+    @transaction_class = transaction_class
   end
 
-  def get_balance
+  def balance
     @balance
   end
 
   def deposit(value, date)
-    @transaction_history.push(@transaction_factory.new(value, date))
+    @transaction_history.push(@transaction_class.new(value, date))
     @balance += value
   end
 
   def withdraw(value, date)
-    @transaction_history.push(@transaction_factory.new(-value, date))
+    @transaction_history.push(@transaction_class.new(-value, date))
     @balance -= value
   end
 
-  def get_transaction_history
+  def transaction_history
     @transaction_history.clone
   end
 
