@@ -1,0 +1,4 @@
+<%= simple_form_for @statement, :url => statements_deposit_new_path, :method => :post do |f| %>
+  <%= f.number_field :deposit %>
+  <%= f.button :submit, "Submit", class: 'btn-success btn-block' %>
+<% end %>

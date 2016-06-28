@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  root 'statements#display'
+  get 'statements/display' => 'statements#display'
+  get 'statements/deposit_new' => 'statements#deposit_new'
+  post 'statements/deposit_new' => 'statements#deposit_create'
+  get 'statements/withdrawal_new' => 'statements#withdrawal_new'
+  post 'statements/withdrawal_new' => 'statements#withdrawal_create'
+  resources :statements
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
