@@ -11,5 +11,11 @@ describe Account do
       account.deposit(500)
       expect(account.balance).to equal (500)
     end
+
+    it 'decreases balance when a withdrawal is made' do
+      account.deposit(500)
+      account.withdrawal(300)
+      expect(account.balance).to equal (200)
+    end
   end
 end
