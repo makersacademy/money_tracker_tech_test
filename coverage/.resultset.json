@@ -1,0 +1,63 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/admin/Dropbox/Hiring Week/bank_tech_test/spec/feature/bank_account_feature_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/admin/Dropbox/Hiring Week/bank_tech_test/lib/bank_account.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        3,
+        null,
+        null,
+        1,
+        4,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/admin/Dropbox/Hiring Week/bank_tech_test/spec/unit/bank_account_spec.rb": [
+        1,
+        null,
+        1,
+        null,
+        3,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1467117471
+  }
+}
