@@ -1,5 +1,7 @@
 # The Bank Tech Test
 
+[![Build Status](https://travis-ci.org/RobinHeathcote/bank_tech_test.svg?branch=master)](https://travis-ci.org/RobinHeathcote/bank_tech_test)
+
 >When in doubt, go for the simplest solution
 
 ### Requirements

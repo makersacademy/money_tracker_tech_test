@@ -1,2 +1,4 @@
 script:
   - bundle exec rspec spec
+rvm:
+  - 2.3.0
