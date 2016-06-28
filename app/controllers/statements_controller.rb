@@ -13,11 +13,8 @@ class StatementsController < ApplicationController
 
   def deposit_create
     @statement = Statement.new(statement_params)
-    if Statement.sum(:balance).nil?
-      @statement.balance = statement_params[:deposit]
-    else
-      calculate_balance(:deposit)
-    end
+    return @statement.balance = statement_params[:deposit] if Statement.sum(:balance).nil?
+    calculate_balance(:deposit)
 
     if !statement_params[:deposit].empty?
       @statement.save
@@ -36,7 +33,7 @@ class StatementsController < ApplicationController
   def withdrawal_create
     @statement = Statement.new(statement_params)
     calculate_balance(:withdrawal)
-    if !statement_params[:withdrawal].empty? 
+    if !statement_params[:withdrawal].empty?
       @statement.save
       flash[:notice] = "You have withdrawal money"
       redirect_to root_path
