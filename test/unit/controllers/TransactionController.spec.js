@@ -1,25 +1,25 @@
 describe('TransactionController', function() {
   var transactionController;
-  var mockBalanceService = { updateBalance: null };
+  var mockStatementService = { addTransaction: null };
   var mockState = { go: null };
 
   beforeEach(function() {
     module('bankApp', function($provide) {
-      $provide.value('BalanceService', mockBalanceService);
+      $provide.value('StatementService', mockStatementService);
       $provide.value('$state', mockState);
     })
   });
 
   beforeEach(inject(function($controller) {
-    spyOn(mockBalanceService, 'updateBalance');
+    spyOn(mockStatementService, 'addTransaction');
     spyOn(mockState, 'go');
     transactionController = $controller('TransactionController');
   }));
 
   describe('#makeDeposit', function() {
-    it('increases the balance by the specified amount', function() {
+    it('adds a transaction with a credit value', function() {
       transactionController.makeDeposit(10);
-      expect(mockBalanceService.updateBalance).toHaveBeenCalledWith(10);
+      expect(mockStatementService.addTransaction).toHaveBeenCalledWith(10, 0);
     });
 
     it('redirects to home path', function() {
@@ -29,9 +29,9 @@ describe('TransactionController', function() {
   });
 
   describe('#makeWithdrawal', function() {
-    it('decreases the balance by the specified amount', function() {
+    it('adds a transaction with a debit value', function() {
       transactionController.makeWithdrawal(10);
-      expect(mockBalanceService.updateBalance).toHaveBeenCalledWith(-10);
+      expect(mockStatementService.addTransaction).toHaveBeenCalledWith(0, 10);
     });
 
     it('redirects to home path', function() {

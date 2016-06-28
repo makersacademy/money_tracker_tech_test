@@ -14,6 +14,10 @@ angular.module("bankApp", ['ui.router'])
       .state('withdrawal', {
         url: '/withdrawal',
         templateUrl: 'views/withdrawal.html'
+      })
+      .state('statement', {
+        url: '/statement',
+        templateUrl: 'views/statement.html'
       });
 
     $urlRouterProvider.otherwise('/');
