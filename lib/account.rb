@@ -15,9 +15,15 @@ class Account
   end
 
   def withdraw(amount)
-    fail "action couldn't be completed, not enough funds available" if @balance - amount < OVERDRAFT_LIMIT
+    fail "action couldn't be completed, not enough funds available" if overdraft_calculator < OVERDRAFT_LIMIT
     @balance -= amount
     @statement_history <<  {date: Time.now, amount: amount, balance: @balance}
+  end
+
+  private
+
+  def overdraft_calculator
+    @balance - amount
   end
 
 end
