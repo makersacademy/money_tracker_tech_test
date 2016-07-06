@@ -1,9 +1,11 @@
+require 'statement'
+
 class Account
   attr_reader :balance, :statement
 
-  def initialize
+  def initialize(statement = Statement.new)
     @balance = 0
-    @statement = []
+    @statement = statement
   end
 
   def deposit(amount)
@@ -17,8 +19,11 @@ class Account
       log_transaction(amount)
   end
 
+  private
+
   def log_transaction(amount)
-    @statement.push({date: Time.now.strftime("%d/%m/%Y"), amount: amount, balance: @balance})
+    @statement.statement.push({date: Time.now.strftime("%d/%m/%Y"), amount: amount, balance: @balance})
   end
+
 
 end

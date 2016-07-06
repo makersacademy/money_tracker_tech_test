@@ -25,18 +25,4 @@ describe Account do
     end
   end
 
-  describe 'Statement' do
-    it 'stores data for each deposit' do
-      date = Time.now.strftime("%d/%m/%Y")
-      account.deposit(500)
-      expect(account.statement).to eq([{ date: date, amount: 500, balance: 500 }])
-    end
-
-    it 'stores data for each withdrawal' do
-      date = Time.now.strftime("%d/%m/%Y")
-      account.deposit(500)
-      account.withdrawal(400)
-      expect(account.statement).to include ({ date: date, amount: 400, balance: 100 })
-    end
-  end
 end
