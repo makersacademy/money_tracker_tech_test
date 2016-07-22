@@ -1,7 +1,5 @@
 # The Bank Tech Test
 
->When in doubt, go for the simplest solution
-
 ### Requirements
 * Deposits, withdrawal
 * Account statement (date, amount, balance)
