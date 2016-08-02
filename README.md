@@ -10,6 +10,13 @@ As a result you also get good test coverage which isn't so tightly coupled to th
    
 2. Next I wanted to drive out the Deposit API. First test can be satisfied by hard-coded implementation, so a second test is used to drive some print logic.
 
+*NOTE*
+I try to find the simplest piece of functionality to implement, and/or one that will bring me the most value at that point.
+So, having done single deposits I now have a choice of multiple deposits, or to switch to single withdrawals.
+It's easy to get carried away so by rigorously trying to simplify I, hopefully, ensure that I drive the implementation gradually without creating problems for myself.
+
+3. I realised I've used an array for deposits and a loop for printing them, so I decide to finish testing multiple deposits.
+
 
 
 

@@ -46,7 +46,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="when_creating_new_bank_accounts.cs" />
-    <Compile Include="when_depositing_funds.cs" />
+    <Compile Include="when_making_multiple_deposits.cs" />
+    <Compile Include="when_making_single_deposits.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -14,17 +14,26 @@ namespace MakersAcademy.Bank
             var statement = new StringBuilder();
             statement.Append("date || credit || debit || balance");
 
+            var runningBalance = 0;
+
             foreach (var deposit in _deposits)
             {
+                runningBalance = AdjustBalance(runningBalance, deposit.Amount);
+
                 statement.Append(Environment.NewLine);
                 statement.Append(deposit.DateTime.ToShortDateString());
                 statement.Append(" || ");
                 statement.Append(deposit.Amount);
                 statement.Append(" || || ");
-                statement.Append(deposit.Amount);
+                statement.Append(runningBalance);
             }
 
             return statement.ToString();
+        }
+
+        private int AdjustBalance(int runningBalance, int amount)
+        {
+            return runningBalance + amount;
         }
 
         public void Deposit(DateTime dateTime, int amount)
