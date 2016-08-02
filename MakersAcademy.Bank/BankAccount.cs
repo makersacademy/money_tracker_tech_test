@@ -21,7 +21,7 @@ namespace MakersAcademy.Bank
                 runningBalance = AdjustBalance(runningBalance, deposit.Amount);
 
                 statement.Append(Environment.NewLine);
-                statement.Append(deposit.DateTime.ToString("dd/MM/yyyy"));
+                statement.Append(deposit.DateTime.ToString("dd'/'MM'/'yyyy"));
                 statement.Append(" || ");
                 statement.Append(deposit.Amount);
                 statement.Append(" || || ");
