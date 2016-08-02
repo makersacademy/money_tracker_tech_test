@@ -7,6 +7,8 @@ As a result you also get good test coverage which isn't so tightly coupled to th
 
 1. My starting point is to figure out how to test the printing of bank statements.
    The simplest way to do that is to create a new account and immediately print the bank statement.
+   
+2. Next I wanted to drive out the Deposit API. First test can be satisfied by hard-coded implementation, so a second test is used to drive some print logic.
 
 
 
