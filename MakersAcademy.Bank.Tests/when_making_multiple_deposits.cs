@@ -12,8 +12,8 @@ namespace MakersAcademy.Bank.Tests
         {
             var bankAccount = new BankAccount();
 
-            bankAccount.Deposit(DateTime.Parse("14/01/2012"), 1000);
-            bankAccount.Deposit(DateTime.Parse("12/01/2012"), 2000);
+            bankAccount.Deposit(new DateTime(2012, 01, 14), 1000);
+            bankAccount.Deposit(new DateTime(2012, 01, 12), 2000);
 
             var printedStatement = bankAccount.PrintStatement();
 
