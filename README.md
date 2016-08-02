@@ -1,5 +1,16 @@
 # The Bank Tech Test
 
+### My approach
+I take an Outside-In approach to TDD, trying to write tests that describe the User scenario clearly.
+This helps me to clarify the requirement to myself, begins to define the public API of my system, and should serve as documentation for the software.
+As a result you also get good test coverage which isn't so tightly coupled to the implementation that the tests are brittle.
+
+1. My starting point is to figure out how to test the printing of bank statements.
+   The simplest way to do that is to create a new account and immediately print the bank statement.
+
+
+
+
 ### Requirements
 * Deposits, withdrawal
 * Account statement (date, amount, balance)
