@@ -6,15 +6,16 @@ namespace MakersAcademy.Bank.Tests
     [TestFixture]
     public class when_depositing_funds
     {
-        [Test]
-        public void then_printed_statement_shows_correct_date_and_amounts_for_deposit_and_balance()
+        [TestCase("14/01/2012", 1000, "14/01/2012 || 1000 || || 1000")]
+        [TestCase("12/01/2012", 2000, "12/01/2012 || 2000 || || 2000")]
+        public void then_printed_statement_shows_correct_date_and_amounts_for_deposit_and_balance(string depositDate, int depositAmount, string expectedStatementLine)
         {
             var bankAccount = new BankAccount();
 
-            bankAccount.Deposit(new DateTime(2012, 01, 10), 1000);
+            bankAccount.Deposit(DateTime.Parse(depositDate), depositAmount);
             var printedStatement = bankAccount.PrintStatement();
 
-            Assert.That(printedStatement, Is.EqualTo("date || credit || debit || balance\r\n14/01/2012 || 2000 || || 2000"));
+            Assert.That(printedStatement, Is.EqualTo("date || credit || debit || balance\r\n" + expectedStatementLine));
         }
     }
 }
