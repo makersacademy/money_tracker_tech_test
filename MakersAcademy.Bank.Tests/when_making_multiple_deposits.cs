@@ -20,9 +20,9 @@ namespace MakersAcademy.Bank.Tests
             var expectedStatementLines = new StringBuilder();
             expectedStatementLines.Append("date || credit || debit || balance");
             expectedStatementLines.Append(Environment.NewLine);
-            expectedStatementLines.Append("14/01/2012 || 1000 || || 1000");
+            expectedStatementLines.Append("14/01/2012 || 1000 || || 3000");
             expectedStatementLines.Append(Environment.NewLine);
-            expectedStatementLines.Append("12/01/2012 || 2000 || || 3000");
+            expectedStatementLines.Append("12/01/2012 || 2000 || || 2000");
 
             Assert.That(printedStatement, Is.EqualTo(expectedStatementLines.ToString()));
         }

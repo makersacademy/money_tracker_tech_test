@@ -17,6 +17,12 @@ It's easy to get carried away so by rigorously trying to simplify I, hopefully, 
 
 3. I realised I've used an array for deposits and a loop for printing them, so I decide to finish testing multiple deposits.
 
+4. Wow. 2nd evening on this and I realised I'd jumped further than I should have. I missed the ordering of the transactions, but trusted myself to be able to resolve it so continued with coding and using my tests to check frequently that I was progressing.
+
+5. The resulting code has some ugly bits which I'm not proud of - breaks OCP, and SRP is not followed well. But it works which is Kent Beck's first rule of simple design. And it's quite readable so the intent is clear.
+
+6. The software could ship in this current state. But I feel there's potential for a more elegant solution.
+
 
 
 
