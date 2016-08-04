@@ -10,7 +10,7 @@ namespace MakersAcademy.Bank.Tests
         {
             var bankAccount = new BankAccount();
 
-            var printedStatement = bankAccount.PrintStatement();
+            var printedStatement = bankAccount.CreateStatement();
 
             Assert.That(printedStatement, Is.EqualTo("date || credit || debit || balance"));
         }

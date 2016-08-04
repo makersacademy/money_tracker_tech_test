@@ -15,7 +15,7 @@ namespace MakersAcademy.Bank.Tests
             bankAccount.Deposit(new DateTime(2012, 01, 14), 1000);
             bankAccount.Deposit(new DateTime(2012, 01, 12), 2000);
 
-            var printedStatement = bankAccount.PrintStatement();
+            var printedStatement = bankAccount.CreateStatement();
 
             var expectedStatementLines = new StringBuilder();
             expectedStatementLines.Append("date || credit || debit || balance");
