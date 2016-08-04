@@ -2,14 +2,14 @@ using System;
 
 namespace MakersAcademy.Bank
 {
-    public class StatementLine
+    internal class StatementLine
     {
-        public DateTime DateTime { get; }
-        public string DepositValue { get; }
-        public string WithdrawalValue { get; }
-        public int RunningBalance { get; }
+        internal DateTime DateTime { get; }
+        internal string DepositValue { get; }
+        internal string WithdrawalValue { get; }
+        internal int RunningBalance { get; }
 
-        public StatementLine(Transaction transaction, int previousBalance)
+        internal StatementLine(Transaction transaction, int previousBalance)
         {
             DateTime = transaction.DateTime;
             DepositValue = transaction.DepositAmount > 0 ? transaction.DepositAmount + " " : "";

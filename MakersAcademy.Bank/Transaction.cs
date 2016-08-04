@@ -2,20 +2,20 @@ using System;
 
 namespace MakersAcademy.Bank
 {
-    public class Transaction 
+    internal class Transaction 
     {
-        public DateTime DateTime { get; }
-        public int DepositAmount { get; }
-        public int WithdrawalAmount { get; }
+        internal DateTime DateTime { get; }
+        internal int DepositAmount { get; }
+        internal int WithdrawalAmount { get; }
 
-        public Transaction(DateTime dateTime, int depositAmount, int withdrawalAmount)
+        internal Transaction(DateTime dateTime, int depositAmount, int withdrawalAmount)
         {
             DateTime = dateTime;
             DepositAmount = depositAmount;
             WithdrawalAmount = withdrawalAmount;
         }
 
-        public int AdjustBalance(int previousBalance)
+        internal int AdjustBalance(int previousBalance)
         {
             return previousBalance + DepositAmount - WithdrawalAmount;
         }

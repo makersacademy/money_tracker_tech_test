@@ -1,4 +1,5 @@
 # The Bank Tech Test
+[![Build Status](https://travis-ci.org/AyahuascaCeremony/bank_tech_test.svg?branch=master)](https://travis-ci.org/AyahuascaCeremony/bank_tech_test)
 
 ### My approach
 I take an Outside-In approach to TDD, trying to write tests that describe the User scenario clearly.
