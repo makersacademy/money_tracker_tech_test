@@ -2,22 +2,10 @@ using System;
 
 namespace MakersAcademy.Bank
 {
-    public class Deposit : ITransaction
+    public class Deposit : Transaction
     {
-        public DateTime DateTime { get; }
-        public int DepositAmount { get; }
-        public int WithdrawalAmount { get; }
-
-        public int AdjustBalance(int previousBalance)
+        public Deposit(DateTime dateTime, int amount) : base(dateTime, depositAmount: amount, withdrawalAmount: 0)
         {
-            return previousBalance + DepositAmount - WithdrawalAmount;
-        }
-
-        public Deposit(DateTime dateTime, int amount)
-        {
-            DateTime = dateTime;
-            DepositAmount = amount;
-            WithdrawalAmount = 0;
         }
     }
 }

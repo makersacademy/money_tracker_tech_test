@@ -43,9 +43,9 @@
     <Compile Include="BankAccount.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Deposit.cs" />
-    <Compile Include="ITransaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatementLine.cs" />
+    <Compile Include="Transaction.cs" />
     <Compile Include="Withdrawal.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

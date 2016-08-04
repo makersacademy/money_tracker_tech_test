@@ -7,7 +7,6 @@ namespace MakersAcademy.Bank.Tests
     [TestFixture]
     public class when_making_deposits_and_withdrawals
     {
-
         [Test]
         public void then_printed_statement_shows_correct_transactions_and_balance_and_descending_date_order()
         {

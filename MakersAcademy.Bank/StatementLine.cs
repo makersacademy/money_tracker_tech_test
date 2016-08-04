@@ -9,7 +9,7 @@ namespace MakersAcademy.Bank
         public string WithdrawalValue { get; }
         public int RunningBalance { get; }
 
-        public StatementLine(ITransaction transaction, int previousBalance)
+        public StatementLine(Transaction transaction, int previousBalance)
         {
             DateTime = transaction.DateTime;
             DepositValue = transaction.DepositAmount > 0 ? transaction.DepositAmount + " " : "";

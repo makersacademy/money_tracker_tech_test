@@ -7,7 +7,7 @@ namespace MakersAcademy.Bank
 {
     public class BankAccount
     {
-        private readonly IList<ITransaction> _transactions = new List<ITransaction>();
+        private readonly IList<Transaction> _transactions = new List<Transaction>();
 
         public void Deposit(DateTime dateTime, int amount)
         {
