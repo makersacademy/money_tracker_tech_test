@@ -16,7 +16,4 @@ describe "Account" do
     expect(@account.history).to eq [@transaction]
   end
 
-  # it "accepts a transaction" do
-  #
-  # end
 end
