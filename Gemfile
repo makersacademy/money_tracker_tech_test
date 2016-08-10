@@ -1,3 +1,6 @@
 source 'https://rubygems.org'
-gem 'rspec', :require => 'spec'
-gem 'rake'
+
+group :test do
+  gem 'rake'
+  gem 'rspec', :require => 'spec'
+end
