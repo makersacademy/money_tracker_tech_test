@@ -1,4 +1,4 @@
-require "./lib/transaction"
+require "./lib/transaction_log"
 
 #performs simple calculations based on the account history
 class Account
@@ -26,7 +26,6 @@ class Account
   end
 
   def arrange_by_date
-    p @history.transactions
     @history.transactions.sort_by {|transfer| transfer[1]}
   end
 
