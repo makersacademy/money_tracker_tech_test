@@ -1,4 +1,4 @@
-# The Bank Tech Test
+# The Bank Tech Test [![Build Status](https://travis-ci.org/timchipperfield/bank_tech_test.svg?branch=master)](https://travis-ci.org/timchipperfield/bank_tech_test)
 
 ### Requirements
 * Deposits, withdrawal
