@@ -1,4 +1,4 @@
-# The Bank Tech Test [![Build Status](https://travis-ci.org/timchipperfield/bank_tech_test.svg?branch=master)](https://travis-ci.org/timchipperfield/bank_tech_test)
+# The Bank Tech Test [![Build Status](https://travis-ci.org/timchipperfield/bank_tech_test.svg?branch=master)](https://travis-ci.org/timchipperfield/bank_tech_test)[![Coverage Status](https://coveralls.io/repos/github/timchipperfield/bank_tech_test/badge.svg?branch=master)](https://coveralls.io/github/timchipperfield/bank_tech_test?branch=master)
 
 ### Requirements
 * Deposits, withdrawal
