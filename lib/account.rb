@@ -20,13 +20,13 @@ class Account
 
   def find_balance_for_each_transfer(arranged)
     arranged.each do |transfer|
-      transfer.push(@balance + transfer[0])
-      @balance += transfer[0]
+      transfer.merge!("balance" => (@balance + transfer["amount"]))
+      @balance += transfer["amount"]
     end
   end
 
   def arrange_by_date
-    @history.transactions.sort_by {|transfer| transfer[1]}
+    @history.transactions.sort_by {|transfer| transfer["date"]}.reverse!
   end
 
 

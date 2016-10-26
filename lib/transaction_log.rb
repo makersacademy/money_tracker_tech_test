@@ -16,7 +16,7 @@ class Transaction_Log
   private
 
   def save_transaction(amount, date)
-    @transactions << [amount, date]
+    @transactions << {"amount" => amount, "date" => date}
   end
 
 
