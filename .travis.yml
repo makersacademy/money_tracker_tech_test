@@ -1,0 +1,6 @@
+language: ruby
+rvm:
+  - 2.2
+script:
+  - mkdir -p spec && bundle exec rspec spec
+# sudo: required
