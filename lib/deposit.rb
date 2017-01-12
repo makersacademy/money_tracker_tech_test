@@ -1,9 +1,6 @@
-# Cash deposits objects
-class Deposit
-  attr_reader :value, :created_time
+# Cash deposit objects
+# Cash withdrawl objects
+require_relative 'transaction'
 
-  def initialize(value)
-    @value = value
-    @created_time = Date.today.to_s
-  end
+class Deposit < Transaction
 end
