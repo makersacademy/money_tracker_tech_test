@@ -20,7 +20,7 @@ describe Account do
 
   it 'stores the deposit with the new balance' do
     subject.deposit(deposit)
-    expect(subject.deposit_record).to eq([[deposit, 100]])
+    expect(subject.transaction_record).to eq([[deposit, 100]])
   end
 
   it 'can make a withdrawl' do
@@ -30,6 +30,6 @@ describe Account do
 
   it 'stores the withdrawl with new balance' do
     subject.withdraw(withdrawl)
-    expect(subject.withdrawl_record).to eq([[withdrawl, -100]])
+    expect(subject.transaction_record).to eq([[withdrawl, -100]])
   end
 end

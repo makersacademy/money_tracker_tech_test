@@ -8,13 +8,12 @@ class Statement
 
   def print_statement
     i = 0
-    while i < account.deposit_record.length do
-      transaction = account.deposit_record[i]
-      transaction_object = transaction[i]
-      date = transaction_object.created_date
-      value = transaction_object.value
-      balance = transaction[i+1]
-      puts "Date: #{date} Transaction Type: #{transaction_object.class} Amount: #{value} Balance: #{balance}"
+    while i < account.transaction_record.length
+      transaction = account.transaction_record[i]
+      transaction_object = transaction[0]
+      puts "Date: #{transaction_object.created_date} " \
+      "Transaction Type: #{transaction_object.class} " \
+      "Amount: #{transaction_object.value} Balance: #{transaction[1]}"
       i += 1
     end
   end
