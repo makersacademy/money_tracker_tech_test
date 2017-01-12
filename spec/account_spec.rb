@@ -10,9 +10,10 @@ describe Account do
     expect(subject.current_balance).to eq(100)
   end
 
-  it 'records the date of the deposit transaction' do
+  it 'records the date and balance when deposit is made' do
     subject.deposit(100)
-    expect(subject.deposit_record).to eq(Date.today.to_s => 100)
+    expect(subject.deposit_record).to eq(Date.today.to_s =>
+      [100, subject.current_balance])
   end
 
   it 'can make a withdrawl' do
@@ -20,8 +21,9 @@ describe Account do
     expect(subject.current_balance).to eq(-100)
   end
 
-  it 'records the date of the withdrawl transaction' do
+  it 'records the date and balance when withdrawl is made' do
     subject.withdraw(100)
-    expect(subject.withdrawl_record).to eq(Date.today.to_s => 100)
+    expect(subject.withdrawl_record).to eq(Date.today.to_s =>
+      [100, subject.current_balance])
   end
 end

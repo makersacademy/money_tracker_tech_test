@@ -19,11 +19,15 @@ class Account
     add_withdrawl_record(amount)
   end
 
+  private
+
   def add_deposit_record(amount)
-    @deposit_record[Date.today.to_s] = amount
+    @deposit_record[Date.today.to_s] =
+      [amount, current_balance]
   end
 
   def add_withdrawl_record(amount)
-    @withdrawl_record[Date.today.to_s] = amount
+    @withdrawl_record[Date.today.to_s] =
+      [amount, current_balance]
   end
 end
