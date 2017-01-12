@@ -1,9 +1,13 @@
 require 'spec_helper'
 
 describe Statement do
-  it 'prints out a statement' do
-    subject.deposit(100)
-    subject.withdraw(50)
-    expect { subject.print_statement }.to output('100').to_stdout
-  end
+  # let!(:account) do
+  #  double("account", :current_balance => 100,
+  #        :deposit_record => {date: [200, 200]},
+  #        :withdrawl_record => {date: [100, 100]})
+  # end
+
+  # xit 'can take an account and print out a statement' do
+  #  expect { subject.print_statement(account) }.to output.to_stdout
+  # end
 end
