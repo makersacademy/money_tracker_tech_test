@@ -5,29 +5,27 @@ class Account
 
   def initialize
     @current_balance = 0
-    @deposit_record = {}
-    @withdrawl_record = {}
+    @deposit_record = []
+    @withdrawl_record = []
   end
 
-  def deposit(amount)
-    @current_balance += amount
-    add_deposit_record(amount)
+  def deposit(deposit)
+    @current_balance += deposit.value
+    store_deposit_record(deposit)
   end
 
-  def withdraw(amount)
-    @current_balance -= amount
-    add_withdrawl_record(amount)
+  def withdraw(withdrawl)
+    @current_balance -= withdrawl.value
+    store_withdrawl_record(withdrawl)
   end
 
   private
 
-  def add_deposit_record(amount)
-    @deposit_record[Date.today.to_s] =
-      [amount, current_balance]
+  def store_deposit_record(deposit)
+    deposit_record.push(deposit)
   end
 
-  def add_withdrawl_record(amount)
-    @withdrawl_record[Date.today.to_s] =
-      [amount, current_balance]
+  def store_withdrawl_record(withdrawl)
+    withdrawl_record.push(withdrawl)
   end
 end

@@ -1,9 +1,9 @@
 # superclass for deposit and withdrawl
 class Transaction
-  attr_reader :value, :created_time
+  attr_reader :value, :created_date
 
   def initialize(value)
     @value = value
-    @created_time = Date.today.to_s
+    @created_date = Date.today.to_s
   end
 end

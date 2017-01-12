@@ -10,6 +10,6 @@ describe Deposit do
   end
 
   it 'has a date stamp on creation' do
-    expect(deposit.created_time).to eq(Date.today.to_s)
+    expect(deposit.created_date).to eq(Date.today.to_s)
   end
 end
