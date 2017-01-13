@@ -3,12 +3,14 @@ require 'spec_helper'
 describe Statement do
   let!(:deposit) do
     double('deposit', value: 100,
-                      created_date: Date.today.to_s)
+                      created_date: Date.today.to_s,
+                      class: Deposit)
   end
 
   let!(:withdrawl) do
     double('withdrawl', value: 50,
-                        created_date: Date.today.to_s)
+                        created_date: Date.today.to_s,
+                        class: Withdrawl)
   end
 
   let!(:account) do
@@ -23,11 +25,25 @@ describe Statement do
     expect(statement.account).to eq(account)
   end
 
-  it 'can output transactions' do
+  it 'can output all transactions' do
     expect { statement.print_statement }.to output(
-      'Date: 2017-01-12 Transaction Type: RSpec::Mocks::Double Amount: 100 ' \
-      "Balance: 100\nDate: 2017-01-12 Transaction Type: RSpec::Mocks::Double " \
+      "Date: #{Date.today} Transaction Type: Deposit Amount: 100 " \
+      "Balance: 100\nDate: #{Date.today} Transaction Type: Withdrawl " \
       "Amount: 50 Balance: 50\n"
+    ).to_stdout
+  end
+
+  it 'can filter just deposits' do
+    expect { statement.print_deposits }.to output(
+      "Date: #{Date.today} Transaction Type: Deposit Amount: 100 " \
+      "Balance: 100\n"
+    ).to_stdout
+  end
+
+  it 'can filter just withdrawls' do
+    expect { statement.print_withdrawls }.to output(
+      "Date: #{Date.today} Transaction Type: Withdrawl Amount: 50 " \
+      "Balance: 50\n"
     ).to_stdout
   end
 end
