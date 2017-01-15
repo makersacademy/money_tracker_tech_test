@@ -26,24 +26,21 @@ describe Statement do
   end
 
   it 'can output all transactions' do
-    expect { statement.print_statement }.to output(
-      "Date: #{Date.today} Transaction Type: Deposit Amount: 100 " \
-      "Balance: 100\nDate: #{Date.today} Transaction Type: Withdrawl " \
-      "Amount: 50 Balance: 50\n"
-    ).to_stdout
+    expect(statement.print_statement).to eq(
+      ['Date: 2017-01-15  Transaction Type: Deposit  Amount: 100 Balance: 100',
+       'Date: 2017-01-15  Transaction Type: Withdrawl  Amount: 50 Balance: 50']
+    )
   end
 
   it 'can filter just deposits' do
-    expect { statement.print_deposits }.to output(
-      "Date: #{Date.today} Transaction Type: Deposit Amount: 100 " \
-      "Balance: 100\n"
-    ).to_stdout
+    expect(statement.print_deposits).to eq(
+      ['Date: 2017-01-15  Transaction Type: Deposit  Amount: 100 Balance: 100']
+    )
   end
 
   it 'can filter just withdrawls' do
-    expect { statement.print_withdrawls }.to output(
-      "Date: #{Date.today} Transaction Type: Withdrawl Amount: 50 " \
-      "Balance: 50\n"
-    ).to_stdout
+    expect(statement.print_withdrawls).to eq(
+      ['Date: 2017-01-15  Transaction Type: Withdrawl  Amount: 50 Balance: 50']
+    )
   end
 end
