@@ -10,7 +10,34 @@ Shoes.app(width: 1100, height: 800, title: 'Bank Account') do
 
   @title = stack { title("Current Balance: #{@account.current_balance}", align: 'center') }
 
-  stack do
+  def new_statement
+    @statement = Statement.new(@account)
+    return @statement
+  end
+
+  def print_statement_method
+    window(width: 800, title: 'Full Statement') do
+      owner.new_statement.print_statement.each do |tran|
+        stack { para tran }
+      end
+    end
+  end
+
+  def print_deposits_method
+    window(width: 800, title: 'Deposits Only') do
+      owner.new_statement.print_deposits.each do |tran|
+        stack { para tran }
+      end
+    end
+  end
+
+  def print_withdrawls_method
+    window(width: 800, title: 'Withdrawls Only') do
+      owner.new_statement.print_withdrawls.each do |tran|
+        stack { para tran }
+      end
+    end
+  end
 
     flow(margin: 15) do
       deposit_amount = edit_line width: 75
@@ -20,9 +47,7 @@ Shoes.app(width: 1100, height: 800, title: 'Bank Account') do
         @title.clear { title("Current Balance: #{@account.current_balance}", align: 'center') }
         deposit_amount.text = ''
       end
-    end
 
-    flow(margin: 15) do
       withdrawl_amount = edit_line width: 75
       button 'Withdrawl' do
         @withdrawl = Withdrawl.new(withdrawl_amount.text.to_f)
@@ -32,37 +57,20 @@ Shoes.app(width: 1100, height: 800, title: 'Bank Account') do
       end
     end
 
-    stack(margin: 15) do
+    flow(margin: 15) do
+
       button 'Print Statement' do
-        @statement = Statement.new(@account)
-        @statement.print_statement.each do |tran|
-          stack do
-            para tran
-          end
-        end
+        print_statement_method
       end
-    end
 
-    stack(margin: 15) do
       button 'Print Deposits' do
-        @statement = Statement.new(@account)
-        @statement.print_deposits.each do |tran|
-          stack do
-            para tran
-          end
-        end
+        print_deposits_method
       end
+
+      button 'Print Withdrawls' do
+        print_withdrawls_method
+      end
+
     end
 
-    stack(margin: 15) do
-      button 'Print Withdrawls' do
-        @statement = Statement.new(@account)
-        @statement.print_withdrawls.each do |tran|
-          stack do
-            para tran
-          end
-        end
-      end
-    end
-  end
 end
