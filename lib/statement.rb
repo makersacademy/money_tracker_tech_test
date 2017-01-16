@@ -6,15 +6,15 @@ class Statement
     @account = account
   end
 
-  def print_statement(order='ascending')
+  def print_statement(order = 'ascending')
     order == 'descending' ? statement_collation.reverse : statement_collation
   end
 
-  def print_deposits(order='ascending')
+  def print_deposits(order = 'ascending')
     order == 'descending' ? deposits_collation.reverse : deposits_collation
   end
 
-  def print_withdrawls(order='ascending')
+  def print_withdrawls(order = 'ascending')
     order == 'descending' ? withdrawls_collation.reverse : withdrawls_collation
   end
 
@@ -23,11 +23,11 @@ class Statement
   def statement_collation
     print_array = []
     account.transaction_record.each do |tran|
-        print_array.push(
+      print_array.push(
         "Date: #{tran[0].created_date} " \
-        " Transaction Type: #{tran[0].class} " \
-        " Amount: #{tran[0].value} Balance: #{tran[1]}"
-        )
+        "Transaction Type: #{tran[0].class} " \
+        "Amount: #{tran[0].value} Balance: #{tran[1]}"
+      )
     end
     print_array
   end
@@ -37,9 +37,9 @@ class Statement
     account.transaction_record.each do |tran|
       if tran[0].class == Deposit
         print_array.push(
-        "Date: #{tran[0].created_date} " \
-        " Transaction Type: #{tran[0].class} " \
-        " Amount: #{tran[0].value} Balance: #{tran[1]}"
+          "Date: #{tran[0].created_date} " \
+          "Transaction Type: #{tran[0].class} " \
+          "Amount: #{tran[0].value} Balance: #{tran[1]}"
         )
       end
     end
@@ -51,13 +51,12 @@ class Statement
     account.transaction_record.each do |tran|
       if tran[0].class == Withdrawl
         print_array.push(
-        "Date: #{tran[0].created_date} " \
-        " Transaction Type: #{tran[0].class} " \
-        " Amount: #{tran[0].value} Balance: #{tran[1]}"
+          "Date: #{tran[0].created_date} " \
+          "Transaction Type: #{tran[0].class} " \
+          "Amount: #{tran[0].value} Balance: #{tran[1]}"
         )
       end
     end
     print_array
   end
-
 end
