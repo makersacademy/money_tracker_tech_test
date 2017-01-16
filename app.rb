@@ -22,7 +22,8 @@ Shoes.app(width: 1100, height: 800, title: 'Bank Account') do
           stack { para tran }
         end
       end
-      button "Reverse Date Order" do
+      rev_butt = button "Reverse Date Order" do
+        rev_butt.hide
         print_stack.clear
         owner.new_statement.print_statement("descending").each do |tran|
           stack { para tran }
@@ -38,7 +39,8 @@ Shoes.app(width: 1100, height: 800, title: 'Bank Account') do
           stack { para tran }
         end
       end
-      button "Reverse Date Order" do
+      rev_butt = button "Reverse Date Order" do
+        rev_butt.hide
         print_stack.clear
         owner.new_statement.print_deposits('descending').each do |tran|
             stack { para tran }
@@ -54,7 +56,8 @@ Shoes.app(width: 1100, height: 800, title: 'Bank Account') do
           stack { para tran }
         end
       end
-      button "Reverse Date Order" do
+      rev_butt = button "Reverse Date Order" do
+        rev_butt.hide
         print_stack.clear
         owner.new_statement.print_withdrawls("descending").each do |tran|
           stack { para tran }
