@@ -44,7 +44,10 @@ describe Statement do
     )
   end
 
-  it 'can output in date ascending order' do
-
+  it 'can output in date descending order' do
+    expect(statement.print_statement('descending')).to eq(
+    ["Date: #{Date.today}  Transaction Type: Withdrawl  Amount: 50 Balance: 50",
+     "Date: #{Date.today}  Transaction Type: Deposit  Amount: 100 Balance: 100"]
+    )
   end
 end

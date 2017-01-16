@@ -6,7 +6,7 @@ class Statement
     @account = account
   end
 
-  def print_statement
+  def print_statement(order='ascending')
     i = 0
     print_array = []
     while i < account.transaction_record.length
@@ -17,7 +17,11 @@ class Statement
       " Amount: #{transaction_object.value} Balance: #{transaction[1]}")
       i += 1
     end
-    print_array
+    if order == 'descending'
+      return print_array.reverse
+    else
+      return print_array
+    end
   end
 
   def print_deposits
