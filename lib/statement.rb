@@ -7,7 +7,7 @@ class Statement
   end
 
   def print_statement(order='ascending')
-    order == 'descending' ? full_statement_collation.reverse : full_statement_collation
+    order == 'descending' ? statement_collation.reverse : statement_collation
   end
 
   def print_deposits(order='ascending')
@@ -20,49 +20,44 @@ class Statement
 
   private
 
-  def full_statement_collation
-    i = 0
+  def statement_collation
     print_array = []
-    while i < account.transaction_record.length
-      transaction = account.transaction_record[i]
-      transaction_object = transaction[0]
-      print_array.push("Date: #{transaction_object.created_date} " \
-      " Transaction Type: #{transaction_object.class} " \
-      " Amount: #{transaction_object.value} Balance: #{transaction[1]}")
-      i += 1
+    account.transaction_record.each do |tran|
+        print_array.push(
+        "Date: #{tran[0].created_date} " \
+        " Transaction Type: #{tran[0].class} " \
+        " Amount: #{tran[0].value} Balance: #{tran[1]}"
+        )
     end
     print_array
   end
 
   def deposits_collation
-    i = 0
     print_array = []
-    while i < account.transaction_record.length
-      if account.transaction_record[i][0].class == Deposit
-        transaction = account.transaction_record[i]
-        transaction_object = transaction[0]
-        print_array.push("Date: #{transaction_object.created_date} " \
-        " Transaction Type: #{transaction_object.class} " \
-        " Amount: #{transaction_object.value} Balance: #{transaction[1]}")
+    account.transaction_record.each do |tran|
+      if tran[0].class == Deposit
+        print_array.push(
+        "Date: #{tran[0].created_date} " \
+        " Transaction Type: #{tran[0].class} " \
+        " Amount: #{tran[0].value} Balance: #{tran[1]}"
+        )
       end
-      i += 1
     end
     print_array
   end
 
   def withdrawls_collation
-    i = 0
     print_array = []
-    while i < account.transaction_record.length
-      if account.transaction_record[i][0].class == Withdrawl
-        transaction = account.transaction_record[i]
-        transaction_object = transaction[0]
-        print_array.push("Date: #{transaction_object.created_date} " \
-        " Transaction Type: #{transaction_object.class} " \
-        " Amount: #{transaction_object.value} Balance: #{transaction[1]}")
+    account.transaction_record.each do |tran|
+      if tran[0].class == Withdrawl
+        print_array.push(
+        "Date: #{tran[0].created_date} " \
+        " Transaction Type: #{tran[0].class} " \
+        " Amount: #{tran[0].value} Balance: #{tran[1]}"
+        )
       end
-      i += 1
     end
     print_array
   end
+
 end
