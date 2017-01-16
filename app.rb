@@ -15,26 +15,50 @@ Shoes.app(width: 1100, height: 800, title: 'Bank Account') do
     return @statement
   end
 
-  def print_statement_method
+  def print_statement
     window(width: 800, title: 'Full Statement') do
-      owner.new_statement.print_statement.each do |tran|
-        stack { para tran }
+      print_stack = stack do
+        owner.new_statement.print_statement.each do |tran|
+          stack { para tran }
+        end
+      end
+      button "Reverse Date Order" do
+        print_stack.clear
+        owner.new_statement.print_statement("descending").each do |tran|
+          stack { para tran }
+        end
       end
     end
   end
 
-  def print_deposits_method
+  def print_deposits
     window(width: 800, title: 'Deposits Only') do
-      owner.new_statement.print_deposits.each do |tran|
-        stack { para tran }
+      print_stack = stack do
+        owner.new_statement.print_deposits.each do |tran|
+          stack { para tran }
+        end
+      end
+      button "Reverse Date Order" do
+        print_stack.clear
+        owner.new_statement.print_deposits('descending').each do |tran|
+            stack { para tran }
+        end
       end
     end
   end
 
-  def print_withdrawls_method
+  def print_withdrawls
     window(width: 800, title: 'Withdrawls Only') do
-      owner.new_statement.print_withdrawls.each do |tran|
-        stack { para tran }
+      print_stack = stack do
+        owner.new_statement.print_withdrawls.each do |tran|
+          stack { para tran }
+        end
+      end
+      button "Reverse Date Order" do
+        print_stack.clear
+        owner.new_statement.print_withdrawls("descending").each do |tran|
+          stack { para tran }
+        end
       end
     end
   end
@@ -60,15 +84,15 @@ Shoes.app(width: 1100, height: 800, title: 'Bank Account') do
     flow(margin: 15) do
 
       button 'Print Statement' do
-        print_statement_method
+        print_statement
       end
 
       button 'Print Deposits' do
-        print_deposits_method
+        print_deposits
       end
 
       button 'Print Withdrawls' do
-        print_withdrawls_method
+        print_withdrawls
       end
 
     end
