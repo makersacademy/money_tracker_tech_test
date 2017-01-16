@@ -1,5 +1,7 @@
 # The Bank Tech Test
 
+[![Build Status](https://travis-ci.org/PaulWallis42/bank_tech_test.svg?branch=master)](https://travis-ci.org/PaulWallis42/bank_tech_test)
+
 This is a simple bank account app that allows you to deposit and withdraw money and also print statements to display all deposits, withdrawls and your current balance.
 
 (/images/acount.png)
