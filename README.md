@@ -4,7 +4,7 @@
 
 This is a simple bank account app that allows you to deposit and withdraw money and also print statements to display all deposits, withdrawls and your current balance.
 
-![a bank account](/images/acount.png)
+![a bank account](/images/account.png)
 
 The app is written in the Ruby programming language and runs on the Ruby GUI Shoes (http://shoesrb.com/).
 
