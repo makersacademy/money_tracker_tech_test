@@ -1,3 +1,5 @@
+require 'transaction'
+
 class Account
   attr_reader :balance
   attr_reader :transactions
