@@ -19,4 +19,8 @@ describe Account do
     subject.withdraw(5)
     expect(subject.balance).to eq(5)
   end
+
+  it 'keeps track of transfers' do
+    expect(subject.transactions).to eq([])
+  end
 end
