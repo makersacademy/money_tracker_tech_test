@@ -1,7 +1,7 @@
 require 'account'
 
 describe Account do
-  it "has a starting balance of 0" do
+  it "has an initial balance of 0" do
     expect(subject.balance).to eq(0)
   end
 
@@ -18,6 +18,12 @@ describe Account do
     subject.deposit(10)
     subject.withdraw(5)
     expect(subject.balance).to eq(5)
+  end
+
+  it 'can track debit if balance is in minus' do
+    subject.deposit(10)
+    subject.withdraw(15)
+    expect(subject.debit).to eq(5)
   end
 
   it 'keeps track of transfers' do
