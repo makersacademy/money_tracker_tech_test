@@ -4,15 +4,15 @@
 
 ### Requirements
 
-* Your goal is to write a program you use to track how much money you spend and earn.
+* Your goal is to write a program you could use to track money you spend and earn.
 
 * You should be able to interact with the your code via a REPL like IRB or the JavaScript console.  (You don't need to implement a command line interface that takes input from STDIN.)
 
-* You should be able to record money you've spent and the date you spent it on.  e.g. Record the fact that you spent £100 on 2017/8/8.
+* You should be able to record money you've spent and the date you spent it on.  e.g. You could record the fact that you spent £100 on 2017/8/8.
 
-* You should be able to record money you've earned and the date you earned it on.  e.g. Record the fact that you earned £100 on 2017/8/8.
+* You should be able to record money you've earned and the date you earned it on.  e.g. You could record the fact that you earned £100 on 2017/8/8.
 
-* You should be able to print an account statement that shows each transaction (date, amount, balance).
+* You should be able to print an account statement that shows all the records (date, amount, balance).
 
 * Data can be kept in memory (it doesn't need to be stored to a database or anything).
 
