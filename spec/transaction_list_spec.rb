@@ -8,4 +8,10 @@ describe TransactionList do
     expect(subject.list.length).to eq(1)
   end
 
+  it "can show the list" do
+    transaction = [@date= "2017-08-07", @credit=10, @debit=nil, @balance=100]
+    subject.add_to_list(transaction)
+    expect(subject.getList).to eq([transaction])
+  end
+
 end
