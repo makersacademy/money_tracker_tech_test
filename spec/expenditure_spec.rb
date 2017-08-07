@@ -1,13 +1,13 @@
 require 'expense'
 
 RSpec.describe Expense do
-  let(:expense_description) {:coffee}
-  let(:expense_cost) {10}
+  let(:expense_description) { :coffee }
+  let(:expense_cost) { 10 }
   subject(:expense) { described_class.new(:expense_description, :expense_cost, '07-08-2017') }
-  it { is_expected.to respond_to(:date) }
-  it { is_expected.to respond_to(:description) }
-  it { is_expected.to respond_to(:debit) }
-  it { is_expected.to respond_to(:credit) }
+  it { is_expected.to respond_to( :date ) }
+  it { is_expected.to respond_to( :description ) }
+  it { is_expected.to respond_to( :debit ) }
+  it { is_expected.to respond_to( :credit ) }
 
   describe "#description" do
     it "should return a description" do
