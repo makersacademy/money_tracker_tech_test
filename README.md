@@ -19,10 +19,10 @@
 ### Acceptance criteria
 
 **Given** you record that you earned 1000 on 10-01-2012
-**And** earned 2000 on 13-01-2012
-**And** spent 500 on 14-01-2012
-**When** you print all your records
-**Then** you would see
+**and** earned 2000 on 13-01-2012
+**and** spent 500 on 14-01-2012
+**when** you print all your records
+**then** you would see:
 
 ```
 date || credit || debit || balance
