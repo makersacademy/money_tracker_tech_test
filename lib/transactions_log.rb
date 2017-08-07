@@ -3,7 +3,7 @@ require_relative "transaction"
 
 class Transactions_Log
 
-  attr_reader :history, :transaction
+  # note: possible make this a singleton
 
   def initialize(transaction = Transaction)
     @transaction = transaction
@@ -11,11 +11,15 @@ class Transactions_Log
   end
 
   def withdraw(current_balance, amount)
-    @history << transaction.new(debit: amount, balance: current_balance)
+    history << transaction.new(debit: amount, balance: current_balance)
   end
 
   def deposit(current_balance, amount)
-    @history << transaction.new(credit: amount, balance: current_balance)
+    history << transaction.new(credit: amount, balance: current_balance)
   end
+
+  private
+
+  attr_reader :history, :transaction
 
 end
