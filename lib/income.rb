@@ -1,6 +1,6 @@
 require 'date'
 
-class Earning
+class Income
   attr_reader :date, :debit, :credit
 
   def initialize(amount, datestring)

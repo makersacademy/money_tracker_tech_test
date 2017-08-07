@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/alistairmbp/projects/techtests/practice/moneytracker/spec/deposit_spec.rb": [
+      "/Users/alistairmbp/projects/techtests/practice/money_tracker_tech_test/spec/deposit_spec.rb": [
         1,
         null,
         1,
@@ -31,7 +31,7 @@
         null,
         null
       ],
-      "/Users/alistairmbp/projects/techtests/practice/moneytracker/lib/earning.rb": [
+      "/Users/alistairmbp/projects/techtests/practice/money_tracker_tech_test/lib/income.rb": [
         1,
         null,
         1,
@@ -45,10 +45,60 @@
         null,
         null
       ],
-      "/Users/alistairmbp/projects/techtests/practice/moneytracker/spec/expenditure_spec.rb": [
-
+      "/Users/alistairmbp/projects/techtests/practice/money_tracker_tech_test/spec/expenditure_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        9,
+        2,
+        2,
+        2,
+        2,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/alistairmbp/projects/techtests/practice/money_tracker_tech_test/lib/expense.rb": [
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        8,
+        8,
+        8,
+        8,
+        null,
+        null,
+        null
       ]
     },
-    "timestamp": 1502102871
+    "timestamp": 1502112315
   }
 }
