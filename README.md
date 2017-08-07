@@ -31,7 +31,8 @@ Built using Node.js
 ## Testing
 
 Tested using Jasmine. Add a custom_reporter.js file to customize testing output, making text from `describe` and `it` blocks visible and adding indentation.
- ![id](https://raw.githubusercontent.com/Corina/money_tracker_tech_test/master/assets/images/Screen%20Shot%202017-08-07%20at%2010.42.14%20PM.png)
+
+![id](https://raw.githubusercontent.com/Corina/money_tracker_tech_test/master/assets/images/Screen%20Shot%202017-08-07%20at%2010.42.14%20PM.png)
 
 ## Installation
 Clone this repo. In the command line type `node`.  
