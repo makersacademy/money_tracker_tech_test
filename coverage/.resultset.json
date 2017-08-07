@@ -1,0 +1,31 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/jkh/Desktop/Projects/money_tracker_tech_test/lib/account.rb": [
+        null,
+        1,
+        null
+      ],
+      "/Users/jkh/Desktop/Projects/money_tracker_tech_test/lib/statement.rb": [
+
+      ],
+      "/Users/jkh/Desktop/Projects/money_tracker_tech_test/lib/transaction.rb": [
+        null
+      ],
+      "/Users/jkh/Desktop/Projects/money_tracker_tech_test/lib/transactions.rb": [
+
+      ],
+      "/Users/jkh/Desktop/Projects/money_tracker_tech_test/spec/account_spec.rb": [
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1502103908
+  }
+}
