@@ -18,4 +18,15 @@ describe Record do
       expect { Record.new(date, 'not a number' ) }.to raise_error 'Invalid transaction amount'
     end
   end
+
+  describe 'Transaction Types' do
+    it 'Lists a positive amount as credit' do
+      expect(subject.type).to eq 'Credit'
+    end
+
+    it 'Lists a negative amount as debit' do
+      negative_record = Record.new(date, -100)
+      expect(negative_record.type).to eq 'Debit'
+    end
+  end
 end
