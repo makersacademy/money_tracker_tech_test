@@ -3,34 +3,50 @@ class Ledger
 
   def initialize
     @transactions = []
+    @balance = 0
   end
 
   def print_statement
     print_heading
-    print_transactions
+    create_transaction_history
   end
 
-  private
+  # private
 
   def print_heading
-    puts "date || credit || debit || balance"
+    puts 'date || credit || debit || balance'
   end
 
-  def print_transactions
-    balance = 0
-    transaction_output = []
+  def create_transaction_history
+    history = []
     sort_transactions.each do |transaction|
-      if transaction[:amount] < 0
-        transaction_output << "#{transaction[:date]} || || #{transaction[:amount].abs} || #{balance += transaction[:amount]}\n"
+      if debit?(transaction)
+        history << format_debit(transaction)
       else
-        transaction_output << "#{transaction[:date]} || #{transaction[:amount]} || || #{balance += transaction[:amount]}\n"
+        history << format_credit(transaction)
       end
     end
-
-    puts transaction_output.reverse.join
+    sort_transaction_history(history)
   end
 
   def sort_transactions
-    @transactions.sort_by {|k,v| k[:date]}
+    @transactions.sort_by { |k, v| k[:date] }
   end
+
+  def debit?(transaction)
+    transaction[:amount].to_i < 0
+  end
+
+  def format_debit(transaction)
+    "#{transaction[:date]} || || #{transaction[:amount].abs} || #{@balance += transaction[:amount]}\n"
+  end
+
+  def format_credit(transaction)
+    "#{transaction[:date]} || #{transaction[:amount]} || || #{@balance += transaction[:amount]}\n"
+  end
+
+  def sort_transaction_history(transactions)
+    puts transactions.reverse.join
+  end
+
 end
