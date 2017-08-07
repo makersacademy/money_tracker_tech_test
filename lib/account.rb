@@ -6,4 +6,16 @@ attr_reader :balance
     @balance = balance
   end
 
+  def deposit(amount)
+    @balance =+ amount
+  end
+
+  def withdraw(amount)
+    @balance -= amount
+  end
+
+  def show_balance
+    @balance
+  end
+
 end
