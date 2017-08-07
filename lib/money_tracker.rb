@@ -1,23 +1,27 @@
+require_relative 'transaction.rb'
 require 'date'
 
 class MoneyTracker
 
-  attr_reader :balance, :credits, :debits
+  attr_reader :balance, :transaction
 
   def initialize(balance = 0)
     @balance = balance
-    @credits = []
-    @debits = []
+    @transaction = Transaction.new
   end
 
   def credit(amount)
     @balance += amount
-    @credits << { format_date => amount }
+    save_transaction(format_date, amount, balance)
   end
 
   def debit(amount)
     @balance -= amount
-    @debits << { format_date => amount }
+    save_transaction(format_date, -amount, balance)
+  end
+
+  def save_transaction(date, amount, balance)
+    @transaction.store_transaction(date, amount, balance)
   end
 
 private
