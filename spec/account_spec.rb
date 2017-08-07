@@ -3,7 +3,10 @@ require 'account'
 describe Account do
 
   it 'can be initialized with a custom amount' do
-    account = Account.new(10)
+    statement = double("statement")
+    list = double("list")
+    allow(statement).to receive(:display_transactions).and_return("date || credit || debit || balance\n 08-08-2017||10||||100")
+    account = Account.new(10, list, statement)
     expect(account.balance).to eq(10)
   end
 
@@ -14,12 +17,7 @@ describe Account do
 
   it 'creates a new transaction on deposit' do
     subject.deposit(5)
-    expect(subject.transactions).not_to eq([])
-  end
-
-  it 'records the deposit amount as a credit' do
-    subject.deposit(5)
-    expect(subject.transactions[0].credit).to eq(5)
+    expect(subject.transactions.list).not_to eq([])
   end
 
   it 'does not change the balance if £0 deposited' do
@@ -36,12 +34,7 @@ describe Account do
   it 'creates a new transaction on withdrawl' do
     subject.deposit(10)
     subject.withdraw(5)
-    expect(subject.transactions.length).to eq(2)
-  end
-
-  it 'records a withdrawl amount as a debit' do
-    subject.withdraw(5)
-    expect(subject.transactions[0].debit).to eq(5)
+    expect(subject.transactions.list.length).to eq(2)
   end
 
   it 'does not change the balance if £0 withdrawn' do
@@ -52,6 +45,14 @@ describe Account do
   it 'client can see their balance' do
     subject.deposit(20)
     expect(subject.show_balance).to eq(20)
+  end
+
+  it 'allows user to see their statement' do
+    statement = double("statement")
+    list = double("list")
+    allow(statement).to re2ceive(:display_transactions).and_return("date || credit || debit || balance\n 08-08-2017||10||||100")
+    account = Account.new(10, list, statement)
+    expect { subject.display_statement }.to output("date || credit || debit || balance\n").to_stdout
   end
 
 end
