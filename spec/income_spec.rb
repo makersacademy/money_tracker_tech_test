@@ -5,6 +5,7 @@ RSpec.describe Income do
   let(:income_amount) { 10 }
   subject(:income) { described_class.new(:income_description, :income_amount, '07-08-2017') }
   it { is_expected.to respond_to(:date) }
+  it { is_expected.to respond_to( :description ) }
   it { is_expected.to respond_to(:debit) }
   it { is_expected.to respond_to(:credit) }
 
