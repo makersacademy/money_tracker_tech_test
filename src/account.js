@@ -2,7 +2,7 @@
 
 (function (exports) {
   function Account () {
-    this.tranzactions = [],
+    this.transactions = [],
     this.currentBalance = 0
   }
 

@@ -5,7 +5,7 @@
     this.account = account
   };
 
-  Credit.prototype.makeTranzaction = function (amount) {
+  Credit.prototype.makeTransaction = function (amount) {
     this.account.currentBalance += amount
   };
 
