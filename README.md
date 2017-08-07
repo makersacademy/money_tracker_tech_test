@@ -1,5 +1,42 @@
 
 # Money tracker tech test
+===================
+## Synopsis
+
+Money tracker is a Node.js app that helps users keep track of money spent and earned.
+
+## User stories
+
+**As a user**,
+
+So I can manage my money,  
+I want to open an account
+
+So I can know what I spent,   
+I want to be able to record money spent from my account
+
+So I can know what I earned,  
+I want to be able to record money deposited on my account
+
+So I know what transactions took place on my account,  
+I want to be able to see a list of transactions
+
+So I know when each transaction took place,  
+I want to see the list of transactions and the date when each took place
+
+## Built
+
+Built using Node.js
+
+## Testing
+
+Tested using Jasmine. Add a custom_reporter.js file to customize testing output, making text from `describe` and `it` blocks visible and adding indentation.
+
+
+## Installation
+Clone this repo. In the command line type `node`.  
+To run tests type `jasmine` in the command line.
+
 
 ## Specification
 
