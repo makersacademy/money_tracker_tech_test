@@ -19,7 +19,7 @@ describe Record do
 
   describe "#format" do
     it "formats the record and turns it into a hash" do
-      expect(record.format).to eq({100 => "07/08/2017"})
+      expect(record.format).to eq({amount: 100, date: "07/08/2017"})
     end
   end
 
@@ -31,7 +31,7 @@ describe Record do
     it "adds the record to the transactions array" do
       allow(my_ledger).to receive(:transactions).and_return([])
       record.add(my_ledger)
-      expect(my_ledger.transactions).to eq([{100 => "07/08/2017"}])
+      expect(my_ledger.transactions).to eq([{amount: 100, date: "07/08/2017"}])
     end
   end
 end

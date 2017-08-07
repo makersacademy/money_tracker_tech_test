@@ -1,3 +1,5 @@
+require "./lib/ledger.rb"
+
 class Record
 
   attr_reader :amount, :date
@@ -10,8 +12,8 @@ class Record
   def add(ledger)
     ledger.transactions << self.format
   end
-  
+
   def format
-    {@amount => @date}
+    {amount: @amount, date: @date}
   end
 end
