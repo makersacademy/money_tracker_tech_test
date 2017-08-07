@@ -1,22 +1,20 @@
 require 'date'
 
 class Record
-  attr_reader :date, :amount, :type
+  attr_reader :date, :amount
 
   def initialize(date, amount)
     @date   = Date.parse(date)
-    @amount = check_amount(amount)
-    @type   = determine_transaction_type(amount)
+    @amount = amount unless invalid? amount
+  end
+
+  def type
+    amount >= 0 ? 'Credit' : 'Debit'
   end
 
   private
 
-  def check_amount(amount)
+  def invalid?(amount)
     raise 'Invalid transaction amount' if amount.to_f.zero?
-    amount.to_f
-  end
-
-  def determine_transaction_type(amount)
-    amount >= 0 ? 'Credit' : 'Debit'
   end
 end
