@@ -17,17 +17,20 @@ class Ledger
   end
 
   def print_transactions
+    balance = 0
+    transaction_output = []
     sort_transactions.each do |transaction|
-      balance = 0
       if transaction[:amount] < 0
-        puts "#{transaction[:date]} || || #{transaction[:amount].abs} || #{balance -= transaction[:amount]}"
+        transaction_output << "#{transaction[:date]} || || #{transaction[:amount].abs} || #{balance += transaction[:amount]}\n"
       else
-        puts "#{transaction[:date]} || #{transaction[:amount].abs} || || #{balance += transaction[:amount]}"
+        transaction_output << "#{transaction[:date]} || #{transaction[:amount]} || || #{balance += transaction[:amount]}\n"
       end
     end
+
+    puts transaction_output.reverse.join
   end
 
   def sort_transactions
-    @transactions.map.sort_by {|k,v| k[:date]}.reverse
+    @transactions.sort_by {|k,v| k[:date]}
   end
 end
