@@ -1,21 +1,21 @@
-class Tracker
+require_relative 'transaction'
+require 'date'
 
-  attr_reader :balance, :debit, :credit
+class Tracker
+  attr_reader :balance
 
   def initialize
     @balance = 0
-    @debit = 0
-    @credit = 0
   end
 
-  def record_debit(amount)
-    @debit = amount
+  def record_debit(amount, transaction)
     set_balance(-amount)
+    transaction.set_debit(amount)
   end
 
-  def record_credit(amount)
-    @credit = amount
+  def record_credit(amount, transaction)
     set_balance(amount)
+    transaction.set_credit(amount)
   end
 
   private

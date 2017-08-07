@@ -2,6 +2,7 @@ require 'transaction.rb'
 
 describe Transaction do
   subject(:transaction) { described_class.new }
+  tracker = Tracker.new
 
   before do
    new_time = Time.local(2017, 8, 7)
@@ -14,5 +15,19 @@ describe Transaction do
 
   after do
     Timecop.return
+  end
+
+  describe "#set_debit" do
+    it "updates the user's debit" do
+      tracker.record_debit(200, transaction = Transaction.new)
+      expect(transaction.debit).to eq 200
+    end
+  end
+
+  describe "#set_credit" do
+    it "updates the user's credit" do
+      tracker.record_credit(300, transaction = Transaction.new)
+      expect(transaction.credit).to eq 300
+    end
   end
 end
