@@ -21,4 +21,19 @@ describe MoneyTracker do
       expect(money_tracker.credits).to eq [{"07/08/17" => 50.0}]
     end
   end
+
+  describe "#debit" do
+    before do
+      money_tracker.credit(50,'07/08/17')
+      money_tracker.debit(10,'07/08/17')
+    end
+
+    it "can deduct credit from the balance" do
+      expect(money_tracker.balance).to eq 40.0
+    end
+
+    it "can store date debit was made" do
+      expect(money_tracker.debits).to eq [{"07/08/17" => 10.0}]
+    end
+  end
 end
