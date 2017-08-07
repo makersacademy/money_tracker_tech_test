@@ -20,9 +20,9 @@ class Ledger
     sort_transactions.each do |transaction|
       balance = 0
       if transaction[:amount] < 0
-        puts "#{transaction[:date]} || || #{transaction[:amount].abs} || #{balance - transaction[:amount]}"
+        puts "#{transaction[:date]} || || #{transaction[:amount].abs} || #{balance -= transaction[:amount]}"
       else
-        puts "#{transaction[:date]} || #{transaction[:amount].abs} || || #{balance + transaction[:amount]}"
+        puts "#{transaction[:date]} || #{transaction[:amount].abs} || || #{balance += transaction[:amount]}"
       end
     end
   end
