@@ -1,4 +1,4 @@
-class MoneyTracker
+class Ledger
   attr_reader :expenditures, :earnings
 
   def initialize

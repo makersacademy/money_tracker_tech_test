@@ -1,6 +1,6 @@
-require './lib/money_tracker.rb'
+require './lib/ledger.rb'
 
-describe MoneyTracker do
+describe Ledger do
   subject { described_class.new }
 
   describe '#attributes' do
