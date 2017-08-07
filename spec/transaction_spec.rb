@@ -24,5 +24,4 @@ describe Transaction do
     end
   end
 
-
 end
