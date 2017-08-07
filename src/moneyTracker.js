@@ -5,26 +5,21 @@ function Moneytracker(date = new Date, credit, debit, balance) {
   this.balance = 0;
 };
 
-// var d = new Date();
-// var newDate = d.toLocaleDateString();
-
 var transactions = [];
 
 Moneytracker.prototype.deposit = function (money) {
-  // this.dateOfTransaction(newDate);
   this.credit += money;
   this.balance += money;
-  this.createTransaction();
+  this._createTransaction();
 };
 
 Moneytracker.prototype.withdraw = function (money) {
-  // this.dateOfTransaction(newDate);
   this.debit -= money;
   this.balance -= money;
-  this.createTransaction();
+  this._createTransaction();
 };
 
-Moneytracker.prototype.createTransaction = function () {
+Moneytracker.prototype._createTransaction = function () {
   var transaction = {
       date: new Date().toLocaleDateString(),
       credit: String(this.credit),
@@ -32,19 +27,15 @@ Moneytracker.prototype.createTransaction = function () {
       balance: String(this.balance)
     };
     transactions.push(transaction)
-    this.resetTransaction();
+    this._resetTransaction();
   };
 
 Moneytracker.prototype.statement = function () {
   console.table(transactions);
 };
 
-Moneytracker.prototype.resetTransaction = function () {
+Moneytracker.prototype._resetTransaction = function () {
   this.date = [];
   this.credit = 0;
   this.debit = 0;
 };
-//
-// Moneytracker.prototype.dateOfTransaction = function(newDate) {
-//   this.date.push(newDate);
-// };

@@ -3,10 +3,7 @@ describe("Moneytracker", function() {
   var moneytracker;
 
   beforeEach(function() {
-    moneytracker = new Moneytracker(0, 0, 0, 0);
-
-    var d = new Date();
-    var newDate = d.toLocaleDateString();
+    moneytracker = new Moneytracker(null, 0, 0, 0);
 
     spyOn(transactions, 'push');
   });
@@ -52,16 +49,11 @@ describe("Moneytracker", function() {
 
   // describe("#statement", function() {
   //   it("prints a statement", function() {
-  //     moneytracker.dateOfTransaction(newDate);
   //     moneytracker.deposit(1000);
-  //     moneytracker.withdraw(250);
-  //     expect(moneytracker.balance).toEqual(750);
+  //     expect(moneytracker.balance).toEqual(1000);
   //     console.log(moneytracker)
-  //     expect(moneytracker.statement).toEqual("[{date: [], credit: 1000, debit: -250, balance: 750}]");
+  //     expect(moneytracker.statement).toContain(Date);
   //   });
   // });
 
-  // describe("#transaction", function() {
-  //
-  // });
 });
