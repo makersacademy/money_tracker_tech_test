@@ -8,8 +8,8 @@ describe Record do
     it 'initializes with an amount and date' do
       expect(record).to have_attributes(amount: 100, date: '07/08/2017')
     end
-    it 'initializes with a type of nil' do
-      expect(record.type).to eq(nil)
+    it 'checks the type on initialization' do
+      expect(record.type).to eq(:credit)
     end
     it 'can read the amount' do
       expect(record.amount).to eq(100)
@@ -21,7 +21,7 @@ describe Record do
 
   describe '#format_record' do
     it 'formats the record and turns it into a hash' do
-      expect(record.format_record).to eq({amount: 100, date: '07/08/2017'})
+      expect(record.format_record).to eq(amount: 100, date: '07/08/2017', type: :credit)
     end
   end
 
@@ -33,7 +33,7 @@ describe Record do
     it 'adds the record to the transactions array' do
       allow(my_ledger).to receive(:transactions).and_return([])
       record.add_to(my_ledger)
-      expect(my_ledger.transactions).to eq([{ amount: 100, date: '07/08/2017' }])
+      expect(my_ledger.transactions).to eq([{ amount: 100, date: '07/08/2017', type: :credit }])
     end
   end
 end

@@ -4,7 +4,7 @@ class Record
   def initialize(amount, date)
     @amount = amount
     @date = date
-    @type = nil
+    @type = set_type
   end
 
   def add_to(ledger)
@@ -12,6 +12,12 @@ class Record
   end
 
   def format_record
-    { amount: @amount, date: @date }
+    { amount: @amount.abs, date: @date, type: @type }
+  end
+
+  private
+
+  def set_type
+    @amount < 0 ? :debit : :credit
   end
 end

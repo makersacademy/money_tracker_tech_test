@@ -1,5 +1,5 @@
 class Ledger
-  attr_accessor :transactions
+  attr_accessor :transactions, :balance
 
   def initialize
     @transactions = []
@@ -11,7 +11,7 @@ class Ledger
     create_transaction_history
   end
 
-  # private
+  private
 
   def print_heading
     puts 'date || credit || debit || balance'
@@ -20,33 +20,28 @@ class Ledger
   def create_transaction_history
     history = []
     sort_transactions.each do |transaction|
-      if debit?(transaction)
-        history << format_debit(transaction)
-      else
-        history << format_credit(transaction)
-      end
+      history << if transaction[:type] == :debit
+                   format_debit(transaction)
+                 else
+                   format_credit(transaction)
+                 end
     end
     sort_transaction_history(history)
   end
 
   def sort_transactions
-    @transactions.sort_by { |k, v| k[:date] }
-  end
-
-  def debit?(transaction)
-    transaction[:amount].to_i < 0
+    @transactions.sort_by { |k, _v| k[:date] }
   end
 
   def format_debit(transaction)
-    "#{transaction[:date]} || || #{transaction[:amount].abs} || #{@balance += transaction[:amount]}\n"
+    "#{transaction[:date]} || || #{format('%.2f', transaction[:amount])} || #{format('%.2f', @balance -= transaction[:amount])}\n"
   end
 
   def format_credit(transaction)
-    "#{transaction[:date]} || #{transaction[:amount]} || || #{@balance += transaction[:amount]}\n"
+    "#{transaction[:date]} || #{format('%.2f', transaction[:amount])} || || #{format('%.2f', @balance += transaction[:amount])}\n"
   end
 
   def sort_transaction_history(transactions)
     puts transactions.reverse.join
   end
-
 end
