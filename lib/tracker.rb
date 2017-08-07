@@ -9,13 +9,14 @@ class Tracker
   end
 
   def record_debit(amount, transaction)
+    transaction.set_debit(-amount)
     set_balance(-amount)
-    transaction.set_debit(amount)
   end
 
   def record_credit(amount, transaction)
-    set_balance(amount)
     transaction.set_credit(amount)
+    set_balance(amount)
+    transaction.get_current_balance(@balance)
   end
 
   private
