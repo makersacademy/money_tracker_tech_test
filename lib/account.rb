@@ -15,7 +15,7 @@ attr_reader :balance, :transactions
 
   def withdraw(amount)
     @balance -= amount
-    new_withdrawl = Transaction.new(@balance, debit = amount)
+    new_withdrawl = Transaction.new(@balance, credit = nil, debit = amount)
     @transactions.push(new_withdrawl)
   end
 
