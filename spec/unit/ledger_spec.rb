@@ -1,5 +1,3 @@
-require 'ledger'
-
 describe Ledger do
   let(:date)   { Date.parse('01-01-2017') }
   let(:amount) { 100 }

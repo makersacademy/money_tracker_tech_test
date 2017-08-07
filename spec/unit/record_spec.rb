@@ -1,5 +1,3 @@
-require 'record'
-
 describe Record do
   let(:date)    { '01-01-2017' }
   let(:amount)  { 100 }
@@ -15,7 +13,8 @@ describe Record do
     end
 
     it 'Raises an error if amount is invalid' do
-      expect { Record.new(date, 'not a number' ) }.to raise_error 'Invalid transaction amount'
+      expect { Record.new(date, 'not a number') }
+        .to raise_error 'Invalid transaction amount'
     end
   end
 

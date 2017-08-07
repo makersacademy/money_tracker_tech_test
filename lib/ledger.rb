@@ -1,5 +1,3 @@
-require 'date'
-
 class Ledger
   attr_reader :transactions
 

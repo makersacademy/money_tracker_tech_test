@@ -3,16 +3,16 @@ require 'date'
 class Record
   attr_reader :date, :amount, :type
 
-  def initialize(date, num)
+  def initialize(date, amount)
     @date   = Date.parse(date)
-    @amount = check_amount(num)
+    @amount = check_amount(amount)
     @type   = determine_transaction_type(amount)
   end
 
   private
 
   def check_amount(amount)
-    raise 'Invalid transaction amount' if amount.to_f == 0
+    raise 'Invalid transaction amount' if amount.to_f.zero?
     amount.to_f
   end
 
