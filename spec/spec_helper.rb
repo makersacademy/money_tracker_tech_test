@@ -3,6 +3,7 @@ require 'simplecov-console'
 
 require 'ledger'
 require 'record'
+require 'statement'
 
 SimpleCov.formatter =
   SimpleCov::Formatter::MultiFormatter.new([

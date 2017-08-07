@@ -11,8 +11,6 @@ describe Ledger do
   end
 
   describe 'Initialisation' do
-    it { is_expected.to respond_to :transactions }
-
     it 'Begins with no transactions' do
       expect(ledger.transactions).to be_empty
     end
