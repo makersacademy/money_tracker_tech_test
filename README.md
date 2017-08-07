@@ -1,7 +1,22 @@
 # Money tracker tech test
 
 ## Specification
+**User Stories**
+```
+MVP
 
+As a User
+So that I can track the money I spend
+I want to record the exact amount and date
+
+As a User
+So that I can track the money I earn
+I want to record the exact amount and date
+
+As a User
+So that I can see all records
+I want to be able to print an account statement
+```
 ### Requirements
 
 * Your goal is to write a program you could use to track money you spend and earn.
