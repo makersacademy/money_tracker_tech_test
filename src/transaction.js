@@ -1,7 +1,9 @@
 'use strict';
 
-function Transaction () {
-  this.date = new Date()
+function Transaction (date = new Date(), amount, currentBalance) {
+  this.date = date,
+  this.credit = amount,
+  this.balance = currentBalance
 }
 
 exports.Transaction = Transaction;
