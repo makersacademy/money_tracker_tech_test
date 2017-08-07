@@ -6,6 +6,9 @@
   "scripts": {
     "test": "jasmine"
   },
+  "dependencies":{
+    "jasmine": "latest"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Corina/money_tracker_tech_test.git"
