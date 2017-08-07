@@ -20,8 +20,16 @@ RSpec.describe Transactions do
   end
 
   describe "#add_transaction" do
-    it "should add an income object to array" do
-      expect{ transactions.add_transaction(Income, "test", 20, "1st Jan 2017") }.to change{ transactions.transaction_list.length }.from(0).to(1)
+    context "receiving income" do
+      it "should add an income object to array" do
+        expect{ transactions.add_transaction(Income, "test", 20, "1st Jan 2017") }.to change{ transactions.transaction_list.length }.from(0).to(1)
+      end
+    end
+
+    context "making an expense" do
+      it "should add an expense object to array" do
+        expect{ transactions.add_transaction(Expense, "test", 20, "1st Jan 2017") }.to change{ transactions.transaction_list.length }.from(0).to(1)
+      end
     end
   end
 
