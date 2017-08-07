@@ -1,8 +1,8 @@
 
 class Statement
 
-  def initialize(transactions)
-    @transactions = transactions.history
+  def initialize(transactions_log)
+    @transactions_log = transactions_log
   end
 
   def print_it
@@ -13,10 +13,10 @@ class Statement
 
   private
 
-  attr_reader :transactions
+  attr_reader :transactions_log
 
   def chronify_transactions
-    transactions.reverse!
+    transactions_log.reverse!
   end
 
   def print_header
@@ -24,11 +24,11 @@ class Statement
   end
 
   def print_(transaction)
-    puts " #{transaction.timestamp} |  #{transaction.credit} |  #{transaction.debit} |  #{transaction.balance}  "
+    puts " #{transaction.time} |  #{transaction.credit} |  #{transaction.debit} |  #{transaction.balance}  "
   end
 
   def print_each_transaction
-   transactions.each { |transaction| print_(transaction) }
+   transactions_log.history.each { |transaction| print_(transaction) }
   end
 
 end
