@@ -1,20 +1,26 @@
 # Money tracker tech test
 
+## User Stories
+
+```
+As a user.
+So that I can monitor my cash flow.
+I would like to be able to track the money I spend and earn.
+
+As a user.
+So that I can monitor the money I've spent.
+I would like to be able to record the amount and the date I spent it on.
+
+As a user.
+So that I can monitor the money I've earned.
+I would like to be able to record the amount and the date I earned it on.
+
+As a user.
+So that I can see all the records in one place.
+I would like to be able to print an account statement that shows all the records (date, amount, balance).
+```
+
 ## Specification
-
-### Requirements
-
-* Your goal is to write a program you could use to track money you spend and earn.
-
-* You should be able to interact with the your code via a REPL like IRB or the JavaScript console.  (You don't need to implement a command line interface that takes input from STDIN.)
-
-* You should be able to record money you've spent and the date you spent it on.  e.g. You could record the fact that you spent £100 on 2017/8/8.
-
-* You should be able to record money you've earned and the date you earned it on.  e.g. You could record the fact that you earned £100 on 2017/8/8.
-
-* You should be able to print an account statement that shows all the records (date, amount, balance).
-
-* Data can be kept in memory (it doesn't need to be stored to a database or anything).
 
 ### Acceptance criteria
 
