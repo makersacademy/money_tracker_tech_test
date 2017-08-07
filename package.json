@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jasmine"
   },
-  "dependencies":{
+  "dependencies": {
     "jasmine": "latest"
   },
   "repository": {
@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Corina/money_tracker_tech_test/issues"
   },
-  "homepage": "https://github.com/Corina/money_tracker_tech_test"
+  "homepage": "https://github.com/Corina/money_tracker_tech_test",
+  "devDependencies": {
+    "coveralls": "^2.13.1"
+  }
 }

@@ -2,6 +2,7 @@
 # Money tracker tech test
 
 [![Build Status](https://travis-ci.org/Corina/money_tracker_tech_test.svg?branch=master)](https://travis-ci.org/Corina/money_tracker_tech_test)
+[![Coverage Status](https://coveralls.io/repos/github/Corina/money_tracker_tech_test/badge.svg?branch=master)](https://coveralls.io/github/Corina/money_tracker_tech_test?branch=master)
 
 ## Synopsis
 
