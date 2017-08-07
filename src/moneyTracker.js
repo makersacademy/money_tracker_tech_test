@@ -8,7 +8,6 @@ function Moneytracker(date, credit, debit, balance) {
 Moneytracker.prototype.deposit = function (money) {
   this.credit += money;
   this.balance += money;
-  this._printDate + console.log(this.balance);
 };
 
 Moneytracker.prototype.withdraw = function (money) {
