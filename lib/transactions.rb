@@ -1,5 +1,5 @@
-require_relative 'income'
-require_relative 'expense'
+require_relative 'earning'
+require_relative 'spending'
 
 class Transactions
 
@@ -9,14 +9,14 @@ class Transactions
     @transaction_list = []
   end
 
-  def add_transaction(type, description, amount, datestring)
-    transaction_list.push(create_transaction(type, description, amount, datestring))
+  def add_transaction(type, amount, datestring)
+    transaction_list.push(create_transaction(type, amount, datestring))
   end
 
   private
 
-  def create_transaction(type, description, amount, datestring)
-    type.new(description, amount, datestring)
+  def create_transaction(type, amount, datestring)
+    type.new(amount, datestring)
   end
 
 
