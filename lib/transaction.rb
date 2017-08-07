@@ -4,15 +4,15 @@ class Transaction
 
   attr_reader :date, :balance, :credit, :debit
 
-  def getCredit
+  def get_credit
     @credit
   end
 
-  def getDebit
+  def get_debit
     @debit
   end
 
-  def getDate
+  def get_date
     @date
   end
 

@@ -22,12 +22,12 @@ describe Transaction do
   end
 
   it "can return the transation credit" do
-    expect(transaction.getCredit).to eq(10)
+    expect(transaction.get_credit).to eq(10)
   end
 
   it "can return the transation debit" do
     second_transaction = Transaction.new(100, credit = nil, debit = 10)
-    expect(second_transaction.getDebit).to eq(10)
+    expect(second_transaction.get_debit).to eq(10)
   end
 
 end
