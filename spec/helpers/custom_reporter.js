@@ -11,7 +11,11 @@ var myReporter = {
   },
 
   specDone: function (result) {
-    console.log('  '.repeat(this.level) + result.description + ': ' + result.status);
+    if (result.status == 'passed') {
+      console.log('\x1b[32m%s\x1b[0m', '  '.repeat(this.level) + result.description);
+    } else {
+      console.log('\x1b[31m%s\x1b[0m', '  '.repeat(this.level) + result.description);
+    }
     for (var i = 0; i < result.failedExpectations.length; i++) {
       console.log('Failure: ' + result.failedExpectations[i].message);
       console.log(result.failedExpectations[i].stack);
