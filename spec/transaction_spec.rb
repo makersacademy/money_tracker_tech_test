@@ -3,24 +3,24 @@ require 'transaction'
 describe Transaction do
 
   before do
-    @first_transaction = Transaction.new(100, credit = 10)
-    @second_transaction = Transaction.new(100, credit = nil, debit = 10)
+    @transaction = Transaction.new(100, credit = 10)
   end
 
   it 'saves a date to the transaction' do
-    expect(@first_transaction.date.to_s).to include ("08/07/2017")
+    expect(@transaction.date.to_s).to include ("2017-08-07")
   end
 
   it 'can categorise amount as a credit' do
-    expect(@first_transaction.credit).to eq(10)
+    expect(@transaction.credit).to eq(10)
   end
 
   it 'can categorise amount as a debit' do
-    expect(@second_transaction.debit).to eq(10)
+    second_transaction = Transaction.new(100, credit = nil, debit = 10)
+    expect(second_transaction.debit).to eq(10)
   end
 
   it 'has a balance' do
-    expect(@first_transaction.balance).to eq(100)
+    expect(@transaction.balance).to eq(100)
   end
 
 end
