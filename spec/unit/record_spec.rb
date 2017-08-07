@@ -3,7 +3,7 @@ require 'record'
 describe Record do
   let(:date)    { '01-01-2017' }
   let(:amount)  { 100 }
-  let(:subject) { Record.new(date, amount) }
+  let(:subject) { described_class.new(date, amount) }
 
   describe 'Initialisation' do
     it 'Has a date when initialised' do
