@@ -4,7 +4,7 @@ describe Statement do
   let(:transaction) { [double("Transaction", timestamp: "10/10/2017", debit: 0, credit: 100, balance: 200),
     double("Transaction", timestamp: "12/10/2017", debit: 50, credit: 0, balance: 150)] }
 
-  let(:transactions) { double("Transactions", log: transaction)  }
+  let(:transactions) { double("Transactions", history: transaction)  }
   subject(:statement) { described_class.new(transactions) }
 
   describe "#print_it" do

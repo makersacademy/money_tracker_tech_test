@@ -1,9 +1,9 @@
 
 require_relative "statement"
-require_relative "transactions"
+require_relative "transactions_log"
 
 
-class Account
+class Bank
 
   INITIAL_BALANCE = 0
 

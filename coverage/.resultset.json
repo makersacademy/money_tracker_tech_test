@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/jkh/Desktop/Projects/money_tracker_tech_test/lib/account.rb": [
+      "/Users/jkh/Desktop/Projects/money_tracker_tech_test/lib/bank.rb": [
         null,
         1,
         1,
@@ -74,17 +74,45 @@
         null,
         null
       ],
-      "/Users/jkh/Desktop/Projects/money_tracker_tech_test/lib/transactions.rb": [
+      "/Users/jkh/Desktop/Projects/money_tracker_tech_test/lib/transactions_log.rb": [
         null,
         1,
+        null,
         1,
+        null,
+        1,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
         null,
         null
       ],
       "/Users/jkh/Desktop/Projects/money_tracker_tech_test/lib/transaction.rb": [
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        4,
+        4,
+        4,
+        4,
+        null,
+        null,
         null
       ],
-      "/Users/jkh/Desktop/Projects/money_tracker_tech_test/spec/account_spec.rb": [
+      "/Users/jkh/Desktop/Projects/money_tracker_tech_test/spec/bank_spec.rb": [
         null,
         1,
         null,
@@ -167,8 +195,48 @@
         null,
         null,
         null
+      ],
+      "/Users/jkh/Desktop/Projects/money_tracker_tech_test/spec/transaction_spec.rb": [
+        null,
+        1,
+        null,
+        5,
+        5,
+        5,
+        5,
+        5,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/jkh/Desktop/Projects/money_tracker_tech_test/spec/transactions_log_spec.rb": [
+        null,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null
       ]
     },
-    "timestamp": 1502114599
+    "timestamp": 1502118887
   }
 }

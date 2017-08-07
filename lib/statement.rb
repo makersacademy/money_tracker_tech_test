@@ -2,7 +2,7 @@
 class Statement
 
   def initialize(transactions)
-    @transactions = transactions.log
+    @transactions = transactions.history
   end
 
   def print_it

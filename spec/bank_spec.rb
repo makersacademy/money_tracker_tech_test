@@ -1,5 +1,5 @@
 
-describe Account do
+describe Bank do
 
   let(:transactions) { double("Transactions") }
   subject(:account) { described_class.new(transactions) }
@@ -9,14 +9,14 @@ describe Account do
   describe "attributes" do
     context "balance" do
       it "will be set to zero" do
-        expect(account.balance).to eq(Account::INITIAL_BALANCE)
+        expect(account.balance).to eq(Bank::INITIAL_BALANCE)
       end
     end
   end
 
   describe "deposit" do
     it "will increase the account balance by the arg's value" do
-      expect{account.deposit(large_sum)}.to change{account.balance}.from(Account::INITIAL_BALANCE).to(large_sum)
+      expect{account.deposit(large_sum)}.to change{account.balance}.from(Bank::INITIAL_BALANCE).to(large_sum)
     end
   end
 
@@ -24,7 +24,7 @@ describe Account do
     context "when withdrawl sum is smaller or equal to balance" do
       it "will decrease the account balance by the arg's value" do
         account.deposit(large_sum)
-        expect{account.withdraw(large_sum)}.to change{account.balance}.from(large_sum).to(Account::INITIAL_BALANCE)
+        expect{account.withdraw(large_sum)}.to change{account.balance}.from(large_sum).to(Bank::INITIAL_BALANCE)
       end
     end
     context "when withdrawl sum exceeds balance" do
