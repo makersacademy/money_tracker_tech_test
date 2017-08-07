@@ -1,4 +1,4 @@
-require 'transaction'
+require_relative './transaction'
 
 class Account
   attr_reader :balance, :transactions, :debit
