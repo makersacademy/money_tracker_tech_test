@@ -1,10 +1,8 @@
 'use strict';
 
-(function (exports) {
-  function Account () {
-    this.transactions = [],
-    this.currentBalance = 0
-  }
+function Account () {
+  this.transactions = [],
+  this.currentBalance = 0
+}
 
-  exports.Account = Account;
-})(this);
+exports.Account = Account;

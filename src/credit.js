@@ -1,13 +1,11 @@
 'use strict';
 
-(function (exports) {
-  function Credit (account) {
-    this.account = account
-  };
+function Credit (account) {
+  this.account = account
+};
 
-  Credit.prototype.makeTransaction = function (amount) {
-    this.account.currentBalance += amount
-  };
+Credit.prototype.makeTransaction = function (amount) {
+  this.account.currentBalance += amount
+};
 
-  exports.Credit = Credit;
-})(this);
+exports.Credit = Credit;

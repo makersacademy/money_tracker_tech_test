@@ -1,5 +1,7 @@
 'use strict';
 
+var Credit = require('../src/credit').Credit
+
 describe('Credit', function () {
   var credit, accountMock, transaction;
 

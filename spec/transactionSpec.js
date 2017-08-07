@@ -1,9 +1,9 @@
 'use strict';
+var Transaction = require('../src/transaction').Transaction
 
 describe('Transaction', function () {
-  var transaction;
+  var transaction, date;
 
   beforeEach(function () {
-    transaction = new Transaction();
   });
 })

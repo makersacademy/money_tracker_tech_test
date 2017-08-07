@@ -1,5 +1,7 @@
 'use strict';
 
+var Account = require('../src/account').Account
+
 describe('Account', function () {
   var account;
   beforeEach(function () {
