@@ -15,9 +15,18 @@ describe Account do
     expect(@account.balance).to eq(0)
   end
 
-  it 'a client can deposit money' do
+  it 'is initialized with an empty array of transactions' do
+    expect(@account.transactions).to eq([])
+  end
+
+  it 'changes the balance on a deposit' do
     @account.deposit(5)
     expect(@account.balance).to eq(5)
+  end
+
+  it 'creates a new transaction on deposit' do
+    @account.deposit(5)
+    expect(@account.transactions).not_to eq([])
   end
 
   it 'does not change the balance if £0 deposited' do
@@ -25,10 +34,16 @@ describe Account do
     expect(@account.balance).to eq(0)
   end
 
-  it 'a client can withdraw money' do
+  it 'changes the balance on withdrawl' do
     @account.deposit(10)
     @account.withdraw(5)
     expect(@account.balance).to eq(5)
+  end
+
+  it 'creates a new transaction on withdrawl' do
+    @account.deposit(10)
+    @account.withdraw(5)
+    expect(@account.transactions.length).to eq(2)
   end
 
   it 'does not change the balance if £0 withdrawn' do
