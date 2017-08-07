@@ -12,7 +12,7 @@
 
 * You should be able to record money you've earned and the date you earned it on.  e.g. You could record the fact that you earned £100 on 2017/8/8.
 
-* You should be able to print an account statement that shows all the records (date, amount, balance).
+* You should be able to print a list of all the records (date, amount, balance).
 
 * Data can be kept in memory (it doesn't need to be stored to a database or anything).
 
@@ -21,7 +21,7 @@
 **Given** you record that you earned 1000 on 10-01-2012
 **And** earned 2000 on 13-01-2012
 **And** spent 500 on 14-01-2012
-**When** you print your bank statement
+**When** you print all your records
 **Then** you would see
 
 ```
