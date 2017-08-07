@@ -8,8 +8,9 @@ class Statement
   end
 
   private
+
   def initialize(transaction_list)
-    @transaction_list = transaction_list
+    @transaction_list = transaction_list.getList
   end
 
   def produce_header
@@ -17,7 +18,7 @@ class Statement
   end
 
   def produce_individual_transactions
-    @transaction_list.list.reverse.each do |transaction|
+    @transaction_list.reverse.each do |transaction|
       puts "#{formatted_date(transaction.date)}" + "||" + "#{transaction.getCredit}" + "||" + "#{transaction.getDebit}" + "||" + "#{transaction.balance}"
     end
   end

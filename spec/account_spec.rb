@@ -50,8 +50,9 @@ describe Account do
   it 'allows user to see their statement' do
     statement = double("statement")
     list = double("list")
-    allow(statement).to re2ceive(:display_transactions).and_return("date || credit || debit || balance\n 08-08-2017||10||||100")
     account = Account.new(10, list, statement)
+    allow(statement).to receive(:display_transactions).and_return("date || credit || debit || balance 08-08-2017||10||||100")
+    p statement.display_transactions
     expect { subject.display_statement }.to output("date || credit || debit || balance\n").to_stdout
   end
 

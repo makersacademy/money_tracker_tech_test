@@ -12,6 +12,10 @@ class Transaction
     @debit
   end
 
+  def getDate
+    @date
+  end
+
   private
 
   def initialize(balance, credit = nil, debit = nil)
