@@ -19,12 +19,20 @@ As a user.
 So that I can see all the records in one place.
 I would like to be able to print an account statement that shows all the records (date, amount, balance).
 ```
+
+## Setup
+Clone this repo using the command `git clone`
+run `bundle` from the command line for gem dependencies
+run `rspec` from the command line to see test coverage
+run `rubocop` from the command line to see rubocop offenses
+Use the pry implementation below to run the program
+
 ### Acceptance criteria
 
 **Given** you record that you earned 1000 on 10-01-2012
 **And** earned 2000 on 13-01-2012
 **And** spent 500 on 14-01-2012
-**When** you print your bank statementreq
+**When** you print your bank statement
 **Then** you would see
 
 ```
@@ -37,3 +45,8 @@ date || credit || debit || balance
 ### Implementation in pry
 
 ![alt text](screenshots/pry.png "basic pry implementation")
+
+## Test Coverage
+
+Coverage report generated for RSpec
+62 / 63 LOC (98.41%) covered.
