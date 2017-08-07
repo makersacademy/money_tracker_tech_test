@@ -1,6 +1,8 @@
 
 # Money tracker tech test
-===================
+
+[![Build Status](https://travis-ci.org/Corina/money_tracker_tech_test.svg?branch=master)](https://travis-ci.org/Corina/money_tracker_tech_test)
+
 ## Synopsis
 
 Money tracker is a Node.js app that helps users keep track of money spent and earned.
