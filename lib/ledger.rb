@@ -1,8 +1,7 @@
 class Ledger
-  attr_reader :expenditures, :earnings
+  attr_reader :transactions
 
   def initialize
-    @expenditures = []
-    @earnings = []
+    @transactions = []
   end
 end

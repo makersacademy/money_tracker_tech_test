@@ -1,14 +1,11 @@
 require './lib/ledger.rb'
 
 describe Ledger do
-  subject { described_class.new }
+  subject(:my_ledger) { described_class.new }
 
   describe '#attributes' do
-    it 'initializes with an empty expenditures array' do
-      expect(subject.expenditures).to eq([])
-    end
-    it 'initializes with an empty earning array' do
-      expect(subject.earnings).to eq([])
+    it 'initializes with an empty transactions array' do
+      expect(my_ledger.transactions).to eq([])
     end
   end
 end
