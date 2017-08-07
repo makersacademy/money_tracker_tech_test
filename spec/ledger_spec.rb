@@ -18,11 +18,4 @@ describe Ledger do
       expect { my_ledger.print_statement }.to output("date || credit || debit || balance\n07/08/2017 || 100 || || 100\n").to_stdout
     end
   end
-
-  describe '#sort_transactions' do
-    it 'sorts the transactions by date in descending order' do
-      my_ledger.transactions = ([{amount: 100, date: "01/08/2017"}, {amount: 200, date: "08/08/2017"}])
-      expect(my_ledger.sort_transactions).to eq([{amount: 200, date: "08/08/2017"}, {amount: 100, date: "01/08/2017"}])
-    end
-  end
 end
