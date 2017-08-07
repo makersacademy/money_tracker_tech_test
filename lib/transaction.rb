@@ -2,14 +2,13 @@ require 'date'
 
 class Transaction
 
-  attr_reader :date, :balance, :amount, :credit, :debit
+  attr_reader :date, :balance, :credit, :debit
 
-  def initialize(balance, amount, credit = false, debit = false)
+  def initialize(balance, credit = nil, debit = nil)
     @date = Date.today
     @credit = credit
     @debit = debit
     @balance = balance
-    @amount = amount
   end
 
 end

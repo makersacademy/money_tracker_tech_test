@@ -20,10 +20,20 @@ describe Account do
     expect(@account.balance).to eq(5)
   end
 
+  it 'does not change the balance if £0 deposited' do
+    @account.deposit(0)
+    expect(@account.balance).to eq(0)
+  end
+
   it 'a client can withdraw money' do
     @account.deposit(10)
     @account.withdraw(5)
     expect(@account.balance).to eq(5)
+  end
+
+  it 'does not change the balance if £0 withdrawn' do
+    @account.withdraw(0)
+    expect(@account.balance).to eq(0)
   end
 
   it 'client can see their balance' do
