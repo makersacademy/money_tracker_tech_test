@@ -8,6 +8,10 @@ class Record
   end
 
   def add(ledger)
-    ledger.transactions << {@amount => @date}
+    ledger.transactions << self.format
+  end
+  
+  def format
+    {@amount => @date}
   end
 end

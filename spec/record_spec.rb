@@ -17,6 +17,12 @@ describe Record do
     end
   end
 
+  describe "#format" do
+    it "formats the record and turns it into a hash" do
+      expect(record.format).to eq({100 => "07/08/2017"})
+    end
+  end
+
   describe "#add" do
     it "accepts one argument" do
       expect(record).to respond_to(:add).with(1).argument
