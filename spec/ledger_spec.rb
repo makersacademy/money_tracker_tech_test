@@ -13,10 +13,10 @@ describe Ledger do
     it 'responds to the print_statement method' do
       expect(my_ledger).to respond_to(:print_statement)
     end
-    # it 'allows me to print a full statement' do
-    #   my_ledger.transactions = ([{amount: 100, date: "07/08/2017"}])
-    #   expect(my_ledger.print_statement).to eq("07/08/2017 || 100 || || 100\n")
-    # end
+    it 'allows me to print a full statement' do
+      my_ledger.transactions = ([{amount: 100, date: "07/08/2017"}])
+      expect { my_ledger.print_statement }.to output("date || credit || debit || balance\n07/08/2017 || 100 || || 100\n").to_stdout
+    end
   end
 
   describe '#sort_transactions' do

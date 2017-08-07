@@ -6,16 +6,15 @@ class Ledger
   end
 
   def print_statement
-    self.sort_transactions
-  #   balance = 0
-  #   puts "date || credit || debit || balance"
-  #   @transactions.each do |transaction|
-  #     if transaction[:amount] < 0
-  #       return "#{transaction[:date]} || || #{transaction[:amount].abs} || #{balance - transaction[:amount]}\n"
-  #     else
-  #       return "#{transaction[:date]} || #{transaction[:amount].abs} || || #{balance + transaction[:amount]}\n"
-  #     end
-  #   end
+    puts "date || credit || debit || balance"
+    balance = 0
+    self.sort_transactions.each do |transaction|
+      if transaction[:amount] < 0
+        puts "#{transaction[:date]} || || #{transaction[:amount].abs} || #{balance - transaction[:amount]}\n"
+      else
+        puts "#{transaction[:date]} || #{transaction[:amount].abs} || || #{balance + transaction[:amount]}\n"
+      end
+    end
   end
 
   def sort_transactions
