@@ -8,10 +8,11 @@ describe('Credit', function () {
   beforeEach(function () {
     accountMock = {
       transactions: [],
-      currentBalance: 0
-    }
-
+      currentBalance: 0,
+      recordTransaction: function () {}
+    };
     credit = new Credit(accountMock);
+    spyOn(accountMock, 'recordTransaction')
   });
 
   describe('is initialized', function () {
@@ -24,6 +25,10 @@ describe('Credit', function () {
     it('that is reflected in the current balance', function () {
       credit.makeTransaction(100);
       expect(accountMock.currentBalance).toBe(100);
+    });
+    it('that is recorded in the account', function () {
+      credit.makeTransaction(100);
+      expect(accountMock.recordTransaction).toHaveBeenCalled();
     });
   });
 });

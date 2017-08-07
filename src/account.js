@@ -5,4 +5,7 @@ function Account () {
   this.currentBalance = 0
 }
 
+Account.prototype.recordTransaction = function () {
+};
+
 exports.Account = Account;
