@@ -7,7 +7,7 @@ describe Transaction do
   end
 
   it 'saves a date to the transaction' do
-    expect(@transaction.date.to_s).to include ("2017-08-07")
+    expect(@transaction.date.to_s).to include ("08/07/2017")
   end
 
   it 'can categorise amount as a credit' do
