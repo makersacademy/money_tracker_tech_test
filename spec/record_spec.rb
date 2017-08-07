@@ -8,6 +8,9 @@ describe Record do
     it 'initializes with an amount and date' do
       expect(record).to have_attributes(amount: 100, date: '07/08/2017')
     end
+    it 'initializes with a type of nil' do
+      expect(record.type).to eq(nil)
+    end
     it 'can read the amount' do
       expect(record.amount).to eq(100)
     end

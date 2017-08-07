@@ -1,9 +1,10 @@
 class Record
-  attr_reader :amount, :date
+  attr_reader :amount, :date, :type
 
   def initialize(amount, date)
     @amount = amount
     @date = date
+    @type = nil
   end
 
   def add_to(ledger)
