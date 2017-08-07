@@ -29,6 +29,11 @@ describe Account do
     expect(@account.transactions).not_to eq([])
   end
 
+  it 'records the deposit amount as a credit' do
+    @account.deposit(5)
+    expect(@account.transactions[0].credit).to eq(5)
+  end
+
   it 'does not change the balance if £0 deposited' do
     @account.deposit(0)
     expect(@account.balance).to eq(0)
@@ -44,6 +49,11 @@ describe Account do
     @account.deposit(10)
     @account.withdraw(5)
     expect(@account.transactions.length).to eq(2)
+  end
+
+  it 'records a withdrawl amount as a debit' do
+    @account.withdraw(5)
+    expect(@account.transactions[0].debit).to eq(5)
   end
 
   it 'does not change the balance if £0 withdrawn' do
