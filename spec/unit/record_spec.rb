@@ -20,12 +20,12 @@ describe Record do
 
   describe 'Transaction Types' do
     it 'Lists a positive amount as credit' do
-      expect(subject.type).to eq 'Credit'
+      expect(subject.type).to eq :credit
     end
 
     it 'Lists a negative amount as debit' do
       negative_record = Record.new(date, -100)
-      expect(negative_record.type).to eq 'Debit'
+      expect(negative_record.type).to eq :debit
     end
   end
 end

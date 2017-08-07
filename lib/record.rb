@@ -4,17 +4,18 @@ class Record
   attr_reader :date, :amount
 
   def initialize(date, amount)
+    verify amount
     @date   = Date.parse(date)
-    @amount = amount unless invalid? amount
+    @amount = amount.to_f
   end
 
   def type
-    amount >= 0 ? 'Credit' : 'Debit'
+    amount >= 0 ? :credit : :debit
   end
 
   private
 
-  def invalid?(amount)
+  def verify(amount)
     raise 'Invalid transaction amount' if amount.to_f.zero?
   end
 end
