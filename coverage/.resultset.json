@@ -4,6 +4,17 @@
       "/Users/jkh/Desktop/Projects/money_tracker_tech_test/lib/account.rb": [
         null,
         1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
         null
       ],
       "/Users/jkh/Desktop/Projects/money_tracker_tech_test/lib/statement.rb": [
@@ -19,13 +30,21 @@
         null,
         1,
         null,
+        2,
+        2,
+        2,
+        null,
+        1,
         1,
         1,
         1,
         null,
+        null,
+        null,
+        null,
         null
       ]
     },
-    "timestamp": 1502103908
+    "timestamp": 1502104665
   }
 }
