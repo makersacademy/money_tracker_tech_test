@@ -1,13 +1,17 @@
 
+require_relative "statement"
+require_relative "transactions"
+
+
 class Account
 
   INITIAL_BALANCE = 0
 
-  attr_reader :transactions, :balance
+  attr_reader :transactions, :statement, :balance
 
-  def initialize(statement, transactions)
-    @transactions = transactions || Transactions.new
-    @statement = statement || Statement
+  def initialize(transactions = Transactions.new)
+    @transactions = transactions
+    @statement = statement
     @balance = INITIAL_BALANCE
   end
 
@@ -20,8 +24,12 @@ class Account
     @balance -= amount
   end
 
+  def print_statement
+    statement = Statement.new(transactions)
+  end
+
   def check_enough_to_withdraw(amount)
-    fail "You have insufficient funds to withdraw" if balance < amount
+    fail "You don't have enough to withdraw" if balance < amount
   end
 
 end

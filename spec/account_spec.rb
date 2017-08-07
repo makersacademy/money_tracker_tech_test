@@ -1,9 +1,8 @@
 
 describe Account do
 
-  let(:statement) { double("Statement") }
   let(:transactions) { double("Transactions") }
-  subject(:account) { described_class.new(statement, transactions) }
+  subject(:account) { described_class.new(transactions) }
 
   let(:large_sum) { 1000 }
 
@@ -30,9 +29,24 @@ describe Account do
     end
     context "when withdrawl sum exceeds balance" do
       it "will stop withdrawl" do
-        expect{account.withdraw(large_sum)}.to raise_error("You have insufficient funds to withdraw")
+        expect{account.withdraw(large_sum)}.to raise_error("You don't have enough to withdraw")
       end
     end
   end
+
+  # # describe "print_statement" do
+  # #   before do
+  # #     allow(statement).to receive(:new).with(transactions)
+  # #     allow(statement).to receive(:print_it)
+  # #   end
+  # #   it "instantiates a new statement" do
+  # #     expect(statement).to receive(:new).with(transactions)
+  # #     account.print_statement
+  #   end
+  #   # it "prints new statement" do
+  #   #   expect(statement).to receive(:print_it)
+  #   #   account.print_statement
+  #   # end
+  # end
 
 end
