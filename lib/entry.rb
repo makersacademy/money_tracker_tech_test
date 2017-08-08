@@ -1,6 +1,6 @@
 require 'date'
 
-class Transaction
+class Entry
 
   attr_reader :date, :credit, :debit, :balance
 
@@ -16,13 +16,8 @@ class Transaction
     @date
   end
 
-  def get_balance
-    @balance
-  end
-
-  def set_attributes(amount, balance)
+  def set_attributes(amount)
     set_credit_or_debit(amount)
-    set_balance(balance)
   end
 
   private
@@ -31,15 +26,10 @@ class Transaction
     @date = Date.today
     @credit = nil
     @debit = nil
-    @balance = 0
   end
 
   def set_credit_or_debit(amount)
     amount > 0? @credit = amount : @debit = -amount
-  end
-
-  def set_balance(balance)
-    @balance = balance
   end
 
 end
