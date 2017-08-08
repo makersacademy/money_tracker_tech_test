@@ -10,7 +10,7 @@ class Record
   private
 
   def check_validity(amount)
-    raise "0 is not a valid amount" if amount == 0
+    raise '0 is not a valid amount' if amount.zero?
     amount
   end
 
