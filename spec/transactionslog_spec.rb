@@ -1,7 +1,7 @@
 
-describe Transactions_Log do
+describe TransactionsLog do
   let(:transaction_class) { double('Transaction') }
-  subject(:transactions_log) { described_class.new(transaction_class) }
+  subject(:transactionslog) { described_class.new(transaction_class) }
 
   let(:current_balance) { 100 }
   let(:amount) { 10 }
@@ -14,10 +14,10 @@ describe Transactions_Log do
 
     it 'will instaniate a new transaction' do
       expect(transaction_class).to receive(:new).with(debit: amount, balance: current_balance)
-      transactions_log.withdraw(current_balance, amount)
+      transactionslog.withdraw(current_balance, amount)
     end
     it 'will add a transaction to history' do
-      expect { transactions_log.withdraw(current_balance, amount) }.to change { transactions_log.history }.from([]).to([transaction])
+      expect { transactionslog.withdraw(current_balance, amount) }.to change { transactionslog.history }.from([]).to([transaction])
     end
   end
 
@@ -29,10 +29,10 @@ describe Transactions_Log do
 
     it 'will instantiate a new transaction' do
       expect(transaction_class).to receive(:new).with(credit: amount, balance: current_balance)
-      transactions_log.deposit(current_balance, amount)
+      transactionslog.deposit(current_balance, amount)
     end
     it 'will log a transaction' do
-      expect { transactions_log.deposit(current_balance, amount) }.to change { transactions_log.history }.from([]).to([transaction])
+      expect { transactionslog.deposit(current_balance, amount) }.to change { transactionslog.history }.from([]).to([transaction])
     end
   end
 end

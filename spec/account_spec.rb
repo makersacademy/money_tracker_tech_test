@@ -1,5 +1,5 @@
 
-describe Bank do
+describe Account do
   let(:transactions_log) { double('transactions log', deposit: 0, withdraw: 0) }
   let(:sum) { 100 }
 
@@ -8,14 +8,14 @@ describe Bank do
   describe 'attributes' do
     context 'balance' do
       it 'will be set to zero' do
-        expect(account.balance).to eq(Bank::START_BALANCE)
+        expect(account.balance).to eq(Account::START_BALANCE)
       end
     end
   end
 
   describe '#deposit' do
     it "will increase the account balance by the arg's value" do
-      expect { account.deposit(sum) }.to change { account.balance }.from(Bank::START_BALANCE).to(sum)
+      expect { account.deposit(sum) }.to change { account.balance }.from(Account::START_BALANCE).to(sum)
     end
     it 'records the transaction via the transaction_log class' do
       expect(transactions_log).to receive(:deposit).with(100, 100)
@@ -27,7 +27,7 @@ describe Bank do
     context 'when withdrawl sum is smaller or equal to balance' do
       it "will decrease the account balance by the arg's value" do
         account.deposit(sum)
-        expect { account.withdraw(sum) }.to change { account.balance }.from(sum).to(Bank::START_BALANCE)
+        expect { account.withdraw(sum) }.to change { account.balance }.from(sum).to(Account::START_BALANCE)
       end
       it 'records the transaction via the transaction_log class' do
         account.deposit(sum)
@@ -35,12 +35,8 @@ describe Bank do
         account.withdraw(sum)
       end
     end
-    context 'when withdrawl sum exceeds balance' do
-      it 'will stop withdrawl' do
-        expect { account.withdraw(sum) }.to raise_error("You don't have enough to withdraw")
-      end
+
     end
-  end
 
   describe '#get_statement' do
     let(:statement_instance) { double('statement', print_it: nil) }
