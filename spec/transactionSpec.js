@@ -8,8 +8,7 @@ describe('Transaction', function () {
   beforeEach(function () {
     date = new Date(2017, 7, 7);
     amount = 100;
-    currentBalance = 100;
-    transaction = new Transaction(amount, currentBalance, date);
+    transaction = new Transaction(amount, date);
   });
 
   describe('is initialized', function () {
@@ -18,9 +17,6 @@ describe('Transaction', function () {
     });
     it('with an amount to be credited', function () {
       expect(transaction.credit).toBe(amount)
-    });
-    it('with a current balance', function () {
-      expect(transaction.balance).toBe(currentBalance)
     });
   });
 })

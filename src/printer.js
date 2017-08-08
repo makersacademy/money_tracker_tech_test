@@ -11,7 +11,7 @@ Printer.prototype.formatTransactionLine = function (transaction) {
 
 Printer.prototype.printOneLine = function (transaction) {
   this.formatTransactionLine(transaction);
-  console.log(transaction.date + ' || ' + transaction.credit + ' || ' + transaction.debit + ' || ' + transaction.balance);
+  console.log(transaction.date + ' || ' + transaction.credit + ' || ' + transaction.debit);
 };
 
 Printer.prototype.printHeader = function () {

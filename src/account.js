@@ -3,13 +3,11 @@
 var Transaction = require('../src/transaction').Transaction
 
 function Account () {
-  this.transactions = [],
-  this.currentBalance = 0
+  this.transactions = []
 }
 
 Account.prototype.recordTransaction = function (amount, date) {
-  this.currentBalance += amount;
-  var transaction = new Transaction(amount, this.currentBalance, date);
+  var transaction = new Transaction(amount, date);
   this.transactions.push(transaction)
 };
 

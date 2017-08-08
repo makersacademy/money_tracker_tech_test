@@ -13,20 +13,14 @@ describe('Account', function () {
     it('with an empty array of transactions', function () {
       expect(account.transactions).not.toBe(null);
     });
-
-    it('with a current balance of 0', function () {
-      expect(account.currentBalance).toBe(0);
-    });
   });
 
   describe('#recordTransaction', function () {
     it('records a new transaction in the account', function () {
       account.recordTransaction(100, date);
       transaction = account.transactions.pop();
-      console.log(account)
       expect(transaction.date).toBe(date);
       expect(transaction.credit).toBe(100);
-      expect(transaction.balance).toBe(100);
     });
   });
 
