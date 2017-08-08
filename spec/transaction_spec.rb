@@ -8,18 +8,23 @@ describe Transaction do
 
   describe 'attributes' do
     context 'on init' do
+
       it 'will assign the credited amount' do
         expect(transaction.credit).to eq(0)
       end
+
       it 'will assign the debited amount' do
         expect(transaction.debit).to eq(50)
       end
+
       it 'will assign the credited amount' do
         expect(transaction.balance).to eq(100)
       end
+
       it 'will assign the credited amount' do
         expect(transaction.time).to eq(current_time)
       end
+      
     end
   end
 end

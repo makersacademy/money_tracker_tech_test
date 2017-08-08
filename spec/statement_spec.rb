@@ -18,14 +18,17 @@ describe Statement do
       expect(statement).to receive(:print_header)
       statement.print_it
     end
+
     it 'will print each transaction' do
       expect(statement).to receive(:print_each_transaction)
       statement.print_it
     end
+
     it "will print the account's history to STDOUT" do
       allow(time_one).to receive(:strftime).with('/%d/%m/%y').and_return(Time.now.strftime('/%d/%m/%y'))
       allow(time_two).to receive(:strftime).with('/%d/%m/%y').and_return(Time.now.strftime('/%d/%m/%y'))
       expect { statement.print_it }.to output(" date | credit | debit | balance \n #{Time.now.strftime('/%d/%m/%y')} | 0 | 100 | 100  \n #{Time.now.strftime('/%d/%m/%y')} | 100 | 0 | 200  \n").to_stdout
     end
+    
   end
 end
