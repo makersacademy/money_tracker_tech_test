@@ -6,8 +6,8 @@ class Transactions
     @list = []
   end
 
-  def store_transaction(date, amount, balance)
-    self.list.push({date: date, amount: amount, balance: balance})
+  def store_transaction(amount, balance)
+    self.list.push({date: format_date, amount: amount, balance: balance})
   end
 
   def format_statement
@@ -15,5 +15,11 @@ class Transactions
     list.each do |item|
       puts "#{item[:date]} || #{item[:amount]} || #{item[:balance]}"
     end
+  end
+
+  private
+
+  def format_date
+    Date.today.strftime("%m/%d/%Y")
   end
 end

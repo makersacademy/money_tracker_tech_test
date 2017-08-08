@@ -12,12 +12,12 @@ class MoneyTracker
 
   def credit(amount)
     @balance += amount
-    save_transaction(format_date, amount, balance)
+    save_transaction(amount, balance)
   end
 
   def debit(amount)
     @balance -= amount
-    save_transaction(format_date, -amount, balance)
+    save_transaction(-amount, balance)
   end
 
   def print_statement
@@ -26,11 +26,7 @@ class MoneyTracker
 
   private
 
-  def save_transaction(date, amount, balance)
-    @transactions.store_transaction(date, amount, balance)
-  end
-
-  def format_date
-    Date.today.strftime("%m/%d/%Y")
+  def save_transaction(amount, balance)
+    @transactions.store_transaction(amount, balance)
   end
 end

@@ -3,7 +3,7 @@ describe Transactions do
   let(:transactions) { Transactions.new }
   let(:money_tracker) { MoneyTracker.new }
 
-  it { is_expected.to respond_to(:store_transaction).with(3).arguments }
+  it { is_expected.to respond_to(:store_transaction).with(2).arguments }
   it { is_expected.to respond_to(:format_statement) }
 
   describe "#initialise" do
@@ -14,8 +14,8 @@ describe Transactions do
 
   describe "#store_transaction" do
     it "should store a transaction in list" do
-      transactions.store_transaction("07/08/2017", 20, 20)
-      expect(transactions.list).to eq([{:date=>"07/08/2017", :amount=>20, :balance=>20}])
+      transactions.store_transaction(20, 20)
+      expect(transactions.list).to eq([{:date=>"#{Date.today.strftime("%m/%d/%Y")}", :amount=>20, :balance=>20}])
     end
   end
 
