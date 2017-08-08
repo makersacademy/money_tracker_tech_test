@@ -4,7 +4,7 @@ class Statement
 
   def initialize(record_list)
     @list = record_list.get_list
-    collate_statement
+    display_transactions
   end
 
   def display_transactions
@@ -19,12 +19,12 @@ class Statement
   end
 
   def produce_header
-    puts "date || credit || debit"
+    puts "date || credit || debit || balance"
   end
 
   def produce_individual_transactions
     @list.reverse.each do |record|
-      puts "#{formatted_date(record.get_date)}" + "||" + "#{record.get_credit}" + "||" + "#{record.get_debit}"
+      puts " #{formatted_date(record.get_date)} " + "||" + " #{record.get_credit} " + "||" + " #{record.get_debit} " + "||" + " #{record.get_balance} "
     end
   end
 

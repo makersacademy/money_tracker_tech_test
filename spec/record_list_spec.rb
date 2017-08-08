@@ -8,8 +8,9 @@ describe RecordList do
 
   it "can create a new entry" do
     allow(entry).to receive(:set_attributes)
-    subject.create_entry(20, entry)
-    expect(subject.list.length).to eq(1)
+    record_list = RecordList.new
+    record_list.create_entry(20, entry)
+    expect(record_list.list.length).to eq(1)
   end
 
   it "can show the list" do
