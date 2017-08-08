@@ -40,11 +40,11 @@ describe Account do
     end
   end
 
-  describe '#print_statement' do
+  describe '#statement' do
     it 'prints an account statement to stadard output' do
       account.add_entry(entry)
       account.add_entry(second_entry)
-      expect { account.print_statement }.to output("date || credit || debit || balance\n2017-06-06 || 500 || || 2500\n2017-06-06 || || 500 || 2000\n").to_stdout
+      expect { account.statement }.to output("date || credit || debit || balance\n2017-06-06 || 500 || || 2500\n2017-06-06 || || 500 || 2000\n").to_stdout
     end
   end
 end

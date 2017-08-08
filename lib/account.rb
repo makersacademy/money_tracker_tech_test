@@ -11,8 +11,8 @@ class Account
     @entries << entry
   end
 
-  def print_statement
-    puts 'date || credit || debit || balance'
+  def statement
+     'date || credit || debit || balance'
     @entries.each do |entry|
       puts "#{entry.date} ||" + " ||" + " #{entry.debit} ||" + " #{balance_update(entry)}" if entry.credit.nil?
       puts "#{entry.date} ||" + " #{entry.credit} ||" + " ||" + " #{balance_update(entry)}" if entry.debit.nil?
