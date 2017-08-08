@@ -12,16 +12,16 @@ class RecordList
   def add_to_list(entry)
     @list.push(entry)
   end
-
+  
   def get_list
     @list
   end
 
   private
 
+
   def initialize
     @list = []
-    @balance = 0
   end
 
 end

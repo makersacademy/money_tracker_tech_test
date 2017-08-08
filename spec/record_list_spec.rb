@@ -12,11 +12,6 @@ describe RecordList do
     expect(subject.list.length).to eq(1)
   end
 
-  it "can add transactions to a list" do
-    subject.add_to_list(entry)
-    expect(subject.list.length).to eq(1)
-  end
-
   it "can show the list" do
     subject.add_to_list(entry)
     expect(subject.get_list).to eq([entry])

@@ -2,7 +2,7 @@ require 'date'
 
 class Entry
 
-  attr_reader :date, :credit, :debit, :balance
+  attr_reader :date, :credit, :debit
 
   def get_credit
     @credit
