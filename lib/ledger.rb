@@ -27,6 +27,7 @@ class Ledger
                  end
     end
     sort_transaction_history(history)
+    @balance = 0
   end
 
   def sort_transactions
