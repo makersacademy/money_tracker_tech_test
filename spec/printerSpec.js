@@ -1,6 +1,8 @@
 'use strict';
 
 var Printer = require('../src/printer').Printer
+var formatDebitTransaction = require('../src/printer').formatDebitTransaction
+var formatCreditTransaction = require('../src/printer').formatCreditTransaction
 
 describe('Printer', function () {
   var printer, listOfTransactionsMock;
@@ -35,19 +37,23 @@ describe('Printer', function () {
       printer.printListOfTransactions();
       expect(printer.printOneLine).toHaveBeenCalled();
     });
-    describe('#formatTransactionLine', function () {
+  });
+  describe('#formatDebitTransaction', function () {
+    it('generates a string with debit amount in the thirds column', function () {
+      var transaction = {
+        date: '10/01/2012',
+        amount: -1000,
+        balance: 1000}
+      expect(formatDebitTransaction(transaction)).toBe('10/01/2012 || || 1000 || 1000')
+    });
+    describe('#formatCreditTransaction', function () {
       it('generates a string with credit amount in the second column', function () {
         var transaction = {
           date: '10/01/2012',
-          amount: 1000 }
-        expect(printer.formatTransactionLine(transaction)).toBe('10/01/2012 || 1000 || || ')
+          amount: 1000,
+          balance: 2000 }
+        expect(formatCreditTransaction(transaction)).toBe('10/01/2012 || 1000 || || 2000')
       });
-      it('generates a string with debit amount in the thirds column', function () {
-        var transaction = {
-          date: '10/01/2012',
-          amount: -1000 }
-        expect(printer.formatTransactionLine(transaction)).toBe('10/01/2012 || || 1000 || ')
-      });
-    })
+    });
   });
 });

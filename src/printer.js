@@ -4,16 +4,29 @@ function Printer (listOfTransactions) {
   this.listOfTransactions = listOfTransactions
 }
 
-Printer.prototype.formatTransactionLine = function (transaction) {
-  if (transaction.amount < 0) {
-    return transaction.date + ' || || ' + (-transaction.amount) + ' || '
-  } else {
-    return transaction.date + ' || ' + transaction.amount + ' || || '
-  }
+function formatDebitTransaction (debit) {
+  return debit.date + ' || || ' + (-debit.amount) + ' || ' + debit.balance
+};
+
+function formatCreditTransaction (credit) {
+  return credit.date + ' || ' + credit.amount + ' || || ' + credit.balance
+};
+
+Printer.prototype.addBalanceToEachTransaction = function () {
+  var balance = 0;
+  this.listOfTransactions.map(function (transaction) {
+    balance += transaction.amount;
+    transaction.balance = balance;
+    return transaction;
+  });
 };
 
 Printer.prototype.printOneLine = function (transaction) {
-  console.log(this.formatTransactionLine(transaction));
+  if (transaction.amount > 0) {
+    console.log(formatCreditTransaction(transaction));
+  } else {
+    console.log(formatDebitTransaction(transaction));
+  }
 };
 
 Printer.prototype.printHeader = function () {
@@ -21,6 +34,7 @@ Printer.prototype.printHeader = function () {
 };
 
 Printer.prototype.printListOfTransactions = function () {
+  this.addBalanceToEachTransaction();
   this.printHeader();
   var self = this;
   this.listOfTransactions.reverse().forEach(function (transaction) {
@@ -28,4 +42,6 @@ Printer.prototype.printListOfTransactions = function () {
   })
 };
 
+exports.formatCreditTransaction = formatCreditTransaction;
+exports.formatDebitTransaction = formatDebitTransaction;
 exports.Printer = Printer;
