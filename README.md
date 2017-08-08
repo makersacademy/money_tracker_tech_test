@@ -3,8 +3,6 @@
 ## Specification
 **User Stories**
 ```
-MVP
-
 As a User
 So that I can track the money I spend
 I want to record the exact amount and date
@@ -17,31 +15,28 @@ As a User
 So that I can see all records
 I want to be able to print an account statement
 ```
-### Requirements
+## Installation
 
-* Your goal is to write a program you could use to track money you spend and earn.
+- Run `git clone https://github.com/MarySalemme/money_tracker_tech_test`
+- Navigate to the repo `cd money_tracker_tech_test`
+- Run `gem install bundle` from the command line
+- Run `bundle`
 
-* You should be able to interact with the your code via a REPL like IRB or the JavaScript console.  (You don't need to implement a command line interface that takes input from STDIN.)
-
-* You should be able to record money you've spent and the date you spent it on.  e.g. You could record the fact that you spent £100 on 2017/8/8.
-
-* You should be able to record money you've earned and the date you earned it on.  e.g. You could record the fact that you earned £100 on 2017/8/8.
-
-* You should be able to print an account statement that shows all the records (date, amount, balance).
-
-* Data can be kept in memory (it doesn't need to be stored to a database or anything).
-
-### Acceptance criteria
-
-**Given** you record that you earned 1000 on 10-01-2012
-**And** earned 2000 on 13-01-2012
-**And** spent 500 on 14-01-2012
-**When** you print your bank statement
-**Then** you would see
-
+## Usage
 ```
-date || credit || debit || balance
-14/01/2012 || || 500.00 || 2500.00
-13/01/2012 || 2000.00 || || 3000.00
-10/01/2012 || 1000.00 || || 1000.00
+2.4.0 :001 > require './lib/tracker'
+ => true
+2.4.0 :002 > tracker = Tracker.new
+ => #<Tracker:0x007f84fc964258 @transactions=[]>
+2.4.0 :003 > transaction = Transaction.new("19/07/2017", -1400)
+ => #<Transaction:0x007f84fd9301c8 @date="19/07/2017", @amount=-1400>
+
+2.4.0 :004 > transaction1 = Transaction.new("14/07/2017", 1200)
+ => #<Transaction:0x007f84fd928298 @date="14/07/2017", @amount=1200>
+2.4.0 :005 > tracker.record_transaction(transaction)
+ => [#<Transaction:0x007f84fd9301c8 @date="19/07/2017", @amount=-1400>]
+2.4.0 :006 > tracker.record_transaction(transaction1)
+ => [#<Transaction:0x007f84fd9301c8 @date="19/07/2017", @amount=-1400>, #<Transaction:0x007f84fd928298 @date="14/07/2017", @amount=1200>]
+2.4.0 :007 > tracker.show_statement
+ => "date || credit || debit || balance\n19/07/2017 || || 1400.00 || -1400.00\n14/07/2017 || 1200.00 || || -200.00\n"
 ```
