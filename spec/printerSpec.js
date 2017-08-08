@@ -1,6 +1,6 @@
 'use strict';
 
-var Printer = require('../src/Printer').Printer
+var Printer = require('../src/printer').Printer
 
 describe('Printer', function () {
   var printer, listOfTransactionsMock;
