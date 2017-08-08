@@ -54,4 +54,10 @@ I can see relevant dates on my statement
 
 #### Approach
 
-Four classes: account, statement, transaction, and transaction log
+Four classes: account, statement, transaction, and transaction log. To be elaborate on.
+
+#### IRB Example
+
+```
+
+```

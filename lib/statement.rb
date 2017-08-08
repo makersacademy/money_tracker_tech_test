@@ -18,7 +18,7 @@ class Statement
   end
 
   def print_(transaction)
-    puts " #{transaction.time} | #{transaction.credit} | #{transaction.debit} | #{transaction.balance}  "
+    puts " #{transaction.time.strftime('/%d/%m/%y')} | #{transaction.credit} | #{transaction.debit} | #{transaction.balance}  "
   end
 
   def print_each_transaction

@@ -1,37 +1,31 @@
 
 describe Statement do
-
-  let(:transactions) { [double("TransactionOne", time: "10/10/2017", debit: 0, credit: 100, balance: 200),
-    double("TransactionTwo", time: "12/10/2017", debit: 50, credit: 0, balance: 150)] }
-
-  let(:transactions_log) { double("Transactions_Log", history: transactions) }
+  let(:transactions_log) { double('Transactions_Log') }
   subject(:statement) { described_class.new(transactions_log) }
 
-  describe "#print_it" do
+  let(:time_one) { Time.now }
+  let(:time_two) { Time.now }
 
-    let(:chron_transactions) { [double("TransactionTwo", time: "12/10/2017", debit: 50, credit: 0, balance: 150),
-     double("TransactionOne", time: "10/10/2017", debit: 0, credit: 100, balance: 200)] }
+  let(:transaction_one) { double('Transaction One', time: time_one, debit: 0, credit: 100, balance: 200) }
+  let(:transaction_two) { double('Transaction Two', time: time_two, debit: 100, credit: 0, balance: 100) }
 
+  describe '#print_it' do
     before do
-      allow(transactions_log).to receive(:reverse!)
-      allow(chron_transactions).to receive(:each)
+      allow(transactions_log).to receive(:history).and_return([transaction_one, transaction_two])
     end
 
-    it "will order the account history by reverse chronology" do
-      expect(statement).to receive(:chronify_transactions)
-      statement.print_it
-    end
-    it "will print the statement header" do
+    it 'will print the statement header' do
       expect(statement).to receive(:print_header)
       statement.print_it
     end
-    it "will print each transaction" do
+    it 'will print each transaction' do
       expect(statement).to receive(:print_each_transaction)
       statement.print_it
     end
-    xit "will print the account's history to STDOUT in reverse chron order" do
-      expect{statement.print_it}.to output(" date | credit | debit | balance \n 12/10/2017 |  0 |  50 |  150  \n 10/10/2017 |  100 |  0 |  200  \n").to_stdout
+    it "will print the account's history to STDOUT" do
+      allow(time_one).to receive(:strftime).with('/%d/%m/%y').and_return(Time.now.strftime('/%d/%m/%y'))
+      allow(time_two).to receive(:strftime).with('/%d/%m/%y').and_return(Time.now.strftime('/%d/%m/%y'))
+      expect { statement.print_it }.to output(" date | credit | debit | balance \n #{Time.now.strftime('/%d/%m/%y')} | 0 | 100 | 100  \n #{Time.now.strftime('/%d/%m/%y')} | 100 | 0 | 200  \n").to_stdout
     end
   end
-
 end
