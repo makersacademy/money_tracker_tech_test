@@ -6,9 +6,8 @@ describe Account do
     statement = double("statement")
     list = double("list")
     allow(statement).to receive_message_chain(:get_list, :display_transactions).and_return("date || credit || debit || balance\n 08-08-2017||10||||100")
-    account = Account.new(list, statement)
-    account.create_entry(10)
-    expect(account.balance).to eq(10)
+    account = Account.new(20, list, statement)
+    expect(account.balance).to eq(20)
   end
 
   it 'changes the balance on credit entry' do
@@ -16,31 +15,26 @@ describe Account do
     expect(subject.balance).to eq(5)
   end
 
-  it 'creates a new transaction on debit entry' do
+  it 'creates a new transaction on credit entry' do
     subject.create_entry(5)
     expect(subject.transactions.list).not_to eq([])
   end
 
-  it 'does not change the balance if £0 deposited' do
+  it 'does not change the balance if 0 entered' do
     subject.create_entry(0)
     expect(subject.balance).to eq(0)
   end
 
-  it 'changes the balance on withdrawl' do
+  it 'changes the balance on debit entry' do
     subject.create_entry(10)
     subject.create_entry(-5)
     expect(subject.balance).to eq(5)
   end
 
-  it 'creates a new transaction on withdrawl' do
+  it 'creates a new transaction on debit entry' do
     subject.create_entry(10)
     subject.create_entry(-5)
     expect(subject.transactions.list.length).to eq(2)
-  end
-
-  it 'does not change the balance if £0 withdrawn' do
-    subject.create_entry(0)
-    expect(subject.balance).to eq(0)
   end
 
   it 'allows user to see their statement' do

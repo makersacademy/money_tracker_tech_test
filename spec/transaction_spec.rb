@@ -32,4 +32,12 @@ describe Transaction do
     expect(second_transaction.get_debit).to eq(60)
   end
 
+  it "can return the transaction date" do
+    expect(transaction.get_date.to_s).to include("2017-08-08")
+  end
+
+  it "can return the transaction balance" do
+    expect(transaction.get_balance).to eq(0)
+  end
+
 end
