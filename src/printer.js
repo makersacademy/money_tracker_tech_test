@@ -5,13 +5,15 @@ function Printer (listOfTransactions) {
 }
 
 Printer.prototype.formatTransactionLine = function (transaction) {
-  if (!transaction.credit) { transaction.credit = '' }
-  if (!transaction.debit) { transaction.debit = '' }
+  if (transaction.amount < 0) {
+    return transaction.date + ' || || ' + (-transaction.amount) + ' || '
+  } else {
+    return transaction.date + ' || ' + transaction.amount + ' || || '
+  }
 };
 
 Printer.prototype.printOneLine = function (transaction) {
-  this.formatTransactionLine(transaction);
-  console.log(transaction.date + ' || ' + transaction.credit + ' || ' + transaction.debit);
+  console.log(this.formatTransactionLine(transaction));
 };
 
 Printer.prototype.printHeader = function () {

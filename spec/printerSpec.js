@@ -7,19 +7,13 @@ describe('Printer', function () {
   beforeEach(function () {
     listOfTransactionsMock = [{
       date: '10/01/2012',
-      credit: 1000,
-      debit: undefined,
-      balance: 1000 },
+      amount: 1000 },
     {
       date: '13/01/2012',
-      credit: 2000,
-      debit: undefined,
-      balance: 3000 },
+      amount: 2000 },
     {
       date: '14/01/2012',
-      credit: undefined,
-      debit: 500,
-      balance: 2500 } ]
+      amount: 500 } ]
 
     printer = new Printer(listOfTransactionsMock);
     spyOn(printer, 'printHeader')
@@ -42,14 +36,17 @@ describe('Printer', function () {
       expect(printer.printOneLine).toHaveBeenCalled();
     });
     describe('#formatTransactionLine', function () {
-      it('replaces undefined with space', function () {
+      it('generates a string with credit amount in the second column', function () {
         var transaction = {
           date: '10/01/2012',
-          credit: 1000,
-          debit: undefined,
-          balance: 1000 }
-        printer.formatTransactionLine(transaction);
-        expect(transaction.debit).toBe('')
+          amount: 1000 }
+        expect(printer.formatTransactionLine(transaction)).toBe('10/01/2012 || 1000 || || ')
+      });
+      it('generates a string with debit amount in the thirds column', function () {
+        var transaction = {
+          date: '10/01/2012',
+          amount: -1000 }
+        expect(printer.formatTransactionLine(transaction)).toBe('10/01/2012 || || 1000 || ')
       });
     })
   });

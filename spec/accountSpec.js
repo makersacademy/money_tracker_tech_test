@@ -20,7 +20,7 @@ describe('Account', function () {
       account.recordTransaction(100, date);
       transaction = account.transactions.pop();
       expect(transaction.date).toBe(date);
-      expect(transaction.credit).toBe(100);
+      expect(transaction.amount).toBe(100);
     });
   });
 

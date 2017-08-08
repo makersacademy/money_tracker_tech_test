@@ -3,7 +3,7 @@
 var Transaction = require('../src/transaction').Transaction
 
 describe('Transaction', function () {
-  var transaction, date, amount, currentBalance;
+  var transaction, date, amount;
 
   beforeEach(function () {
     date = new Date(2017, 7, 7);
@@ -15,8 +15,8 @@ describe('Transaction', function () {
     it('with a date', function () {
       expect(transaction.date).toBe(date);
     });
-    it('with an amount to be credited', function () {
-      expect(transaction.credit).toBe(amount)
+    it('with an amount', function () {
+      expect(transaction.amount).toBe(amount)
     });
   });
 })

@@ -8,4 +8,5 @@ account.madeDeposit(2000, '13/01/2012')
 account.withdrewMoney(500, '14/01/2012')
 
 var printer = new Printer(account.transactions)
+
 printer.printListOfTransactions()
