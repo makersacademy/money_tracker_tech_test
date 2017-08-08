@@ -46,16 +46,16 @@ describe("Moneytracker", function() {
       expect(moneytracker.balance).toEqual(50);
     });
 
-    it("will throw an error when withdrawing money at a balance of 0", function() {
-      moneytracker.deposit(100);
-      moneytracker.withdraw(100);
-      expect( function() { moneytracker.checkBalance() } ).toThrow(new Error("Your balance is 0. Withdrawal denied."));
-    });
+    // it("will throw an error when withdrawing money at a balance of 0", function() {
+    //   // moneytracker.deposit(100);
+    //   // moneytracker.withdraw(100);
+    //   moneytracker.withdraw(10);
+    //   expect( function() { moneytracker.checkBalance() } ).toThrow(new Error("Your balance is 0. Withdrawal denied."));
+    // });
   });
 
   // describe("#readDisplayMessage", function() {
   //   it("shows a message to the user when they cannot withdraw on a balance of 0", function() {
-  //     moneytracker.withdraw(100);
   //     moneytracker.withdraw(10);
   //     moneytracker.readDisplayMessage();
   //     expect(moneytracker.displayMessage).toEqual("Your balance is 0. Withdrawal denied.");
