@@ -48,7 +48,7 @@ I can see a printed statement
 ```
 ```
 As someone with an account,
-So I track debits and credits,
+So I can track debits and credits,
 I can see relevant dates on my statement
 ```
 
