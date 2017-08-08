@@ -44,13 +44,13 @@ Moneytracker.prototype._resetTransaction = function () {
 };
 
 Moneytracker.prototype.checkBalance = function () {
-  if (this.balance < this.MIN_BALANCE ) {
+  if (this.balance == this.MIN_BALANCE ) {
     throw new Error("Your balance is 0. Withdrawal denied.");
   };
 };
 
-Moneytracker.prototype.readDisplayMessage = function () {
-  if (this.balance < this.MIN_BALANCE ) {
-    this.displayMessage = "Your balance is 0. Withdrawal denied.";
-  };
-};
+// Moneytracker.prototype.readDisplayMessage = function () {
+//   if (this.balance < this.MIN_BALANCE ) {
+//     this.displayMessage = "Your balance is 0. Withdrawal denied.";
+//   };
+// };
