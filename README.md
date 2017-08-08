@@ -40,7 +40,7 @@ Tested using Jasmine. Add a custom_reporter.js file to customize testing output,
 
 ## Installation
 Clone this repo. In the command line type `node`.  
-You can copy the comands from index.js and paste them in the REPL.
+You can copy the comands from `usageExamples.js` and paste them in the REPL.
 To run tests type `jasmine` in the command line.
 
 ![id](https://raw.githubusercontent.com/Corina/money_tracker_tech_test/master/assets/images/Screen%20Shot%202017-08-08%20at%201.10.18%20PM.png)
