@@ -3,6 +3,8 @@ function Moneytracker(date = new Date, credit, debit, balance) {
   this.credit = 0;
   this.debit = 0;
   this.balance = 0;
+  this.MIN_BALANCE = 0;
+  this.displayMessage = "Welcome to Moneytracker";
 };
 
 var transactions = [];
@@ -14,6 +16,7 @@ Moneytracker.prototype.deposit = function (money) {
 };
 
 Moneytracker.prototype.withdraw = function (money) {
+  this.checkBalance();
   this.debit -= money;
   this.balance -= money;
   this._createTransaction();
@@ -35,7 +38,19 @@ Moneytracker.prototype.statement = function () {
 };
 
 Moneytracker.prototype._resetTransaction = function () {
-  this.date = [];
+  this.date = null;
   this.credit = 0;
   this.debit = 0;
+};
+
+Moneytracker.prototype.checkBalance = function () {
+  if (this.balance < this.MIN_BALANCE ) {
+    throw new Error("Your balance is 0. Withdrawal denied.");
+  };
+};
+
+Moneytracker.prototype.readDisplayMessage = function () {
+  if (this.balance < this.MIN_BALANCE ) {
+    this.displayMessage = "Your balance is 0. Withdrawal denied.";
+  };
 };
