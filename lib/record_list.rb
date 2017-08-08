@@ -10,15 +10,15 @@ class RecordList
     add_to_list(entry)
   end
 
-  def add_to_list(entry)
-    @list.push(entry)
-  end
-
   def get_list
     @list
   end
 
   private
+
+  def add_to_list(entry)
+    @list.push(entry)
+  end
 
   def initialize
     @list = []
