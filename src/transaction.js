@@ -1,10 +1,10 @@
 'use strict';
 
-function Transaction (amount, currentBalance, date = new Date()) {
+function Transaction (amount, currentBalance, date) {
   this.date = date,
-  this.balance = currentBalance,
   this.credit = undefined,
   this.debit = undefined,
+  this.balance = currentBalance,
   this.checkIfCreditOrDebit(amount)
 }
 

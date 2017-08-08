@@ -40,7 +40,10 @@ Tested using Jasmine. Add a custom_reporter.js file to customize testing output,
 
 ## Installation
 Clone this repo. In the command line type `node`.  
+You can copy the comands from index.js and paste them in the REPL.
 To run tests type `jasmine` in the command line.
+
+
 
 
 ## Specification

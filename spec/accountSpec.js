@@ -1,7 +1,6 @@
 'use strict';
 
 var Account = require('../src/account').Account
-var Transaction = require('../src/transaction').Transaction
 
 describe('Account', function () {
   var account, date, transaction;
