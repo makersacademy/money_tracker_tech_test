@@ -14,10 +14,6 @@ describe Statement do
     it 'initializes with an empty formatted transactions array' do
       expect(statement.formatted_transactions).to eq([])
     end
-
-    it 'initializes with a balance of 0' do
-      expect(statement.balance).to eq(0)
-    end
   end
 
   describe '#print_statement' do

@@ -4,7 +4,6 @@ class Statement
   def initialize(ledger)
     @ledger = ledger
     @formatted_transactions = []
-    @balance ||= 0
   end
 
   def print_statement
@@ -38,6 +37,6 @@ class Statement
   end
 
   def update_balance
-    @balance = @formatted_transactions.map { |record| record[:amount] }.reduce(:+)
+    @formatted_transactions.map { |record| record[:amount] }.reduce(:+)
   end
 end
