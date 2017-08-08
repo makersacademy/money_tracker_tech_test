@@ -9,7 +9,7 @@ describe('Transaction', function () {
     date = new Date(2017, 7, 7);
     amount = 100;
     currentBalance = 100;
-    transaction = new Transaction(date, amount, currentBalance);
+    transaction = new Transaction(amount, currentBalance, date);
   });
 
   describe('is initialized', function () {

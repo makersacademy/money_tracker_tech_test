@@ -22,7 +22,7 @@ describe('Account', function () {
 
   describe('#recordTransaction', function () {
     it('records a new transaction in the account', function () {
-      account.recordTransaction(date, 100, account.currentBalancebalance);
+      account.recordTransaction(100, date);
       transaction = account.transactions.pop();
       expect(transaction.date).toBe(date);
       expect(transaction.credit).toBe(100);

@@ -7,9 +7,9 @@ function Account () {
   this.currentBalance = 0
 }
 
-Account.prototype.recordTransaction = function (date, amount) {
+Account.prototype.recordTransaction = function (amount, date) {
   this.currentBalance += amount;
-  var transaction = new Transaction(date, amount, this.currentBalance);
+  var transaction = new Transaction(amount, this.currentBalance, date);
   this.transactions.push(transaction)
 };
 
