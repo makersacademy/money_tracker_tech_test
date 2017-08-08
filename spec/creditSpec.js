@@ -22,10 +22,6 @@ describe('Credit', function () {
   });
 
   describe('can make a transaction', function () {
-    it('that is reflected in the current balance', function () {
-      credit.makeTransaction(100);
-      expect(accountMock.currentBalance).toBe(100);
-    });
     it('that is recorded in the account', function () {
       credit.makeTransaction(100);
       expect(accountMock.recordTransaction).toHaveBeenCalled();
