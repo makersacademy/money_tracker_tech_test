@@ -7,14 +7,6 @@ class Record
     @type = set_type
   end
 
-  def add_to(ledger)
-    ledger.transactions << format_record
-  end
-
-  def format_record
-    { amount: @amount.abs, date: @date, type: @type }
-  end
-
   private
 
   def check_validity(amount)
