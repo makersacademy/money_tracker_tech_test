@@ -1,35 +1,38 @@
 
-require_relative "statement"
-require_relative "transactions_log"
-
+require_relative 'statement'
+require_relative 'transactions_log'
 
 class Bank
+  START_BALANCE = 0
 
-  INITIAL_BALANCE = 0
+  attr_reader :balance
 
-  attr_reader :transactions, :statement, :balance
-
-  def initialize(transactions = Transactions.new)
-    @transactions = transactions
-    @statement = statement
-    @balance = INITIAL_BALANCE
+  def initialize(transactions_log = Transactions_Log.new)
+    @transactions_log = transactions_log
+    @balance = START_BALANCE
   end
 
   def deposit(amount)
     @balance += amount
+    transactions_log.deposit(balance, amount)
   end
 
   def withdraw(amount)
     check_enough_to_withdraw(amount)
     @balance -= amount
+    transactions_log.withdraw(balance, amount)
   end
 
-  def print_statement
-    statement = Statement.new(transactions)
+  def get_statement
+    statement = Statement.new(transactions_log)
+    statement.print_it
   end
+
+  private
+
+  attr_reader :transactions_log
 
   def check_enough_to_withdraw(amount)
-    fail "You don't have enough to withdraw" if balance < amount
+    raise "You don't have enough to withdraw" if balance < amount
   end
-
 end

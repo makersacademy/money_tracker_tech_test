@@ -1,9 +1,10 @@
 
-require_relative "transaction"
+require_relative 'transaction'
 
 class Transactions_Log
-
   # note: possible make this a singleton
+
+  attr_reader :history
 
   def initialize(transaction = Transaction)
     @transaction = transaction
@@ -20,6 +21,5 @@ class Transactions_Log
 
   private
 
-  attr_reader :history, :transaction
-
+  attr_reader :transaction
 end
