@@ -16,5 +16,4 @@ describe Transaction do
       expect(transaction.list).to eq([{:date=>"07/08/2017", :amount=>20, :balance=>20}])
     end
   end
-
 end
