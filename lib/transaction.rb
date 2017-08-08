@@ -1,24 +1,14 @@
 require_relative 'tracker'
 
 class Transaction
-  attr_reader :date, :debit, :credit, :current_balance
+  attr_reader :date, :amount
 
-  def initialize
-    @date = DateTime.now.strftime("%d/%m/%Y")
-    @debit = 0
-    @credit = 0
-    @current_balance = 0
+  def initialize(date, amount)
+    @date = date
+    @amount = amount
   end
 
-  def set_debit(amount)
-    @debit = amount
-  end
-
-  def set_credit(amount)
-    @credit = amount
-  end
-
-  def get_current_balance(balance)
-    @current_balance = balance
-  end
+  # def format_for_statement
+  #   p @date + " || " + @credit.to_s + " || " + @debit.to_s + " || " + @current_balance.to_s
+  # end
 end

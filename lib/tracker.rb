@@ -2,29 +2,32 @@ require_relative 'transaction'
 require 'date'
 
 class Tracker
-  attr_reader :balance, :transactions
+  attr_reader :transactions
 
   def initialize
-    @balance = 0
     @transactions = []
   end
 
-  def record_debit(amount, transaction)
-    transaction.set_debit(-amount)
-    set_balance(-amount)
-    transaction.get_current_balance(@balance)
+  def record_transaction(transaction)
     @transactions << transaction
   end
 
-  def record_credit(amount, transaction)
-    transaction.set_credit(amount)
-    set_balance(amount)
-    transaction.get_current_balance(@balance)
-    @transactions << transaction
-  end
+  # def show_statement
+  #   create_header
+  #   @transactions.map do |transaction|
+  #     transaction.format_for_statement
+  #   end.join("\n")
+  # end
 
-  private
-    def set_balance(amount)
-      @balance += amount
-    end
+  # private
+  #   def calculate_balance
+  #     @balance = 0
+  #     @transactions.each do |transaction|
+  #       @balance += transaction.amount
+  #     end
+  #   end
+
+    # def create_header
+    #   p "date || credit || debit || balance\n"
+    # end
 end
