@@ -13,7 +13,7 @@ describe Transaction do
 
   describe "#format_for_statement" do
     it "returns the formatted transaction date and amount" do
-      expect(transaction.format_for_statement).to eq "02/08/2017 || || -300 || "
+      expect(transaction.format_for_statement).to eq "02/08/2017 || || 300.00 || "
     end
   end
 end
