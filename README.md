@@ -59,5 +59,17 @@ Four classes: account, statement, transaction, and transaction log. To be elabor
 #### IRB Example
 
 ```
-
+2.3.3 :002 > bank = Bank.new
+ => #<Bank:0x007ff3c3854d78 @transactions_log=#<Transactions_Log:0x007ff3c3854d50 @transaction=Transaction, @history=[]>, @balance=0>
+2.3.3 :003 > bank.deposit(50)
+ => [#<Transaction:0x007ff3c38403f0 @credit=50, @debit=0, @time=2017-08-08 12:24:08 +0100, @balance=50>]
+2.3.3 :004 > bank.withdraw(10)
+ => [#<Transaction:0x007ff3c38403f0 @credit=50, @debit=0, @time=2017-08-08 12:24:08 +0100, @balance=50>, #<Transaction:0x007ff3c3833b78 @credit=0, @debit=10, @time=2017-08-08 12:24:17 +0100, @balance=40>]
+2.3.3 :005 > bank.deposit(1000)
+ => [#<Transaction:0x007ff3c38403f0 @credit=50, @debit=0, @time=2017-08-08 12:24:08 +0100, @balance=50>, #<Transaction:0x007ff3c3833b78 @credit=0, @debit=10, @time=2017-08-08 12:24:17 +0100, @balance=40>, #<Transaction:0x007ff3c38a8978 @credit=1000, @debit=0, @time=2017-08-08 12:24:22 +0100, @balance=1040>]
+2.3.3 :006 > bank.get_statement
+ date | credit | debit | balance
+ /08/08/17 | 1000 | 0 | 1040
+ /08/08/17 | 0 | 10 | 40
+ /08/08/17 | 50 | 0 | 50
 ```
