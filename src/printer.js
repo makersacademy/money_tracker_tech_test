@@ -4,17 +4,9 @@ function Printer (listOfTransactions) {
   this.listOfTransactions = listOfTransactions
 }
 
-function formatDebitTransaction (debit) {
-  return debit.date + ' || || ' + (-debit.amount) + ' || ' + debit.balance
-};
-
-function formatCreditTransaction (credit) {
-  return credit.date + ' || ' + credit.amount + ' || || ' + credit.balance
-};
-
 Printer.prototype.addBalanceToEachTransaction = function () {
   var balance = 0;
-  this.listOfTransactions.map(function (transaction) {
+  sortedTransactionsByDateAscending(this.listOfTransactions).map(function (transaction) {
     balance += transaction.amount;
     transaction.balance = balance;
     return transaction;
@@ -41,6 +33,20 @@ Printer.prototype.printListOfTransactions = function () {
     self.printOneLine(transaction);
   })
 };
+
+function formatDebitTransaction (debit) {
+  return debit.date + ' || || ' + (-debit.amount) + ' || ' + debit.balance
+};
+
+function formatCreditTransaction (credit) {
+  return credit.date + ' || ' + credit.amount + ' || || ' + credit.balance
+};
+
+function sortedTransactionsByDateAscending (listOfTransactions) {
+  return listOfTransactions.sort(function (a, b) {
+    return a.date - b.date
+  })
+}
 
 exports.formatCreditTransaction = formatCreditTransaction;
 exports.formatDebitTransaction = formatDebitTransaction;

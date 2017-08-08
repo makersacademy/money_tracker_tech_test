@@ -1,11 +1,13 @@
 'use strict';
 
 var Account = require('../src/account').Account
+var convertStringToDate = require('../src/transaction').convertStringToDate
 
 describe('Account', function () {
-  var account, date, transaction;
+  var account, date, transaction, dateConverted;
   beforeEach(function () {
-    date = new Date(2017, 7, 8)
+    date = '10/01/2012'
+    dateConverted = convertStringToDate(date)
     account = new Account();
   });
 
@@ -19,7 +21,7 @@ describe('Account', function () {
     it('records a new transaction in the account', function () {
       account.recordTransaction(100, date);
       transaction = account.transactions.pop();
-      expect(transaction.date).toBe(date);
+      expect(transaction.date.getTime()).toBe(dateConverted.getTime());
       expect(transaction.amount).toBe(100);
     });
   });
