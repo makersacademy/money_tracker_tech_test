@@ -6,7 +6,7 @@ class TransactionList
     @list.push(transaction)
   end
 
-  def getList
+  def get_list
     @list
   end
 

@@ -1,16 +1,20 @@
-require 'transaction_list'
+require_relative 'transaction_list'
 
 class Statement
 
   def display_transactions
-    produce_header
-    produce_individual_transactions
+    collate_statement
   end
 
   private
 
-  def initialize(transaction_list)
-    @transaction_list = transaction_list.getList
+  def initialize(list)
+    @transaction_list = list.get_list
+  end
+
+  def collate_statement
+    produce_header
+    produce_individual_transactions
   end
 
   def produce_header
@@ -19,7 +23,7 @@ class Statement
 
   def produce_individual_transactions
     @transaction_list.reverse.each do |transaction|
-      puts "#{formatted_date(transaction.date)}" + "||" + "#{transaction.getCredit}" + "||" + "#{transaction.getDebit}" + "||" + "#{transaction.balance}"
+      puts "#{formatted_date(transaction.get_date)}" + "||" + "#{transaction.get_credit}" + "||" + "#{transaction.get_debit}" + "||" + "#{transaction.get_balance}"
     end
   end
 

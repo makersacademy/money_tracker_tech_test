@@ -13,7 +13,7 @@ describe TransactionList do
 
   it "can show the list" do
     subject.add_to_list(transaction)
-    expect(subject.getList).to eq([transaction])
+    expect(subject.get_list).to eq([transaction])
   end
 
 end
