@@ -25,6 +25,6 @@ class Tracker
   private
 
   def create_header
-    "date || credit || debit || balance\n"
+    "date || earning || spending || balance\n"
   end
 end

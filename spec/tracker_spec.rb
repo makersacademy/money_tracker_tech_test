@@ -23,7 +23,7 @@ describe Tracker do
       allow(transaction).to receive(:format_for_statement).and_return('02/08/2017 || 1300.00 || || ')
       allow(transaction2).to receive(:format_for_statement).and_return('07/08/2017 || || 600.00 || ')
 
-      expect(tracker.show_statement).to eq "date || credit || debit || balance\n" +
+      expect(tracker.show_statement).to eq "date || earning || spending || balance\n" +
                                             "02/08/2017 || 1300.00 || || 1300.00\n" +
                                             "07/08/2017 || || 600.00 || 700.00\n"
     end
