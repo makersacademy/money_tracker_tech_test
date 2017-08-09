@@ -8,7 +8,7 @@ class RecordList
     @list = []
   end
 
-  def create_entry(amount, entry = Entry.new(amount))
+  def create_entry(amount, date, entry = Entry.new(amount, date))
     add_to_list(entry)
   end
 

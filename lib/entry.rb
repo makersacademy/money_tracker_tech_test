@@ -4,8 +4,8 @@ class Entry
 
   attr_reader :date, :credit, :debit
 
-  def initialize(amount)
-    @date = Date.today
+  def initialize(amount, date)
+    @date = date
     @credit = nil
     @debit = nil
     set_credit_or_debit(amount)

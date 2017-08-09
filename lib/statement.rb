@@ -23,15 +23,11 @@ class Statement
 
   def produce_individual_transactions
     @list.reverse.each_with_index do |record, index|
-      puts " #{formatted_date(record.date)} " + "||" +
+      puts " #{record.date} " + "||" +
            " #{record.credit} " + "||" +
            " #{record.debit} " + "||" +
            " #{@balance_list[index]} "
     end
-  end
-
-  def formatted_date(date)
-    date.strftime("%m/%d/%Y")
   end
 
   def amounts_to_running_balance
