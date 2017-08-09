@@ -1,17 +1,13 @@
+
 'use strict';
+
+var formatDebitTransaction = require('../src/formatter').formatDebitTransaction
+var formatCreditTransaction = require('../src/formatter').formatCreditTransaction
+var addBalanceToEachTransaction = require('../src/formatter').addBalanceToEachTransaction;
 
 function Printer (listOfTransactions) {
   this.listOfTransactions = listOfTransactions
 }
-
-Printer.prototype.addBalanceToEachTransaction = function () {
-  var balance = 0;
-  sortedTransactionsByDateAscending(this.listOfTransactions).map(function (transaction) {
-    balance += transaction.amount;
-    transaction.balance = balance;
-    return transaction;
-  });
-};
 
 Printer.prototype.printOneLine = function (transaction) {
   if (transaction.amount > 0) {
@@ -26,7 +22,7 @@ Printer.prototype.printHeader = function () {
 };
 
 Printer.prototype.printListOfTransactions = function () {
-  this.addBalanceToEachTransaction();
+  addBalanceToEachTransaction(this.listOfTransactions);
   this.printHeader();
   var self = this;
   this.listOfTransactions.reverse().forEach(function (transaction) {
@@ -34,20 +30,4 @@ Printer.prototype.printListOfTransactions = function () {
   })
 };
 
-function formatDebitTransaction (debit) {
-  return debit.date + ' || || ' + (-debit.amount) + ' || ' + debit.balance
-};
-
-function formatCreditTransaction (credit) {
-  return credit.date + ' || ' + credit.amount + ' || || ' + credit.balance
-};
-
-function sortedTransactionsByDateAscending (listOfTransactions) {
-  return listOfTransactions.sort(function (a, b) {
-    return a.date - b.date
-  })
-}
-
-exports.formatCreditTransaction = formatCreditTransaction;
-exports.formatDebitTransaction = formatDebitTransaction;
 exports.Printer = Printer;
