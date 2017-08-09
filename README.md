@@ -1,6 +1,7 @@
 # Money tracker tech test
 
-## Specification
+<img src="http://i.imgur.com/7dlpZgR.png" alt="Money Tracker domain model" style="width: 600px;"/>   
+
 **User Stories**
 ```
 As a User
