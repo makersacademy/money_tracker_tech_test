@@ -29,26 +29,23 @@ describe('Account', function () {
 
   describe('#madeDeposit', function () {
     it('can add a credit transaction', function () {
-      spyOn(account, 'recordTransaction')
+      var length = account.transactions.length;
       account.madeDeposit(100, date);
-      expect(account.recordTransaction).toHaveBeenCalled();
+      expect(account.transactions.length).toBe(length + 1);
+    });
+    it('throws an error for invalid dates', function () {
+      expect(function () { account.madeDeposit(100, '1/1/2012') }).toThrow('Please enter a date in dd/mm/yyyy format');
     });
   });
 
   describe('#withdrewMoney', function () {
     it('can add a debit transaction', function () {
-      spyOn(account, 'recordTransaction')
+      var length = account.transactions.length;
       account.withdrewMoney(100, date);
-      expect(account.recordTransaction).toHaveBeenCalled();
+      expect(account.transactions.length).toBe(length + 1);
     });
-  });
-
-  describe('validateDate', function () {
-    it('checks a string is a correct date', function () {
-      expect(function () { validateDate('10/2/2012') }).toThrow('Please enter a date in dd/mm/yyyy format');
-      expect(function () { validateDate('1/02/2012') }).toThrow('Please enter a date in dd/mm/yyyy format');
-      expect(function () { validateDate('10/13/2012') }).toThrow('Please enter a date in dd/mm/yyyy format');
-      expect(function () { validateDate('33/10/2012') }).toThrow('Please enter a date in dd/mm/yyyy format');
+    it('throws an error for invalid dates', function () {
+      expect(function () { account.madeDeposit(100, '1/14/2012') }).toThrow('Please enter a date in dd/mm/yyyy format');
     });
   });
 })

@@ -1,34 +1,33 @@
 
-function addBalanceToEachTransaction (listOfTransactions) {
+function Formatter () {
+}
+
+Formatter.prototype.addBalanceToEachTransaction = function (listOfTransactions) {
   var balance = 0;
-  sortedTransactionsByDateAscending(listOfTransactions).map(function (transaction) {
+  return this.sortedListByDateAscending(listOfTransactions).map(function (transaction) {
     balance += transaction.amount;
     transaction.balance = balance;
     return transaction;
   });
 };
 
-function formatDebitTransaction (debit) {
+Formatter.prototype.formatDebitTransaction = function (debit) {
   return ' || || ' + (-debit.amount) + ' || ' + debit.balance
 };
 
-function formatCreditTransaction (credit) {
+Formatter.prototype.formatCreditTransaction = function (credit) {
   return ' || ' + credit.amount + ' || || ' + credit.balance
 };
 
-function sortedTransactionsByDateAscending (listOfTransactions) {
+Formatter.prototype.sortedListByDateAscending = function (listOfTransactions) {
   return listOfTransactions.sort(function (a, b) {
     return a.date - b.date
   });
 };
 
-function revertDateToString (date) {
+Formatter.prototype.revertDateToString = function (date) {
   function pad (s) { return (s < 10) ? '0' + s : s; }
   return [pad(date.getDate()), pad(date.getMonth() + 1), date.getFullYear()].join('/');
 };
 
-exports.addBalanceToEachTransaction = addBalanceToEachTransaction;
-exports.sortedTransactionsByDateAscending = sortedTransactionsByDateAscending;
-exports.formatCreditTransaction = formatCreditTransaction;
-exports.formatDebitTransaction = formatDebitTransaction;
-exports.revertDateToString = revertDateToString;
+exports.Formatter = Formatter;

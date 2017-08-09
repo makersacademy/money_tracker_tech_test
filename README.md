@@ -46,13 +46,13 @@ To run tests type `jasmine` in the command line.
 
 ## Approach
 
-The purpose of the program is to retroactively keep track of transactions, not to act as bank account. A user can create an account and record transactions made and the dates. Transactions can be a deposit or withdrawal and the date is entered as a string respecting the dd/mm/format otherwise an error is thrown.
+The purpose of the program is to retroactively keep track of transactions. I created an Account object and users can interact with it through `madeDeposit` and `withdrewMoney` functions. Each call triggers another function, `recordTransaction` which creates a new instance of a Transaction object and appends it to the account's `transactions` list.
 
 Transactions don't need to be added in chronological order, the program takes care to sort them.
 
 The date is converted into a Date object before being saved, making sorting chronological possible. Sorting is needed before adding the balance to each transaction. Before printing the date is converted back to string so input and output date look the same.
 
-After recording all the transactions a user can print the statement. The transactions will be printed in reverse chronological order and a balance will be listed for each transaction.
+The `Printer` object prints the list of transactions to the console using a suite of formatting functions found in the `Formatter` module.
 
 
 ## Specification

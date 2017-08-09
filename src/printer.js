@@ -1,21 +1,19 @@
 
 'use strict';
 
-var formatDebitTransaction = require('../src/formatter').formatDebitTransaction
-var formatCreditTransaction = require('../src/formatter').formatCreditTransaction
-var addBalanceToEachTransaction = require('../src/formatter').addBalanceToEachTransaction;
-var revertDateToString = require('../src/formatter').revertDateToString;
+var Formatter = require('../src/formatter').Formatter
 
 function Printer (listOfTransactions) {
-  this.listOfTransactions = listOfTransactions
+  this.listOfTransactions = listOfTransactions,
+  this.formatter = new Formatter()
 }
 
 Printer.prototype.printOneLine = function (transaction) {
-  process.stdout.write(revertDateToString(transaction.date));
+  process.stdout.write(this.formatter.revertDateToString(transaction.date));
   if (transaction.amount > 0) {
-    console.log(formatCreditTransaction(transaction));
+    console.log(this.formatter.formatCreditTransaction(transaction));
   } else {
-    console.log(formatDebitTransaction(transaction));
+    console.log(this.formatter.formatDebitTransaction(transaction));
   }
 };
 
@@ -24,12 +22,14 @@ Printer.prototype.printHeader = function () {
 };
 
 Printer.prototype.printListOfTransactions = function () {
-  addBalanceToEachTransaction(this.listOfTransactions);
   this.printHeader();
   var self = this;
-  this.listOfTransactions.reverse().forEach(function (transaction) {
-    self.printOneLine(transaction);
-  })
+  this.formatter
+    .addBalanceToEachTransaction(this.listOfTransactions)
+    .reverse()
+    .forEach(function (transaction) {
+      self.printOneLine(transaction);
+    })
 };
 
 exports.Printer = Printer;
