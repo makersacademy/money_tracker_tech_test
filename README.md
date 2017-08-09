@@ -29,21 +29,30 @@ I want to see the list of transactions and the date when each took place
 
 ## Built
 
-Built using Node.js
+Built using Node.js.
 
 ## Testing
 
-Tested using Jasmine. Add a custom_reporter.js file to customize testing output, making text from `describe` and `it` blocks visible and adding indentation.
+Tested using Jasmine. Added a custom_reporter.js file to customize testing output, making text from `describe` and `it` blocks visible and adding indentation.
 
 ![id](https://raw.githubusercontent.com/Corina/money_tracker_tech_test/master/assets/images/Screen%20Shot%202017-08-07%20at%2011.24.58%20PM.png)
 
 
 ## Installation
-Clone this repo. In the command line type `node`.  
-You can copy the comands from `usageExamples.js` and paste them in the REPL.
+Clone this repo. Run examples from `usageExamples.js` by typing `node usageExamples.js`. Type `node` to access the REPL environment and play with the program.
 To run tests type `jasmine` in the command line.
 
 ![id](https://raw.githubusercontent.com/Corina/money_tracker_tech_test/master/assets/images/Screen%20Shot%202017-08-08%20at%201.10.18%20PM.png)
+
+## Approach
+
+The purpose of the program is to retroactively keep track of transactions, not to act as bank account. A user can create an account and record transactions made and the dates. Transactions can be a deposit or withdrawal and the date is entered as a string respecting the dd/mm/format otherwise an error is thrown.
+
+Transactions don't need to be added in chronological order, the program takes care to sort them.
+
+The date is converted into a Date object before being saved, making sorting chronological possible. Sorting is needed before adding the balance to each transaction. Before printing the date is converted back to string so input and output date look the same.
+
+After recording all the transactions a user can print the statement. The transactions will be printed in reverse chronological order and a balance will be listed for each transaction.
 
 
 ## Specification
