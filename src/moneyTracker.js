@@ -1,47 +1,35 @@
-function Moneytracker(date, credit, debit, balance) {
-  this.date = "";
-  this.credit = 0;
-  this.debit = 0;
-  this.balance = 0;
+function Moneytracker() {
+  this._transactions = [];
 };
 
-var transactions = [];
-
-Moneytracker.prototype.deposit = function (money, dateOfTransaction) {
-  this.credit += money;
-  this.insertDate(dateOfTransaction);
-  this.balance += money;
-  this._createTransaction();
+Moneytracker.prototype.recordEarning = function (money, date) {
+  this._transactions.push(new Transaction(money, date))
 };
 
-Moneytracker.prototype.withdraw = function (money, dateOfTransaction) {
-  this.debit -= money;
-  this.insertDate(dateOfTransaction);
-  this.balance -= money;
-  this._createTransaction();
+Moneytracker.prototype.recordExpenditure = function (money, date) {
+  this._transactions.push(new Transaction(money, date))
 };
 
-Moneytracker.prototype.insertDate = function (dateOfTransaction) {
-  this.date = dateOfTransaction;
-};
-
-Moneytracker.prototype._createTransaction = function () {
-  var transaction = {
-      date: this.date,
-      credit: String(this.credit),
-      debit: String(this.debit),
-      balance: String(this.balance)
-    };
-    transactions.push(transaction)
-    this._resetTransaction();
+Moneytracker.prototype._balance = function () {
+  var totalBalance = 0;
+  for(i = 0; i < this._transactions.length; i++) {
+    totalBalance += this._transactions[i].credit + this._transactions[i].debit;
+    this._transactions[i]._balance = totalBalance;
   };
-
-Moneytracker.prototype.statement = function () {
-  console.table(transactions);
+  return totalBalance;
 };
 
-Moneytracker.prototype._resetTransaction = function () {
-  this.date = "";
-  this.credit = 0;
-  this.debit = 0;
+Moneytracker.prototype.printBalance = function () {
+  console.log("Balance: " + String(this._balance()));
+};
+
+Moneytracker.prototype.printStatement = function () {
+  this._balance();
+  console.log("date || credit || debit || balance\n");
+  for(i = 0; i < this._transactions.length; i++) {
+    console.log(String((this._transactions[i].date) + " || " +
+                       (this._transactions[i].credit) + " || " +
+                       (this._transactions[i].debit) + " || " +
+                       (this._transactions[i]._balance)));
+  };
 };

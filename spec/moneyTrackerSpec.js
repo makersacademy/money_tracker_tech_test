@@ -3,56 +3,42 @@ describe("Moneytracker", function() {
   var moneytracker;
 
   beforeEach(function() {
-    moneytracker = new Moneytracker(null, 0, 0, 0);
-
-    spyOn(transactions, 'push');
+    moneytracker = new Moneytracker();
   });
 
-  describe("#balance", function() {
-    it("sets the balance to 0 on initialisation", function() {
-      expect(moneytracker.balance).toEqual(0);
-    });
-
-    it("gives the correct balance after a transaction has been made", function() {
-      moneytracker.deposit(100);
-      moneytracker.withdraw(25);
-      expect(moneytracker.balance).toEqual(75);
+  describe("#recordEarning", function() {
+    it("records (an) earning(s) which can be collated and printed as a running balance", function(){
+      moneytracker.recordEarning(100, "11/08/17");
+      expect(moneytracker.printBalance()).toEqual(console.log("Balance: 100"));
     });
   });
 
-  describe("#credit", function() {
-    it("sets the credit to 0 on initialisation", function() {
-      expect(moneytracker.credit).toEqual(0);
+  describe("#recordExpenditure", function() {
+    it("records (an) expenditure(s) which can be collated and printed as a running balance", function() {
+      moneytracker.recordExpenditure(-25, "12/08/17");
+      expect(moneytracker.printBalance()).toEqual(console.log("Balance: -25"));
     });
   });
 
-  describe("#debit", function() {
-    it("sets the debit to 0 on initialisation", function() {
-      expect(moneytracker.debit).toEqual(0);
+  describe("#printBalance", function() {
+    it("prints the current balance", function() {
+      moneytracker.recordEarning(1200, "15/07/17");
+      moneytracker.recordExpenditure(-250, "29/07/17");
+      expect(moneytracker.printBalance()).toEqual(console.log(950));
     });
   });
 
-  describe("#deposit", function() {
-    it("allows the user to deposit money", function() {
-      moneytracker.deposit(100);
-      expect(moneytracker.balance).toEqual(100);
+  describe("#printStatement", function() {
+    it("prints a statement of all transactions", function() {
+      moneytracker.recordEarning(500, "22/07/17");
+      moneytracker.recordExpenditure(-20, "22/07/17");
+      moneytracker.recordExpenditure(-50, "23/07/17");
+      moneytracker.recordEarning(1600, "30/07/17");
+      expect(moneytracker.printStatement()).toEqual(console.log("date || credit || debit || balance\n" +
+                                                                "22/07/17 || 500 || 0 || 500\n" +
+                                                                "22/07/17 || 0 || -20 || 480\n" +
+                                                                "23/07/17 || 0 || -50 || 430\n" +
+                                                                "30/07/17 || 1600 || 0 || 2030"));
     });
   });
-
-  describe("#withdraw", function() {
-    it("allows the user to withdraw money", function() {
-      moneytracker.balance = 100;
-      moneytracker.withdraw(50);
-      expect(moneytracker.balance).toEqual(50);
-    });
-  });
-
-  // describe("#statement", function() {
-  //   it("prints a statement", function() {
-  //     moneytracker.deposit(1000);
-  //     expect(moneytracker.balance).toEqual(1000);
-  //     console.log(moneytracker)
-  //     expect(moneytracker.statement).toEqual(["date: null, credit: 0, debit: 0, balance: 1000"]);
-  //   });
-  // });
 });
