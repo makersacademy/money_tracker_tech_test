@@ -1,0 +1,25 @@
+{
+  "name": "money_tracker",
+  "version": "1.0.0",
+  "description": "money tracker app",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "dependencies": {
+    "jasmine": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Corina/money_tracker_tech_test.git"
+  },
+  "author": "Corina Gheorghe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Corina/money_tracker_tech_test/issues"
+  },
+  "homepage": "https://github.com/Corina/money_tracker_tech_test",
+  "devDependencies": {
+    "coveralls": "^2.13.1"
+  }
+}
