@@ -40,8 +40,8 @@ describe Transactions do
     end
 
     it "should convert earn amount into credit" do
-      money_tracker.spend(10)
-      expect(money_tracker.transactions.format_amount).to eq [{:date=>date, :balance=>-10, :debit=>-10}]
+      money_tracker.earn(20)
+      expect(money_tracker.transactions.format_amount).to eq [{:date=>date, :balance=>20, :credit=>20}]
     end
   end
 end
