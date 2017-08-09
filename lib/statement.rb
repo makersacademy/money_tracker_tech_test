@@ -5,7 +5,7 @@ class Statement
   attr_reader :list, :balance_list
 
   def initialize(record_list)
-    @list = record_list.list
+    @list = sort_by_date(record_list.list)
     @balance_list = []
   end
 
@@ -23,7 +23,7 @@ class Statement
 
   def produce_individual_transactions
     @list.reverse.each_with_index do |record, index|
-      puts " #{record.date} " + "||" +
+      puts " #{format_date(record.date)} " + "||" +
            " #{record.credit} " + "||" +
            " #{record.debit} " + "||" +
            " #{@balance_list[index]} "
@@ -44,5 +44,13 @@ class Statement
 
   def credit?(entry)
     entry.credit != nil
+  end
+
+  def sort_by_date(list)
+    list.sort_by{ |obj| obj.date }
+  end
+
+  def format_date(date)
+    date.strftime("%m/%d/%Y")
   end
 end
