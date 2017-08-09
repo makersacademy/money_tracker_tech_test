@@ -1,8 +1,6 @@
 require 'tracker'
 
 describe Tracker do
-  let(:expenditure) { double('spending') }
-  let(:salary) { double('earning') }
   let(:transactions) { double('transactions') }
   subject(:tracker) { described_class.new(transactions) }
 
