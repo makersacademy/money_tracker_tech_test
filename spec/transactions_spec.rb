@@ -21,15 +21,27 @@ describe Transactions do
 
   describe "#format_header" do
     it "should return header for statement" do
-      expect{transactions.format_header}.to output("Date || Transaction || Balance\n").to_stdout
+      expect{transactions.format_header}.to output("Date || Credit || Debit || Balance\n").to_stdout
     end
   end
 
   describe "#format_statement" do
-      it "should return a list of transactions" do
-        money_tracker.earn(30)
-        money_tracker.spend(10)
-      expect(money_tracker.transactions.format_statement).to eq [{:date=>date, :amount=>30, :balance=>30}, {:date=>date, :amount=>-10, :balance=>20}]
+    it "should return a list of transactions" do
+      money_tracker.earn(30)
+      money_tracker.spend(10)
+      expect(money_tracker.transactions.format_statement).to eq [{:date=>date, :balance=>20, :debit=>-10}, {:date=>date, :balance=>30, :credit=>30}]
+    end
+  end
+
+  describe "#format_amount" do
+    it "should convert spend amount into debit" do
+      money_tracker.spend(10)
+      expect(money_tracker.transactions.format_amount).to eq [{:date=>date, :balance=>-10, :debit=>-10}]
+    end
+
+    it "should convert earn amount into credit" do
+      money_tracker.spend(10)
+      expect(money_tracker.transactions.format_amount).to eq [{:date=>date, :balance=>-10, :debit=>-10}]
     end
   end
 end

@@ -46,7 +46,7 @@ describe MoneyTracker do
     end
 
     it "can print a statement" do
-      expect{ money_tracker.print_statement }.to output("Date || Transaction || Balance\n#{date} || 50 || 50\n#{date} || -10 || 40\n").to_stdout
+      expect{ money_tracker.print_statement }.to output("Date || Credit || Debit || Balance\n08/09/2017 ||  || -10 || 40\n08/09/2017 || 50 ||  || 50\n").to_stdout
     end
   end
 end

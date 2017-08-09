@@ -11,12 +11,25 @@ class Transactions
   end
 
   def format_header
-    puts "Date || Transaction || Balance"
+    puts "Date || Credit || Debit || Balance"
   end
 
   def format_statement
+    list.reverse.each do |item|
+      format_amount
+      puts "#{item[:date]} || #{item[:credit]} || #{item[:debit]} || #{item[:balance]}"
+    end
+  end
+
+  def format_amount
     list.each do |item|
-      puts "#{item[:date]} || #{item[:amount]} || #{item[:balance]}"
+      if item.has_key?(:debit) || item.has_key?(:credit)
+        item
+      elsif item[:amount] < 0
+        item[:debit] = item.delete :amount
+      else
+        item[:credit] = item.delete :amount
+      end
     end
   end
 
