@@ -4,7 +4,7 @@ class Record
   def initialize(amount, date)
     @amount = check_validity(amount)
     @date = date
-    @type = set_type
+    @type = evaluate_type
   end
 
   private
@@ -14,7 +14,7 @@ class Record
     amount
   end
 
-  def set_type
+  def evaluate_type
     @amount < 0 ? :debit : :credit
   end
 end

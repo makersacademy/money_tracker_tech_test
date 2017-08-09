@@ -6,8 +6,8 @@ class Statement
     @formatted_transactions = []
   end
 
-  def print_statement
-    format_transactions
+  def prepare_statement
+    format_transaction_hash
     print_heading
     print_transactions
   end
@@ -18,7 +18,7 @@ class Statement
     puts 'date || credit || debit || balance'
   end
 
-  def format_transactions
+  def format_transaction_hash
     @ledger.transactions.each do |record|
       @formatted_transactions.push(amount: record.amount, date: record.date, type: record.type)
     end
@@ -26,7 +26,7 @@ class Statement
 
   def print_transactions
     @formatted_transactions.each do |transaction|
-      if transaction[:type] == :credit
+      if credit?(transaction)
         puts (transaction[:date]).to_s + ' || ' + (transaction[:amount]).to_s +
         ' ||   || ' + update_balance.to_s
       else
@@ -34,6 +34,10 @@ class Statement
         ' || ' + update_balance.to_s
       end
     end
+  end
+
+  def credit?(transaction)
+    transaction[:type] == :credit ? true : false
   end
 
   def update_balance

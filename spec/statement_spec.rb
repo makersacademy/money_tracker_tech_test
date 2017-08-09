@@ -16,10 +16,10 @@ describe Statement do
     end
   end
 
-  describe '#print_statement' do
+  describe '#prepare_statement' do
     it 'prints each transaction as a string' do
       allow(my_ledger).to receive(:transactions).and_return([my_record])
-      expect { statement.print_statement }.to output("date || credit || debit || balance\n05/08/2017 || 250 ||   || 250\n").to_stdout
+      expect { statement.prepare_statement }.to output("date || credit || debit || balance\n05/08/2017 || 250 ||   || 250\n").to_stdout
     end
   end
 end

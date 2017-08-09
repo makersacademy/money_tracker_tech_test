@@ -1,5 +1,5 @@
 class Ledger
-  attr_accessor :transactions, :balance
+  attr_accessor :transactions
 
   def initialize
     @transactions = []

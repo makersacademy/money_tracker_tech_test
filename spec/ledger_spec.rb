@@ -7,7 +7,7 @@ describe Ledger do
 
   describe '#attributes' do
     it 'initializes with an empty transactions array' do
-      expect(my_ledger.transactions).to eq([])
+      expect(my_ledger.transactions.length).to eq(0)
     end
   end
 

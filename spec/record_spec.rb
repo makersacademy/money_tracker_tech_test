@@ -3,7 +3,6 @@ require './lib/record.rb'
 describe Record do
   subject(:record) { described_class.new(100, '07/08/2017') }
   subject(:record2) { described_class.new(0, '07/08/2017') }
-  let(:my_ledger) { double(:ledger) }
 
   describe '#attributes' do
     it 'initializes with an amount and date' do
