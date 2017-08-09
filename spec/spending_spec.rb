@@ -14,8 +14,8 @@ describe Spending do
   end
 
   describe "#credit" do
-    it "should be equal to the deposit amount" do
-      expect(spending.credit).to be nil
+    it "should return 0" do
+      expect(spending.credit).to be 0
     end
   end
 

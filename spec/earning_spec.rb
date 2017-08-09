@@ -9,7 +9,7 @@ describe Earning do
 
   describe "#debit" do
     it "should return 0" do
-      expect(earning.debit).to eq nil
+      expect(earning.debit).to eq 0
     end
   end
 

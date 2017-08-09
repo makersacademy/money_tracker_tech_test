@@ -11,6 +11,7 @@ describe Tracker do
       tracker.record_spending(10, "9th Jan 2017")
     end
   end
+
   describe "#record_earning" do
     it "should call add_transaction" do
       allow(transactions).to receive(:add_transaction)
@@ -18,4 +19,5 @@ describe Tracker do
       tracker.record_earning(10, "9th Jan 2017")
     end
   end
+
 end
