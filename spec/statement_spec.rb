@@ -9,13 +9,13 @@ describe Statement do
 
   describe "#attributes" do
     it "initializes with a list of records" do
-      allow(record_list).to receive_message_chain(:list, :reverse, :each_with_index)
+      allow(record_list).to receive_message_chain(:list)
       statement = Statement.new(record_list)
       expect(statement.list).not_to eq(nil)
     end
 
     it "initializes with an empty balance list" do
-      allow(record_list).to receive_message_chain(:list, :reverse, :each_with_index)
+      allow(record_list).to receive_message_chain(:list)
       statement = Statement.new(record_list)
       expect(statement.balance_list).to eq([])
     end
