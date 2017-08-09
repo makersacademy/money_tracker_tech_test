@@ -1,6 +1,7 @@
 'use strict';
 
 var Account = require('../src/account').Account
+var validateDate = require('../src/account').validateDate
 var convertStringToDate = require('../src/transaction').convertStringToDate
 
 describe('Account', function () {
@@ -39,6 +40,15 @@ describe('Account', function () {
       spyOn(account, 'recordTransaction')
       account.withdrewMoney(100, date);
       expect(account.recordTransaction).toHaveBeenCalled();
+    });
+  });
+
+  describe('validateDate', function () {
+    it('checks a string is a correct date', function () {
+      expect(function () { validateDate('10/2/2012') }).toThrow('Please enter a date in dd/mm/yyyy format');
+      expect(function () { validateDate('1/02/2012') }).toThrow('Please enter a date in dd/mm/yyyy format');
+      expect(function () { validateDate('10/13/2012') }).toThrow('Please enter a date in dd/mm/yyyy format');
+      expect(function () { validateDate('33/10/2012') }).toThrow('Please enter a date in dd/mm/yyyy format');
     });
   });
 })
