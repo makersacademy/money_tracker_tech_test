@@ -19,4 +19,9 @@ class Entry
       return true
     end
   end
+
+  def net_amount
+    @credit.nil? ? -(debit) : credit
+  end 
 end
+

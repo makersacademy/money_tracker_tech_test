@@ -13,12 +13,17 @@ describe Entry do
     expect(entry.date.to_s).to eq '2017-10-10'
   end
   it 'and either a credit amount or a debit amount' do
-    expect { Entry.new('2017-04-04', nil, nil) }.to raise_error("At least one between credit and debit amount must not be nil.")
+    expect(entry.credit).to eq 500
   end
-  it 'but not both' do
-    expect { Entry.new('2017-04-04', 200, 600) }.to raise_error("At most one between credit and debit amount can be non-nil.")
-  end
-  it 'that cannot be negative' do
-    expect { Entry.new('2017-05-04', -100, nil) }.to raise_error("Amount cannot be negative.")
+  describe "#valid?" do
+    it 'checks that one between credit and debit amount is nil' do
+      expect { Entry.new('2017-04-04', nil, nil) }.to raise_error("At least one between credit and debit amount must not be nil.")
+    end
+    it 'but not both' do
+      expect { Entry.new('2017-04-04', 200, 600) }.to raise_error("At most one between credit and debit amount can be non-nil.")
+    end
+    it 'and checks that neither be negative' do
+      expect { Entry.new('2017-05-04', -100, nil) }.to raise_error("Amount cannot be negative.")
+    end
   end
 end
