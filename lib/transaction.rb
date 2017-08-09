@@ -1,4 +1,5 @@
 require_relative 'tracker'
+require_relative 'statement_formatter'
 require 'date'
 
 class Transaction
@@ -9,10 +10,6 @@ class Transaction
     check_amount_if_valid(amount)
     @date = date
     @amount = amount
-  end
-
-  def format_for_statement
-    @date + ' || ' + format_amount_for_statement
   end
 
   private
@@ -26,17 +23,5 @@ class Transaction
 
   def check_amount_if_valid(amount)
     raise 'The amount cannot be 0' if amount.zero?
-  end
-
-  def format_amount_for_statement
-    @amount > 0 ? format_earning : format_spending
-  end
-
-  def format_earning
-    ('%.2f' % @amount).to_s + ' || || '
-  end
-
-  def format_spending
-    '|| ' + ('%.2f' % (@amount * -1)).to_s + ' || '
   end
 end
