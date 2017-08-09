@@ -4,10 +4,11 @@ var formatDebitTransaction = require('../src/formatter').formatDebitTransaction
 var formatCreditTransaction = require('../src/formatter').formatCreditTransaction
 var sortedTransactionsByDateAscending = require('../src/formatter').sortedTransactionsByDateAscending;
 var addBalanceToEachTransaction = require('../src/formatter').addBalanceToEachTransaction;
+var revertDateToString = require('../src/formatter').revertDateToString;
 var convertStringToDate = require('../src/transaction').convertStringToDate
 
 describe('formatter functions', function () {
-  var listOfTransactionsMock, listOfTransactionsMockSorted;
+  var listOfTransactionsMock, listOfTransactionsMockSorted, date;
   beforeEach(function () {
     listOfTransactionsMock = [
       {
@@ -26,7 +27,7 @@ describe('formatter functions', function () {
         date: '10/01/2012',
         amount: -1000,
         balance: 1000}
-      expect(formatDebitTransaction(transaction)).toBe('10/01/2012 || || 1000 || 1000')
+      expect(formatDebitTransaction(transaction)).toBe(' || || 1000 || 1000')
     });
   });
   describe('#formatCreditTransaction', function () {
@@ -35,7 +36,7 @@ describe('formatter functions', function () {
         date: '10/01/2012',
         amount: 1000,
         balance: 2000 }
-      expect(formatCreditTransaction(transaction)).toBe('10/01/2012 || 1000 || || 2000')
+      expect(formatCreditTransaction(transaction)).toBe(' || 1000 || || 2000')
     });
   });
   describe('#sortedTransactionsByDateAscending', function () {
@@ -56,4 +57,10 @@ describe('formatter functions', function () {
       expect(listOfTransactionsMockSorted[2].balance).toBe(2500);
     });
   });
+  describe('#revertDateToString', function () {
+    it('converts a date into string in dd/mm/yyyy format', function () {
+      var date = revertDateToString(convertStringToDate('13/01/2012'));
+      expect(date).toBe('13/01/2012');
+    });
+  })
 });

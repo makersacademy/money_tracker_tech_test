@@ -4,12 +4,14 @@
 var formatDebitTransaction = require('../src/formatter').formatDebitTransaction
 var formatCreditTransaction = require('../src/formatter').formatCreditTransaction
 var addBalanceToEachTransaction = require('../src/formatter').addBalanceToEachTransaction;
+var revertDateToString = require('../src/formatter').revertDateToString;
 
 function Printer (listOfTransactions) {
   this.listOfTransactions = listOfTransactions
 }
 
 Printer.prototype.printOneLine = function (transaction) {
+  process.stdout.write(revertDateToString(transaction.date));
   if (transaction.amount > 0) {
     console.log(formatCreditTransaction(transaction));
   } else {

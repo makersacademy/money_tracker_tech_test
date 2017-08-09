@@ -9,20 +9,26 @@ function addBalanceToEachTransaction (listOfTransactions) {
 };
 
 function formatDebitTransaction (debit) {
-  return debit.date + ' || || ' + (-debit.amount) + ' || ' + debit.balance
+  return ' || || ' + (-debit.amount) + ' || ' + debit.balance
 };
 
 function formatCreditTransaction (credit) {
-  return credit.date + ' || ' + credit.amount + ' || || ' + credit.balance
+  return ' || ' + credit.amount + ' || || ' + credit.balance
 };
 
 function sortedTransactionsByDateAscending (listOfTransactions) {
   return listOfTransactions.sort(function (a, b) {
     return a.date - b.date
-  })
-}
+  });
+};
+
+function revertDateToString (date) {
+  function pad (s) { return (s < 10) ? '0' + s : s; }
+  return [pad(date.getDate()), pad(date.getMonth() + 1), date.getFullYear()].join('/');
+};
 
 exports.addBalanceToEachTransaction = addBalanceToEachTransaction;
 exports.sortedTransactionsByDateAscending = sortedTransactionsByDateAscending;
 exports.formatCreditTransaction = formatCreditTransaction;
 exports.formatDebitTransaction = formatDebitTransaction;
+exports.revertDateToString = revertDateToString;
