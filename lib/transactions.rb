@@ -10,8 +10,11 @@ class Transactions
     self.list.push({date: format_date, amount: amount, balance: balance})
   end
 
-  def format_statement
+  def format_header
     puts "Date || Transaction || Balance"
+  end
+
+  def format_statement
     list.each do |item|
       puts "#{item[:date]} || #{item[:amount]} || #{item[:balance]}"
     end

@@ -15,15 +15,21 @@ describe Transactions do
   describe "#store_transaction" do
     it "should store a transaction in list" do
       transactions.store_transaction(20, 20)
-      expect(transactions.list).to eq([{:date=>"#{Date.today.strftime("%m/%d/%Y")}", :amount=>20, :balance=>20}])
+      expect(transactions.list).to eq([{:date=>date, :amount=>20, :balance=>20}])
+    end
+  end
+
+  describe "#format_header" do
+    it "should return header for statement" do
+      expect{transactions.format_header}.to output("Date || Transaction || Balance\n").to_stdout
     end
   end
 
   describe "#format_statement" do
-    it "should return a list of transactions" do
-      money_tracker.credit(30)
-      money_tracker.debit(10)
-      expect(money_tracker.transactions.format_statement).to eq [{:date=>"#{Date.today.strftime("%m/%d/%Y")}", :amount=>30, :balance=>30}, {:date=>"#{Date.today.strftime("%m/%d/%Y")}", :amount=>-10, :balance=>20}]
+      it "should return a list of transactions" do
+        money_tracker.earn(30)
+        money_tracker.spend(10)
+      expect(money_tracker.transactions.format_statement).to eq [{:date=>date, :amount=>30, :balance=>30}, {:date=>date, :amount=>-10, :balance=>20}]
     end
   end
 end

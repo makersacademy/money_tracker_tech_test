@@ -10,17 +10,18 @@ class MoneyTracker
     @transactions = Transactions.new
   end
 
-  def credit(amount)
+  def earn(amount)
     @balance += amount
     save_transaction(amount, balance)
   end
 
-  def debit(amount)
+  def spend(amount)
     @balance -= amount
     save_transaction(-amount, balance)
   end
 
   def print_statement
+    @transactions.format_header
     @transactions.format_statement
   end
 
