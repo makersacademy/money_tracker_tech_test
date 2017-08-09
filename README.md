@@ -19,6 +19,13 @@ As a user.
 So that I can see all the records in one place.
 I would like to be able to print an account statement that shows all the records (date, amount, balance).
 ```
+## Tech Used
+- Ruby, Rspec, SimpleCov (testing coverage), Rubocop (code quality).
+
+## Approach
+```
+Initially, I started this project with 2 classes, a record and a ledger class. The record class was quite minimal but was able to determine the structure of a record and add instances to the ledger class. The ledger class had numerous responsibilities, including: formatting the records and printing the records. As I moved through the project, it became apparent that I wasn't properly encapsulating the responsibilities of the record class or the ledger class and required a ledger method to grab appropriate records instead of allowing the records to have knowledge of the ledger. This led to some restructuring of both classes and ultimately extracting the responsibilities of formatting and printing the records from the ledger to a new statement class.
+```
 
 ## Setup
 Clone this repo using the command `git clone`
