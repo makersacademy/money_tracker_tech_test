@@ -1,11 +1,24 @@
 class StatementFormatter
 
-  def format_transaction(transaction)
-    transaction.date + ' || ' + format_amount(transaction)
+  def create_statement(transactions)
+    current_balance = 0
+    statement = create_header
+    transactions.inject(create_header) do |statement, transaction|
+      current_balance += transaction.amount
+      statement += format_transaction(transaction, current_balance)
+    end
   end
 
   private
-  
+
+  def format_transaction(transaction, balance)
+    transaction.date + ' || ' + format_amount(transaction) + format_balance(balance)
+  end
+
+  def format_balance(balance)
+    ('%.2f' % balance).to_s + "\n"
+  end
+
   def create_header
     "date || earning || spending || balance\n"
   end
