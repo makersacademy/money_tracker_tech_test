@@ -29,14 +29,4 @@ describe Transaction do
       expect { Transaction.new('10/09/2017', 0) }.to raise_error 'The amount cannot be 0'
     end
   end
-
-  describe '#format_for_statement' do
-    it 'returns the formatted transaction date and amount for spending' do
-      expect(spending.format_for_statement).to eq '02/08/2017 || || 300.00 || '
-    end
-
-    it 'returns the formatted transaction date and amount for earning' do
-      expect(earning.format_for_statement).to eq '02/08/2017 || 500.00 || || '
-    end
-  end
 end
