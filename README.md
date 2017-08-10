@@ -1,5 +1,19 @@
 # Money tracker tech test
 
+## The Specification
+
+* Write a program that could be used to track money you spend and earn.
+
+* Interact with the program via the command line.
+
+* Be able to record money spent and the date it was spent on.  
+
+* Be able to record money earned and the date it as earned on.  
+
+* Be able to print a list of all the records (date, amount, balance).
+
+* Data can be kept in memory.
+
 ## My Approach
 
 I started by diagramming the problem and separating out the main responsibilities into classes.  My original structure and naming of the classes was closer to a bank account than a money tracker app and so I refactored mid-way through.  I ended up with three classes: statement, recordlist and entry which I think all have defined responsibilities and whose code neatly links them all together while showing due consideration to the Law of Demeter.  My main struggle was converting the code's existing running balance, which tied all the classes together, to a balance calculated at the point of printing the statement - for me this was the most ineteresting part of the process.
