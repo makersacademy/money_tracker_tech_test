@@ -25,13 +25,13 @@ class Statement
   end
 
   def print_transactions
+    balance = 0
     @formatted_transactions.each do |transaction|
+      balance += transaction[:amount]
       if credit?(transaction)
-        puts (transaction[:date]).to_s + ' || ' + (transaction[:amount]).to_s +
-        ' ||   || ' + update_balance.to_s
+        puts "#{transaction[:date]} || #{format_money(transaction[:amount])} ||   || #{format_money(balance)}"
       else
-        puts (transaction[:date]).to_s + ' ||   || ' + transaction[:amount].abs.to_s +
-        ' || ' + update_balance.to_s
+        puts "#{transaction[:date]} ||   || #{format('%.2f', transaction[:amount].abs)} || #{format_money(balance)}"
       end
     end
   end
@@ -40,7 +40,7 @@ class Statement
     transaction[:type] == :credit ? true : false
   end
 
-  def update_balance
-    @formatted_transactions.map { |record| record[:amount] }.reduce(:+)
+  def format_money(amount)
+    format('%.2f', amount)
   end
 end
