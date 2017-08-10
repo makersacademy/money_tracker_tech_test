@@ -5,8 +5,12 @@ describe Record do
   subject(:record2) { described_class.new(0, '07/08/2017') }
 
   describe '#attributes' do
-    it 'initializes with an amount and date' do
-      expect(record).to have_attributes(amount: 100, date: '07/08/2017')
+    it 'initializes with an amount' do
+      expect(record.amount).to eq(100)
+    end
+
+    it 'initializes with a date' do
+      expect(record.date).to be_a_kind_of(Date)
     end
 
     it 'checks the type on initialization' do
@@ -15,10 +19,6 @@ describe Record do
 
     it 'can check if the amount is valid' do
       expect { record2.amount }.to raise_error('0 is not a valid amount')
-    end
-
-    it 'can read the date' do
-      expect(record.date).to eq('07/08/2017')
     end
   end
 end

@@ -1,9 +1,11 @@
+require 'date'
+
 class Record
   attr_reader :amount, :date, :type
 
   def initialize(amount, date)
     @amount = check_validity(amount)
-    @date = date
+    @date = Date.parse(date)
     @type = evaluate_type
   end
 
