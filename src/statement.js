@@ -1,5 +1,5 @@
 function Statement(transactions) {
-  this.create = this._createStatement(transactions);
+  this.createStatement = this._createStatement(transactions);
 };
 
 Statement.prototype._createStatementBody = function (transactions) {

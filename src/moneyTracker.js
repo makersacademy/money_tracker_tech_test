@@ -21,5 +21,5 @@ Moneytracker.prototype._updateTotalBalance = function () {
 Moneytracker.prototype.printStatement = function () {
   this._updateTotalBalance();
   var statement = new Statement(this._transactions);
-  return statement.create;
+  return statement.createStatement;
 };
