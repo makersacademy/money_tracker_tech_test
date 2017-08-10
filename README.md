@@ -12,8 +12,16 @@ Ruby, Rspec, Coverall, Rubocop
 
 * Clone this repo
 * Create a new recordlist and make an entry including the amount and the date earned/spent:
-* Print a statement by creating a new instance of statement:
+
+![Screenshot](http://imgur.com/WHdjBXG.jpg)
+
+* Print a statement:
+
+![Screenshot](http://imgur.com/pX2OGmH.jpg)
+
 * You see:
+
+![Screenshot](http://imgur.com/pWaLYCl.jpg)
 
 ## Test Coverage
 
