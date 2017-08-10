@@ -6,52 +6,22 @@ describe("Moneytracker", function() {
     moneytracker = new Moneytracker();
   });
 
-  describe("#recordEarning", function() {
-    // it("records (an) earning(s) which can be collated and printed as a running balance", function(){
-    //   moneytracker.recordEarning(100, "11/08/17");
-    //   expect(moneytracker.printBalance()).toEqual(console.log("Balance: 100"));
-    // });
-  });
-
-  describe("#recordExpenditure", function() {
-    // it("records (an) expenditure(s) which can be collated and printed as a running balance", function() {
-    //   moneytracker.recordExpenditure(-25, "12/08/17");
-    //   expect(moneytracker.printBalance()).toEqual(console.log("Balance: -25"));
-    // });
-  });
-
   describe("#printStatement", function() {
-    // var moneytracker, recordEarning, printedStatement;
-    //
-    // beforeEach(function() {
-    //   moneytracker = {
-    //     recordEarning: function(money, date) {
-    //       earnings = (money, date);
-    //     },
-    //     printStatement: function() {
-    //       return earnings;
-    //     }
-    //   };
-    //
-    //   spyOn(moneytracker, 'printStatement').and.callThrough();
-    //   moneytracker.recordEarning(500, "22/07/17");
-    //   printedStatement = moneytracker.printStatement();
-    // });
-    //
-    //   it("tracks that the spy was called", function() {
-    //     expect(moneytracker.printStatement).toHaveBeenCalled();
-    //   })
-    //   it("prints a statement of all transactions", function() {
-    //     expect(printedStatement).toEqual(500, "22/07/17");
-    //   });
+    it("prints a statement when just an earning has been recorded", function() {
+      moneytracker.recordEarning(500, "02/04/17");
+      expect(moneytracker.printStatement()).toContain(500);
+    });
 
-    
-    // it("prints a statement of all transactions", function() {
-    //   moneytracker.recordEarning(500, "22/07/17");
-    //   moneytracker.recordExpenditure(-20, "22/07/17");
-    //   moneytracker.recordExpenditure(-50, "23/07/17");
-    //   moneytracker.recordEarning(1600, "30/07/17");
-    //   expect(moneytracker.printStatement()).toEqual(jasmine.arrayContaining([500, "22/07/17"]));
-    // });
+    it("prints a statement when just an expenditure has been recorded", function() {
+      moneytracker.recordExpenditure(-300, "03/04/17");
+      expect(moneytracker.printStatement()).toContain(-300);
+    });
+
+    it("prints a statement when a set of transactions have been made", function() {
+      moneytracker.recordEarning(1600, "15/06/17");
+      moneytracker.recordExpenditure(500, "17/07/17");
+      moneytracker.recordExpenditure(20, "18/07/17");
+      expect(moneytracker.printStatement()).toContain(1600, "18/07/17");
+    });
   });
 });
