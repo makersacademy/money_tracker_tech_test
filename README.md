@@ -1,32 +1,21 @@
 # Money tracker tech test
 
-## Specification
+## My Approach
 
-### Requirements
+I started by diagramming the problem and separating out the main responsibilities into classes.  My original structure and naming of the classes was closer to a bank account than a money tracker app and so I refactored mid-way through.  I ended up with three classes: statement, recordlist and entry which I think all have defined responsibilities and whose code neatly links them all together while showing due consideration to the Law of Demeter.  My main struggle was converting the code's existing running balance to a balance, which tied all the classes together, to a balance calculated at the point of printing the statement - for me this was the most ineteresting part of the process.
 
-* Your goal is to write a program you could use to track money you spend and earn.
+## Technologies used
 
-* You should be able to interact with the your code via a REPL like IRB or the JavaScript console.  (You don't need to implement a command line interface that takes input from STDIN.)
+Ruby, Rspec, Coverall, Rubocop
 
-* You should be able to record money you've spent and the date you spent it on.  e.g. You could record the fact that you spent £100 on 2017/8/8.
+## How to run the programme
 
-* You should be able to record money you've earned and the date you earned it on.  e.g. You could record the fact that you earned £100 on 2017/8/8.
+* Clone this repo
+* Create a new recordlist and make an entry including the amount and the date earned/spent:
+* Print a statement by creating a new instance of statement:
+* You see:
 
-* You should be able to print an account statement that shows all the records (date, amount, balance).
+## Test Coverage
 
-* Data can be kept in memory (it doesn't need to be stored to a database or anything).
+My goal was to have high test coverage and so I installed Coverall to help me analyse this aspect of my code. I finished with 100% coverage according to Coverall :)
 
-### Acceptance criteria
-
-**Given** you record that you earned 1000 on 10-01-2012
-**And** earned 2000 on 13-01-2012
-**And** spent 500 on 14-01-2012
-**When** you print your bank statement
-**Then** you would see
-
-```
-date || credit || debit || balance
-14/01/2012 || || 500.00 || 2500.00
-13/01/2012 || 2000.00 || || 3000.00
-10/01/2012 || 1000.00 || || 1000.00
-```
