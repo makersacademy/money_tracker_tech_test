@@ -30,5 +30,4 @@ class Account
   private
 
   attr_reader :transactions_log
-
 end

@@ -29,6 +29,5 @@ describe Statement do
       allow(time_two).to receive(:strftime).with('/%d/%m/%y').and_return(Time.now.strftime('/%d/%m/%y'))
       expect { statement.print_it }.to output(" date | credit | debit | balance \n #{Time.now.strftime('/%d/%m/%y')} | 0 | 100 | 100  \n #{Time.now.strftime('/%d/%m/%y')} | 100 | 0 | 200  \n").to_stdout
     end
-    
   end
 end
