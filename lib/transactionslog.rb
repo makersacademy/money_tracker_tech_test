@@ -2,7 +2,6 @@
 require_relative 'transaction'
 
 class TransactionsLog
-  # note: possible make this a singleton
 
   attr_reader :history
 
