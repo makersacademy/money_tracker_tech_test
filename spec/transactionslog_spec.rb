@@ -1,42 +1,32 @@
 
-describe TransactionsLog do
-  let(:transaction_class) { double('Transaction') }
-  subject(:transactionslog) { described_class.new(transaction_class) }
+describe TransactionLog do
+  let(:transaction) { double(:transaction, credit: 50, debit: 0) }
+  let(:balancer) { double(:balancer) }
 
-  let(:current_balance) { 100 }
-  let(:amount) { 10 }
-
-  describe '#withdraw' do
-    let(:transaction) { double('Transaction', time: '10/10/2017', debit: amount, credit: 0, balance: current_balance) }
-
-    before do
-      allow(transaction_class).to receive(:new).and_return(transaction)
+  describe '.instance' do
+    context 'on first call' do
+      it 'will return an instance of TransactionLog' do
+        expect(subject.class.instance).to be_an_instance_of(TransactionLog)
+      end
     end
-
-    it 'will instaniate a new transaction' do
-      expect(transaction_class).to receive(:new).with(debit: amount, balance: current_balance)
-      transactionslog.withdraw(current_balance, amount)
-    end
-
-    it 'will add a transaction to history' do
-      expect { transactionslog.withdraw(current_balance, amount) }.to change { transactionslog.history }.from([]).to([transaction])
+    context 'on calls thereafter' do
+      it 'will return the memoized instance' do
+        memoized_instance = subject.class.instance.object_id
+        expect(subject.class.instance.object_id).to eq memoized_instance
+      end
     end
   end
 
-  describe '#deposit' do
-    let(:transaction) { double('Transaction', timestamp: '10/10/2017', debit: 0, credit: amount, balance: current_balance) }
-
+  describe '#log' do
     before do
-      allow(transaction_class).to receive(:new).and_return(transaction)
+      allow(balancer).to receive(:update).with(transaction).and_return(50)
+    end
+    it 'will log the transaction passed in' do
+      expect { subject.log(transaction) }.to change { subject.transactions }.from([]).to([transaction])
     end
 
-    it 'will instantiate a new transaction' do
-      expect(transaction_class).to receive(:new).with(credit: amount, balance: current_balance)
-      transactionslog.deposit(current_balance, amount)
-    end
-
-    it 'will log a transaction' do
-      expect { transactionslog.deposit(current_balance, amount) }.to change { transactionslog.history }.from([]).to([transaction])
+    it 'will log the new balance' do
+      expect { subject.log(transaction) }.to change { subject.balances }.from([]).to([50])
     end
   end
 end

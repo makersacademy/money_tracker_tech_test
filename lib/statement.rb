@@ -1,7 +1,9 @@
 
+# Understands how to print transaction history
+
 class Statement
-  def initialize(transactions_log)
-    @transactions_log = transactions_log
+  def initialize(transaction_log: TransactionLog.instance)
+    @transaction_log = transaction_log
   end
 
   def print_it
@@ -11,17 +13,20 @@ class Statement
 
   private
 
-  attr_reader :transactions_log
+  attr_reader :transaction_log
 
   def print_header
     puts ' date | credit | debit | balance '
   end
 
-  def print_(transaction)
-    puts " #{transaction.time.strftime('/%d/%m/%y')} | #{transaction.credit} | #{transaction.debit} | #{transaction.balance}  "
+  def print_(transaction, balance)
+    puts " #{transaction.time.strftime('%d/%m/%y')} | #{transaction.credit} | #{transaction.debit} | #{balance} "
   end
 
   def print_each_transaction
-    transactions_log.history.reverse.each { |transaction| print_(transaction) }
+    transaction_log.transactions.reverse.each_with_index do |transaction, index|
+      balance = transaction_log.balances.reverse[index]
+      print_(transaction, balance)
+    end
   end
 end

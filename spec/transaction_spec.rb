@@ -1,28 +1,19 @@
 
+require_relative '../lib/transaction'
+require_relative '../lib/transaction_log'
+
 describe Transaction do
-  let(:credit) { 0 }
-  let(:debit) { 50 }
-  let(:balance) { 100 }
   let(:current_time) { Time.now }
-  subject(:transaction) { described_class.new(credit: credit, time: current_time, debit: debit, balance: balance) }
+  let(:transaction_log) { double(:transaction_log) }
 
-  describe 'attributes' do
-    context 'on init' do
-      it 'will assign the credited amount' do
-        expect(transaction.credit).to eq(0)
-      end
-
-      it 'will assign the debited amount' do
-        expect(transaction.debit).to eq(50)
-      end
-
-      it 'will assign the credited amount' do
-        expect(transaction.balance).to eq(100)
-      end
-
-      it 'will assign the credited amount' do
-        expect(transaction.time).to eq(current_time)
-      end
+  describe '#init' do
+    before do
+      allow(TransactionLog).to receive(:instance).and_return(transaction_log)
+      allow(transaction_log).to receive(:log)
+    end
+    it 'will log self' do
+      described_class.new(credit: 0, time: current_time, debit: 50)
+      expect(transaction_log).to have_received(:log)
     end
   end
 end
